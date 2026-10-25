@@ -16,6 +16,11 @@ const SCHEDULE_FIELDS = [
   "last_review",
 ] as const;
 
+const SCHEDULE_FIELD_SET: ReadonlySet<string> = new Set(SCHEDULE_FIELDS);
+
+/** Cap nested walks so a malicious mega-object cannot DoS the guard. */
+const MAX_SCHEDULE_SCAN_DEPTH = 8;
+
 export class SchedulePolicyError extends Error {
   readonly breach = "schedule_write" as const;
 
@@ -25,17 +30,42 @@ export class SchedulePolicyError extends Error {
   }
 }
 
+/**
+ * Reject payloads that carry FSRS schedule fields at any depth
+ * (e.g. `{ due }`, `{ card: { due } }`, `{ review: { stability } }`).
+ * Arrays are walked; depth stops at MAX_SCHEDULE_SCAN_DEPTH.
+ */
 export function assertNoScheduleFields(payload: unknown, agent: string): void {
-  if (!payload || typeof payload !== "object") return;
-  const rec = payload as Record<string, unknown>;
-  const hit = SCHEDULE_FIELDS.filter((key) =>
-    Object.prototype.hasOwnProperty.call(rec, key),
+  const hit = collectScheduleHits(payload, 0, "");
+  if (hit.length === 0) return;
+  throw new SchedulePolicyError(
+    `${agent} tried to set schedule field(s) ${[...new Set(hit)].join(", ")}. Grades go through TideScheduler.rate; due stays deterministic.`,
   );
-  if (hit.length > 0) {
-    throw new SchedulePolicyError(
-      `${agent} tried to set schedule field(s) ${hit.join(", ")}. Grades go through TideScheduler.rate; due stays deterministic.`,
-    );
+}
+
+function collectScheduleHits(value: unknown, depth: number, path: string): string[] {
+  if (depth > MAX_SCHEDULE_SCAN_DEPTH) return [];
+  if (!value || typeof value !== "object") return [];
+
+  if (Array.isArray(value)) {
+    const hits: string[] = [];
+    for (let i = 0; i < value.length; i++) {
+      hits.push(...collectScheduleHits(value[i], depth + 1, path ? `${path}[${i}]` : `[${i}]`));
+    }
+    return hits;
   }
+
+  const rec = value as Record<string, unknown>;
+  const hits: string[] = [];
+  for (const key of Object.keys(rec)) {
+    const nextPath = path ? `${path}.${key}` : key;
+    if (SCHEDULE_FIELD_SET.has(key)) {
+      hits.push(nextPath);
+      continue;
+    }
+    hits.push(...collectScheduleHits(rec[key], depth + 1, nextPath));
+  }
+  return hits;
 }
 
 /** TOPRA: one aspect per session batch. */

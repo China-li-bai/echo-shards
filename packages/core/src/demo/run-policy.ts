@@ -11,7 +11,7 @@ import { CurriculumDirector } from "../agents/curriculum-director.js";
 import { AgentEventLog } from "../agents/event-log.js";
 import { EvalSentinel } from "../agents/eval-sentinel.js";
 import { MemoryPolicyError, upsertEpisode } from "../agents/learner-memory.js";
-import { SchedulePolicyError } from "../agents/policy.js";
+import { assertNoScheduleFields, SchedulePolicyError } from "../agents/policy.js";
 import { findRepoRoot } from "../content/paths.js";
 import { loadCatalog, loadPackMeta, loadSeedLexemes, readyLexemes } from "../content/loadLexemes.js";
 import { loadQuestFromYaml } from "../quest/loadQuest.js";
@@ -163,6 +163,32 @@ expectThrow(
       `phonology open: session_start aspect ${(started[0]!.payload as { aspect?: string }).aspect} !== phonology_text`,
     );
   }
+}
+
+// Nested schedule fields must also breach (recursive guard).
+expectThrow(
+  "nested card.due",
+  () => assertNoScheduleFields({ card: { due: "2099-01-01T00:00:00.000Z" } }, "demo-nested"),
+  SchedulePolicyError,
+);
+expectThrow(
+  "nested review.stability",
+  () => assertNoScheduleFields({ review: { stability: 2.5 } }, "demo-nested"),
+  SchedulePolicyError,
+);
+expectThrow(
+  "nested payload.scheduled_days",
+  () =>
+    assertNoScheduleFields(
+      { payload: { nested: { scheduled_days: 3, elapsed_days: 0 } } },
+      "demo-nested",
+    ),
+  SchedulePolicyError,
+);
+try {
+  assertNoScheduleFields({ card: { id: "ok", prompt: "x" }, grade: 2 }, "demo-nested-ok");
+} catch (error) {
+  failures.push(`demo-nested-ok: unexpected ${error instanceof Error ? error.message : String(error)}`);
 }
 
 if (failures.length > 0) {

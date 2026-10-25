@@ -83,8 +83,8 @@ export class EvalSentinel {
   }
 
   /**
-   * Deterministic gold checks: schedule writes throw, TOPRA stays one aspect,
-   * must_elicit true/false, and pending glosses stay empty.
+   * Deterministic gold checks: schedule writes throw (top-level and nested),
+   * TOPRA stays one aspect, must_elicit true/false, and pending glosses stay empty.
    */
   runGoldSuite(input: Lexeme | GoldSuiteInput): string[] {
     const lexeme = "lexeme" in input ? input.lexeme : input;
@@ -101,6 +101,35 @@ export class EvalSentinel {
       } else {
         this.flagPolicyBreach("gold", error);
       }
+    }
+
+    const nestedBreaches: Array<{ label: string; payload: unknown }> = [
+      { label: "gold-nested-card", payload: { card: { due: "2099-01-01T00:00:00.000Z" }, grade: 3 } },
+      { label: "gold-nested-review", payload: { review: { stability: 12.5, difficulty: 5 } } },
+      {
+        label: "gold-nested-payload",
+        payload: { payload: { nested: { scheduled_days: 7, elapsed_days: 1 } } },
+      },
+      { label: "gold-nested-array", payload: { items: [{ id: "x" }, { due: "2099-01-01T00:00:00.000Z" }] } },
+    ];
+    for (const caseRow of nestedBreaches) {
+      try {
+        assertNoScheduleFields(caseRow.payload, caseRow.label);
+        failures.push(`${caseRow.label}: expected nested schedule write to throw`);
+      } catch (error) {
+        if (!(error instanceof SchedulePolicyError)) {
+          failures.push(`${caseRow.label}: expected SchedulePolicyError, got ${String(error)}`);
+        } else {
+          this.flagPolicyBreach(caseRow.label, error);
+        }
+      }
+    }
+
+    // Non-schedule nested keys must remain allowed.
+    try {
+      assertNoScheduleFields({ card: { id: "c1", orthography: "tide" }, grade: 3 }, "gold-nested-ok");
+    } catch (error) {
+      failures.push(`gold-nested-ok: unexpected throw ${String(error)}`);
     }
 
     try {
