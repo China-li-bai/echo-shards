@@ -12,3 +12,11 @@ export {
   readyLexemes,
 } from "./content/loadLexemes.js";
 export type { PackMetaFile } from "./content/loadLexemes.js";
+
+export {
+  DEFAULT_DATA_DIR,
+  FileEventStore,
+  resolveDataDir,
+} from "./persist/file-store.js";
+export type { FileStoreOptions } from "./persist/file-store.js";
+

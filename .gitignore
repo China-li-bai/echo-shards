@@ -12,3 +12,4 @@ coverage/
 *.tsbuildinfo
 uploads/
 tmp-scaffold/
+.data/

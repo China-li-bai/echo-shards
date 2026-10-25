@@ -8,7 +8,7 @@ schedule.
 
 | Path | Role |
 | --- | --- |
-| `apps/web` | Next.js UI. Day plan, form/meaning review, NGSL floor, Echo Bazaar, eval. |
+| `apps/web` | Next.js UI. Day plan, form/meaning/phonology_text review, NGSL floor, enrichment queue, Echo Bazaar, eval. |
 | `packages/core` | Zod models, `TideScheduler` (`ts-fsrs`), quest checks, agent tool boundaries. |
 | `packages/core/src/demo` | CLI demos. `npm test` runs them (including `demo:day` / `demo:eval`). |
 | `content/packs/ngsl-s-1.2` | Official NGSL-Spoken 1.2 files, NOTICE, CITATION (CC BY-SA 4.0). |
@@ -18,6 +18,8 @@ schedule.
 | `schemas/quest.schema.json` | JSON Schema aligned with `QuestSchema`. |
 | `supabase/migrations` | Postgres draft. `001` text foundation, `002` content and events. |
 | `scripts/import-ngsl-s.ts` | Rebuilds lexeme JSON from the pack. Does not invent glosses. |
+| `scripts/enrichment-*.ts` | Validate / queue / merge enrichment. Pending stays empty gloss_zh. |
+| `.data/` | Optional file-backed AgentEventLog + progress for CLI demos (gitignored). |
 | `docs/` | Data requirements, field dictionary, AI-native notes from the design phase. |
 
 `packages/core` entry `.` is safe to import from the browser. `./node` reads the filesystem (quest YAML and lexeme JSON) and stays on the server.
@@ -35,20 +37,21 @@ Models propose. `TideScheduler.rate` is the only writer of `due`, `stability`, a
 | Curriculum Director | `agents/curriculum-director.ts` | `proposeDayPlan`, `estimateLoad`, `requestException` | `session_proposals` (in-memory) | `session_proposals` | Auto-open two aspects; exceed 5 lexemes |
 | Tide Steward | `agents/tide-steward.ts` | `getDue`, `buildSessionBatch`, `explainWhyTheseCards`, `enqueueAspect`, `rate` | FSRS state only via `TideScheduler.rate`; `review_logs` | `cards`, `review_logs`, `session_batches` | Raw updates to `due` / `stability` / `scheduled_days` |
 | Forge Smith | `agents/forge-smith.ts` | `lockAspect`, `genRetrievalItem`, `suggestDistractors`, `assistGrade` | Grade enum only | `review_logs` after Steward `rate` | A second aspect in the same batch; writing `due` |
-| Echo Broker | `agents/echo-broker.ts` | `draftQuest`, `checkMustElicit`, `finalizeDeal`, `abandon` | Quest hit list | `quests`, `quest_runs` | Marking success without `must_elicit`; touching cards; inventing glosses |
+| Echo Broker | `agents/echo-broker.ts` | `draftQuest`, `checkMustElicit`, `adaptTurn`, `finalizeDeal`, `abandon` | Quest hit list | `quests`, `quest_runs` | Marking success without `must_elicit`; touching cards; inventing glosses |
 | Eval Sentinel | `agents/eval-sentinel.ts` | `runGoldSuite`, `scoreDealRate`, `flagPolicyBreach` | Scores and breach flags | `eval_scores`, `learning_events` | Treating a policy block as a learner success |
 | Learner Memory | `agents/learner-memory.ts` | `upsertEpisode` | Short structured text | `learner_memory_items` | Full transcript dumps |
 
-The web process keeps `AgentEventLog` in memory (and, for the review round, `localStorage`). It mirrors `agent_runs`, `session_proposals`, `learning_events`, and `eval_scores` from `002_content_and_events.sql`. Nothing here connects to hosted Supabase.
+The web process keeps `AgentEventLog` in memory (and, for the review round, `localStorage`). CLI demos may append snapshots under `.data/` via `FileEventStore`. Camp `/` derives xp/shards/streak from those events when present (`progressFromEvents`). Mirrors `agent_runs`, `session_proposals`, `learning_events`, `eval_scores`, and `progress` from the SQL drafts. Nothing here connects to hosted Supabase.
 
 Voice is a placeholder interface in `packages/core/src/providers/voice-placeholder.ts`. ASR, TTS, and pronunciation scoring are not implemented, and a pronunciation score is not an FSRS grade.
 
 ## Request path (P0 日课闭环)
 
-1. `/day` — learner types an intent and picks ≤5 lexemes. Curriculum Director presents 2–3 variants (form, meaning, form+quest). Explicit accept writes `intent` + `proposal_accepted` and stores the plan in `localStorage`.
-2. `/review` — Tide Steward enqueues TOPRA tracks, opens one aspect batch (form or meaning). Forge Smith builds public prompts (form hides spelling; meaning hides gloss). After confirm 1–4, Steward calls `TideScheduler.rate` and logs `retrieval_grade`.
-3. `/quests` — Echo Broker lists static YAML + `content/quests/generated`. `checkMustElicit` / `finalizeDeal` / `abandon`. Chinese-only fails; English elicit tokens succeed. Quest never grades cards.
-4. `/eval` — Eval Sentinel `runGoldSuite` + Learner Memory short episode. Camp summary of scores and breaches.
+1. `/day` — learner types an intent and picks ≤5 lexemes. Curriculum Director presents 2–3 variants (form, phonology_text when phonetic ready else meaning, form+quest). Explicit accept writes `intent` + `proposal_accepted` and stores the plan in `localStorage`.
+2. `/review` — Tide Steward enqueues TOPRA tracks, opens one aspect batch (form / meaning / phonology_text). Forge Smith builds public prompts (form hides spelling; meaning hides gloss; phonology hides IPA). After confirm 1–4, Steward calls `TideScheduler.rate` and logs `retrieval_grade`.
+3. `/quests` — Echo Broker lists static YAML + `content/quests/generated`. `checkMustElicit` / `adaptTurn` / `finalizeDeal` / `abandon`. Chinese-only fails; English elicit tokens succeed. Quest never grades cards.
+4. `/eval` — Eval Sentinel `runGoldSuite` + Learner Memory short episode. Camp summary of scores and breaches. Persists `.data/` for demo progress.
+5. `/enrichment` — read-only queue + merge instructions. No invented glosses.
 
 ## Word floor
 

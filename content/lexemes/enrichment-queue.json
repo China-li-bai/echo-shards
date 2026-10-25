@@ -1,0 +1,484 @@
+{
+  "generated_at": "2026-10-25T07:46:53.820Z",
+  "source_pack": "ngsl-s-1.2",
+  "limit": 25,
+  "pending_total": 671,
+  "policy": "empty gloss_zh only; human merge via enrichment-merge.ts; no hallucination",
+  "items": [
+    {
+      "lemma": "up",
+      "lemma_id": "en_up",
+      "orthography": "up",
+      "freq_rank": 51,
+      "gloss_en": "to move towards a high place from a lower one",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "mean",
+      "lemma_id": "en_mean",
+      "orthography": "mean",
+      "freq_rank": 52,
+      "gloss_en": "to have in mind as your purpose or intention",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "out",
+      "lemma_id": "en_out",
+      "orthography": "out",
+      "freq_rank": 53,
+      "gloss_en": "in a direction or movement away from the inside or center",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "see",
+      "lemma_id": "en_see",
+      "orthography": "see",
+      "freq_rank": 54,
+      "gloss_en": "to notice or become aware of with the eyes",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "thing",
+      "lemma_id": "en_thing",
+      "orthography": "thing",
+      "freq_rank": 55,
+      "gloss_en": "an object, animal, or quality doesn't have a specific name",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "yes",
+      "lemma_id": "en_yes",
+      "orthography": "yes",
+      "freq_rank": 56,
+      "gloss_en": "used to give a positive answer or reply to a question, request, or offer ",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "when",
+      "lemma_id": "en_when",
+      "orthography": "when",
+      "freq_rank": 57,
+      "gloss_en": "at what time, at, in, during which, how soon",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "really",
+      "lemma_id": "en_really",
+      "orthography": "really",
+      "freq_rank": 58,
+      "gloss_en": "very or very much",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "want",
+      "lemma_id": "en_want",
+      "orthography": "want",
+      "freq_rank": 59,
+      "gloss_en": "to desire or wish for",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "come",
+      "lemma_id": "en_come",
+      "orthography": "come",
+      "freq_rank": 60,
+      "gloss_en": "to move toward someone, to approach",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "now",
+      "lemma_id": "en_now",
+      "orthography": "now",
+      "freq_rank": 61,
+      "gloss_en": "at the present time or moment",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "some",
+      "lemma_id": "en_some",
+      "orthography": "some",
+      "freq_rank": 62,
+      "gloss_en": "used to refer to an unspecified amount or number",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "good",
+      "lemma_id": "en_good",
+      "orthography": "good",
+      "freq_rank": 63,
+      "gloss_en": "of high quality",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "from",
+      "lemma_id": "en_from",
+      "orthography": "from",
+      "freq_rank": 64,
+      "gloss_en": "indicating the starting point of motion or action",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "time",
+      "lemma_id": "en_time",
+      "orthography": "time",
+      "freq_rank": 65,
+      "gloss_en": "something measured in minutes, hours, days, etc.",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "people",
+      "lemma_id": "en_people",
+      "orthography": "people",
+      "freq_rank": 66,
+      "gloss_en": "human beings in general, plural of person",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "very",
+      "lemma_id": "en_very",
+      "orthography": "very",
+      "freq_rank": 67,
+      "gloss_en": "to a high degree",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "yeah",
+      "lemma_id": "en_yeah",
+      "orthography": "yeah",
+      "freq_rank": 68,
+      "gloss_en": "yes",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "make",
+      "lemma_id": "en_make",
+      "orthography": "make",
+      "freq_rank": 69,
+      "gloss_en": "to build, create, or produce something",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "look",
+      "lemma_id": "en_look",
+      "orthography": "look",
+      "freq_rank": 70,
+      "gloss_en": "to direct one's gaze in a particular direction",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "two",
+      "lemma_id": "en_two",
+      "orthography": "two",
+      "freq_rank": 71,
+      "gloss_en": "the number 2",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "take",
+      "lemma_id": "en_take",
+      "orthography": "take",
+      "freq_rank": 72,
+      "gloss_en": "to carry or move with one's hands, to reach for",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "here",
+      "lemma_id": "en_here",
+      "orthography": "here",
+      "freq_rank": 73,
+      "gloss_en": "in this place, at this location or position",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "which",
+      "lemma_id": "en_which",
+      "orthography": "which",
+      "freq_rank": 74,
+      "gloss_en": "what one or ones of a group, one or more people or things",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    },
+    {
+      "lemma": "could",
+      "lemma_id": "en_could",
+      "orthography": "could",
+      "freq_rank": 75,
+      "gloss_en": "used as the past tense of can, to indicate possibility",
+      "status": "needs_review",
+      "gloss_zh": "",
+      "phonetic_text": "",
+      "example_sentence": "",
+      "example_sentence_zh": "",
+      "collocations": [],
+      "tags": [
+        "ngsl-s",
+        "spoken-mvp"
+      ],
+      "cefr": null,
+      "notes": "Fill gloss_zh / phonetic_text / example from editorial review. Do not invent."
+    }
+  ]
+}

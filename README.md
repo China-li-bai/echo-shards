@@ -19,9 +19,7 @@ Text-first English study. Statement memory goes through **ts-fsrs**. One aspect 
 
 ```bash
 npm install
-npm test          # demo + quest YAML + policy + day + eval
-npm run typecheck
-npm run build -w @echo-shards/web
+npm run check     # test + typecheck + build + enrichment:validate
 npm run dev       # http://127.0.0.1:43123
 ```
 
@@ -37,14 +35,19 @@ npm run dev       # http://127.0.0.1:43123
 | `npm run typecheck` | `packages/core` 与 `apps/web` |
 | `npm run lint` | Next.js eslint |
 | `npm run import:ngsl-s` | 从官方词表重写 `content/lexemes/ngsl-s-*.json`（不发明 gloss） |
+| `npm run enrichment:validate` | 校验 enrichment / catalog：pending 必须空 gloss_zh |
+| `npm run enrichment:queue` | 写出下一批评审队列（仅上游英义） |
+| `npm run enrichment:merge` | 合并已审校 JSON → enrichment + re-import |
+| `npm run check` | test + typecheck + build + enrichment:validate |
 
 开发服务器绑定 `0.0.0.0:43123`。页面：
 
-- `/` 营地：词量与入口
-- `/day` 意图 → 多提案 → 明确接受 → 写入 session_proposals / learning_events
-- `/review` 形界 / 义界复习（`?aspect=meaning`）；可从 `/day` 带入批次
+- `/` 营地：词量、由 learning_events 推导的 streak/XP/shards、入口
+- `/day` 意图 → 多提案（含音界·文字）→ 明确接受 → session_proposals / learning_events
+- `/review` 形 / 义 / 音文字（`?aspect=phonology_text`）；可从 `/day` 带入批次
 - `/lexemes` NGSL-S 地板，待审校行不显示假释义
-- `/quests` 静态 + generated 信息差；中文-only 失败
+- `/enrichment` 审校队列只读 + 合并步骤
+- `/quests` 静态 + generated 信息差；中文-only 失败；adaptTurn 提示
 - `/eval` Eval Sentinel 金标与营地摘要
 
 ## 目录 / Layout
@@ -77,7 +80,7 @@ ARCHITECTURE.md           模块 ↔ agent ↔ 表
 supabase db reset
 ```
 
-Demo 与网页复习用内存（复习进度还可留在浏览器 localStorage）。调度规则以 `TideScheduler` 为准，不以来表为准。
+Demo 与网页复习默认用内存。CLI demo（`demo:day` / `demo:eval`）会把 AgentEventLog / progress 快照追加到仓库根目录 `.data/`（已 gitignore），方便跨次运行看营地进度；浏览器复习仍用 localStorage。不要求 Supabase。调度规则以 `TideScheduler` 为准，不以来表为准。
 
 ## 许可 / License
 

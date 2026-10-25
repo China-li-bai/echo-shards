@@ -86,7 +86,7 @@ content/quests/               ← 自研 Quest（可引用 lemma id）
 | 导入脚本 | ✅ `scripts/import-ngsl-s.ts` |
 | lemma / sense / forms 种子 | ✅ 721 lemmas，2354 forms |
 | 中英义·音标·例句 | ✅ 前 50 ready；671 pending |
-| 批量 enrichment 管线 | ⏳ 下一步（审校，不幻觉） |
+| 批量 enrichment 管线 | ✅ scaffold：`enrichment:validate` / `queue` / `merge` + `/enrichment`（审校，不幻觉） |
 
 导入命令：
 

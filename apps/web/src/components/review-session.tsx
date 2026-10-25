@@ -203,9 +203,16 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
           lexemeIds: ids,
           intent: `${aspect} tide`,
           questId,
+          includePhonology: aspect === "phonology_text",
         });
         const variantId =
-          aspect === "meaning" ? "v-meaning" : questId ? "v-form-quest" : "v-form";
+          aspect === "meaning"
+            ? "v-meaning"
+            : aspect === "phonology_text"
+              ? "v-phonology"
+              : questId
+                ? "v-form-quest"
+                : "v-form";
         const variant = director.accept(proposal.id, variantId);
         lexemeIds = variant.lexeme_ids;
       }
@@ -360,9 +367,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   const prompt = filteredPrompts[Math.min(index, filteredPrompts.length - 1)]!;
   const runs = engine.log.runs.slice(-6);
   const titleText =
-    aspect === "meaning"
-      ? prompt.orthography_hint ?? prompt.cloze
-      : prompt.gloss_zh;
+    aspect === "form" ? prompt.gloss_zh : prompt.orthography_hint ?? prompt.cloze;
 
   return (
     <div className="flex flex-col gap-6">
@@ -416,8 +421,12 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
           <CardContent className="flex flex-col gap-4">
             {aspect === "form" ? (
               <p className="font-display text-xl leading-relaxed">{prompt.cloze}</p>
-            ) : (
+            ) : aspect === "meaning" ? (
               <p className="text-muted-foreground">写出中文义。不要编造；对照来自已审校 gloss。</p>
+            ) : (
+              <p className="text-muted-foreground">
+                写出文字音标（IPA）。本阶段不评分音频；对照来自已审校 phonetic_text。
+              </p>
             )}
             {lastDue ? (
               <p className="text-sm text-muted-foreground">上一张下次 due：{lastDue}（Asia/Shanghai）</p>
@@ -426,7 +435,11 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
             {phase === "answer" ? (
               <form className="flex flex-col gap-3" onSubmit={onCheck}>
                 <label htmlFor="answer" className="text-sm font-medium">
-                  {aspect === "meaning" ? "中文义" : "拼写"}
+                  {aspect === "meaning"
+                    ? "中文义"
+                    : aspect === "phonology_text"
+                      ? "文字音标"
+                      : "拼写"}
                 </label>
                 <Input
                   id="answer"
@@ -435,12 +448,24 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                   autoComplete="off"
                   autoCapitalize="none"
                   spellCheck={false}
-                  placeholder={aspect === "meaning" ? "先写中文义，再对照" : "先写出来，再对照"}
+                  placeholder={
+                    aspect === "meaning"
+                      ? "先写中文义，再对照"
+                      : aspect === "phonology_text"
+                        ? "先写 IPA / 音标，再对照"
+                        : "先写出来，再对照"
+                  }
                   className="h-11! text-base"
                 />
                 <div>
                   <Button type="submit" disabled={busy} className="h-11! px-4">
-                    {busy ? "对照中…" : aspect === "meaning" ? "对照释义" : "对照拼写"}
+                    {busy
+                      ? "对照中…"
+                      : aspect === "meaning"
+                        ? "对照释义"
+                        : aspect === "phonology_text"
+                          ? "对照音标"
+                          : "对照拼写"}
                   </Button>
                 </div>
               </form>
@@ -451,10 +476,15 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                   <p className="text-lg">{typed.trim() || "（空）"}</p>
                   <p className="mt-3 text-sm text-muted-foreground">{reveal?.expected_label}</p>
                   <p className="font-display text-2xl">
-                    {aspect === "meaning" ? reveal?.gloss_zh : reveal?.orthography}
+                    {aspect === "meaning"
+                      ? reveal?.gloss_zh
+                      : aspect === "phonology_text"
+                        ? reveal?.phonetic_text
+                        : reveal?.orthography}
                   </p>
                   <p className="mt-1 text-muted-foreground">
                     {reveal?.orthography} · {reveal?.phonetic_text}
+                    {aspect !== "meaning" && reveal?.gloss_zh ? ` · ${reveal.gloss_zh}` : ""}
                   </p>
                   <p className="mt-3">{reveal?.example_sentence}</p>
                   {reveal?.example_sentence_zh ? (

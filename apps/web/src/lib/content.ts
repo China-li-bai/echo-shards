@@ -10,12 +10,18 @@ import {
   type Quest,
 } from "@echo-shards/core";
 import {
+  emptyCampProgress,
+  type CampProgress,
+} from "@echo-shards/core";
+import {
   findRepoRoot,
+  FileEventStore,
   loadCatalog,
   loadPackMeta,
   loadQuestFromYaml,
   loadSeedLexemes,
   readyLexemes,
+  resolveDataDir,
   type PackMetaFile,
 } from "@echo-shards/core/node";
 
@@ -56,6 +62,7 @@ export interface DayLexemeOption {
   id: string;
   orthography: string;
   gloss_zh: string;
+  phonetic_text: string;
   source: "seed" | "ngsl";
 }
 
@@ -113,6 +120,7 @@ export function getDayLexemeOptions(): DayLexemeOption[] {
     id: row.id,
     orthography: row.orthography,
     gloss_zh: row.gloss_zh,
+    phonetic_text: row.phonetic_text,
     source: "seed" as const,
   }));
   const ngsl = readyLexemes(catalog())
@@ -121,6 +129,7 @@ export function getDayLexemeOptions(): DayLexemeOption[] {
       id: row.id,
       orthography: row.orthography,
       gloss_zh: row.gloss_zh,
+      phonetic_text: row.phonetic_text,
       source: "ngsl" as const,
     }));
   const seen = new Set<string>();
@@ -136,7 +145,8 @@ export function getDayLexemeOptions(): DayLexemeOption[] {
 export function getReviewPools(aspect: Aspect = "form"): ReviewPool[] {
   const seed = loadSeedLexemes(root());
   const ngsl = readyLexemes(catalog()).slice(0, 5);
-  const aspectLabel = aspect === "meaning" ? "义界" : "形界";
+  const aspectLabel =
+    aspect === "meaning" ? "义界" : aspect === "phonology_text" ? "音界·文字" : "形界";
   return [
     {
       id: "seed",
@@ -231,4 +241,19 @@ export function getEvalSnapshot() {
     pendingEmptyGloss: pendingEmpty,
     quests: listQuests(),
   };
+}
+
+export function getCampProgress(): CampProgress {
+  try {
+    const store = new FileEventStore({ dataDir: resolveDataDir(root()) });
+    const fromFile = store.loadProgress();
+    if (fromFile) return fromFile;
+    const snap = store.loadSnapshot("demo-events");
+    if (snap) {
+      return store.syncProgressFrom("demo-events");
+    }
+  } catch {
+    /* no .data yet */
+  }
+  return emptyCampProgress();
 }

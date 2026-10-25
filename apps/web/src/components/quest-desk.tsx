@@ -4,6 +4,7 @@ import { useState } from "react";
 import {
   AgentEventLog,
   EchoBroker,
+  composeAdaptTurn,
   type DealResult,
   type ElicitHit,
   type Quest,
@@ -13,6 +14,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
+
+function emptyHits(quest: Quest): ElicitHit[] {
+  return quest.must_elicit.map((item) => ({ item, hit: false, tokens: [] }));
+}
 
 export function QuestDesk({
   quest,
@@ -24,12 +29,11 @@ export function QuestDesk({
   const [log] = useState(() => new AgentEventLog());
   const [draft, setDraft] = useState("");
   const [turns, setTurns] = useState<string[]>([]);
-  const [hits, setHits] = useState<ElicitHit[]>(() =>
-    quest.must_elicit.map((item) => ({ item, hit: false, tokens: [] })),
-  );
+  const [hits, setHits] = useState<ElicitHit[]>(() => emptyHits(quest));
   const [deal, setDeal] = useState<DealResult | null>(null);
   const [trace, setTrace] = useState(0);
   const [abandoned, setAbandoned] = useState(false);
+  const [nudge, setNudge] = useState(() => composeAdaptTurn(quest, emptyHits(quest), 0));
 
   function submitTurn(event: React.FormEvent) {
     event.preventDefault();
@@ -38,7 +42,10 @@ export function QuestDesk({
     const nextTurns = [...turns, text];
     setTurns(nextTurns);
     setDraft("");
-    setHits(new EchoBroker(log).check(quest, nextTurns.join("\n")));
+    const broker = new EchoBroker(log);
+    const nextHits = broker.check(quest, nextTurns.join("\n"));
+    setHits(nextHits);
+    setNudge(broker.adaptTurn(quest, nextHits, nextTurns.length));
     setDeal(null);
     setTrace((value) => value + 1);
   }
@@ -56,9 +63,11 @@ export function QuestDesk({
   }
 
   function reset() {
+    const resetHits = emptyHits(quest);
     setDraft("");
     setTurns([]);
-    setHits(quest.must_elicit.map((item) => ({ item, hit: false, tokens: [] })));
+    setHits(resetHits);
+    setNudge(composeAdaptTurn(quest, resetHits, 0));
     setDeal(null);
     setAbandoned(false);
     log.runs.length = 0;
@@ -129,7 +138,8 @@ export function QuestDesk({
           </div>
           <CardTitle className="font-display text-2xl">必须问出来</CardTitle>
           <CardDescription>
-            Echo Broker 只用英文词干勾选 must_elicit。纯中文过不了关。Quest 跑次不写 SRS 卡。
+            Echo Broker 只用英文词干勾选 must_elicit。纯中文过不了关。Quest 跑次不写 SRS
+            卡。adaptTurn 在 miss 时给出确定性提示。
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -157,6 +167,11 @@ export function QuestDesk({
               </li>
             ))}
           </ul>
+
+          <div className="rounded-lg bg-muted px-3 py-2 text-sm">
+            <p className="font-medium">经纪人提示 · adaptTurn</p>
+            <p className="text-muted-foreground">{nudge}</p>
+          </div>
 
           <form className="flex flex-col gap-3" onSubmit={submitTurn}>
             <label htmlFor="turn" className="text-sm font-medium">

@@ -25,11 +25,19 @@ export type { RetrievalItem } from "./forge-smith.js";
 export { CurriculumDirector } from "./curriculum-director.js";
 export {
   EchoBroker,
+  adaptTurn,
   checkMustElicit,
+  composeAdaptTurn,
   draftQuest,
   elicitTokens,
 } from "./echo-broker.js";
 export type { DealResult, ElicitHit } from "./echo-broker.js";
+export {
+  emptyCampProgress,
+  progressFromEvents,
+  streakDaysFromEvents,
+} from "./progress.js";
+export type { CampProgress, ProgressInput } from "./progress.js";
 export { EvalSentinel } from "./eval-sentinel.js";
 export type { GoldSuiteInput } from "./eval-sentinel.js";
 export {

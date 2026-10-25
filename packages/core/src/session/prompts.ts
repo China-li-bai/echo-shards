@@ -1,6 +1,7 @@
 /**
  * Public prompts omit the expected answer so a form round can hide spelling
  * until Forge Smith reveals it. Meaning rounds hide gloss_zh.
+ * Phonology_text rounds hide phonetic_text (text IPA only; no audio).
  */
 
 import type { Aspect, Lexeme } from "../models/types.js";
@@ -35,14 +36,17 @@ const PUBLIC_KEYS = [
 ] as const;
 
 export function toPublicPrompt(item: RetrievalItem, lexeme: Lexeme): PublicPrompt {
+  const hideGloss = item.aspect === "meaning";
+  const showOrthoHint =
+    item.aspect === "meaning" || item.aspect === "phonology_text";
   const prompt: PublicPrompt = {
     card_id: item.card_id,
     lexeme_id: item.lexeme_id,
     aspect: item.aspect,
     prompt: item.prompt,
     cloze: item.cloze,
-    gloss_zh: item.aspect === "meaning" ? "" : lexeme.gloss_zh,
-    orthography_hint: item.aspect === "meaning" ? lexeme.orthography : undefined,
+    gloss_zh: hideGloss ? "" : lexeme.gloss_zh,
+    orthography_hint: showOrthoHint ? lexeme.orthography : undefined,
     cefr: lexeme.cefr,
     freq_rank: lexeme.freq_rank,
   };
@@ -98,6 +102,13 @@ export function buildPublicPrompts(
         if (part.length >= 2 && visible.includes(part)) {
           throw new Error(`Meaning prompt still shows gloss ${part}`);
         }
+      }
+    }
+    if (aspect === "phonology_text") {
+      const visible = `${prompt.cloze}\n${prompt.gloss_zh}\n${prompt.prompt}`.toLowerCase();
+      const phon = item.expected.replace(/[\/\s]/g, "").toLowerCase();
+      if (phon.length >= 2 && visible.replace(/[\/\s]/g, "").includes(phon)) {
+        throw new Error(`Phonology prompt still shows ${item.expected}`);
       }
     }
     return prompt;

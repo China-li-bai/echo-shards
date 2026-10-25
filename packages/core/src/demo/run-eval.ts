@@ -17,6 +17,8 @@ import {
 } from "../content/loadLexemes.js";
 import { loadQuestFromYaml } from "../quest/loadQuest.js";
 import { writeFileSync, mkdirSync } from "node:fs";
+import { FileEventStore, resolveDataDir } from "../persist/file-store.js";
+import { composeAdaptTurn } from "../agents/echo-broker.js";
 
 const root = findRepoRoot(dirname(fileURLToPath(import.meta.url)));
 const failures: string[] = [];
@@ -92,6 +94,11 @@ if (pendingEmptyGloss !== pendingRows.length) {
   failures.push("pending rows must keep empty gloss_zh");
 }
 
+const quietHits = broker.check(quest, "你好");
+const nudge = composeAdaptTurn(quest, quietHits, 1);
+if (!nudge.includes("还缺")) failures.push(`adaptTurn miss nudge: ${nudge}`);
+broker.adaptTurn(quest, quietHits, 1);
+
 if (failures.length > 0) {
   console.error("Eval failures:");
   for (const failure of failures) console.error(`  - ${failure}`);
@@ -104,4 +111,11 @@ console.log(`generated quest ${generated.id} written under content/quests/genera
 console.log(`deal_rate events=${log.evalScores.filter((row) => row.metric === "deal_rate").length}`);
 console.log(`memory items=${memory.items.length}`);
 console.log(`agent_runs=${log.runs.length} eval_scores=${log.evalScores.length} events=${log.events.length}`);
+const store = new FileEventStore({ dataDir: resolveDataDir(root) });
+const snapPath = store.appendSnapshot("demo-events", log.snapshot());
+const progress = store.syncProgressFrom("demo-events");
+console.log(`persisted: ${snapPath}`);
+console.log(
+  `progress: xp=${progress.xp} shards=${progress.shards} streak=${progress.streak_days} sessions=${progress.session_count}`,
+);
 console.log("Eval OK.");

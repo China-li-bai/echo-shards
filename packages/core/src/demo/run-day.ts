@@ -1,5 +1,7 @@
 /**
  * Day plan demo: Curriculum Director proposes 2–3 variants under load ≤5.
+ * Includes phonology_text when seed lexemes have phonetic_text.
+ * Persists AgentEventLog snapshot under .data/ (gitignored).
  * Run: npm run demo:day
  */
 
@@ -9,8 +11,8 @@ import { CurriculumDirector } from "../agents/curriculum-director.js";
 import { AgentEventLog } from "../agents/event-log.js";
 import { findRepoRoot } from "../content/paths.js";
 import { loadSeedLexemes } from "../content/loadLexemes.js";
-import { dayIdShanghai } from "../format.js";
-import { ASPECT_LABEL } from "../format.js";
+import { ASPECT_LABEL, dayIdShanghai } from "../format.js";
+import { FileEventStore, resolveDataDir } from "../persist/file-store.js";
 
 const root = findRepoRoot(dirname(fileURLToPath(import.meta.url)));
 const seed = loadSeedLexemes(root);
@@ -19,12 +21,14 @@ const dayId = dayIdShanghai(now);
 const log = new AgentEventLog();
 const director = new CurriculumDirector(log);
 
-const intent = "今天练拼写，顺带去市集把词问出来";
+const phoneticReady = seed.every((row) => row.phonetic_text.trim().length > 0);
+const intent = "今天练音标文字，顺带去市集把词问出来";
 const proposal = director.proposeDayPlan({
   lexemeIds: seed.map((row) => row.id),
   now,
   intent,
   questId: "echo-bazaar-info-gap-01",
+  includePhonology: phoneticReady,
 });
 
 console.log("=== 言灵残片 · 日课提案 Demo ===\n");
@@ -34,6 +38,7 @@ console.log(`proposal: ${proposal.id}  status=${proposal.status}`);
 console.log(
   `load_estimate: max_lexemes=${proposal.load_estimate.max_lexemes} aspects=${proposal.load_estimate.aspects}`,
 );
+console.log(`includePhonology=${phoneticReady}`);
 console.log(`variants (${proposal.variants.length}):`);
 for (const variant of proposal.variants) {
   console.log(
@@ -44,11 +49,20 @@ for (const variant of proposal.variants) {
   console.log(`    lexemes: ${variant.lexeme_ids.join(", ")}`);
 }
 
-const chosen = director.accept(proposal.id, "v-form-quest");
+const acceptId = phoneticReady ? "v-phonology" : "v-form-quest";
+const chosen = director.accept(proposal.id, acceptId);
 console.log(`\naccepted: ${chosen.id} aspect=${chosen.aspect} include_quest=${Boolean(chosen.include_quest)}`);
 console.log(
   `events: intent=${log.events.filter((e) => e.event_type === "intent").length} ` +
     `proposal_accepted=${log.events.filter((e) => e.event_type === "proposal_accepted").length}`,
+);
+
+const store = new FileEventStore({ dataDir: resolveDataDir(root) });
+const snapPath = store.appendSnapshot("demo-events", log.snapshot());
+const progress = store.syncProgressFrom("demo-events");
+console.log(`persisted: ${snapPath}`);
+console.log(
+  `progress: xp=${progress.xp} shards=${progress.shards} streak=${progress.streak_days} sessions=${progress.session_count}`,
 );
 console.log(`agent_runs=${log.runs.length} proposals=${log.proposals.length}`);
 console.log("Demo day OK.");

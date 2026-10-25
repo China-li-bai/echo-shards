@@ -31,6 +31,11 @@ export class CurriculumDirector {
     intent?: string;
     /** Optional static/generated quest id for the form+quest combo. */
     questId?: string;
+    /**
+     * When true (default if omitted and caller opts in), include a phonology_text
+     * variant instead of meaning. Requires ready lexemes with phonetic_text.
+     */
+    includePhonology?: boolean;
   }): ProposalRecord {
     const estimate = this.estimateLoad(input.lexemeIds);
     const lexemeIds = estimate.capped;
@@ -44,6 +49,22 @@ export class CurriculumDirector {
       payload: { intent, lexeme_ids: lexemeIds, day_id: dayIdShanghai(input.now) },
     });
 
+    const includePhonology = Boolean(input.includePhonology);
+    const mid: PlanVariant = includePhonology
+      ? {
+          id: "v-phonology",
+          aspect: "phonology_text",
+          lexeme_ids: lexemeIds,
+          label: "音界·文字潮汐 · IPA/音标提取（无音频）",
+          load: lexemeIds.length,
+        }
+      : {
+          id: "v-meaning",
+          aspect: "meaning",
+          lexeme_ids: lexemeIds,
+          label: "义界潮汐 · 中文义提取",
+          load: lexemeIds.length,
+        };
     const variants: PlanVariant[] = [
       {
         id: "v-form",
@@ -52,13 +73,7 @@ export class CurriculumDirector {
         label: "形界潮汐 · 拼写提取",
         load: lexemeIds.length,
       },
-      {
-        id: "v-meaning",
-        aspect: "meaning",
-        lexeme_ids: lexemeIds,
-        label: "义界潮汐 · 中文义提取",
-        load: lexemeIds.length,
-      },
+      mid,
       {
         id: "v-form-quest",
         aspect: "form",

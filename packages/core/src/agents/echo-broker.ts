@@ -98,6 +98,29 @@ export function draftQuest(input: {
   return QuestSchema.parse(draft);
 }
 
+/**
+ * Deterministic nudge when must_elicit items are still missing.
+ * Does not invent answers; only points at the next open info-gap slot.
+ */
+export function composeAdaptTurn(quest: Quest, hits: ElicitHit[], turns = 0): string {
+  const missing = hits.filter((hit) => !hit.hit);
+  if (missing.length === 0) {
+    if (turns > quest.max_turns) {
+      return "目标信息已齐，但回合超限。下次先问关键条件再收束。";
+    }
+    return "目标信息已齐。用英文复述成交条件，再调用 finalizeDeal。";
+  }
+  const next = missing[0]!;
+  const tokenHint =
+    next.tokens.length > 0
+      ? next.tokens.slice(0, 2).join(" / ")
+      : next.item.split(/[（(]/)[0]!.trim().slice(0, 40);
+  return `还缺 ${missing.length} 项信息。下一句请用英文主动问出：${tokenHint}。不要只写中文。`;
+}
+
+/** @deprecated prefer composeAdaptTurn; kept as the public tool name. */
+export const adaptTurn = composeAdaptTurn;
+
 export class EchoBroker {
   constructor(private readonly log: AgentEventLog) {}
 
@@ -176,5 +199,17 @@ export class EchoBroker {
       event_type: "abandon",
       payload: { quest_id: quest.id, reason },
     });
+  }
+
+  adaptTurn(quest: Quest, hits: ElicitHit[], turns = 0): string {
+    const nudge = composeAdaptTurn(quest, hits, turns);
+    this.log.recordRun({
+      agent: "echo_broker",
+      tools: ["adaptTurn"],
+      status: "ok",
+      input_ref: quest.id,
+      output_ref: nudge.slice(0, 80),
+    });
+    return nudge;
   }
 }

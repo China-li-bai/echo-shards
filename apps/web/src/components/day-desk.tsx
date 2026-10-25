@@ -55,10 +55,14 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
       log.events.length = 0;
       log.evalScores.length = 0;
       const director = new CurriculumDirector(log);
+      const phoneticReady = options
+        .filter((row) => selected.includes(row.id))
+        .every((row) => Boolean(row.phonetic_text?.trim()));
       const next = director.proposeDayPlan({
         lexemeIds: selected,
         intent,
         questId: "echo-bazaar-info-gap-01",
+        includePhonology: phoneticReady,
       });
       setProposal(next);
     } catch (cause) {

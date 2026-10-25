@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { ReviewSession } from "@/components/review-session";
 import { getReviewPools } from "@/lib/content";
-import type { Aspect } from "@echo-shards/core";
+import { ASPECT_LABEL, type Aspect } from "@echo-shards/core";
 
 export const metadata: Metadata = {
   title: "潮汐复习",
@@ -14,6 +14,12 @@ function parseAspect(raw: string | string[] | undefined): Aspect {
   return "form";
 }
 
+const HEADLINE: Record<Aspect, string> = {
+  form: "拼出来，再看下次潮汐",
+  meaning: "写出中文义，再看下次潮汐",
+  phonology_text: "写出文字音标，再看下次潮汐",
+};
+
 export default async function ReviewPage({
   searchParams,
 }: {
@@ -23,20 +29,25 @@ export default async function ReviewPage({
   const aspect = parseAspect(params.aspect);
   const formPools = getReviewPools("form");
   const meaningPools = getReviewPools("meaning");
-  const pools = aspect === "meaning" ? meaningPools : [...formPools, ...meaningPools];
+  const phonologyPools = getReviewPools("phonology_text");
+  const pools =
+    aspect === "meaning"
+      ? meaningPools
+      : aspect === "phonology_text"
+        ? phonologyPools
+        : [...formPools, ...meaningPools, ...phonologyPools];
 
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-10 sm:px-6">
       <div className="max-w-2xl">
         <p className="text-sm font-medium tracking-[0.16em] text-primary uppercase">
-          Tide Steward · Forge Smith
+          Tide Steward · Forge Smith · {ASPECT_LABEL[aspect]}
         </p>
-        <h1 className="font-display mt-2 text-4xl sm:text-5xl">
-          {aspect === "meaning" ? "写出中文义，再看下次潮汐" : "拼出来，再看下次潮汐"}
-        </h1>
+        <h1 className="font-display mt-2 text-4xl sm:text-5xl">{HEADLINE[aspect]}</h1>
         <p className="mt-3 text-muted-foreground">
-          形界与义界分轨。Forge Smith 只建议等级；你确认后 Tide Steward 才调用
-          TideScheduler.rate。支持从 /day 接受提案后打开对应批次。
+          形 / 义 / 音文字分轨。音界本阶段只练文字 IPA，不评分音频。Forge Smith
+          只建议等级；你确认后 Tide Steward 才调用 TideScheduler.rate。支持从 /day
+          接受提案后打开对应批次。
         </p>
       </div>
       <Suspense fallback={<p className="text-muted-foreground">加载复习…</p>}>

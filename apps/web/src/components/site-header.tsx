@@ -11,6 +11,7 @@ const LINKS = [
   { href: "/lexemes", label: "词库" },
   { href: "/quests", label: "交易所" },
   { href: "/eval", label: "评估" },
+  { href: "/enrichment", label: "审校" },
 ];
 
 export function SiteHeader() {

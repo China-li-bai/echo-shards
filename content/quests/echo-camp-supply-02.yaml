@@ -1,0 +1,38 @@
+# 营地补给 · 文字信息差（第二静态样例）
+# must_elicit 与 echo-bazaar-info-gap-01 不同；target 仅 ready 种子词。
+id: echo-camp-supply-02
+title: 营地补给·找回残片箱
+goal: 用英文向守夜人问清补给箱位置、还剩多少残片、以及下一潮何时到；回报前复述三点。
+roles:
+  student: 营地学徒——已知箱子里有潮汐残片，但不知道藏在哪、剩多少、潮汐时刻
+  npc: 守夜人——掌握位置、数量与潮汐时刻，不会主动全盘托出
+student_knows:
+  - 自己需要把残片箱带回锻造台
+  - 目标词：echo / shard / tide
+  - 守夜人今晚值班
+npc_knows:
+  - 残片箱藏在东墙 echo alcove
+  - 箱内还剩 3 shards
+  - 下一潮（next tide）在 midnight
+must_elicit:
+  - location of the supply crate / where the echo alcove is
+  - how many shards remain
+  - when the next tide arrives (midnight)
+success_criteria:
+  - 学生用英文问出箱子位置
+  - 学生确认剩余残片数量
+  - 学生确认下一潮时间
+  - 学生用英文复述位置 + 数量 + 时间
+target_lexemes:
+  - en_echo
+  - en_shard
+  - en_tide
+max_turns: 12
+rubric: |
+  文字回合评分（非语音）：
+  - 信息差完成度 50%：must_elicit 三项是否被问出并确认
+  - 目标词使用 30%：echo / shard / tide 出现合理用法
+  - 礼貌与回合效率 20%：未超过 max_turns；无纯中文糊弄过关
+  失败：只背单词不提问、或未复述三点。
+  Quest 跑次不写 SRS 卡。
+modality: text
