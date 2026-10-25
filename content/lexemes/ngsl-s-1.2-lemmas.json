@@ -1,0 +1,9425 @@
+[
+  {
+    "id": "en_be",
+    "lemma": "be",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 1,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_the",
+    "lemma": "the",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 2,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_you",
+    "lemma": "you",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 3,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "pronoun"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_and",
+    "lemma": "and",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 4,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_it",
+    "lemma": "it",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 5,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "pronoun"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_to",
+    "lemma": "to",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 6,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_a",
+    "lemma": "a",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 7,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_have",
+    "lemma": "have",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 8,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "core-verb"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_of",
+    "lemma": "of",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 9,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_do",
+    "lemma": "do",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 10,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "core-verb"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_not",
+    "lemma": "not",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 11,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_that",
+    "lemma": "that",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 12,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_they",
+    "lemma": "they",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 13,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "pronoun"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_we",
+    "lemma": "we",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 14,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "pronoun"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_in",
+    "lemma": "in",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 15,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "preposition"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_he",
+    "lemma": "he",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 16,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "pronoun"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_know",
+    "lemma": "know",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 17,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "core-verb"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_get",
+    "lemma": "get",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 18,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "core-verb"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_go",
+    "lemma": "go",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 19,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "core-verb"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_so",
+    "lemma": "so",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 20,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "discourse"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_this",
+    "lemma": "this",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 21,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "demonstrative"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_but",
+    "lemma": "but",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 22,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_on",
+    "lemma": "on",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 23,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "preposition"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_pause",
+    "lemma": "pause",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 24,
+    "cefr_est": "A2",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "corpus-discourse"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_i",
+    "lemma": "I",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 25,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "pronoun"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_unclear",
+    "lemma": "unclear",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 26,
+    "cefr_est": "B1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "corpus-discourse"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_for",
+    "lemma": "for",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 27,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "preposition"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_think",
+    "lemma": "think",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 28,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "core-verb"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_like",
+    "lemma": "like",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 29,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "core-verb"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_there",
+    "lemma": "there",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 30,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "adverb"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_will",
+    "lemma": "will",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 31,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "modal"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_say",
+    "lemma": "say",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 32,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "core-verb"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_she",
+    "lemma": "she",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 33,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "pronoun"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_what",
+    "lemma": "what",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 34,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "wh"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_just",
+    "lemma": "just",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 35,
+    "cefr_est": "A2",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "discourse"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_well",
+    "lemma": "well",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 36,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "discourse"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_one",
+    "lemma": "one",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 37,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "number"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_with",
+    "lemma": "with",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 38,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "preposition"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_if",
+    "lemma": "if",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 39,
+    "cefr_est": "A2",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_at",
+    "lemma": "at",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 40,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "preposition"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_all",
+    "lemma": "all",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 41,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "quantifier"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_about",
+    "lemma": "about",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 42,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "preposition"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_or",
+    "lemma": "or",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 43,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_as",
+    "lemma": "as",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 44,
+    "cefr_est": "A2",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_would",
+    "lemma": "would",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 45,
+    "cefr_est": "A2",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "modal"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_then",
+    "lemma": "then",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 46,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "discourse"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_because",
+    "lemma": "because",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 47,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_right",
+    "lemma": "right",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 48,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "discourse"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_can",
+    "lemma": "can",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 49,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "modal"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_no",
+    "lemma": "no",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 50,
+    "cefr_est": "A1",
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp",
+      "function"
+    ],
+    "enrichment_status": "ready"
+  },
+  {
+    "id": "en_up",
+    "lemma": "up",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 51,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_mean",
+    "lemma": "mean",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 52,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_out",
+    "lemma": "out",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 53,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_see",
+    "lemma": "see",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 54,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_thing",
+    "lemma": "thing",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 55,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_yes",
+    "lemma": "yes",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 56,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_when",
+    "lemma": "when",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 57,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_really",
+    "lemma": "really",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 58,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_want",
+    "lemma": "want",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 59,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_come",
+    "lemma": "come",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 60,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_now",
+    "lemma": "now",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 61,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_some",
+    "lemma": "some",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 62,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_good",
+    "lemma": "good",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 63,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_from",
+    "lemma": "from",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 64,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_time",
+    "lemma": "time",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 65,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_people",
+    "lemma": "people",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 66,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_very",
+    "lemma": "very",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 67,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_yeah",
+    "lemma": "yeah",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 68,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_make",
+    "lemma": "make",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 69,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_look",
+    "lemma": "look",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 70,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_two",
+    "lemma": "two",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 71,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_take",
+    "lemma": "take",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 72,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_here",
+    "lemma": "here",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 73,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_which",
+    "lemma": "which",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 74,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_could",
+    "lemma": "could",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 75,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_work",
+    "lemma": "work",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 76,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_more",
+    "lemma": "more",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 77,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_who",
+    "lemma": "who",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 78,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_other",
+    "lemma": "other",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 79,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_laugh",
+    "lemma": "laugh",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 80,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_where",
+    "lemma": "where",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 81,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_use",
+    "lemma": "use",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 82,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_something",
+    "lemma": "something",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 83,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_how",
+    "lemma": "how",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 84,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_back",
+    "lemma": "back",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 85,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_year",
+    "lemma": "year",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 86,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_by",
+    "lemma": "by",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 87,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_any",
+    "lemma": "any",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 88,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_lot",
+    "lemma": "lot",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 89,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_way",
+    "lemma": "way",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 90,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_put",
+    "lemma": "put",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 91,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_down",
+    "lemma": "down",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 92,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_give",
+    "lemma": "give",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 93,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sort",
+    "lemma": "sort",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 94,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_three",
+    "lemma": "three",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 95,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_much",
+    "lemma": "much",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 96,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_actually",
+    "lemma": "actually",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 97,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_need",
+    "lemma": "need",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 98,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_talk",
+    "lemma": "talk",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 99,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_kind",
+    "lemma": "kind",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 100,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_tell",
+    "lemma": "tell",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 101,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_only",
+    "lemma": "only",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 102,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_should",
+    "lemma": "should",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 103,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_over",
+    "lemma": "over",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 104,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_little",
+    "lemma": "little",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 105,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_day",
+    "lemma": "day",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 106,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_into",
+    "lemma": "into",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 107,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_bit",
+    "lemma": "bit",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 108,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_try",
+    "lemma": "try",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 109,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_why",
+    "lemma": "why",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 110,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_okay",
+    "lemma": "okay",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 111,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_off",
+    "lemma": "off",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 112,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_first",
+    "lemma": "first",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 113,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_than",
+    "lemma": "than",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 114,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_too",
+    "lemma": "too",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 115,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_five",
+    "lemma": "five",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 116,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_let",
+    "lemma": "let",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 117,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_call",
+    "lemma": "call",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 118,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_four",
+    "lemma": "four",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 119,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_last",
+    "lemma": "last",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 120,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_start",
+    "lemma": "start",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 121,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_quite",
+    "lemma": "quite",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 122,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_still",
+    "lemma": "still",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 123,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_find",
+    "lemma": "find",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 124,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_probably",
+    "lemma": "probably",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 125,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_even",
+    "lemma": "even",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 126,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_might",
+    "lemma": "might",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 127,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_through",
+    "lemma": "through",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 128,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_point",
+    "lemma": "point",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 129,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_anything",
+    "lemma": "anything",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 130,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_laughter",
+    "lemma": "laughter",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 131,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_week",
+    "lemma": "week",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 132,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_before",
+    "lemma": "before",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 133,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_again",
+    "lemma": "again",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 134,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_problem",
+    "lemma": "problem",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 135,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_never",
+    "lemma": "never",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 136,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_same",
+    "lemma": "same",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 137,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_big",
+    "lemma": "big",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 138,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_feel",
+    "lemma": "feel",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 139,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_ask",
+    "lemma": "ask",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 140,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_question",
+    "lemma": "question",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 141,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_also",
+    "lemma": "also",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 142,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_different",
+    "lemma": "different",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 143,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sure",
+    "lemma": "sure",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 144,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_long",
+    "lemma": "long",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 145,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_always",
+    "lemma": "always",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 146,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_school",
+    "lemma": "school",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 147,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_happen",
+    "lemma": "happen",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 148,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_course",
+    "lemma": "course",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 149,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_keep",
+    "lemma": "keep",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 150,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_another",
+    "lemma": "another",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 151,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_nice",
+    "lemma": "nice",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 152,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_read",
+    "lemma": "read",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 153,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_hundred",
+    "lemma": "hundred",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 154,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_leave",
+    "lemma": "leave",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 155,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_many",
+    "lemma": "many",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 156,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_after",
+    "lemma": "after",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 157,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_thank",
+    "lemma": "thank",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 158,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_meet",
+    "lemma": "meet",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 159,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_stuff",
+    "lemma": "stuff",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 160,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_end",
+    "lemma": "end",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 161,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_number",
+    "lemma": "number",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 162,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_hear",
+    "lemma": "hear",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 163,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_next",
+    "lemma": "next",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 164,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_six",
+    "lemma": "six",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 165,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_pay",
+    "lemma": "pay",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 166,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_money",
+    "lemma": "money",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 167,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_place",
+    "lemma": "place",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 168,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_remember",
+    "lemma": "remember",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 169,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_maybe",
+    "lemma": "maybe",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 170,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_old",
+    "lemma": "old",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 171,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_test",
+    "lemma": "test",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 172,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_home",
+    "lemma": "home",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 173,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_change",
+    "lemma": "change",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 174,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_though",
+    "lemma": "though",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 175,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_house",
+    "lemma": "house",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 176,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_new",
+    "lemma": "new",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 177,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_live",
+    "lemma": "live",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 178,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_part",
+    "lemma": "part",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 179,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_kid",
+    "lemma": "kid",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 180,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_interest",
+    "lemma": "interest",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 181,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_around",
+    "lemma": "around",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 182,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_write",
+    "lemma": "write",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 183,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_most",
+    "lemma": "most",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 184,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_move",
+    "lemma": "move",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 185,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_every",
+    "lemma": "every",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 186,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_today",
+    "lemma": "today",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 187,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_twenty",
+    "lemma": "twenty",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 188,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_else",
+    "lemma": "else",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 189,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_anyway",
+    "lemma": "anyway",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 190,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_child",
+    "lemma": "child",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 191,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_buy",
+    "lemma": "buy",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 192,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_fact",
+    "lemma": "fact",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 193,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_play",
+    "lemma": "play",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 194,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_great",
+    "lemma": "great",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 195,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_job",
+    "lemma": "job",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 196,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_seem",
+    "lemma": "seem",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 197,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_man",
+    "lemma": "man",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 198,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_night",
+    "lemma": "night",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 199,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_away",
+    "lemma": "away",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 200,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_pound",
+    "lemma": "pound",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 201,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_issue",
+    "lemma": "issue",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 202,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_own",
+    "lemma": "own",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 203,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_area",
+    "lemma": "area",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 204,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_half",
+    "lemma": "half",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 205,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_bad",
+    "lemma": "bad",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 206,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_round",
+    "lemma": "round",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 207,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_eight",
+    "lemma": "eight",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 208,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_help",
+    "lemma": "help",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 209,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_ten",
+    "lemma": "ten",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 210,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_whole",
+    "lemma": "whole",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 211,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_everything",
+    "lemma": "everything",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 212,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_minute",
+    "lemma": "minute",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 213,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_may",
+    "lemma": "may",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 214,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_whether",
+    "lemma": "whether",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 215,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_student",
+    "lemma": "student",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 216,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_guess",
+    "lemma": "guess",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 217,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_whatever",
+    "lemma": "whatever",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 218,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_car",
+    "lemma": "car",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 219,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sit",
+    "lemma": "sit",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 220,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_bring",
+    "lemma": "bring",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 221,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_book",
+    "lemma": "book",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 222,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_name",
+    "lemma": "name",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 223,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_run",
+    "lemma": "run",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 224,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_show",
+    "lemma": "show",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 225,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_word",
+    "lemma": "word",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 226,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_suppose",
+    "lemma": "suppose",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 227,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_morning",
+    "lemma": "morning",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 228,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_must",
+    "lemma": "must",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 229,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_understand",
+    "lemma": "understand",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 230,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_month",
+    "lemma": "month",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 231,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_both",
+    "lemma": "both",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 232,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_idea",
+    "lemma": "idea",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 233,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_seven",
+    "lemma": "seven",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 234,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_pretty",
+    "lemma": "pretty",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 235,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_somebody",
+    "lemma": "somebody",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 236,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_able",
+    "lemma": "able",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 237,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_item",
+    "lemma": "item",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 238,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_hour",
+    "lemma": "hour",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 239,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_side",
+    "lemma": "side",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 240,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_enough",
+    "lemma": "enough",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 241,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_ever",
+    "lemma": "ever",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 242,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_important",
+    "lemma": "important",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 243,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_late",
+    "lemma": "late",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 244,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_turn",
+    "lemma": "turn",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 245,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_between",
+    "lemma": "between",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 246,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_thousand",
+    "lemma": "thousand",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 247,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_few",
+    "lemma": "few",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 248,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_term",
+    "lemma": "term",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 249,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_life",
+    "lemma": "life",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 250,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_nine",
+    "lemma": "nine",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 251,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_believe",
+    "lemma": "believe",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 252,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_far",
+    "lemma": "far",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 253,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sorry",
+    "lemma": "sorry",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 254,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_set",
+    "lemma": "set",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 255,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_thirty",
+    "lemma": "thirty",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 256,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_nothing",
+    "lemma": "nothing",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 257,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_case",
+    "lemma": "case",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 258,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_real",
+    "lemma": "real",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 259,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_second",
+    "lemma": "second",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 260,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_mind",
+    "lemma": "mind",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 261,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_woman",
+    "lemma": "woman",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 262,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_guy",
+    "lemma": "guy",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 263,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_each",
+    "lemma": "each",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 264,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_hard",
+    "lemma": "hard",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 265,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_couple",
+    "lemma": "couple",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 266,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_love",
+    "lemma": "love",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 267,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_speak",
+    "lemma": "speak",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 268,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_group",
+    "lemma": "group",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 269,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_together",
+    "lemma": "together",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 270,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_high",
+    "lemma": "high",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 271,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_friend",
+    "lemma": "friend",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 272,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_build",
+    "lemma": "build",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 273,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_family",
+    "lemma": "family",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 274,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_watch",
+    "lemma": "watch",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 275,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_country",
+    "lemma": "country",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 276,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_plan",
+    "lemma": "plan",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 277,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_fifty",
+    "lemma": "fifty",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 278,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_send",
+    "lemma": "send",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 279,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_obviously",
+    "lemma": "obviously",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 280,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_reason",
+    "lemma": "reason",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 281,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_yet",
+    "lemma": "yet",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 282,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_walk",
+    "lemma": "walk",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 283,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_either",
+    "lemma": "either",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 284,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_wait",
+    "lemma": "wait",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 285,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_already",
+    "lemma": "already",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 286,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_person",
+    "lemma": "person",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 287,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_open",
+    "lemma": "open",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 288,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_once",
+    "lemma": "once",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 289,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_report",
+    "lemma": "report",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 290,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_deal",
+    "lemma": "deal",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 291,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_stop",
+    "lemma": "stop",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 292,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_hand",
+    "lemma": "hand",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 293,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_alright",
+    "lemma": "alright",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 294,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_example",
+    "lemma": "example",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 295,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_cause",
+    "lemma": "cause",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 296,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_information",
+    "lemma": "information",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 297,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_please",
+    "lemma": "please",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 298,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_exactly",
+    "lemma": "exactly",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 299,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_ago",
+    "lemma": "ago",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 300,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_room",
+    "lemma": "room",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 301,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_answer",
+    "lemma": "answer",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 302,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_spend",
+    "lemma": "spend",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 303,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_stay",
+    "lemma": "stay",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 304,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_rather",
+    "lemma": "rather",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 305,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_certainly",
+    "lemma": "certainly",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 306,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_breath",
+    "lemma": "breath",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 307,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_while",
+    "lemma": "while",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 308,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_everybody",
+    "lemma": "everybody",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 309,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_clear",
+    "lemma": "clear",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 310,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_eat",
+    "lemma": "eat",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 311,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_perhaps",
+    "lemma": "perhaps",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 312,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_early",
+    "lemma": "early",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 313,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_care",
+    "lemma": "care",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 314,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_pick",
+    "lemma": "pick",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 315,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_type",
+    "lemma": "type",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 316,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_matter",
+    "lemma": "matter",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 317,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_such",
+    "lemma": "such",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 318,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_until",
+    "lemma": "until",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 319,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_hope",
+    "lemma": "hope",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 320,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_level",
+    "lemma": "level",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 321,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_small",
+    "lemma": "small",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 322,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_line",
+    "lemma": "line",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 323,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_close",
+    "lemma": "close",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 324,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_phone",
+    "lemma": "phone",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 325,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_least",
+    "lemma": "least",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 326,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_under",
+    "lemma": "under",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 327,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_someone",
+    "lemma": "someone",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 328,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_system",
+    "lemma": "system",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 329,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_cost",
+    "lemma": "cost",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 330,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_state",
+    "lemma": "state",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 331,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sometimes",
+    "lemma": "sometimes",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 332,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_paper",
+    "lemma": "paper",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 333,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_top",
+    "lemma": "top",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 334,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_since",
+    "lemma": "since",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 335,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_concern",
+    "lemma": "concern",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 336,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_true",
+    "lemma": "true",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 337,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_order",
+    "lemma": "order",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 338,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_government",
+    "lemma": "government",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 339,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sound",
+    "lemma": "sound",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 340,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_tomorrow",
+    "lemma": "tomorrow",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 341,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_service",
+    "lemma": "service",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 342,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_wrong",
+    "lemma": "wrong",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 343,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_lose",
+    "lemma": "lose",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 344,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_easy",
+    "lemma": "easy",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 345,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_water",
+    "lemma": "water",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 346,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_program",
+    "lemma": "program",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 347,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_parent",
+    "lemma": "parent",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 348,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_break",
+    "lemma": "break",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 349,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_agree",
+    "lemma": "agree",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 350,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_business",
+    "lemma": "business",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 351,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_within",
+    "lemma": "within",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 352,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_door",
+    "lemma": "door",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 353,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sense",
+    "lemma": "sense",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 354,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_drive",
+    "lemma": "drive",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 355,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_stand",
+    "lemma": "stand",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 356,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_basically",
+    "lemma": "basically",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 357,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_process",
+    "lemma": "process",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 358,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_hold",
+    "lemma": "hold",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 359,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_cut",
+    "lemma": "cut",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 360,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_moment",
+    "lemma": "moment",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 361,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_girl",
+    "lemma": "girl",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 362,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_past",
+    "lemma": "past",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 363,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_without",
+    "lemma": "without",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 364,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_learn",
+    "lemma": "learn",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 365,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_young",
+    "lemma": "young",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 366,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_anybody",
+    "lemma": "anybody",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 367,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_teacher",
+    "lemma": "teacher",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 368,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_become",
+    "lemma": "become",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 369,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_member",
+    "lemma": "member",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 370,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_train",
+    "lemma": "train",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 371,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_class",
+    "lemma": "class",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 372,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_forty",
+    "lemma": "forty",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 373,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_company",
+    "lemma": "company",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 374,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_begin",
+    "lemma": "begin",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 375,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_fine",
+    "lemma": "fine",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 376,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_support",
+    "lemma": "support",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 377,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_world",
+    "lemma": "world",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 378,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_head",
+    "lemma": "head",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 379,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_nineteen",
+    "lemma": "nineteen",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 380,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_dad",
+    "lemma": "dad",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 381,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_view",
+    "lemma": "view",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 382,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_decide",
+    "lemma": "decide",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 383,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_finish",
+    "lemma": "finish",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 384,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_expect",
+    "lemma": "expect",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 385,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_particular",
+    "lemma": "particular",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 386,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_percent",
+    "lemma": "percent",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 387,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_shop",
+    "lemma": "shop",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 388,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_situation",
+    "lemma": "situation",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 389,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_involve",
+    "lemma": "involve",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 390,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_check",
+    "lemma": "check",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 391,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_along",
+    "lemma": "along",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 392,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_full",
+    "lemma": "full",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 393,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_form",
+    "lemma": "form",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 394,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sell",
+    "lemma": "sell",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 395,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_story",
+    "lemma": "story",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 396,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_certain",
+    "lemma": "certain",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 397,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_local",
+    "lemma": "local",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 398,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_ring",
+    "lemma": "ring",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 399,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_figure",
+    "lemma": "figure",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 400,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_twelve",
+    "lemma": "twelve",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 401,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_wonder",
+    "lemma": "wonder",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 402,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_boy",
+    "lemma": "boy",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 403,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_usually",
+    "lemma": "usually",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 404,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_public",
+    "lemma": "public",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 405,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_less",
+    "lemma": "less",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 406,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_worry",
+    "lemma": "worry",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 407,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_yesterday",
+    "lemma": "yesterday",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 408,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_funny",
+    "lemma": "funny",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 409,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_road",
+    "lemma": "road",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 410,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_discussion",
+    "lemma": "discussion",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 411,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_front",
+    "lemma": "front",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 412,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_record",
+    "lemma": "record",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 413,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_across",
+    "lemma": "across",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 414,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_absolutely",
+    "lemma": "absolutely",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 415,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_short",
+    "lemma": "short",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 416,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_policy",
+    "lemma": "policy",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 417,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_difficult",
+    "lemma": "difficult",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 418,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_teach",
+    "lemma": "teach",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 419,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_mine",
+    "lemma": "mine",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 420,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_piece",
+    "lemma": "piece",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 421,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_provide",
+    "lemma": "provide",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 422,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_comment",
+    "lemma": "comment",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 423,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_cover",
+    "lemma": "cover",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 424,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_mother",
+    "lemma": "mother",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 425,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_almost",
+    "lemma": "almost",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 426,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_list",
+    "lemma": "list",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 427,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_difference",
+    "lemma": "difference",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 428,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_ninety",
+    "lemma": "ninety",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 429,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_against",
+    "lemma": "against",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 430,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_forget",
+    "lemma": "forget",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 431,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_page",
+    "lemma": "page",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 432,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_light",
+    "lemma": "light",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 433,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_happy",
+    "lemma": "happy",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 434,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_yourself",
+    "lemma": "yourself",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 435,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_myself",
+    "lemma": "myself",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 436,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_dollar",
+    "lemma": "dollar",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 437,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_cough",
+    "lemma": "cough",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 438,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_tape",
+    "lemma": "tape",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 439,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_allow",
+    "lemma": "allow",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 440,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_wear",
+    "lemma": "wear",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 441,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_forward",
+    "lemma": "forward",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 442,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_follow",
+    "lemma": "follow",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 443,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_experience",
+    "lemma": "experience",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 444,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_clock",
+    "lemma": "clock",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 445,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_listen",
+    "lemma": "listen",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 446,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_decision",
+    "lemma": "decision",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 447,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_mention",
+    "lemma": "mention",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 448,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_somewhere",
+    "lemma": "somewhere",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 449,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_eighty",
+    "lemma": "eighty",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 450,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_bloody",
+    "lemma": "bloody",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 451,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_age",
+    "lemma": "age",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 452,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_outside",
+    "lemma": "outside",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 453,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_letter",
+    "lemma": "letter",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 454,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_during",
+    "lemma": "during",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 455,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_language",
+    "lemma": "language",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 456,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_card",
+    "lemma": "card",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 457,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_large",
+    "lemma": "large",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 458,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_stick",
+    "lemma": "stick",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 459,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_base",
+    "lemma": "base",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 460,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_picture",
+    "lemma": "picture",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 461,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_table",
+    "lemma": "table",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 462,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_enjoy",
+    "lemma": "enjoy",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 463,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_party",
+    "lemma": "party",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 464,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_continue",
+    "lemma": "continue",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 465,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_pass",
+    "lemma": "pass",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 466,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_add",
+    "lemma": "add",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 467,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sixty",
+    "lemma": "sixty",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 468,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_often",
+    "lemma": "often",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 469,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_fall",
+    "lemma": "fall",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 470,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_grow",
+    "lemma": "grow",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 471,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_general",
+    "lemma": "general",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 472,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_drink",
+    "lemma": "drink",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 473,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_carry",
+    "lemma": "carry",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 474,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_response",
+    "lemma": "response",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 475,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_price",
+    "lemma": "price",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 476,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_include",
+    "lemma": "include",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 477,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_bed",
+    "lemma": "bed",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 478,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_position",
+    "lemma": "position",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 479,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_soon",
+    "lemma": "soon",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 480,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_suggest",
+    "lemma": "suggest",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 481,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_office",
+    "lemma": "office",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 482,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_possible",
+    "lemma": "possible",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 483,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_fifteen",
+    "lemma": "fifteen",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 484,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sign",
+    "lemma": "sign",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 485,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_face",
+    "lemma": "face",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 486,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_draw",
+    "lemma": "draw",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 487,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_low",
+    "lemma": "low",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 488,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_although",
+    "lemma": "although",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 489,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_dog",
+    "lemma": "dog",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 490,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_present",
+    "lemma": "present",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 491,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_amount",
+    "lemma": "amount",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 492,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_market",
+    "lemma": "market",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 493,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sing",
+    "lemma": "sing",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 494,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_save",
+    "lemma": "save",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 495,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_game",
+    "lemma": "game",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 496,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_lovely",
+    "lemma": "lovely",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 497,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_choice",
+    "lemma": "choice",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 498,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_ready",
+    "lemma": "ready",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 499,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_food",
+    "lemma": "food",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 500,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_die",
+    "lemma": "die",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 501,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_health",
+    "lemma": "health",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 502,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_color",
+    "lemma": "color",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 503,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_community",
+    "lemma": "community",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 504,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_miss",
+    "lemma": "miss",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 505,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_mathematics",
+    "lemma": "mathematics",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 506,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_address",
+    "lemma": "address",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 507,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_town",
+    "lemma": "town",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 508,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_win",
+    "lemma": "win",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 509,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_foot",
+    "lemma": "foot",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 510,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_raise",
+    "lemma": "raise",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 511,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_discuss",
+    "lemma": "discuss",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 512,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_committee",
+    "lemma": "committee",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 513,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_pull",
+    "lemma": "pull",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 514,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_box",
+    "lemma": "box",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 515,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_dear",
+    "lemma": "dear",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 516,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_consider",
+    "lemma": "consider",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 517,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_rest",
+    "lemma": "rest",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 518,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_increase",
+    "lemma": "increase",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 519,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_nobody",
+    "lemma": "nobody",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 520,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_computer",
+    "lemma": "computer",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 521,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_budget",
+    "lemma": "budget",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 522,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_fun",
+    "lemma": "fun",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 523,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_depend",
+    "lemma": "depend",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 524,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_particularly",
+    "lemma": "particularly",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 525,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_study",
+    "lemma": "study",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 526,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_tonight",
+    "lemma": "tonight",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 527,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_everyone",
+    "lemma": "everyone",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 528,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_afternoon",
+    "lemma": "afternoon",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 529,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_notice",
+    "lemma": "notice",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 530,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_baby",
+    "lemma": "baby",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 531,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_chance",
+    "lemma": "chance",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 532,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_standard",
+    "lemma": "standard",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 533,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_especially",
+    "lemma": "especially",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 534,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_middle",
+    "lemma": "middle",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 535,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_press",
+    "lemma": "press",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 536,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_till",
+    "lemma": "till",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 537,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_million",
+    "lemma": "million",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 538,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_seventy",
+    "lemma": "seventy",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 539,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_city",
+    "lemma": "city",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 540,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_realize",
+    "lemma": "realize",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 541,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_score",
+    "lemma": "score",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 542,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_weekend",
+    "lemma": "weekend",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 543,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_black",
+    "lemma": "black",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 544,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_lead",
+    "lemma": "lead",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 545,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_result",
+    "lemma": "result",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 546,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_fit",
+    "lemma": "fit",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 547,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_staff",
+    "lemma": "staff",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 548,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_control",
+    "lemma": "control",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 549,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_definitely",
+    "lemma": "definitely",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 550,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_conversation",
+    "lemma": "conversation",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 551,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_further",
+    "lemma": "further",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 552,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_straight",
+    "lemma": "straight",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 553,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_free",
+    "lemma": "free",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 554,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_shall",
+    "lemma": "shall",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 555,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_develop",
+    "lemma": "develop",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 556,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_college",
+    "lemma": "college",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 557,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_opportunity",
+    "lemma": "opportunity",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 558,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_near",
+    "lemma": "near",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 559,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_ought",
+    "lemma": "ought",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 560,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_per",
+    "lemma": "per",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 561,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_bear",
+    "lemma": "bear",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 562,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_offer",
+    "lemma": "offer",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 563,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_date",
+    "lemma": "date",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 564,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_grade",
+    "lemma": "grade",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 565,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_toward",
+    "lemma": "toward",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 566,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_war",
+    "lemma": "war",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 567,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_throw",
+    "lemma": "throw",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 568,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_major",
+    "lemma": "major",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 569,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_charge",
+    "lemma": "charge",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 570,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_rate",
+    "lemma": "rate",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 571,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_individual",
+    "lemma": "individual",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 572,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_music",
+    "lemma": "music",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 573,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_doctor",
+    "lemma": "doctor",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 574,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_husband",
+    "lemma": "husband",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 575,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_force",
+    "lemma": "force",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 576,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_load",
+    "lemma": "load",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 577,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_effect",
+    "lemma": "effect",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 578,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_wish",
+    "lemma": "wish",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 579,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_team",
+    "lemma": "team",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 580,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_eleven",
+    "lemma": "eleven",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 581,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_worth",
+    "lemma": "worth",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 582,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_brief",
+    "lemma": "brief",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 583,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_law",
+    "lemma": "law",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 584,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_unless",
+    "lemma": "unless",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 585,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_future",
+    "lemma": "future",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 586,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_behind",
+    "lemma": "behind",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 587,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_white",
+    "lemma": "white",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 588,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_site",
+    "lemma": "site",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 589,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_special",
+    "lemma": "special",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 590,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_main",
+    "lemma": "main",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 591,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_trouble",
+    "lemma": "trouble",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 592,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_project",
+    "lemma": "project",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 593,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_father",
+    "lemma": "father",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 594,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_quality",
+    "lemma": "quality",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 595,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_themselves",
+    "lemma": "themselves",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 596,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sleep",
+    "lemma": "sleep",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 597,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_share",
+    "lemma": "share",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 598,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_available",
+    "lemma": "available",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 599,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_hit",
+    "lemma": "hit",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 600,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_fair",
+    "lemma": "fair",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 601,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_news",
+    "lemma": "news",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 602,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_strong",
+    "lemma": "strong",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 603,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_bottom",
+    "lemma": "bottom",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 604,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_note",
+    "lemma": "note",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 605,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_step",
+    "lemma": "step",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 606,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_subject",
+    "lemma": "subject",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 607,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_clean",
+    "lemma": "clean",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 608,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_wife",
+    "lemma": "wife",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 609,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_machine",
+    "lemma": "machine",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 610,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_cool",
+    "lemma": "cool",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 611,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_drop",
+    "lemma": "drop",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 612,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_land",
+    "lemma": "land",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 613,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_period",
+    "lemma": "period",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 614,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_bother",
+    "lemma": "bother",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 615,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_development",
+    "lemma": "development",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 616,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_detail",
+    "lemma": "detail",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 617,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_power",
+    "lemma": "power",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 618,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_marry",
+    "lemma": "marry",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 619,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_tax",
+    "lemma": "tax",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 620,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_benefit",
+    "lemma": "benefit",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 621,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_imagine",
+    "lemma": "imagine",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 622,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_cold",
+    "lemma": "cold",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 623,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_vote",
+    "lemma": "vote",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 624,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_hang",
+    "lemma": "hang",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 625,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_education",
+    "lemma": "education",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 626,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_anyone",
+    "lemma": "anyone",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 627,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_national",
+    "lemma": "national",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 628,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_fire",
+    "lemma": "fire",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 629,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_council",
+    "lemma": "council",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 630,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_instead",
+    "lemma": "instead",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 631,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_bill",
+    "lemma": "bill",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 632,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_catch",
+    "lemma": "catch",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 633,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_tend",
+    "lemma": "tend",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 634,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_account",
+    "lemma": "account",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 635,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_statement",
+    "lemma": "statement",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 636,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_board",
+    "lemma": "board",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 637,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_summer",
+    "lemma": "summer",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 638,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_text",
+    "lemma": "text",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 639,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_brother",
+    "lemma": "brother",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 640,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_fairly",
+    "lemma": "fairly",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 641,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_holiday",
+    "lemma": "holiday",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 642,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_dinner",
+    "lemma": "dinner",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 643,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_fund",
+    "lemma": "fund",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 644,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sister",
+    "lemma": "sister",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 645,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_noise",
+    "lemma": "noise",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 646,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_push",
+    "lemma": "push",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 647,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_accept",
+    "lemma": "accept",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 648,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_police",
+    "lemma": "police",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 649,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_kill",
+    "lemma": "kill",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 650,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_travel",
+    "lemma": "travel",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 651,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_explain",
+    "lemma": "explain",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 652,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_movie",
+    "lemma": "movie",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 653,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_hair",
+    "lemma": "hair",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 654,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_specific",
+    "lemma": "specific",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 655,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_tea",
+    "lemma": "tea",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 656,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_hate",
+    "lemma": "hate",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 657,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_center",
+    "lemma": "center",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 658,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_degree",
+    "lemma": "degree",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 659,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_choose",
+    "lemma": "choose",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 660,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_research",
+    "lemma": "research",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 661,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_body",
+    "lemma": "body",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 662,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_rule",
+    "lemma": "rule",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 663,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_produce",
+    "lemma": "produce",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 664,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_size",
+    "lemma": "size",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 665,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_ahead",
+    "lemma": "ahead",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 666,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_fill",
+    "lemma": "fill",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 667,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_extra",
+    "lemma": "extra",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 668,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_value",
+    "lemma": "value",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 669,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_bag",
+    "lemma": "bag",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 670,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_stage",
+    "lemma": "stage",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 671,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_eye",
+    "lemma": "eye",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 672,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_window",
+    "lemma": "window",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 673,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_park",
+    "lemma": "park",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 674,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_hot",
+    "lemma": "hot",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 675,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_document",
+    "lemma": "document",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 676,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_relate",
+    "lemma": "relate",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 677,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_several",
+    "lemma": "several",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 678,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_itself",
+    "lemma": "itself",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 679,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_evening",
+    "lemma": "evening",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 680,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_product",
+    "lemma": "product",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 681,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_wonderful",
+    "lemma": "wonderful",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 682,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_relationship",
+    "lemma": "relationship",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 683,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_floor",
+    "lemma": "floor",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 684,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_hospital",
+    "lemma": "hospital",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 685,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_plus",
+    "lemma": "plus",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 686,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_quick",
+    "lemma": "quick",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 687,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_lady",
+    "lemma": "lady",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 688,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_mile",
+    "lemma": "mile",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 689,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_aware",
+    "lemma": "aware",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 690,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_contact",
+    "lemma": "contact",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 691,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_single",
+    "lemma": "single",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 692,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_copy",
+    "lemma": "copy",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 693,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_effort",
+    "lemma": "effort",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 694,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_trade",
+    "lemma": "trade",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 695,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_review",
+    "lemma": "review",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 696,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_sale",
+    "lemma": "sale",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 697,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_totally",
+    "lemma": "totally",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 698,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_therefore",
+    "lemma": "therefore",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 699,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_air",
+    "lemma": "air",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 700,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_church",
+    "lemma": "church",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 701,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_visit",
+    "lemma": "visit",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 702,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_awful",
+    "lemma": "awful",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 703,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_action",
+    "lemma": "action",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 704,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_completely",
+    "lemma": "completely",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 705,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_affect",
+    "lemma": "affect",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 706,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_cheap",
+    "lemma": "cheap",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 707,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_street",
+    "lemma": "street",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 708,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_receive",
+    "lemma": "receive",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 709,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_require",
+    "lemma": "require",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 710,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_red",
+    "lemma": "red",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 711,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_focus",
+    "lemma": "focus",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 712,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_surprise",
+    "lemma": "surprise",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 713,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_apply",
+    "lemma": "apply",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 714,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_correct",
+    "lemma": "correct",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 715,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_various",
+    "lemma": "various",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 716,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_bet",
+    "lemma": "bet",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 717,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_purpose",
+    "lemma": "purpose",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 718,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_normally",
+    "lemma": "normally",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 719,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_create",
+    "lemma": "create",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 720,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  },
+  {
+    "id": "en_bus",
+    "lemma": "bus",
+    "lang": "en",
+    "pack_id": "ngsl-s-1.2",
+    "freq_rank": 721,
+    "cefr_est": null,
+    "topic_tags": [
+      "ngsl-s",
+      "spoken-mvp"
+    ],
+    "enrichment_status": "pending"
+  }
+]

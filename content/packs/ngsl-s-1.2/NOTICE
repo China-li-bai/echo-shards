@@ -1,0 +1,32 @@
+NGSL-Spoken (NGSL-S) 1.2
+========================
+
+This directory contains files derived from the New General Service List — Spoken
+(NGSL-Spoken / NGSL-S) version 1.2 by Charles Browne and Brent Culligan.
+
+License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Official site: https://www.newgeneralservicelist.com/ngsl-spoken
+
+Files in this pack (upstream / mirror):
+- NGSL-Spoken_1.2_lemmatized_for_teaching.csv
+  Source: https://www.lextutor.ca/freq/lists_download/ngsl_browne/NGSL-Spoken_1.2_lemmatized_for_teaching.csv
+- NGSL-Spoken_1.2.txt (frequency-ordered lemmas)
+  Mirror: https://github.com/koba-ninkigumi/ngsl/blob/master/NGSL-Spoken_1.2.txt
+- NGSL-Spoken_1.2_en.csv (English short definitions)
+  Mirror: https://github.com/koba-ninkigumi/ngsl/blob/master/NGSL-Spoken_1.2_en.csv
+
+Attribution (required by CC BY-SA 4.0):
+  NGSL-Spoken 1.2 © Charles Browne & Brent Culligan, licensed under CC BY-SA 4.0.
+
+ShareAlike note for Echo Shards:
+  - Official wordlist files in this directory remain under CC BY-SA 4.0.
+  - Product-owned enrichment (Chinese glosses, IPA phonetic_text, example
+    sentences, Quest templates, aspect cards) lives under content/lexemes/ and
+    content/quests/ with separate copyright; those files MUST cite this pack
+    when they derive from NGSL-S lemmas, and redistribution of the combined
+    wordlist+enrichment derivative must respect ShareAlike for the wordlist
+    portion (keep this NOTICE beside any redistributed pack copy).
+
+Downloaded for Echo Shards on 2026-10-25 (Asia/Shanghai).

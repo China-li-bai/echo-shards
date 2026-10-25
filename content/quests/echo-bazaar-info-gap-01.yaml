@@ -1,0 +1,39 @@
+# 回声交易所 · 文字信息差任务样例
+# 原则：学生与 NPC 信息不对称；必须主动问出 must_elicit，不能只靠闪卡。
+id: echo-bazaar-info-gap-01
+title: 潮汐市集·问价残片
+goal: 用英文向摊主问清残片价格、是否可还价、以及交易截止时间；成交前复述关键条件。
+roles:
+  student: 营地学徒（买方）——已知自己只有 8 枚铜币，需要一块「潮汐残片」
+  npc: 回声摊主（卖方）——掌握真实标价与截止时间，不会主动全盘托出
+student_knows:
+  - 自己预算最多 8 铜币
+  - 目标物品名：tide shard（潮汐残片）
+  - 需要在日落前带回营地
+npc_knows:
+  - 潮汐残片标价 10 铜币
+  - 若买方提出 bargain，可降至 7 铜币
+  - 摊位在日落（sunset）关闭
+must_elicit:
+  - price（标价或成交价）
+  - whether bargaining is allowed / final price after bargain
+  - closing time（sunset / when the stall closes）
+success_criteria:
+  - 学生至少用英文问出价格
+  - 学生尝试或确认还价（bargain）
+  - 学生确认截止时间
+  - 学生用英文复述最终成交条件（价+时）
+target_lexemes:
+  - en_bargain
+  - en_shard
+  - en_tide
+  - en_echo
+  - en_elicit
+max_turns: 12
+rubric: |
+  文字回合评分（非语音）：
+  - 信息差完成度 50%：must_elicit 三项是否被问出并确认
+  - 目标词使用 30%：bargain / shard / tide / echo 至少出现合理用法
+  - 礼貌与回合效率 20%：未超过 max_turns；无纯中文糊弄过关
+  失败：只背单词不提问、或未复述成交条件。
+modality: text

@@ -1,0 +1,14 @@
+@misc{browne_culligan_ngsl_spoken_1_2,
+  author       = {Browne, Charles and Culligan, Brent},
+  title        = {New General Service List — Spoken (NGSL-Spoken) 1.2},
+  year         = {2013},
+  howpublished = {\url{https://www.newgeneralservicelist.com/ngsl-spoken}},
+  note         = {CC BY-SA 4.0. Lemmatized teaching CSV via Lextutor;
+                  frequency-ordered list and English glosses mirrored at
+                  https://github.com/koba-ninkigumi/ngsl}
+}
+
+Product citation (Echo Shards):
+  lemma inventory for MVP spoken floor derives from NGSL-Spoken 1.2
+  (Browne & Culligan, CC BY-SA 4.0). Enrichment (gloss_zh / phonetic_text /
+  examples / Quests) is original to Echo Shards unless otherwise marked.

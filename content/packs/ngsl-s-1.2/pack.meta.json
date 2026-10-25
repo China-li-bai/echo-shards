@@ -1,0 +1,22 @@
+{
+  "pack": {
+    "id": "ngsl-s-1.2",
+    "name": "NGSL-Spoken",
+    "version": "1.2",
+    "license": "CC-BY-SA-4.0",
+    "source_url": "https://www.newgeneralservicelist.com/ngsl-spoken",
+    "mirror_url": "https://github.com/koba-ninkigumi/ngsl",
+    "teaching_csv_url": "https://www.lextutor.ca/freq/lists_download/ngsl_browne/NGSL-Spoken_1.2_lemmatized_for_teaching.csv",
+    "citation": "NGSL-Spoken 1.2 © Charles Browne & Brent Culligan, CC BY-SA 4.0",
+    "coverage_note": "≈721 lemmas; Browne & Culligan report up to ~90% spoken coverage for NGSL-S",
+    "lemma_count": 721
+  },
+  "imported_at": "2026-10-25T00:27:07.813Z",
+  "stats": {
+    "lemmas": 721,
+    "senses": 721,
+    "forms": 2354,
+    "enrichment_touched": 50,
+    "enrichment_pending": 671
+  }
+}

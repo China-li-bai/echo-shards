@@ -1,0 +1,502 @@
+[
+  {
+    "lemma": "be",
+    "gloss_zh": "是；在；成为",
+    "phonetic_text": "/biː/",
+    "example_sentence": "I am ready when you are.",
+    "example_sentence_zh": "你准备好了我就准备好了。",
+    "collocations": ["be able to", "be going to", "be about to"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "the",
+    "gloss_zh": "这/那（定冠词）",
+    "phonetic_text": "/ðə/",
+    "example_sentence": "The shop opens at nine.",
+    "example_sentence_zh": "那家店九点开门。",
+    "collocations": ["the same", "the other", "the most"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "you",
+    "gloss_zh": "你；你们",
+    "phonetic_text": "/juː/",
+    "example_sentence": "Can you help me with this?",
+    "example_sentence_zh": "你能帮我一下吗？",
+    "collocations": ["thank you", "see you", "you know"],
+    "tags": ["ngsl-s", "spoken-mvp", "pronoun"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "and",
+    "gloss_zh": "和；并且",
+    "phonetic_text": "/ænd/",
+    "example_sentence": "We need bread and milk.",
+    "example_sentence_zh": "我们需要面包和牛奶。",
+    "collocations": ["and then", "and so on", "and yet"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "it",
+    "gloss_zh": "它；这（事/物）",
+    "phonetic_text": "/ɪt/",
+    "example_sentence": "It looks good to me.",
+    "example_sentence_zh": "我觉得这看起来不错。",
+    "collocations": ["it is", "that's it", "get it"],
+    "tags": ["ngsl-s", "spoken-mvp", "pronoun"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "to",
+    "gloss_zh": "到；向；（不定式标记）",
+    "phonetic_text": "/tuː/",
+    "example_sentence": "I want to talk to you.",
+    "example_sentence_zh": "我想和你谈谈。",
+    "collocations": ["to go", "have to", "next to"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "a",
+    "gloss_zh": "一个（不定冠词）",
+    "phonetic_text": "/ə/",
+    "example_sentence": "She bought a ticket.",
+    "example_sentence_zh": "她买了一张票。",
+    "collocations": ["a lot", "a few", "a bit"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "have",
+    "gloss_zh": "有；吃/喝；完成时助动词",
+    "phonetic_text": "/hæv/",
+    "example_sentence": "Do you have a minute?",
+    "example_sentence_zh": "你有一分钟吗？",
+    "collocations": ["have to", "have got", "have a look"],
+    "tags": ["ngsl-s", "spoken-mvp", "core-verb"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "of",
+    "gloss_zh": "……的；关于",
+    "phonetic_text": "/əv/",
+    "example_sentence": "A cup of tea, please.",
+    "example_sentence_zh": "请来一杯茶。",
+    "collocations": ["kind of", "a lot of", "out of"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "do",
+    "gloss_zh": "做；助动词（疑问/否定）",
+    "phonetic_text": "/duː/",
+    "example_sentence": "What do you usually do on Sunday?",
+    "example_sentence_zh": "你周日通常做什么？",
+    "collocations": ["do you", "do something", "how do you do"],
+    "tags": ["ngsl-s", "spoken-mvp", "core-verb"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "not",
+    "gloss_zh": "不；没有",
+    "phonetic_text": "/nɒt/",
+    "example_sentence": "I am not sure about that.",
+    "example_sentence_zh": "我对那件事不确定。",
+    "collocations": ["not yet", "not really", "or not"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "that",
+    "gloss_zh": "那；那个；引导从句",
+    "phonetic_text": "/ðæt/",
+    "example_sentence": "I think that we should leave.",
+    "example_sentence_zh": "我觉得我们该走了。",
+    "collocations": ["that is", "so that", "that's why"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "they",
+    "gloss_zh": "他们；她们；它们",
+    "phonetic_text": "/ðeɪ/",
+    "example_sentence": "They arrive tomorrow morning.",
+    "example_sentence_zh": "他们明天早上到。",
+    "collocations": ["they are", "they say", "there they are"],
+    "tags": ["ngsl-s", "spoken-mvp", "pronoun"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "we",
+    "gloss_zh": "我们",
+    "phonetic_text": "/wiː/",
+    "example_sentence": "We can share a taxi.",
+    "example_sentence_zh": "我们可以拼一辆出租车。",
+    "collocations": ["we are", "shall we", "here we go"],
+    "tags": ["ngsl-s", "spoken-mvp", "pronoun"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "in",
+    "gloss_zh": "在……里；在……方面",
+    "phonetic_text": "/ɪn/",
+    "example_sentence": "She works in a small café.",
+    "example_sentence_zh": "她在一家小咖啡馆工作。",
+    "collocations": ["in fact", "in time", "in front of"],
+    "tags": ["ngsl-s", "spoken-mvp", "preposition"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "he",
+    "gloss_zh": "他",
+    "phonetic_text": "/hiː/",
+    "example_sentence": "He said he would call later.",
+    "example_sentence_zh": "他说他稍后会打电话。",
+    "collocations": ["he is", "he said", "there he is"],
+    "tags": ["ngsl-s", "spoken-mvp", "pronoun"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "know",
+    "gloss_zh": "知道；认识；了解",
+    "phonetic_text": "/nəʊ/",
+    "example_sentence": "Do you know where the station is?",
+    "example_sentence_zh": "你知道车站在哪里吗？",
+    "collocations": ["you know", "I know", "know about"],
+    "tags": ["ngsl-s", "spoken-mvp", "core-verb"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "get",
+    "gloss_zh": "得到；到达；变得",
+    "phonetic_text": "/ɡet/",
+    "example_sentence": "How do I get to the market?",
+    "example_sentence_zh": "我怎么去市场？",
+    "collocations": ["get to", "get up", "get ready"],
+    "tags": ["ngsl-s", "spoken-mvp", "core-verb"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "go",
+    "gloss_zh": "去；走；进行",
+    "phonetic_text": "/ɡəʊ/",
+    "example_sentence": "Let's go together.",
+    "example_sentence_zh": "我们一起去吧。",
+    "collocations": ["go to", "go on", "go home"],
+    "tags": ["ngsl-s", "spoken-mvp", "core-verb"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "so",
+    "gloss_zh": "所以；那么；如此",
+    "phonetic_text": "/səʊ/",
+    "example_sentence": "So, what do you think?",
+    "example_sentence_zh": "那么，你觉得呢？",
+    "collocations": ["so that", "so far", "and so"],
+    "tags": ["ngsl-s", "spoken-mvp", "discourse"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "this",
+    "gloss_zh": "这；这个",
+    "phonetic_text": "/ðɪs/",
+    "example_sentence": "This is my friend from school.",
+    "example_sentence_zh": "这是我学校的朋友。",
+    "collocations": ["this one", "this morning", "like this"],
+    "tags": ["ngsl-s", "spoken-mvp", "demonstrative"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "but",
+    "gloss_zh": "但是；然而",
+    "phonetic_text": "/bʌt/",
+    "example_sentence": "I like it, but it is expensive.",
+    "example_sentence_zh": "我喜欢，但太贵了。",
+    "collocations": ["but still", "but then", "nothing but"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "on",
+    "gloss_zh": "在……上；关于；开着",
+    "phonetic_text": "/ɒn/",
+    "example_sentence": "The book is on the table.",
+    "example_sentence_zh": "书在桌子上。",
+    "collocations": ["on time", "on the way", "turn on"],
+    "tags": ["ngsl-s", "spoken-mvp", "preposition"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "pause",
+    "gloss_zh": "停顿；暂停",
+    "phonetic_text": "/pɔːz/",
+    "example_sentence": "She paused before she answered.",
+    "example_sentence_zh": "她回答前停顿了一下。",
+    "collocations": ["pause for", "take a pause", "pause button"],
+    "tags": ["ngsl-s", "spoken-mvp", "corpus-discourse"],
+    "cefr": "A2"
+  },
+  {
+    "lemma": "I",
+    "gloss_zh": "我",
+    "phonetic_text": "/aɪ/",
+    "example_sentence": "I need a little more time.",
+    "example_sentence_zh": "我还需要一点时间。",
+    "collocations": ["I think", "I mean", "I see"],
+    "tags": ["ngsl-s", "spoken-mvp", "pronoun"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "unclear",
+    "gloss_zh": "不清楚的；含糊的",
+    "phonetic_text": "/ʌnˈklɪə/",
+    "example_sentence": "Your meaning is still unclear to me.",
+    "example_sentence_zh": "你的意思我还是不清楚。",
+    "collocations": ["unclear about", "remain unclear", "make unclear"],
+    "tags": ["ngsl-s", "spoken-mvp", "corpus-discourse"],
+    "cefr": "B1"
+  },
+  {
+    "lemma": "for",
+    "gloss_zh": "为了；给；长达",
+    "phonetic_text": "/fɔː/",
+    "example_sentence": "This gift is for you.",
+    "example_sentence_zh": "这份礼物是给你的。",
+    "collocations": ["for example", "for now", "look for"],
+    "tags": ["ngsl-s", "spoken-mvp", "preposition"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "think",
+    "gloss_zh": "想；认为；思考",
+    "phonetic_text": "/θɪŋk/",
+    "example_sentence": "I think we should wait.",
+    "example_sentence_zh": "我觉得我们应该等一等。",
+    "collocations": ["I think", "think about", "think of"],
+    "tags": ["ngsl-s", "spoken-mvp", "core-verb"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "like",
+    "gloss_zh": "喜欢；像；比如",
+    "phonetic_text": "/laɪk/",
+    "example_sentence": "Would you like some water?",
+    "example_sentence_zh": "你想喝点水吗？",
+    "collocations": ["like to", "feel like", "look like"],
+    "tags": ["ngsl-s", "spoken-mvp", "core-verb"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "there",
+    "gloss_zh": "那里；有（there is/are）",
+    "phonetic_text": "/ðeə/",
+    "example_sentence": "There is a bus stop nearby.",
+    "example_sentence_zh": "附近有个公交站。",
+    "collocations": ["there is", "over there", "right there"],
+    "tags": ["ngsl-s", "spoken-mvp", "adverb"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "will",
+    "gloss_zh": "将；会；愿意",
+    "phonetic_text": "/wɪl/",
+    "example_sentence": "I will meet you at six.",
+    "example_sentence_zh": "我六点见你。",
+    "collocations": ["will be", "will you", "that will do"],
+    "tags": ["ngsl-s", "spoken-mvp", "modal"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "say",
+    "gloss_zh": "说；表示",
+    "phonetic_text": "/seɪ/",
+    "example_sentence": "What did she say just now?",
+    "example_sentence_zh": "她刚才说了什么？",
+    "collocations": ["say that", "that is to say", "hard to say"],
+    "tags": ["ngsl-s", "spoken-mvp", "core-verb"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "she",
+    "gloss_zh": "她",
+    "phonetic_text": "/ʃiː/",
+    "example_sentence": "She lives near the park.",
+    "example_sentence_zh": "她住在公园附近。",
+    "collocations": ["she is", "she said", "there she is"],
+    "tags": ["ngsl-s", "spoken-mvp", "pronoun"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "what",
+    "gloss_zh": "什么；多么",
+    "phonetic_text": "/wɒt/",
+    "example_sentence": "What time does it start?",
+    "example_sentence_zh": "几点开始？",
+    "collocations": ["what about", "what if", "guess what"],
+    "tags": ["ngsl-s", "spoken-mvp", "wh"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "just",
+    "gloss_zh": "只是；刚刚；正好",
+    "phonetic_text": "/dʒʌst/",
+    "example_sentence": "I just got home.",
+    "example_sentence_zh": "我刚到家。",
+    "collocations": ["just now", "just a minute", "just in case"],
+    "tags": ["ngsl-s", "spoken-mvp", "discourse"],
+    "cefr": "A2"
+  },
+  {
+    "lemma": "well",
+    "gloss_zh": "好；嗯（话语标记）；健康的",
+    "phonetic_text": "/wel/",
+    "example_sentence": "Well, let's try again.",
+    "example_sentence_zh": "嗯，我们再试一次吧。",
+    "collocations": ["as well", "well done", "oh well"],
+    "tags": ["ngsl-s", "spoken-mvp", "discourse"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "one",
+    "gloss_zh": "一；一个；某人",
+    "phonetic_text": "/wʌn/",
+    "example_sentence": "I'll take the blue one.",
+    "example_sentence_zh": "我要那个蓝色的。",
+    "collocations": ["one day", "one of", "the other one"],
+    "tags": ["ngsl-s", "spoken-mvp", "number"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "with",
+    "gloss_zh": "和……一起；用；带有",
+    "phonetic_text": "/wɪð/",
+    "example_sentence": "Come with me to the station.",
+    "example_sentence_zh": "跟我一起去车站吧。",
+    "collocations": ["with you", "along with", "deal with"],
+    "tags": ["ngsl-s", "spoken-mvp", "preposition"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "if",
+    "gloss_zh": "如果；是否",
+    "phonetic_text": "/ɪf/",
+    "example_sentence": "Call me if you need help.",
+    "example_sentence_zh": "如果你需要帮助就打电话给我。",
+    "collocations": ["if so", "even if", "as if"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A2"
+  },
+  {
+    "lemma": "at",
+    "gloss_zh": "在（点）；朝；对",
+    "phonetic_text": "/æt/",
+    "example_sentence": "Meet me at the gate.",
+    "example_sentence_zh": "在门口见我。",
+    "collocations": ["at home", "at least", "look at"],
+    "tags": ["ngsl-s", "spoken-mvp", "preposition"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "all",
+    "gloss_zh": "全部；所有；完全",
+    "phonetic_text": "/ɔːl/",
+    "example_sentence": "We finished all the tasks.",
+    "example_sentence_zh": "我们完成了全部任务。",
+    "collocations": ["all right", "at all", "all of"],
+    "tags": ["ngsl-s", "spoken-mvp", "quantifier"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "about",
+    "gloss_zh": "关于；大约；四处",
+    "phonetic_text": "/əˈbaʊt/",
+    "example_sentence": "Tell me about your day.",
+    "example_sentence_zh": "跟我说说你今天过得怎样。",
+    "collocations": ["about to", "how about", "talk about"],
+    "tags": ["ngsl-s", "spoken-mvp", "preposition"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "or",
+    "gloss_zh": "或者；否则",
+    "phonetic_text": "/ɔː/",
+    "example_sentence": "Tea or coffee?",
+    "example_sentence_zh": "茶还是咖啡？",
+    "collocations": ["or not", "either or", "or so"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "as",
+    "gloss_zh": "作为；当……时；像",
+    "phonetic_text": "/æz/",
+    "example_sentence": "As a student, I wake up early.",
+    "example_sentence_zh": "作为学生，我起得很早。",
+    "collocations": ["as well", "as soon as", "as if"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A2"
+  },
+  {
+    "lemma": "would",
+    "gloss_zh": "会；愿意；过去将要",
+    "phonetic_text": "/wʊd/",
+    "example_sentence": "Would you like to sit here?",
+    "example_sentence_zh": "你想坐这里吗？",
+    "collocations": ["would like", "would you", "I would"],
+    "tags": ["ngsl-s", "spoken-mvp", "modal"],
+    "cefr": "A2"
+  },
+  {
+    "lemma": "then",
+    "gloss_zh": "然后；那么；那时",
+    "phonetic_text": "/ðen/",
+    "example_sentence": "Finish this, then call me.",
+    "example_sentence_zh": "做完这个，然后给我打电话。",
+    "collocations": ["and then", "back then", "until then"],
+    "tags": ["ngsl-s", "spoken-mvp", "discourse"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "because",
+    "gloss_zh": "因为",
+    "phonetic_text": "/bɪˈkɒz/",
+    "example_sentence": "I stayed home because it was raining.",
+    "example_sentence_zh": "因为下雨，我待在家里。",
+    "collocations": ["because of", "just because", "because I"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "right",
+    "gloss_zh": "对的；右边；权利；好吧",
+    "phonetic_text": "/raɪt/",
+    "example_sentence": "You are right about the price.",
+    "example_sentence_zh": "价格这事你说得对。",
+    "collocations": ["all right", "right now", "that's right"],
+    "tags": ["ngsl-s", "spoken-mvp", "discourse"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "can",
+    "gloss_zh": "能；可以；会",
+    "phonetic_text": "/kæn/",
+    "example_sentence": "Can I open the window?",
+    "example_sentence_zh": "我可以开窗吗？",
+    "collocations": ["can you", "cannot", "as best I can"],
+    "tags": ["ngsl-s", "spoken-mvp", "modal"],
+    "cefr": "A1"
+  },
+  {
+    "lemma": "no",
+    "gloss_zh": "不；没有；禁止",
+    "phonetic_text": "/nəʊ/",
+    "example_sentence": "No, I do not need anything else.",
+    "example_sentence_zh": "不，我不再需要别的了。",
+    "collocations": ["no problem", "no way", "no one"],
+    "tags": ["ngsl-s", "spoken-mvp", "function"],
+    "cefr": "A1"
+  }
+]
