@@ -1,6 +1,6 @@
 /**
  * Public prompts omit the expected answer so a form round can hide spelling
- * until Forge Smith reveals it.
+ * until Forge Smith reveals it. Meaning rounds hide gloss_zh.
  */
 
 import type { Aspect, Lexeme } from "../models/types.js";
@@ -15,7 +15,9 @@ export interface PublicPrompt {
   aspect: Aspect;
   prompt: string;
   cloze: string;
+  /** Hidden for meaning aspect so the answer is not leaked. */
   gloss_zh: string;
+  orthography_hint?: string;
   cefr?: string;
   freq_rank?: number;
 }
@@ -27,6 +29,7 @@ const PUBLIC_KEYS = [
   "prompt",
   "cloze",
   "gloss_zh",
+  "orthography_hint",
   "cefr",
   "freq_rank",
 ] as const;
@@ -38,7 +41,8 @@ export function toPublicPrompt(item: RetrievalItem, lexeme: Lexeme): PublicPromp
     aspect: item.aspect,
     prompt: item.prompt,
     cloze: item.cloze,
-    gloss_zh: lexeme.gloss_zh,
+    gloss_zh: item.aspect === "meaning" ? "" : lexeme.gloss_zh,
+    orthography_hint: item.aspect === "meaning" ? lexeme.orthography : undefined,
     cefr: lexeme.cefr,
     freq_rank: lexeme.freq_rank,
   };
@@ -46,13 +50,16 @@ export function toPublicPrompt(item: RetrievalItem, lexeme: Lexeme): PublicPromp
 }
 
 export function assertPublicPrompt(value: PublicPrompt): void {
-  const keys = Object.keys(value);
+  const keys = Object.keys(value).filter((key) => value[key as keyof PublicPrompt] !== undefined);
   for (const key of keys) {
     if (!PUBLIC_KEYS.includes(key as (typeof PUBLIC_KEYS)[number])) {
       throw new Error(`Public prompt leaked field ${key}`);
     }
   }
-  if ("expected" in value || "orthography" in value) {
+  if ("expected" in value) {
+    throw new Error("Public prompt contains the answer");
+  }
+  if (value.aspect === "form" && "orthography" in value) {
     throw new Error("Public prompt contains the answer");
   }
 }
@@ -75,9 +82,23 @@ export function buildPublicPrompts(
     if (!lexeme) throw new Error(`Missing lexeme ${item.lexeme_id}`);
     const prompt = toPublicPrompt(item, lexeme);
     assertPublicPrompt(prompt);
-    const visible = `${prompt.cloze}\n${prompt.gloss_zh}\n${prompt.prompt}`.toLowerCase();
-    if (aspect === "form" && visible.includes(item.expected.toLowerCase())) {
-      throw new Error(`Form prompt still shows ${item.expected}`);
+    if (aspect === "form") {
+      const visible = `${prompt.cloze}\n${prompt.gloss_zh}\n${prompt.prompt}`.toLowerCase();
+      if (visible.includes(item.expected.toLowerCase())) {
+        throw new Error(`Form prompt still shows ${item.expected}`);
+      }
+    }
+    if (aspect === "meaning") {
+      const visible = `${prompt.cloze}\n${prompt.gloss_zh}\n${prompt.prompt}`.toLowerCase();
+      const glossParts = item.expected
+        .split(/[;；、,，/]/)
+        .map((part) => part.trim().toLowerCase())
+        .filter(Boolean);
+      for (const part of glossParts) {
+        if (part.length >= 2 && visible.includes(part)) {
+          throw new Error(`Meaning prompt still shows gloss ${part}`);
+        }
+      }
     }
     return prompt;
   });

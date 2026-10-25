@@ -23,7 +23,18 @@ export {
 } from "./forge-smith.js";
 export type { RetrievalItem } from "./forge-smith.js";
 export { CurriculumDirector } from "./curriculum-director.js";
-export { EchoBroker, checkMustElicit, elicitTokens } from "./echo-broker.js";
+export {
+  EchoBroker,
+  checkMustElicit,
+  draftQuest,
+  elicitTokens,
+} from "./echo-broker.js";
 export type { DealResult, ElicitHit } from "./echo-broker.js";
 export { EvalSentinel } from "./eval-sentinel.js";
-export { MemoryPolicyError, upsertEpisode } from "./learner-memory.js";
+export type { GoldSuiteInput } from "./eval-sentinel.js";
+export {
+  LearnerMemory,
+  MemoryPolicyError,
+  upsertEpisode,
+} from "./learner-memory.js";
+export type { EpisodeKind, MemoryEpisode } from "./learner-memory.js";

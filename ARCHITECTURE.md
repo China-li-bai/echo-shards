@@ -8,12 +8,13 @@ schedule.
 
 | Path | Role |
 | --- | --- |
-| `apps/web` | Next.js UI. Form-aspect review, NGSL floor browser, Echo Bazaar stub. |
+| `apps/web` | Next.js UI. Day plan, form/meaning review, NGSL floor, Echo Bazaar, eval. |
 | `packages/core` | Zod models, `TideScheduler` (`ts-fsrs`), quest checks, agent tool boundaries. |
-| `packages/core/src/demo` | CLI demos. `npm test` runs them. |
+| `packages/core/src/demo` | CLI demos. `npm test` runs them (including `demo:day` / `demo:eval`). |
 | `content/packs/ngsl-s-1.2` | Official NGSL-Spoken 1.2 files, NOTICE, CITATION (CC BY-SA 4.0). |
 | `content/lexemes` | Seed JSON. 721 lemmas; enrichment mostly `pending`. |
 | `content/quests` | Static quest YAML. |
+| `content/quests/generated` | Echo Broker `draftQuest` JSON (ready lexemes only). |
 | `schemas/quest.schema.json` | JSON Schema aligned with `QuestSchema`. |
 | `supabase/migrations` | Postgres draft. `001` text foundation, `002` content and events. |
 | `scripts/import-ngsl-s.ts` | Rebuilds lexeme JSON from the pack. Does not invent glosses. |
@@ -34,7 +35,7 @@ Models propose. `TideScheduler.rate` is the only writer of `due`, `stability`, a
 | Curriculum Director | `agents/curriculum-director.ts` | `proposeDayPlan`, `estimateLoad`, `requestException` | `session_proposals` (in-memory) | `session_proposals` | Auto-open two aspects; exceed 5 lexemes |
 | Tide Steward | `agents/tide-steward.ts` | `getDue`, `buildSessionBatch`, `explainWhyTheseCards`, `enqueueAspect`, `rate` | FSRS state only via `TideScheduler.rate`; `review_logs` | `cards`, `review_logs`, `session_batches` | Raw updates to `due` / `stability` / `scheduled_days` |
 | Forge Smith | `agents/forge-smith.ts` | `lockAspect`, `genRetrievalItem`, `suggestDistractors`, `assistGrade` | Grade enum only | `review_logs` after Steward `rate` | A second aspect in the same batch; writing `due` |
-| Echo Broker | `agents/echo-broker.ts` | `checkMustElicit`, `finalizeDeal` | Quest hit list | `quests`, `quest_runs` | Marking success without `must_elicit`; touching cards |
+| Echo Broker | `agents/echo-broker.ts` | `draftQuest`, `checkMustElicit`, `finalizeDeal`, `abandon` | Quest hit list | `quests`, `quest_runs` | Marking success without `must_elicit`; touching cards; inventing glosses |
 | Eval Sentinel | `agents/eval-sentinel.ts` | `runGoldSuite`, `scoreDealRate`, `flagPolicyBreach` | Scores and breach flags | `eval_scores`, `learning_events` | Treating a policy block as a learner success |
 | Learner Memory | `agents/learner-memory.ts` | `upsertEpisode` | Short structured text | `learner_memory_items` | Full transcript dumps |
 
@@ -42,13 +43,12 @@ The web process keeps `AgentEventLog` in memory (and, for the review round, `loc
 
 Voice is a placeholder interface in `packages/core/src/providers/voice-placeholder.ts`. ASR, TTS, and pronunciation scoring are not implemented, and a pronunciation score is not an FSRS grade.
 
-## Request path
+## Request path (P0 日课闭环)
 
-1. The review page loads seed lexemes or the first ready NGSL rows on the server and builds public prompts. Prompts contain the gloss and a cloze, not the spelling.
-2. The browser enqueues form, meaning, and phonology-text cards, then opens a form batch of at most five.
-3. Forge Smith (`suggestFormGrade` server action) compares the typed spelling and returns a suggested grade plus the reveal.
-4. The learner confirms 1–4. Tide Steward calls `TideScheduler.rate`. The UI prints `due` in Asia/Shanghai.
-5. The quest page loads `content/quests/echo-bazaar-info-gap-01.yaml` through Zod. Echo Broker checks Latin tokens against `must_elicit`. That result is not a card grade.
+1. `/day` — learner types an intent and picks ≤5 lexemes. Curriculum Director presents 2–3 variants (form, meaning, form+quest). Explicit accept writes `intent` + `proposal_accepted` and stores the plan in `localStorage`.
+2. `/review` — Tide Steward enqueues TOPRA tracks, opens one aspect batch (form or meaning). Forge Smith builds public prompts (form hides spelling; meaning hides gloss). After confirm 1–4, Steward calls `TideScheduler.rate` and logs `retrieval_grade`.
+3. `/quests` — Echo Broker lists static YAML + `content/quests/generated`. `checkMustElicit` / `finalizeDeal` / `abandon`. Chinese-only fails; English elicit tokens succeed. Quest never grades cards.
+4. `/eval` — Eval Sentinel `runGoldSuite` + Learner Memory short episode. Camp summary of scores and breaches.
 
 ## Word floor
 

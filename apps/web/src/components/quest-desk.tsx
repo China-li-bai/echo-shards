@@ -8,12 +8,19 @@ import {
   type ElicitHit,
   type Quest,
 } from "@echo-shards/core";
+import type { QuestListItem } from "@/lib/content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 
-export function QuestDesk({ quest }: { quest: Quest }) {
+export function QuestDesk({
+  quest,
+  catalog,
+}: {
+  quest: Quest;
+  catalog: QuestListItem[];
+}) {
   const [log] = useState(() => new AgentEventLog());
   const [draft, setDraft] = useState("");
   const [turns, setTurns] = useState<string[]>([]);
@@ -22,11 +29,12 @@ export function QuestDesk({ quest }: { quest: Quest }) {
   );
   const [deal, setDeal] = useState<DealResult | null>(null);
   const [trace, setTrace] = useState(0);
+  const [abandoned, setAbandoned] = useState(false);
 
   function submitTurn(event: React.FormEvent) {
     event.preventDefault();
     const text = draft.trim();
-    if (!text || deal?.success) return;
+    if (!text || deal?.success || abandoned) return;
     const nextTurns = [...turns, text];
     setTurns(nextTurns);
     setDraft("");
@@ -41,11 +49,18 @@ export function QuestDesk({ quest }: { quest: Quest }) {
     setTrace((value) => value + 1);
   }
 
+  function abandon() {
+    new EchoBroker(log).abandon(quest, "learner abandoned from /quests");
+    setAbandoned(true);
+    setTrace((value) => value + 1);
+  }
+
   function reset() {
     setDraft("");
     setTurns([]);
     setHits(quest.must_elicit.map((item) => ({ item, hit: false, tokens: [] })));
     setDeal(null);
+    setAbandoned(false);
     log.runs.length = 0;
     log.events.length = 0;
     setTrace((value) => value + 1);
@@ -53,6 +68,27 @@ export function QuestDesk({ quest }: { quest: Quest }) {
 
   return (
     <div className="flex flex-col gap-4">
+      <Card size="sm">
+        <CardHeader>
+          <CardTitle>任务目录</CardTitle>
+          <CardDescription>静态 YAML + content/quests/generated JSON（draftQuest）。</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="flex flex-col gap-2">
+            {catalog.map((item) => (
+              <li key={`${item.source}-${item.id}`} className="flex flex-wrap items-baseline gap-2">
+                <a className="font-medium underline-offset-2 hover:underline" href={`/quests?id=${encodeURIComponent(item.id)}`}>
+                  {item.title}
+                </a>
+                <Badge variant={item.source === "generated" ? "secondary" : "outline"}>
+                  {item.source}
+                </Badge>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
       <div className="grid gap-3 md:grid-cols-2">
         <Card size="sm">
           <CardHeader>
@@ -89,10 +125,11 @@ export function QuestDesk({ quest }: { quest: Quest }) {
             <Badge variant="outline">
               {turns.length}/{quest.max_turns} 回合
             </Badge>
+            <Badge variant="outline">{quest.id}</Badge>
           </div>
           <CardTitle className="font-display text-2xl">必须问出来</CardTitle>
           <CardDescription>
-            Echo Broker 只用英文词干勾选 must_elicit。纯中文过不了关。这里没有聊天模型，也不会改 FSRS due。
+            Echo Broker 只用英文词干勾选 must_elicit。纯中文过不了关。Quest 跑次不写 SRS 卡。
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -131,14 +168,22 @@ export function QuestDesk({ quest }: { quest: Quest }) {
               onChange={(event) => setDraft(event.target.value)}
               rows={3}
               placeholder="What is the price? Can I bargain? When do you close?"
-              disabled={deal?.success}
+              disabled={deal?.success || abandoned}
             />
             <div className="flex flex-wrap gap-2">
-              <Button type="submit" disabled={!draft.trim() || deal?.success}>
+              <Button type="submit" disabled={!draft.trim() || deal?.success || abandoned}>
                 提交这一回合
               </Button>
-              <Button type="button" variant="outline" disabled={turns.length === 0} onClick={closeDeal}>
+              <Button
+                type="button"
+                variant="outline"
+                disabled={turns.length === 0 || abandoned}
+                onClick={closeDeal}
+              >
                 请求成交
+              </Button>
+              <Button type="button" variant="destructive" disabled={abandoned || deal?.success} onClick={abandon}>
+                放弃
               </Button>
               <Button type="button" variant="ghost" onClick={reset}>
                 清空
@@ -155,6 +200,12 @@ export function QuestDesk({ quest }: { quest: Quest }) {
           ) : (
             <p className="text-sm text-muted-foreground">还没有回合。先问，再请求成交。</p>
           )}
+
+          {abandoned ? (
+            <p role="status" className="rounded-lg bg-muted px-3 py-2 text-sm">
+              已放弃 · learning_events.abandon
+            </p>
+          ) : null}
 
           {deal ? (
             <p
@@ -173,10 +224,17 @@ export function QuestDesk({ quest }: { quest: Quest }) {
 
       <Card size="sm">
         <CardHeader>
-          <CardTitle>评分口径</CardTitle>
+          <CardTitle>评分口径 · 事件</CardTitle>
         </CardHeader>
-        <CardContent className="whitespace-pre-wrap text-sm text-muted-foreground" data-trace={trace}>
-          {quest.rubric}
+        <CardContent className="flex flex-col gap-3" data-trace={trace}>
+          <pre className="whitespace-pre-wrap text-sm text-muted-foreground">{quest.rubric}</pre>
+          <ul className="font-mono text-xs">
+            {log.events.slice(-8).map((event) => (
+              <li key={event.id}>
+                {event.event_type} · {String(event.payload.item ?? event.payload.reason ?? "")}
+              </li>
+            ))}
+          </ul>
         </CardContent>
       </Card>
     </div>

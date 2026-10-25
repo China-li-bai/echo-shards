@@ -3,10 +3,21 @@
  * A blocked schedule write is a pass for the guard, not a product success.
  */
 
-import type { Grade, Lexeme } from "../models/types.js";
+import type { Grade, Lexeme, Quest } from "../models/types.js";
 import { TideScheduler } from "../scheduler/TideScheduler.js";
+import { checkMustElicit } from "./echo-broker.js";
 import { AgentEventLog } from "./event-log.js";
-import { assertNoScheduleFields, SchedulePolicyError } from "./policy.js";
+import { assertNoScheduleFields, assertSingleAspect, SchedulePolicyError } from "./policy.js";
+
+export interface GoldSuiteInput {
+  lexeme: Lexeme;
+  quest?: Quest;
+  catalogStats?: {
+    lemmas: number;
+    pending: number;
+    pendingEmptyGloss: number;
+  };
+}
 
 export class EvalSentinel {
   constructor(private readonly log: AgentEventLog) {}
@@ -32,6 +43,30 @@ export class EvalSentinel {
     });
   }
 
+  /** Deal / retrieval score in [0, 1]. Policy blocks are never learner success. */
+  scoreDealRate(input: {
+    suite: string;
+    hits: number;
+    total: number;
+    item_id?: string;
+  }): number {
+    const score = input.total <= 0 ? 0 : input.hits / input.total;
+    this.log.recordRun({
+      agent: "eval_sentinel",
+      tools: ["scoreDealRate"],
+      status: "ok",
+      output_ref: `${input.hits}/${input.total}`,
+    });
+    this.log.recordEval({
+      suite: input.suite,
+      item_id: input.item_id,
+      metric: "deal_rate",
+      score,
+      breach_flags: [],
+    });
+    return score;
+  }
+
   scoreRetrieval(grade: Grade): void {
     this.log.recordRun({
       agent: "eval_sentinel",
@@ -48,11 +83,15 @@ export class EvalSentinel {
   }
 
   /**
-   * Deterministic gold checks: schedule writes throw, rate() moves the card,
-   * and a second aspect stays on its own card.
+   * Deterministic gold checks: schedule writes throw, TOPRA stays one aspect,
+   * must_elicit true/false, and pending glosses stay empty.
    */
-  runGoldSuite(lexeme: Lexeme): string[] {
+  runGoldSuite(input: Lexeme | GoldSuiteInput): string[] {
+    const lexeme = "lexeme" in input ? input.lexeme : input;
+    const quest = "lexeme" in input ? input.quest : undefined;
+    const catalogStats = "lexeme" in input ? input.catalogStats : undefined;
     const failures: string[] = [];
+
     try {
       assertNoScheduleFields({ due: "2099-01-01T00:00:00.000Z", grade: 3 }, "gold");
       failures.push("expected a schedule write to throw");
@@ -61,6 +100,15 @@ export class EvalSentinel {
         failures.push(`expected SchedulePolicyError, got ${String(error)}`);
       } else {
         this.flagPolicyBreach("gold", error);
+      }
+    }
+
+    try {
+      assertSingleAspect(["form", "meaning"]);
+      failures.push("TOPRA: expected two aspects to throw");
+    } catch (error) {
+      if (!(error instanceof SchedulePolicyError)) {
+        failures.push(`TOPRA: wrong error ${String(error)}`);
       }
     }
 
@@ -84,6 +132,41 @@ export class EvalSentinel {
     );
     if (batch.aspect !== "form") failures.push("batch aspect drifted");
     if (batch.lexeme_ids.length > 5) failures.push("batch exceeded 5");
+
+    if (quest) {
+      const english = checkMustElicit(
+        quest,
+        "What is the price? May I bargain? The stall closes at sunset.",
+      );
+      if (!english.every((hit) => hit.hit)) {
+        failures.push("must_elicit english should hit");
+      } else {
+        this.scoreDealRate({
+          suite: "gold-must-elicit",
+          hits: english.filter((hit) => hit.hit).length,
+          total: english.length,
+          item_id: quest.id,
+        });
+      }
+      const chinese = checkMustElicit(quest, "你好，这个多少钱");
+      if (chinese.some((hit) => hit.hit)) {
+        failures.push("must_elicit chinese-only must fail");
+      }
+    }
+
+    if (catalogStats) {
+      if (catalogStats.lemmas !== 721) {
+        failures.push(`721 policy: lemmas ${catalogStats.lemmas} !== 721`);
+      }
+      if (catalogStats.pending < 600) {
+        failures.push(`pending gloss policy: pending ${catalogStats.pending} too small`);
+      }
+      if (catalogStats.pendingEmptyGloss !== catalogStats.pending) {
+        failures.push(
+          `pending gloss policy: ${catalogStats.pendingEmptyGloss} empty glosses vs ${catalogStats.pending} pending`,
+        );
+      }
+    }
 
     this.log.recordRun({
       agent: "eval_sentinel",

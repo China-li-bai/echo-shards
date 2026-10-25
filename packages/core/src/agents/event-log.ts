@@ -30,6 +30,9 @@ export interface PlanVariant {
   lexeme_ids: string[];
   label: string;
   load: number;
+  /** Optional info-gap after the tide. Quest never grades cards. */
+  include_quest?: boolean;
+  quest_id?: string;
 }
 
 export interface ProposalRecord {

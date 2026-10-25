@@ -22,6 +22,12 @@ export interface OpenRound {
   parked_aspects: Aspect[];
 }
 
+function variantIdFor(aspect: Aspect): string {
+  if (aspect === "meaning") return "v-meaning";
+  if (aspect === "phonology_text") return "v-form";
+  return "v-form";
+}
+
 export function openAspectRound(input: {
   tide: TideScheduler;
   log: AgentEventLog;
@@ -29,6 +35,8 @@ export function openAspectRound(input: {
   userId?: string;
   aspect?: Aspect;
   now?: Date;
+  variantId?: string;
+  intent?: string;
 }): OpenRound {
   const now = input.now ?? new Date();
   const userId = input.userId ?? LOCAL_LEARNER_ID;
@@ -37,18 +45,16 @@ export function openAspectRound(input: {
   const proposal = director.proposeDayPlan({
     lexemeIds: input.lexemes.map((lexeme) => lexeme.id),
     now,
-    intent: `${aspect} tide`,
+    intent: input.intent ?? `${aspect} tide`,
   });
-  const variantId = aspect === "meaning" ? "v-meaning" : "v-form";
+  const variantId = input.variantId ?? variantIdFor(aspect);
   const variant = director.accept(proposal.id, variantId);
-  if (variant.aspect !== aspect && aspect !== "phonology_text") {
-    throw new Error(`Accepted ${variant.aspect} while opening ${aspect}.`);
+  const lockedAspect: Aspect =
+    aspect === "phonology_text" ? "phonology_text" : variant.aspect;
+  if (lockedAspect !== "phonology_text" && variant.aspect !== lockedAspect) {
+    throw new Error(`Accepted ${variant.aspect} while opening ${lockedAspect}.`);
   }
-  const lockedAspect: Aspect = aspect === "phonology_text" ? "phonology_text" : variant.aspect;
-  const ids =
-    lockedAspect === variant.aspect
-      ? variant.lexeme_ids
-      : input.lexemes.slice(0, 5).map((lexeme) => lexeme.id);
+  const ids = variant.lexeme_ids;
 
   const steward = new TideSteward(input.tide, input.log);
   for (const track of TOPRA_ASPECTS) {

@@ -12,7 +12,9 @@
     "demo": "tsx src/demo/run-form-round.ts",
     "demo:quest": "tsx src/demo/validate-quest.ts",
     "demo:policy": "tsx src/demo/run-policy.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "demo:day": "tsx src/demo/run-day.ts",
+    "demo:eval": "tsx src/demo/run-eval.ts"
   },
   "dependencies": {
     "ts-fsrs": "^5.4.2",

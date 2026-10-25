@@ -6,9 +6,11 @@ import { cn } from "cn";
 
 const LINKS = [
   { href: "/", label: "营地" },
-  { href: "/review", label: "形界" },
+  { href: "/day", label: "日课" },
+  { href: "/review", label: "潮汐" },
   { href: "/lexemes", label: "词库" },
   { href: "/quests", label: "交易所" },
+  { href: "/eval", label: "评估" },
 ];
 
 export function SiteHeader() {

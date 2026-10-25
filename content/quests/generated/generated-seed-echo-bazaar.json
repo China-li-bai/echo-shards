@@ -1,0 +1,41 @@
+{
+  "id": "generated-seed-echo-bazaar",
+  "title": "动态市集 · seed 五词",
+  "goal": "用英文向摊主问清并主动用出目标词：bargain, echo, shard, tide, elicit。成交前复述关键条件。",
+  "roles": {
+    "student": "营地学徒（买方）——已知预算有限，需要确认价格与时间",
+    "npc": "回声摊主（卖方）——掌握标价与截止时间，不会主动全盘托出"
+  },
+  "student_knows": [
+    "自己预算有限",
+    "目标词：bargain, echo, shard, tide, elicit",
+    "需要在日落前带回营地"
+  ],
+  "npc_knows": [
+    "目标物品涉及：bargain, echo, shard, tide, elicit",
+    "若买方提出 bargain，可商量价格",
+    "摊位在日落（sunset）关闭"
+  ],
+  "must_elicit": [
+    "bargain (ask about / use: 便宜货)",
+    "echo (ask about / use: 回声)",
+    "shard (ask about / use: 碎片)",
+    "tide (ask about / use: 潮汐)",
+    "elicit (ask about / use: 引出)"
+  ],
+  "success_criteria": [
+    "学生至少用英文问出价格或时间",
+    "学生主动用出 must_elicit 中的目标英文词",
+    "学生用英文复述成交条件"
+  ],
+  "target_lexemes": [
+    "en_bargain",
+    "en_echo",
+    "en_shard",
+    "en_tide",
+    "en_elicit"
+  ],
+  "max_turns": 12,
+  "rubric": "文字回合评分（非语音）：\n- 信息差完成度 50%：must_elicit 是否被问出并确认\n- 目标词使用 30%：target_lexemes 出现合理用法\n- 礼貌与回合效率 20%：未超过 max_turns；无纯中文糊弄过关\n失败：只背单词不提问、或未复述成交条件。\nQuest 跑次不写 SRS 卡。",
+  "modality": "text"
+}

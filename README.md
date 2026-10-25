@@ -19,7 +19,9 @@ Text-first English study. Statement memory goes through **ts-fsrs**. One aspect 
 
 ```bash
 npm install
-npm test          # demo + quest YAML + policy checks
+npm test          # demo + quest YAML + policy + day + eval
+npm run typecheck
+npm run build -w @echo-shards/web
 npm run dev       # http://127.0.0.1:43123
 ```
 
@@ -30,16 +32,20 @@ npm run dev       # http://127.0.0.1:43123
 | `npm run demo` | 5 个种子词的形界潮汐，打印 Asia/Shanghai due。结束时应看到 `Demo OK.` |
 | `npm run demo:quest` | 校验 `content/quests/echo-bazaar-info-gap-01.yaml` |
 | `npm run demo:policy` | 拒绝写 due、TOPRA 单 aspect、721/671 词量、must_elicit |
+| `npm run demo:day` | Curriculum Director 日课提案：dayId、2–3 variants、load ≤5 |
+| `npm run demo:eval` | Eval Sentinel 金标 + draftQuest 写入 `content/quests/generated/` |
 | `npm run typecheck` | `packages/core` 与 `apps/web` |
 | `npm run lint` | Next.js eslint |
 | `npm run import:ngsl-s` | 从官方词表重写 `content/lexemes/ngsl-s-*.json`（不发明 gloss） |
 
 开发服务器绑定 `0.0.0.0:43123`。页面：
 
-- `/` 营地：词量与三条路
-- `/review` 形界复习，due 来自 TideScheduler
+- `/` 营地：词量与入口
+- `/day` 意图 → 多提案 → 明确接受 → 写入 session_proposals / learning_events
+- `/review` 形界 / 义界复习（`?aspect=meaning`）；可从 `/day` 带入批次
 - `/lexemes` NGSL-S 地板，待审校行不显示假释义
-- `/quests` 回声交易所文字桩
+- `/quests` 静态 + generated 信息差；中文-only 失败
+- `/eval` Eval Sentinel 金标与营地摘要
 
 ## 目录 / Layout
 
@@ -49,6 +55,7 @@ packages/core/            模型、TideScheduler、agents、demos
 content/packs/ngsl-s-1.2/ 官方词表 + NOTICE + CITATION（CC BY-SA 4.0）
 content/lexemes/          种子与导入 JSON
 content/quests/           Quest YAML
+content/quests/generated/ draftQuest JSON
 schemas/quest.schema.json
 supabase/migrations/      001 文字基础，002 内容与事件
 scripts/import-ngsl-s.ts

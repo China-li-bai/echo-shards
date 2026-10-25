@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
-  "description": "言灵残片 Echo Shards — text-first FSRS / TOPRA / info-gap quests",
+  "description": "\u8a00\u7075\u6b8b\u7247 Echo Shards \u2014 text-first FSRS / TOPRA / info-gap quests",
   "type": "module",
   "workspaces": [
     "packages/*",
@@ -17,10 +17,12 @@
     "demo": "npm run demo -w @echo-shards/core",
     "demo:quest": "npm run demo:quest -w @echo-shards/core",
     "demo:policy": "npm run demo:policy -w @echo-shards/core",
-    "test": "npm run demo && npm run demo:quest && npm run demo:policy",
+    "test": "npm run demo && npm run demo:quest && npm run demo:policy && npm run demo:day && npm run demo:eval",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "npm run lint -w @echo-shards/web",
-    "import:ngsl-s": "tsx scripts/import-ngsl-s.ts"
+    "import:ngsl-s": "tsx scripts/import-ngsl-s.ts",
+    "demo:day": "npm run demo:day -w @echo-shards/core",
+    "demo:eval": "npm run demo:eval -w @echo-shards/core"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",

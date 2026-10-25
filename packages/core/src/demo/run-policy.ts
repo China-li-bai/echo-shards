@@ -83,7 +83,20 @@ for (const prompt of buildPublicPrompts(readyTop, "form")) {
 
 const log = new AgentEventLog();
 const sentinel = new EvalSentinel(log);
-failures.push(...sentinel.runGoldSuite(seed[0]!));
+const pendingEmptyGloss = catalog.filter(
+  (row) => row.enrichment_status === "pending" && !row.gloss_zh.trim(),
+).length;
+failures.push(
+  ...sentinel.runGoldSuite({
+    lexeme: seed[0]!,
+    quest: loadQuestFromYaml(join(root, "content/quests/echo-bazaar-info-gap-01.yaml")),
+    catalogStats: {
+      lemmas: catalog.length,
+      pending,
+      pendingEmptyGloss,
+    },
+  }),
+);
 
 const director = new CurriculumDirector(log);
 expectThrow(
