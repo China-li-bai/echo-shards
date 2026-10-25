@@ -1,5 +1,7 @@
 # Echo Shards · AI-native engineering notes
 
+代码落点：仓库根目录 [ARCHITECTURE.md](../ARCHITECTURE.md)。模块在 `packages/core/src/agents/`。
+
 文字阶段 Agent 工具边界（对齐产品页「言灵残片·AI Native 产品设计」）。
 
 ## Invariant

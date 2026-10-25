@@ -1,0 +1,23 @@
+Echo Shards application source
+==============================
+
+The application source in this repository (apps/, packages/, scripts/, schemas/,
+and product-owned text under content/lexemes/ and content/quests/) is
+UNLICENSED. All rights reserved. It is not open-source licensed.
+
+NGSL-Spoken 1.2 content pack
+============================
+
+Files under content/packs/ngsl-s-1.2/ are the New General Service List — Spoken,
+version 1.2, by Charles Browne and Brent Culligan.
+
+License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Attribution (required):
+  NGSL-Spoken 1.2 © Charles Browne & Brent Culligan, licensed under CC BY-SA 4.0.
+
+Keep content/packs/ngsl-s-1.2/NOTICE and CITATION with any copy of that pack.
+ShareAlike applies to the wordlist portion. Product enrichment that derives
+from those lemmas must keep this attribution beside the redistributed pack.
+See NOTICE for the file-level source list.

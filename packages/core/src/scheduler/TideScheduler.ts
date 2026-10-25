@@ -3,6 +3,8 @@
  *
  * 默认 request_retention = 0.9（ts-fsrs 官方默认，约 90% 陈述保持目标）
  * 可通过构造参数覆盖；勿与「会说」混为同一卡。
+ *
+ * 没有 setDue / 改写 stability 的入口。评分只能走 rate()，由 ts-fsrs 计算下次 due。
  */
 
 import {
@@ -13,7 +15,21 @@ import {
   type Grade as FSRSGrade,
   type FSRS,
 } from "ts-fsrs";
-import type { Aspect, Card, Grade, Lexeme, ReviewLog, SessionBatch } from "../models/types.js";
+import {
+  CardSchema,
+  ReviewLogSchema,
+  type Aspect,
+  type Card,
+  type Grade,
+  type Lexeme,
+  type ReviewLog,
+  type SessionBatch,
+} from "../models/types.js";
+
+/** Deterministic card id. TOPRA: one track per (learner × lexeme × aspect). */
+export function cardIdFor(userId: string, lexemeId: string, aspect: Aspect): string {
+  return `${userId}:${lexemeId}:${aspect}`;
+}
 
 export interface TideSchedulerOptions {
   /** 目标保留率；默认 0.9（合理起步，封闭测试后再调） */
@@ -87,11 +103,11 @@ export class TideScheduler {
   /** 为 lexeme 的某一 aspect 入队一张新卡（TOPRA 分轨） */
   enqueueNew(
     userId: string,
-    lexeme: Lexeme,
+    lexeme: Pick<Lexeme, "id">,
     aspect: Aspect,
     now: Date = new Date(),
   ): Card {
-    const id = `${userId}:${lexeme.id}:${aspect}`;
+    const id = cardIdFor(userId, lexeme.id, aspect);
     if (this.cards.has(id)) {
       return this.cards.get(id)!;
     }
@@ -181,6 +197,23 @@ export class TideScheduler {
       card_ids: picked.map((c) => c.id),
       created_at: now,
     };
+  }
+
+  /** JSON-safe snapshot for a local session. Dates revive through Zod. */
+  snapshot(): { cards: Card[]; logs: ReviewLog[] } {
+    return { cards: this.allCards(), logs: this.getLogs() };
+  }
+
+  restore(state: { cards: unknown[]; logs: unknown[] }): void {
+    this.cards.clear();
+    this.logs.length = 0;
+    for (const raw of state.cards) {
+      const card = CardSchema.parse(raw);
+      this.cards.set(card.id, card);
+    }
+    for (const raw of state.logs) {
+      this.logs.push(ReviewLogSchema.parse(raw));
+    }
   }
 }
 

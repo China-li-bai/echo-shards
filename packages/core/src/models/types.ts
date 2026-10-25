@@ -29,6 +29,38 @@ export const LexemeSchema = z.object({
 });
 export type Lexeme = z.infer<typeof LexemeSchema>;
 
+/** NGSL 地板行：pending 义项允许空 gloss / 音标，禁止把空串当成已审校释义。 */
+export const EnrichmentStatusSchema = z.enum([
+  "pending",
+  "partial",
+  "ready",
+  "blocked",
+]);
+export type EnrichmentStatus = z.infer<typeof EnrichmentStatusSchema>;
+
+export const CatalogLexemeSchema = z.object({
+  id: z.string().min(1),
+  lemma: z.string().min(1),
+  orthography: z.string().min(1),
+  phonetic_text: z.string(),
+  gloss_zh: z.string(),
+  sense_id: z.string().min(1),
+  example_sentence: z.string(),
+  example_sentence_zh: z.string().optional(),
+  collocations: z.array(z.string()).default([]),
+  tags: z.array(z.string()).default([]),
+  cefr: z.enum(["A1", "A2", "B1", "B2", "C1", "C2"]).nullable().optional(),
+  freq_rank: z.number().int().positive().nullable().optional(),
+  lang: z.string().default("en"),
+  l1: z.string().default("zh"),
+  lemma_id: z.string().optional(),
+  enrichment_status: EnrichmentStatusSchema.default("pending"),
+  source_pack_id: z.string().nullable().optional(),
+  gloss_en: z.string().nullable().optional(),
+  license_note: z.string().nullable().optional(),
+});
+export type CatalogLexeme = z.infer<typeof CatalogLexemeSchema>;
+
 /**
  * FSRS Card 对齐字段（ts-fsrs Card）
  * 每个 (user × lexeme × aspect) 一条独立调度轨

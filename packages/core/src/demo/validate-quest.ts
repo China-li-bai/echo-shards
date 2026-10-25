@@ -6,8 +6,9 @@
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadQuestFromYaml } from "../quest/loadQuest.js";
+import { findRepoRoot } from "../content/paths.js";
 
-const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
+const root = findRepoRoot(dirname(fileURLToPath(import.meta.url)));
 const quest = loadQuestFromYaml(
   join(root, "content/quests/echo-bazaar-info-gap-01.yaml"),
 );

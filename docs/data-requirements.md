@@ -91,8 +91,8 @@ content/quests/               ← 自研 Quest（可引用 lemma id）
 导入命令：
 
 ```bash
-cd /workspace/echo-shards
-npx tsx scripts/import-ngsl-s.ts
+# from the repo root
+npm run import:ngsl-s
 # 或跳过 enrichment：
 npx tsx scripts/import-ngsl-s.ts --no-enrichment
 ```

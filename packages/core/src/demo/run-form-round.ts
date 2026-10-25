@@ -9,9 +9,9 @@ import { dirname, join } from "node:path";
 import { LexemeSchema, type Grade, type Lexeme } from "../models/types.js";
 import { TideScheduler } from "../scheduler/TideScheduler.js";
 import { loadQuestFromYaml } from "../quest/loadQuest.js";
+import { findRepoRoot } from "../content/paths.js";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const root = join(__dirname, "../..");
+const root = findRepoRoot(dirname(fileURLToPath(import.meta.url)));
 
 function fmtDue(d: Date): string {
   // Asia/Shanghai 展示

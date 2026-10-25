@@ -2,23 +2,25 @@
   "name": "echo-shards",
   "version": "0.1.0",
   "private": true,
-  "description": "\u8a00\u7075\u6b8b\u7247 Echo Shards \u2014 \u6587\u5b57\u4fa7\u57fa\u7840\u6570\u636e\u4e0e FSRS/TOPRA/Quest \u6280\u672f\u9aa8\u67b6",
+  "license": "UNLICENSED",
+  "description": "言灵残片 Echo Shards — text-first FSRS / TOPRA / info-gap quests",
   "type": "module",
-  "scripts": {
-    "demo": "tsx src/demo/run-form-round.ts",
-    "demo:quest": "tsx src/demo/validate-quest.ts",
-    "typecheck": "tsc --noEmit",
-    "build": "tsc",
-    "import:ngsl-s": "tsx scripts/import-ngsl-s.ts"
-  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "engines": {
     "node": ">=18"
   },
-  "license": "UNLICENSED",
-  "dependencies": {
-    "ts-fsrs": "^5.4.2",
-    "yaml": "^2.9.1",
-    "zod": "^4.6.7"
+  "scripts": {
+    "dev": "npm run dev -w @echo-shards/web",
+    "demo": "npm run demo -w @echo-shards/core",
+    "demo:quest": "npm run demo:quest -w @echo-shards/core",
+    "demo:policy": "npm run demo:policy -w @echo-shards/core",
+    "test": "npm run demo && npm run demo:quest && npm run demo:policy",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint -w @echo-shards/web",
+    "import:ngsl-s": "tsx scripts/import-ngsl-s.ts"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",
