@@ -16,8 +16,8 @@ import { findRepoRoot } from "../content/paths.js";
 import { loadCatalog, loadPackMeta, loadSeedLexemes, readyLexemes } from "../content/loadLexemes.js";
 import { loadQuestFromYaml } from "../quest/loadQuest.js";
 import { buildPublicPrompts } from "../session/prompts.js";
-import { cardIdFor } from "../scheduler/TideScheduler.js";
-import { LOCAL_LEARNER_ID } from "../session/open-round.js";
+import { cardIdFor, TideScheduler } from "../scheduler/TideScheduler.js";
+import { LOCAL_LEARNER_ID, openAspectRound } from "../session/open-round.js";
 import { join } from "node:path";
 
 const root = findRepoRoot(dirname(fileURLToPath(import.meta.url)));
@@ -122,6 +122,48 @@ expectThrow(
   () => upsertEpisode(log, { kind: "episode", text: "x".repeat(400) }),
   MemoryPolicyError,
 );
+
+// Phonology open: proposal variant, batch, and audit events must all be phonology_text
+{
+  const phonologyLog = new AgentEventLog();
+  const phonologyRound = openAspectRound({
+    tide: new TideScheduler({ requestRetention: 0.9 }),
+    log: phonologyLog,
+    lexemes: seed,
+    userId: LOCAL_LEARNER_ID,
+    aspect: "phonology_text",
+    now: new Date("2026-10-25T01:00:00.000Z"),
+  });
+  const chosen = phonologyRound.proposal.variants.find(
+    (variant) => variant.id === phonologyRound.proposal.chosen_id,
+  );
+  if (!chosen) failures.push("phonology open: missing chosen variant");
+  else if (chosen.aspect !== "phonology_text") {
+    failures.push(`phonology open: chosen aspect ${chosen.aspect} !== phonology_text`);
+  }
+  if (phonologyRound.batch.aspect !== "phonology_text") {
+    failures.push(`phonology open: batch aspect ${phonologyRound.batch.aspect} !== phonology_text`);
+  }
+  if (phonologyRound.items.some((item) => item.aspect !== "phonology_text")) {
+    failures.push("phonology open: item aspect drifted from phonology_text");
+  }
+  const accepted = phonologyLog.events.filter((event) => event.event_type === "proposal_accepted");
+  if (accepted.length !== 1) {
+    failures.push(`phonology open: expected 1 proposal_accepted, got ${accepted.length}`);
+  } else if ((accepted[0]!.payload as { aspect?: string }).aspect !== "phonology_text") {
+    failures.push(
+      `phonology open: proposal_accepted aspect ${(accepted[0]!.payload as { aspect?: string }).aspect} !== phonology_text`,
+    );
+  }
+  const started = phonologyLog.events.filter((event) => event.event_type === "session_start");
+  if (started.length !== 1) {
+    failures.push(`phonology open: expected 1 session_start, got ${started.length}`);
+  } else if ((started[0]!.payload as { aspect?: string }).aspect !== "phonology_text") {
+    failures.push(
+      `phonology open: session_start aspect ${(started[0]!.payload as { aspect?: string }).aspect} !== phonology_text`,
+    );
+  }
+}
 
 if (failures.length > 0) {
   console.error("Policy failures:");

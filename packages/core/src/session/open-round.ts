@@ -24,7 +24,7 @@ export interface OpenRound {
 
 function variantIdFor(aspect: Aspect): string {
   if (aspect === "meaning") return "v-meaning";
-  if (aspect === "phonology_text") return "v-form";
+  if (aspect === "phonology_text") return "v-phonology";
   return "v-form";
 }
 
@@ -46,12 +46,12 @@ export function openAspectRound(input: {
     lexemeIds: input.lexemes.map((lexeme) => lexeme.id),
     now,
     intent: input.intent ?? `${aspect} tide`,
+    includePhonology: aspect === "phonology_text",
   });
   const variantId = input.variantId ?? variantIdFor(aspect);
   const variant = director.accept(proposal.id, variantId);
-  const lockedAspect: Aspect =
-    aspect === "phonology_text" ? "phonology_text" : variant.aspect;
-  if (lockedAspect !== "phonology_text" && variant.aspect !== lockedAspect) {
+  const lockedAspect = aspect;
+  if (variant.aspect !== lockedAspect) {
     throw new Error(`Accepted ${variant.aspect} while opening ${lockedAspect}.`);
   }
   const ids = variant.lexeme_ids;
