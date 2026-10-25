@@ -23,6 +23,18 @@ type LoadState =
   | { status: "loading"; progress: CampProgress; sourceLabel: string; eventCount: number }
   | { status: "ready"; progress: CampProgress; sourceLabel: string; eventCount: number };
 
+function isColdStart(progress: CampProgress, eventCount: number): boolean {
+  return (
+    eventCount === 0 ||
+    (progress.xp === 0 &&
+      progress.streak_days === 0 &&
+      progress.shards === 0 &&
+      progress.session_count === 0 &&
+      progress.retrieval_count === 0 &&
+      progress.quest_success_count === 0)
+  );
+}
+
 export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
   const [state, setState] = useState<LoadState>(() => ({
     status: "loading",
@@ -42,6 +54,7 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
   }, []);
 
   const { progress, sourceLabel, eventCount } = state;
+  const cold = isColdStart(progress, eventCount);
   const camp = [
     { label: "连续天数", value: progress.streak_days, note: "Asia/Shanghai · 事件推导" },
     { label: "会话", value: progress.session_count, note: "session_end 事件" },
@@ -60,10 +73,14 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm [&::-webkit-details-marker]:hidden">
         <span className="flex flex-wrap items-center gap-2">
           <Badge variant="secondary">营地账本</Badge>
-          <span className="text-muted-foreground">
-            等级 {progress.camp_level} · 连续 {progress.streak_days} 天 · XP {progress.xp} · 残片{" "}
-            {progress.shards} · 地板 {floor.ready}/{floor.lemmas} 就绪
-          </span>
+          {cold ? (
+            <span className="text-muted-foreground">尚未开铸 · 地板 {floor.ready}/{floor.lemmas} 就绪</span>
+          ) : (
+            <span className="text-muted-foreground">
+              等级 {progress.camp_level} · 连续 {progress.streak_days} 天 · XP {progress.xp} · 残片{" "}
+              {progress.shards} · 地板 {floor.ready}/{floor.lemmas} 就绪
+            </span>
+          )}
         </span>
         <span className="text-muted-foreground group-open:hidden">展开</span>
         <span className="hidden text-muted-foreground group-open:inline">收起</span>
@@ -75,23 +92,37 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
             <Badge variant="outline">{sourceLabel}</Badge>
             {state.status === "ready" ? (
               <span className="text-xs text-muted-foreground">
-                {eventCount === 0
-                  ? "无服务端账本 · 真实 0"
-                  : `${eventCount} 条本机事件`}
+                {cold
+                  ? "走完日课或潮汐后，这里会亮起来"
+                  : eventCount === 0
+                    ? "无服务端账本 · 真实 0"
+                    : `${eventCount} 条本机事件`}
               </span>
             ) : null}
           </div>
-          <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-            {camp.map((stat) => (
-              <Card key={stat.label} size="sm">
-                <CardHeader>
-                  <CardDescription>{stat.label}</CardDescription>
-                  <CardTitle className="font-display text-3xl tabular-nums">{stat.value}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-muted-foreground">{stat.note}</CardContent>
-              </Card>
-            ))}
-          </div>
+          {cold ? (
+            <Card size="sm">
+              <CardHeader>
+                <CardDescription>学徒进度</CardDescription>
+                <CardTitle className="font-display text-2xl">尚未开铸</CardTitle>
+              </CardHeader>
+              <CardContent className="text-muted-foreground">
+                完成第一次拼写对照或市集成交后，连续天数、XP 与残片会显示在这里。
+              </CardContent>
+            </Card>
+          ) : (
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+              {camp.map((stat) => (
+                <Card key={stat.label} size="sm">
+                  <CardHeader>
+                    <CardDescription>{stat.label}</CardDescription>
+                    <CardTitle className="font-display text-3xl tabular-nums">{stat.value}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-muted-foreground">{stat.note}</CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
         </div>
         <div>
           <p className="mb-2 text-xs tracking-wide text-muted-foreground uppercase">
@@ -110,8 +141,7 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
           </div>
         </div>
         <p className="text-sm text-muted-foreground">
-          词库 / 审校 / 评估已收入顶栏「工坊」。Workers 无服务端进度账本；上列为 day-plan /
-          潮汐 localStorage 事件经 progressFromEvents 推导。地板说明：{floor.coverageNote}。
+          词库 / 审校 / 评估在顶栏「工坊」。进度来自本机日课、潮汐与交易所成交事件。地板说明：{floor.coverageNote}。
         </p>
       </div>
     </details>

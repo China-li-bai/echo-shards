@@ -108,14 +108,14 @@ export function composeAdaptTurn(quest: Quest, hits: ElicitHit[], turns = 0): st
     if (turns > quest.max_turns) {
       return "目标信息已齐，但回合超限。下次先问关键条件再收束。";
     }
-    return "目标信息已齐。用英文复述成交条件，再调用 finalizeDeal。";
+    return "目标信息已齐。用英文复述成交条件，再点「请求成交」。";
   }
   const next = missing[0]!;
   const tokenHint =
     next.tokens.length > 0
       ? next.tokens.slice(0, 2).join(" / ")
       : next.item.split(/[（(]/)[0]!.trim().slice(0, 40);
-  return `还缺 ${missing.length} 项信息。下一句请用英文主动问出：${tokenHint}。不要只写中文。`;
+  return `还缺 ${missing.length} 项信息。下一句用英文问：${tokenHint}。`;
 }
 
 /** @deprecated prefer composeAdaptTurn; kept as the public tool name. */

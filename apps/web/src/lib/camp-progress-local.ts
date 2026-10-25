@@ -18,6 +18,9 @@ export const DAY_PLAN_STORAGE_KEY = "echo-shards.day-plan.v1";
 /** Prefix for review-session SavedRound keys (`echo-shards.round.v2:${pool}:${aspect}`). */
 export const ROUND_STORAGE_PREFIX = "echo-shards.round.v2:";
 
+/** Persisted Echo Broker / quest-desk event log (deal → camp ledger). */
+export const QUEST_LOG_STORAGE_KEY = "echo-shards.quest-log.v1";
+
 export interface CampProgressView {
   progress: CampProgress;
   eventCount: number;
@@ -84,6 +87,45 @@ export function campProgressFromSnapshots(
   };
 }
 
+function readQuestLogSnapshot(storage: Storage): EventLogSnapshot | null {
+  try {
+    const raw = storage.getItem(QUEST_LOG_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as { version?: number; event_log?: unknown };
+    if (parsed.version === 1 && isEventLogSnapshot(parsed.event_log)) {
+      return parsed.event_log;
+    }
+  } catch {
+    /* ignore corrupt quest log */
+  }
+  return null;
+}
+
+/**
+ * Merge a quest-desk AgentEventLog snapshot into persistent camp ledger storage.
+ * Idempotent by event id — refresh / re-append of the same snapshot does not double-count.
+ */
+export function appendQuestEventLogSnapshot(snapshot: EventLogSnapshot): void {
+  if (typeof localStorage === "undefined") return;
+  const existing = readQuestLogSnapshot(localStorage) ?? {
+    runs: [],
+    proposals: [],
+    events: [],
+    eval_scores: [],
+  };
+  const merged = mergeEventLogSnapshots([existing, snapshot]);
+  const next: EventLogSnapshot = {
+    runs: existing.runs,
+    proposals: existing.proposals,
+    events: merged.events,
+    eval_scores: merged.eval_scores,
+  };
+  localStorage.setItem(
+    QUEST_LOG_STORAGE_KEY,
+    JSON.stringify({ version: 1, event_log: next }),
+  );
+}
+
 function readSnapshotsFromStorage(storage: Storage): EventLogSnapshot[] {
   const out: EventLogSnapshot[] = [];
 
@@ -114,11 +156,14 @@ function readSnapshotsFromStorage(storage: Storage): EventLogSnapshot[] {
     }
   }
 
+  const questSnap = readQuestLogSnapshot(storage);
+  if (questSnap) out.push(questSnap);
+
   return out;
 }
 
 /**
- * Derive camp streak/XP/shards from day-plan + review localStorage snapshots.
+ * Derive camp streak/XP/shards from day-plan + review + quest localStorage snapshots.
  * Call only in the browser (client components / effects).
  */
 export function getCampProgressFromLocalStorage(now: Date = new Date()): CampProgressView {

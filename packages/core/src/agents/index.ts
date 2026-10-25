@@ -14,7 +14,11 @@ export type {
   PlanVariant,
   ProposalRecord,
 } from "./event-log.js";
-export { TideSteward } from "./tide-steward.js";
+export {
+  TideSteward,
+  composeLearnerBatchWhy,
+  composeBatchWhyDebug,
+} from "./tide-steward.js";
 export {
   ForgeSmith,
   assistGrade,

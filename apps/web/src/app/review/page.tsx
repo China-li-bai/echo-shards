@@ -41,13 +41,11 @@ export default async function ReviewPage({
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-10 sm:px-6">
       <div className="max-w-2xl">
         <p className="text-sm font-medium tracking-[0.16em] text-primary uppercase">
-          Tide Steward · Forge Smith · {ASPECT_LABEL[aspect]}
+          潮汐 · {ASPECT_LABEL[aspect]}
         </p>
         <h1 className="font-display mt-2 text-4xl sm:text-5xl">{HEADLINE[aspect]}</h1>
         <p className="mt-3 text-muted-foreground">
-          形 / 义 / 音文字分轨。音界本阶段只练文字 IPA，不评分音频。Forge Smith
-          只建议等级；你确认后 Tide Steward 才调用 TideScheduler.rate。支持从 /day
-          接受提案后打开对应批次。
+          一轮只练一个面向。对照后确认等级，进度与下次潮汐时间会显示出来（只读）。
         </p>
       </div>
       <Suspense fallback={<p className="text-muted-foreground">加载复习…</p>}>

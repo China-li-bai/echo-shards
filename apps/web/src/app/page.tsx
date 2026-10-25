@@ -13,15 +13,14 @@ export default function HomePage() {
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-4 py-10 sm:px-6">
       <section className="max-w-3xl">
         <p className="text-sm font-medium tracking-[0.18em] text-primary uppercase">
-          Text first · no ASR
+          营地 · 学徒日课
         </p>
         <h1 className="font-display mt-3 text-5xl leading-tight text-balance sm:text-6xl">
           言灵残片
         </h1>
         <p className="mt-2 text-lg text-muted-foreground">Echo Shards</p>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed">
-          这一轮只练「想得起来」。形 / 义 / 音文字分轨，评分进 TideScheduler，下次到期由
-          ts-fsrs 决定。会说，留给交易所的信息差：学生必须自己把关键信息问出来。
+          今天只练「想得起来」：先认词、拼词，再去市集把关键信息问出来。一步一步走完今日轨道就好。
         </p>
       </section>
 
@@ -34,15 +33,14 @@ export default function HomePage() {
                 <Badge className="realm-badge">今日轨道</Badge>
                 <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
                   <span className="realm-dot" aria-hidden />
-                  形界 · due 只读
+                  形界优先
                 </span>
               </div>
               <CardTitle className="font-display text-3xl text-balance">
-                日课提案 → 接受 → 潮汐
+                日课 → 接受 → 潮汐 → 交易所
               </CardTitle>
               <CardDescription className="max-w-xl text-base leading-relaxed">
-                Curriculum Director 只提案；你点接受后才开 Tide Steward。LLM 不改 due，语音 /
-                公网继续延后。
+                先接今日提案，再练一轮拼写，最后去市集把价格和时间问出来。
               </CardDescription>
             </div>
             <div className="flex shrink-0 flex-col gap-2 sm:items-end">
@@ -50,13 +48,13 @@ export default function HomePage() {
                 href="/day"
                 className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground hover:opacity-90"
               >
-                继续今日：去日课
+                开始今日：去日课
               </Link>
               <Link
                 href="/quests"
                 className="inline-flex h-9 items-center justify-center rounded-md border border-border bg-background px-3 text-sm text-foreground hover:bg-muted"
               >
-                顺路去市集问价
+                已练过？去市集问价
               </Link>
             </div>
           </CardHeader>
@@ -64,15 +62,15 @@ export default function HomePage() {
             <ol className="grid gap-2 text-sm text-muted-foreground sm:grid-cols-3">
               <li className="rounded-md bg-secondary/70 px-3 py-2">
                 <span className="font-medium text-foreground">1 · 日课</span>
-                <span className="mt-0.5 block">意图 → 2–3 提案 → 接受</span>
+                <span className="mt-0.5 block">一键接受今日提案</span>
               </li>
               <li className="rounded-md bg-secondary/70 px-3 py-2">
                 <span className="font-medium text-foreground">2 · 潮汐</span>
-                <span className="mt-0.5 block">约 5 词 · 一轮一个 aspect</span>
+                <span className="mt-0.5 block">约 5 词 · 拼写一轮</span>
               </li>
               <li className="rounded-md bg-secondary/70 px-3 py-2">
                 <span className="font-medium text-foreground">3 · 交易所</span>
-                <span className="mt-0.5 block">信息差 · must_elicit</span>
+                <span className="mt-0.5 block">用英文把关键信息问出来</span>
               </li>
             </ol>
           </CardContent>
@@ -84,9 +82,9 @@ export default function HomePage() {
         <Link href="/day" className="group">
           <Card className="h-full transition-colors group-hover:bg-secondary/60">
             <CardHeader>
-              <Badge variant="secondary">Director</Badge>
+              <Badge variant="secondary">今日</Badge>
               <CardTitle className="font-display text-2xl">日课</CardTitle>
-              <CardDescription>意图 → 2–3 提案 → 明确接受。含音界·文字变体。</CardDescription>
+              <CardDescription>接过今日提案，再进潮汐。进阶选项可改意图与词表。</CardDescription>
             </CardHeader>
             <CardContent>开始今天的闭环</CardContent>
           </Card>
@@ -94,9 +92,9 @@ export default function HomePage() {
         <Link href="/review" className="group">
           <Card className="realm-form h-full transition-colors group-hover:bg-secondary/60">
             <CardHeader>
-              <Badge variant="secondary">TOPRA · form</Badge>
+              <Badge variant="secondary">形界</Badge>
               <CardTitle className="font-display text-2xl">潮汐</CardTitle>
-              <CardDescription>约 5 词，一轮一个 aspect。看每张卡的下次 due（只读）。</CardDescription>
+              <CardDescription>约 5 词拼写。对照后看进度与下次潮汐时间。</CardDescription>
             </CardHeader>
             <CardContent>进入复习</CardContent>
           </Card>
@@ -104,11 +102,11 @@ export default function HomePage() {
         <Link href="/quests" className="group">
           <Card className="h-full transition-colors group-hover:bg-secondary/60">
             <CardHeader>
-              <Badge variant="outline">Quest · text</Badge>
+              <Badge variant="outline">市集</Badge>
               <CardTitle className="font-display text-2xl">{quest.title}</CardTitle>
               <CardDescription>{quest.goal}</CardDescription>
             </CardHeader>
-            <CardContent>打开信息差桩</CardContent>
+            <CardContent>打开信息差摊位</CardContent>
           </Card>
         </Link>
       </section>
@@ -128,10 +126,10 @@ export default function HomePage() {
         />
       </section>
 
-      <section className="grid gap-3 rounded-xl bg-primary px-5 py-5 text-primary-foreground sm:grid-cols-3">
-        <p>一轮只锁一个 aspect。形、义、音文字各有一张 FSRS 卡。</p>
-        <p>LLM 不写 due。等级 1–4 只通过 TideScheduler.rate。</p>
-        <p>SRS 卡和 Quest 跑次分表。成交看 must_elicit，不看聊得顺不顺。</p>
+      <section className="rounded-xl bg-primary px-5 py-5 text-primary-foreground">
+        <p className="max-w-2xl text-base leading-relaxed">
+          先想得起来，再问得出来。工坊里的词库与审校留给搭建者；你在营地把今日轨道走完即可。
+        </p>
       </section>
     </div>
   );

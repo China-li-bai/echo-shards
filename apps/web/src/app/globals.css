@@ -46,6 +46,12 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --color-realm-form: var(--realm-form);
+  --color-realm-form-foreground: var(--realm-form-foreground);
+  --color-realm-meaning: var(--realm-meaning);
+  --color-realm-meaning-foreground: var(--realm-meaning-foreground);
+  --color-realm-sound: var(--realm-sound);
+  --color-realm-sound-foreground: var(--realm-sound-foreground);
 }
 
 :root {
@@ -81,6 +87,14 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* 三界分铸：形冷青 · 义暖赭 · 音墨靛（只作点缀，不整页换肤） */
+  --realm-form: oklch(0.45 0.07 190);
+  --realm-form-foreground: oklch(0.98 0.01 95);
+  --realm-meaning: oklch(0.52 0.09 55);
+  --realm-meaning-foreground: oklch(0.98 0.01 90);
+  --realm-sound: oklch(0.38 0.06 270);
+  --realm-sound-foreground: oklch(0.97 0.01 95);
 }
 
 .dark {
@@ -136,4 +150,36 @@
 .font-display {
   font-family: Fraunces, "Liberation Serif", "Noto Serif", "WenQuanYi Micro Hei", "Droid Sans Fallback", serif;
   font-weight: 600;
+}
+
+
+/* Realm accents: left rail + badge/progress hooks */
+.realm-form {
+  --realm: var(--realm-form);
+  --realm-foreground: var(--realm-form-foreground);
+  border-left: 3px solid var(--realm-form);
+}
+.realm-meaning {
+  --realm: var(--realm-meaning);
+  --realm-foreground: var(--realm-meaning-foreground);
+  border-left: 3px solid var(--realm-meaning);
+}
+.realm-sound {
+  --realm: var(--realm-sound);
+  --realm-foreground: var(--realm-sound-foreground);
+  border-left: 3px solid var(--realm-sound);
+}
+.realm-dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: var(--realm, var(--primary));
+}
+.realm-form .realm-dot { background: var(--realm-form); }
+.realm-meaning .realm-dot { background: var(--realm-meaning); }
+.realm-sound .realm-dot { background: var(--realm-sound); }
+.realm-badge {
+  background: color-mix(in oklch, var(--realm, var(--primary)) 18%, transparent);
+  color: var(--realm, var(--primary));
 }

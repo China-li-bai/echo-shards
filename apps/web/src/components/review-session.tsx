@@ -17,6 +17,8 @@ import {
   TideScheduler,
   TideSteward,
   TOPRA_ASPECTS,
+  composeLearnerBatchWhy,
+  composeBatchWhyDebug,
   type Aspect,
   type EventLogSnapshot,
   type Grade,
@@ -24,6 +26,7 @@ import {
 import { suggestAspectGrade, type AspectReveal } from "@/app/review/actions";
 import type { PoolId, ReviewPool } from "@/lib/content";
 import { DAY_PLAN_KEY, type AcceptedDayPlan } from "@/components/day-desk";
+import { isLearnerDebug } from "@/lib/learner-debug";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -125,6 +128,12 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   const [busy, setBusy] = useState(false);
   const [traceVersion, setTraceVersion] = useState(0);
   const [dayNote, setDayNote] = useState<string | null>(null);
+  const [showDebug, setShowDebug] = useState(false);
+  const [freshGain, setFreshGain] = useState<string | null>(null);
+
+  useEffect(() => {
+    setShowDebug(isLearnerDebug());
+  }, []);
 
   const filteredPrompts = useMemo(() => {
     if (!pool) return [];
@@ -254,6 +263,9 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       }
     }
 
+    // Normalize learner why (migrates older localStorage copy that still had due/queue jargon).
+    why = composeLearnerBatchWhy(aspect, filteredPrompts.length || 1);
+
     const steward = new TideSteward(tide, log);
     const snapshot: SavedRound = {
       version: 2,
@@ -335,6 +347,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
         });
       }
       setLastDue(due);
+      setFreshGain(`形界进度已记 · +${grade * 10} XP · 下次潮汐 ${due}`);
       setTraceVersion((value) => value + 1);
       if (done) {
         setPhase("summary");
@@ -384,13 +397,17 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   }
 
   if (!engine) {
-    return <p className="text-muted-foreground">正在把卡放上 TideScheduler…</p>;
+    return <p className="text-muted-foreground">正在准备这一潮…</p>;
   }
 
   const prompt = filteredPrompts[Math.min(index, filteredPrompts.length - 1)]!;
   const runs = engine.log.runs.slice(-6);
   const titleText =
     aspect === "form" ? prompt.gloss_zh : prompt.orthography_hint ?? prompt.cloze;
+  const cardDue = engine.tide.getCard(prompt.card_id)?.review.due;
+  const cardDueLabel = cardDue
+    ? `${formatDueShanghai(cardDue)}（只读 · Asia/Shanghai）`
+    : "尚未排期";
 
   return (
     <div className="flex flex-col gap-6">
@@ -415,7 +432,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
           </Button>
         </div>
         <p className="text-sm text-muted-foreground">
-          {ASPECT_LABEL[aspect]} · retention {engine.tide.requestRetention}
+          {ASPECT_LABEL[aspect]} · 本潮 {filteredPrompts.length} 词
         </p>
       </div>
       {dayNote ? <p className="text-sm text-primary">{dayNote}</p> : null}
@@ -451,8 +468,13 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                 写出文字音标（IPA）。本阶段不评分音频；对照来自已审校 phonetic_text。
               </p>
             )}
-            {lastDue ? (
-              <p className="text-sm text-muted-foreground">上一张下次 due：{lastDue}（Asia/Shanghai）</p>
+            {lastDue && phase === "answer" ? (
+              <p className="text-sm text-muted-foreground">上一张下次潮汐：{lastDue}（Asia/Shanghai）</p>
+            ) : null}
+            {freshGain ? (
+              <p role="status" className="rounded-lg border border-primary/30 bg-secondary/70 px-3 py-2 text-sm">
+                {freshGain}
+              </p>
             ) : null}
 
             {phase === "answer" ? (
@@ -514,8 +536,20 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                     <p className="text-muted-foreground">{reveal.example_sentence_zh}</p>
                   ) : null}
                 </div>
+                <div className="rounded-lg border border-border/80 bg-secondary/50 px-3 py-2 text-sm">
+                  <p className="font-medium text-foreground">
+                    {ASPECT_LABEL[aspect]} {Math.min(index + 1, filteredPrompts.length)}/
+                    {filteredPrompts.length}
+                  </p>
+                  <p className="mt-1 text-muted-foreground">
+                    本卡下次潮汐：{cardDueLabel}
+                  </p>
+                  {lastDue ? (
+                    <p className="mt-1 text-muted-foreground">上一张下次潮汐：{lastDue}</p>
+                  ) : null}
+                </div>
                 <p className="text-sm text-muted-foreground">
-                  建议分来自 Forge Smith；确认后的等级才进入 TideScheduler.rate。
+                  对照仅供参考；你确认的等级才会记入进度。下次潮汐时间只读显示，不会被改写。
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-4" role="group" aria-label="评分">
                   {GRADES.map((grade) => {
@@ -542,28 +576,34 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
           </CardContent>
         </Card>
       ) : (
-        <Summary engine={engine} lastDue={lastDue} onReset={reset} />
+        <Summary engine={engine} lastDue={lastDue} onReset={reset} showDebug={showDebug} />
       )}
 
-      <Card size="sm">
-        <CardHeader>
-          <CardTitle>调度记录</CardTitle>
-          <CardDescription>
-            Tide Steward 只调用 rate。retrieval_grade 写入 learning_events。
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <ul className="flex flex-col gap-1 font-mono text-xs" data-trace={traceVersion}>
-            {runs.map((run) => (
-              <li key={run.id} className="flex flex-wrap gap-x-3">
-                <span>{run.agent}</span>
-                <span>{run.tools.join(", ")}</span>
-                <span className="text-muted-foreground">{run.status}</span>
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+      {showDebug ? (
+        <Card size="sm">
+          <CardHeader>
+            <Badge variant="outline">debug</Badge>
+            <CardTitle>调度记录</CardTitle>
+            <CardDescription>
+              Tide Steward 只调用 rate。retrieval_grade 写入 learning_events。
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-3">
+            <p className="text-sm text-muted-foreground">
+              {composeBatchWhyDebug(aspect, filteredPrompts.length || 1)}
+            </p>
+            <ul className="flex flex-col gap-1 font-mono text-xs" data-trace={traceVersion}>
+              {runs.map((run) => (
+                <li key={run.id} className="flex flex-wrap gap-x-3">
+                  <span>{run.agent}</span>
+                  <span>{run.tools.join(", ")}</span>
+                  <span className="text-muted-foreground">{run.status}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      ) : null}
     </div>
   );
 }
@@ -572,20 +612,23 @@ function Summary({
   engine,
   lastDue,
   onReset,
+  showDebug,
 }: {
   engine: Engine;
   lastDue: string | null;
   onReset: () => void;
+  showDebug: boolean;
 }) {
   const cards = engine.tide.allCards();
+  const aspectLabel = ASPECT_LABEL[engine.aspect];
   return (
     <div className="flex flex-col gap-4">
       <Card>
         <CardHeader>
           <CardTitle className="font-display text-3xl">这一潮过去了</CardTitle>
           <CardDescription>
-            {lastDue ? `最后一张 due ${lastDue}。` : ""}
-            其他 aspect 的卡还在，reps 仍是 0。语音不评分。
+            {lastDue ? `最后一张下次潮汐 ${lastDue}。` : ""}
+            {aspectLabel}这一潮走完了；可以去交易所把词用出来。
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-wrap gap-2">
@@ -612,34 +655,37 @@ function Summary({
           </Button>
         </CardContent>
       </Card>
-      {TOPRA_ASPECTS.map((track) => (
-        <Card key={track} size="sm">
-          <CardHeader>
-            <CardTitle>{ASPECT_LABEL[track]}</CardTitle>
-            <CardDescription>
-              {track === engine.aspect ? "本轮评过" : "已入队，未进入本批"}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ul className="flex flex-col gap-2">
-              {cards
-                .filter((card) => card.aspect === track)
-                .map((card) => (
-                  <li
-                    key={card.id}
-                    className="flex flex-col gap-0.5 border-b border-border/70 pb-2 last:border-0 sm:flex-row sm:items-baseline sm:justify-between"
-                  >
-                    <span className="font-medium">{card.lexeme_id}</span>
-                    <span className="text-sm text-muted-foreground">
-                      {STATE_LABEL[card.review.state] ?? card.review.state} · reps {card.review.reps} ·
-                      due {formatDueShanghai(card.review.due)}
-                    </span>
-                  </li>
-                ))}
-            </ul>
-          </CardContent>
-        </Card>
-      ))}
+      {showDebug
+        ? TOPRA_ASPECTS.map((track) => (
+            <Card key={track} size="sm">
+              <CardHeader>
+                <Badge variant="outline">debug</Badge>
+                <CardTitle>{ASPECT_LABEL[track]}</CardTitle>
+                <CardDescription>
+                  {track === engine.aspect ? "本轮评过" : "已入队，未进入本批"}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="flex flex-col gap-2">
+                  {cards
+                    .filter((card) => card.aspect === track)
+                    .map((card) => (
+                      <li
+                        key={card.id}
+                        className="flex flex-col gap-0.5 border-b border-border/70 pb-2 last:border-0 sm:flex-row sm:items-baseline sm:justify-between"
+                      >
+                        <span className="font-medium">{card.lexeme_id}</span>
+                        <span className="text-sm text-muted-foreground">
+                          {STATE_LABEL[card.review.state] ?? card.review.state} · reps {card.review.reps} ·
+                          due {formatDueShanghai(card.review.due)}
+                        </span>
+                      </li>
+                    ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))
+        : null}
     </div>
   );
 }

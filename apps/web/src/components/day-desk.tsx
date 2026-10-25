@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   AgentEventLog,
@@ -11,12 +11,15 @@ import {
   type ProposalRecord,
 } from "@echo-shards/core";
 import type { DayLexemeOption } from "@/lib/content";
+import { isLearnerDebug } from "@/lib/learner-debug";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 
 const DAY_PLAN_KEY = "echo-shards.day-plan.v1";
+const DEFAULT_INTENT = "今天练拼写，顺带去市集把词问出来";
+const DEFAULT_QUEST_ID = "echo-bazaar-info-gap-01";
 
 export interface AcceptedDayPlan {
   version: 1;
@@ -30,14 +33,20 @@ export interface AcceptedDayPlan {
 
 export function DayDesk({ options }: { options: DayLexemeOption[] }) {
   const router = useRouter();
-  const [intent, setIntent] = useState("今天练拼写，顺带去市集把词问出来");
+  const [intent, setIntent] = useState(DEFAULT_INTENT);
   const [selected, setSelected] = useState<string[]>(() =>
     options.filter((row) => row.source === "seed").slice(0, 5).map((row) => row.id),
   );
   const [proposal, setProposal] = useState<ProposalRecord | null>(null);
   const [log] = useState(() => new AgentEventLog());
   const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [showDebug, setShowDebug] = useState(false);
   const dayId = useMemo(() => dayIdShanghai(), []);
+
+  useEffect(() => {
+    setShowDebug(isLearnerDebug());
+  }, []);
 
   function toggle(id: string) {
     setSelected((prev) => {
@@ -47,27 +56,54 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
     });
   }
 
+  function buildProposal(lexemeIds: string[], nextIntent: string): ProposalRecord {
+    log.runs.length = 0;
+    log.proposals.length = 0;
+    log.events.length = 0;
+    log.evalScores.length = 0;
+    const director = new CurriculumDirector(log);
+    const phoneticReady = options
+      .filter((row) => lexemeIds.includes(row.id))
+      .every((row) => Boolean(row.phonetic_text?.trim()));
+    return director.proposeDayPlan({
+      lexemeIds,
+      intent: nextIntent,
+      questId: DEFAULT_QUEST_ID,
+      includePhonology: phoneticReady,
+    });
+  }
+
   function propose() {
     setError(null);
     try {
-      log.runs.length = 0;
-      log.proposals.length = 0;
-      log.events.length = 0;
-      log.evalScores.length = 0;
-      const director = new CurriculumDirector(log);
-      const phoneticReady = options
-        .filter((row) => selected.includes(row.id))
-        .every((row) => Boolean(row.phonetic_text?.trim()));
-      const next = director.proposeDayPlan({
-        lexemeIds: selected,
-        intent,
-        questId: "echo-bazaar-info-gap-01",
-        includePhonology: phoneticReady,
-      });
+      const next = buildProposal(selected, intent);
       setProposal(next);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "提案失败");
     }
+  }
+
+  function persistAndGo(proposalRecord: ProposalRecord, variant: PlanVariant) {
+    const saved: AcceptedDayPlan = {
+      version: 1,
+      day_id: proposalRecord.day_id,
+      intent: proposalRecord.intent ?? intent,
+      proposal_id: proposalRecord.id,
+      variant,
+      accepted_at: new Date().toISOString(),
+      event_log: log.snapshot(),
+    };
+    localStorage.setItem(DAY_PLAN_KEY, JSON.stringify(saved));
+    const params = new URLSearchParams({
+      aspect: variant.aspect,
+      from: "day",
+      variant: variant.id,
+    });
+    if (variant.include_quest && variant.quest_id) {
+      params.set("quest", variant.quest_id);
+    }
+    params.set("ids", variant.lexeme_ids.join(","));
+    router.push(`/review?${params.toString()}`);
   }
 
   function accept(variantId: string) {
@@ -76,28 +112,42 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
     try {
       const director = new CurriculumDirector(log);
       const variant = director.accept(proposal.id, variantId);
-      const saved: AcceptedDayPlan = {
-        version: 1,
-        day_id: proposal.day_id,
-        intent: proposal.intent ?? intent,
-        proposal_id: proposal.id,
-        variant,
-        accepted_at: new Date().toISOString(),
-        event_log: log.snapshot(),
-      };
-      localStorage.setItem(DAY_PLAN_KEY, JSON.stringify(saved));
-      const params = new URLSearchParams({
-        aspect: variant.aspect,
-        from: "day",
-        variant: variant.id,
-      });
-      if (variant.include_quest && variant.quest_id) {
-        params.set("quest", variant.quest_id);
-      }
-      params.set("ids", variant.lexeme_ids.join(","));
-      router.push(`/review?${params.toString()}`);
+      persistAndGo(proposal, variant);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "接受失败");
+    }
+  }
+
+  /** Default path: propose + accept form+quest (or form) in one click. */
+  function acceptTodayOneClick() {
+    setError(null);
+    setBusy(true);
+    try {
+      const ids =
+        selected.length > 0
+          ? selected
+          : options.filter((row) => row.source === "seed").slice(0, 5).map((row) => row.id);
+      if (ids.length === 0) {
+        setError("今天还没有可练的词");
+        return;
+      }
+      const next = buildProposal(ids, intent.trim() || DEFAULT_INTENT);
+      setProposal(next);
+      const preferred =
+        next.variants.find((row) => row.id === "v-form-quest") ??
+        next.variants.find((row) => row.id === "v-form") ??
+        next.variants[0];
+      if (!preferred) {
+        setError("没有可用提案");
+        return;
+      }
+      const director = new CurriculumDirector(log);
+      const variant = director.accept(next.id, preferred.id);
+      persistAndGo(next, variant);
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "接受失败");
+    } finally {
+      setBusy(false);
     }
   }
 
@@ -106,51 +156,70 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
       <Card>
         <CardHeader>
           <div className="flex flex-wrap gap-2">
-            <Badge variant="secondary">dayId · Asia/Shanghai</Badge>
+            <Badge variant="secondary">今日 · Asia/Shanghai</Badge>
             <Badge variant="outline">{dayId}</Badge>
-            <Badge variant="outline">load ≤ 5 · 单 aspect</Badge>
           </div>
-          <CardTitle className="font-display text-3xl">今天想练什么</CardTitle>
+          <CardTitle className="font-display text-3xl">接过今日提案</CardTitle>
           <CardDescription>
-            Curriculum Director 只提案，不自动开潮。接受后才进入 Tide Steward / Forge Smith。
+            默认走形界拼写，并带上市集 Quest。点一次就能进潮汐。
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <label htmlFor="intent" className="text-sm font-medium">
-            意图
-          </label>
-          <Textarea
-            id="intent"
-            value={intent}
-            onChange={(event) => setIntent(event.target.value)}
-            rows={2}
-            placeholder="例如：今天练拼写，顺带去市集把词问出来"
-          />
-          <div>
-            <p className="mb-2 text-sm font-medium">词表（最多 5）· 已选 {selected.length}</p>
-            <div className="flex flex-wrap gap-2">
-              {options.map((row) => {
-                const on = selected.includes(row.id);
-                return (
-                  <Button
-                    key={row.id}
-                    type="button"
-                    size="sm"
-                    variant={on ? "default" : "outline"}
-                    onClick={() => toggle(row.id)}
-                  >
-                    {row.orthography}
-                    <span className="ml-1 opacity-70">{row.source}</span>
-                  </Button>
-                );
-              })}
+          <Button
+            type="button"
+            className="h-11! w-full sm:w-auto sm:min-w-[14rem]"
+            disabled={busy || (selected.length === 0 && options.length === 0)}
+            onClick={acceptTodayOneClick}
+          >
+            {busy ? "正在接过…" : "一键接受今日提案"}
+          </Button>
+          <p className="text-sm text-muted-foreground">
+            将带你进入潮汐拼写；练完可去交易所问价。需要改意图或词表时，展开下方进阶选项。
+          </p>
+
+          <details className="rounded-lg border border-border bg-secondary/40 px-3 py-2">
+            <summary className="cursor-pointer list-none text-sm font-medium [&::-webkit-details-marker]:hidden">
+              进阶：改意图与词表 · 已选 {selected.length}
+            </summary>
+            <div className="mt-3 flex flex-col gap-4">
+              <label htmlFor="intent" className="text-sm font-medium">
+                意图
+              </label>
+              <Textarea
+                id="intent"
+                value={intent}
+                onChange={(event) => setIntent(event.target.value)}
+                rows={2}
+                placeholder="例如：今天练拼写，顺带去市集把词问出来"
+              />
+              <div>
+                <p className="mb-2 text-sm font-medium">词表（最多 5）</p>
+                <div className="flex flex-wrap gap-2">
+                  {options.map((row) => {
+                    const on = selected.includes(row.id);
+                    return (
+                      <Button
+                        key={row.id}
+                        type="button"
+                        size="sm"
+                        variant={on ? "default" : "outline"}
+                        onClick={() => toggle(row.id)}
+                      >
+                        {row.orthography}
+                        <span className="ml-1 opacity-70">{row.source}</span>
+                      </Button>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Button type="button" variant="outline" onClick={propose} disabled={selected.length === 0}>
+                  生成 2–3 个提案再选
+                </Button>
+              </div>
             </div>
-          </div>
-          <div>
-            <Button type="button" onClick={propose} disabled={selected.length === 0}>
-              生成 2–3 个提案
-            </Button>
-          </div>
+          </details>
+
           {error ? (
             <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive" role="alert">
               {error}
@@ -175,7 +244,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
               </CardHeader>
               <CardContent className="mt-auto">
                 <Button type="button" className="w-full" onClick={() => accept(variant.id)}>
-                  明确接受
+                  接受这一条
                 </Button>
               </CardContent>
             </Card>
@@ -183,13 +252,13 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
         </div>
       ) : null}
 
-      {proposal ? (
+      {proposal && showDebug ? (
         <Card size="sm">
           <CardHeader>
+            <Badge variant="outline">debug</Badge>
             <CardTitle>写入 AgentEventLog</CardTitle>
             <CardDescription>
-              session_proposals + learning_events（intent / proposal_accepted）。无托管
-              Supabase。
+              session_proposals + learning_events（intent / proposal_accepted）。
             </CardDescription>
           </CardHeader>
           <CardContent>

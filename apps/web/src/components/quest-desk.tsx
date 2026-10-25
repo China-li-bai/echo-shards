@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AgentEventLog,
   EchoBroker,
@@ -10,6 +10,8 @@ import {
   type Quest,
 } from "@echo-shards/core";
 import type { QuestListItem } from "@/lib/content";
+import { isLearnerDebug } from "@/lib/learner-debug";
+import { appendQuestEventLogSnapshot } from "@/lib/camp-progress-local";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -34,6 +36,12 @@ export function QuestDesk({
   const [trace, setTrace] = useState(0);
   const [abandoned, setAbandoned] = useState(false);
   const [nudge, setNudge] = useState(() => composeAdaptTurn(quest, emptyHits(quest), 0));
+  const [showDebug, setShowDebug] = useState(false);
+  const [freshGain, setFreshGain] = useState<string | null>(null);
+
+  useEffect(() => {
+    setShowDebug(isLearnerDebug());
+  }, []);
 
   function submitTurn(event: React.FormEvent) {
     event.preventDefault();
@@ -47,12 +55,19 @@ export function QuestDesk({
     setHits(nextHits);
     setNudge(broker.adaptTurn(quest, nextHits, nextTurns.length));
     setDeal(null);
+    setFreshGain(null);
     setTrace((value) => value + 1);
   }
 
   function closeDeal() {
+    if (deal?.success || abandoned) return;
     const result = new EchoBroker(log).finalizeDeal(quest, hits, turns.length);
     setDeal(result);
+    // Persist broker events so camp ledger can derive shards/XP after refresh.
+    appendQuestEventLogSnapshot(log.snapshot());
+    if (result.success) {
+      setFreshGain("成交亮起 · 残片 +1 · XP +50");
+    }
     setTrace((value) => value + 1);
   }
 
@@ -70,6 +85,7 @@ export function QuestDesk({
     setNudge(composeAdaptTurn(quest, resetHits, 0));
     setDeal(null);
     setAbandoned(false);
+    setFreshGain(null);
     log.runs.length = 0;
     log.events.length = 0;
     setTrace((value) => value + 1);
@@ -80,7 +96,7 @@ export function QuestDesk({
       <Card size="sm">
         <CardHeader>
           <CardTitle>任务目录</CardTitle>
-          <CardDescription>静态 YAML + content/quests/generated JSON（draftQuest）。</CardDescription>
+          <CardDescription>选一个摊位，用英文把该问的问出来。</CardDescription>
         </CardHeader>
         <CardContent>
           <ul className="flex flex-col gap-2">
@@ -98,23 +114,28 @@ export function QuestDesk({
         </CardContent>
       </Card>
 
-      <div className="grid gap-3 md:grid-cols-2">
+      <Card size="sm">
+        <CardHeader>
+          <CardTitle>你知道</CardTitle>
+          <CardDescription>{quest.roles.student}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="list-disc space-y-1 pl-4">
+            {quest.student_knows.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <p className="mt-3 text-sm text-muted-foreground">
+            摊主手里还有你不知道的信息——用英文把它们问出来。
+          </p>
+        </CardContent>
+      </Card>
+
+      {showDebug ? (
         <Card size="sm">
           <CardHeader>
-            <CardTitle>你知道</CardTitle>
-            <CardDescription>{quest.roles.student}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ul className="list-disc space-y-1 pl-4">
-              {quest.student_knows.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
-        <Card size="sm">
-          <CardHeader>
-            <CardTitle>摊主知道</CardTitle>
+            <Badge variant="outline">debug</Badge>
+            <CardTitle>摊主知道（仅调试）</CardTitle>
             <CardDescription>{quest.roles.npc}</CardDescription>
           </CardHeader>
           <CardContent>
@@ -125,7 +146,7 @@ export function QuestDesk({
             </ul>
           </CardContent>
         </Card>
-      </div>
+      ) : null}
 
       <Card>
         <CardHeader>
@@ -138,8 +159,7 @@ export function QuestDesk({
           </div>
           <CardTitle className="font-display text-2xl">必须问出来</CardTitle>
           <CardDescription>
-            Echo Broker 只用英文词干勾选 must_elicit。纯中文过不了关。Quest 跑次不写 SRS
-            卡。adaptTurn 在 miss 时给出确定性提示。
+            用英文把下面这些信息问清。提示会指向下一句该问什么。
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -160,7 +180,7 @@ export function QuestDesk({
                   {hit.item}
                   {hit.tokens.length > 0 ? (
                     <span className="mt-0.5 block text-xs text-muted-foreground">
-                      关键词 {hit.tokens.join(", ")}
+                      可试关键词 {hit.tokens.join(", ")}
                     </span>
                   ) : null}
                 </span>
@@ -169,7 +189,7 @@ export function QuestDesk({
           </ul>
 
           <div className="rounded-lg bg-muted px-3 py-2 text-sm">
-            <p className="font-medium">经纪人提示 · adaptTurn</p>
+            <p className="font-medium">经纪人提示</p>
             <p className="text-muted-foreground">{nudge}</p>
           </div>
 
@@ -192,7 +212,7 @@ export function QuestDesk({
               <Button
                 type="button"
                 variant="outline"
-                disabled={turns.length === 0 || abandoned}
+                disabled={turns.length === 0 || abandoned || Boolean(deal?.success)}
                 onClick={closeDeal}
               >
                 请求成交
@@ -218,7 +238,7 @@ export function QuestDesk({
 
           {abandoned ? (
             <p role="status" className="rounded-lg bg-muted px-3 py-2 text-sm">
-              已放弃 · learning_events.abandon
+              已放弃。想再试一次可以点清空。
             </p>
           ) : null}
 
@@ -234,24 +254,33 @@ export function QuestDesk({
               {deal.success ? "成交" : "未成交"} · {deal.reason}
             </p>
           ) : null}
+
+          {freshGain ? (
+            <p role="status" className="rounded-lg border border-primary/30 bg-secondary/70 px-3 py-2 text-sm">
+              {freshGain}
+            </p>
+          ) : null}
         </CardContent>
       </Card>
 
-      <Card size="sm">
-        <CardHeader>
-          <CardTitle>评分口径 · 事件</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-3" data-trace={trace}>
-          <pre className="whitespace-pre-wrap text-sm text-muted-foreground">{quest.rubric}</pre>
-          <ul className="font-mono text-xs">
-            {log.events.slice(-8).map((event) => (
-              <li key={event.id}>
-                {event.event_type} · {String(event.payload.item ?? event.payload.reason ?? "")}
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+      {showDebug ? (
+        <Card size="sm">
+          <CardHeader>
+            <Badge variant="outline">debug</Badge>
+            <CardTitle>评分口径 · 事件</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-3" data-trace={trace}>
+            <pre className="whitespace-pre-wrap text-sm text-muted-foreground">{quest.rubric}</pre>
+            <ul className="font-mono text-xs">
+              {log.events.slice(-8).map((event) => (
+                <li key={event.id}>
+                  {event.event_type} · {String(event.payload.item ?? event.payload.reason ?? "")}
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      ) : null}
     </div>
   );
 }
