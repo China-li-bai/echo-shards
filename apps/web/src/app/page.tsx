@@ -1,25 +1,13 @@
 import Link from "next/link";
+import { CampLedger } from "@/components/camp-ledger";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { getCampProgress, getFloorSummary, getQuest } from "@/lib/content";
+import { getFloorSummary, getQuest } from "@/lib/content";
 
 export default function HomePage() {
   const floor = getFloorSummary();
   const quest = getQuest();
-  const progress = getCampProgress();
   const { counts, meta } = floor;
-  const stats = [
-    { label: "口语地板 lemmas", value: counts.lemmas, note: "NGSL-Spoken 1.2" },
-    { label: "义项已就绪", value: counts.ready, note: "含音标、中文义、例句" },
-    { label: "待审校", value: counts.pending, note: "不编造 gloss" },
-    { label: "词形变体", value: counts.forms, note: "屈折 / 拼写" },
-  ];
-  const camp = [
-    { label: "连续天数", value: progress.streak_days, note: "Asia/Shanghai · 事件推导" },
-    { label: "会话", value: progress.session_count, note: "session_end 事件" },
-    { label: "XP", value: progress.xp, note: "retrieval + quest" },
-    { label: "残片 shards", value: progress.shards, note: "001 progress 字段" },
-  ];
 
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-4 py-10 sm:px-6">
@@ -37,79 +25,80 @@ export default function HomePage() {
         </p>
       </section>
 
+      {/* 今日轨道：唯一主路径 */}
       <section>
-        <div className="mb-3 flex flex-wrap items-center gap-2">
-          <Badge variant="secondary">营地进度</Badge>
-          <span className="text-sm text-muted-foreground">
-            营地等级 {progress.camp_level} · 来自 learning_events / eval（.data 或占位 0）
-          </span>
-        </div>
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-          {camp.map((stat) => (
-            <Card key={stat.label} size="sm">
-              <CardHeader>
-                <CardDescription>{stat.label}</CardDescription>
-                <CardTitle className="font-display text-3xl tabular-nums">{stat.value}</CardTitle>
-              </CardHeader>
-              <CardContent className="text-muted-foreground">{stat.note}</CardContent>
-            </Card>
-          ))}
-        </div>
+        <Card className="realm-form overflow-hidden border-primary/25 bg-card/90">
+          <CardHeader className="gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div className="space-y-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge className="realm-badge">今日轨道</Badge>
+                <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <span className="realm-dot" aria-hidden />
+                  形界 · due 只读
+                </span>
+              </div>
+              <CardTitle className="font-display text-3xl text-balance">
+                日课提案 → 接受 → 潮汐
+              </CardTitle>
+              <CardDescription className="max-w-xl text-base leading-relaxed">
+                Curriculum Director 只提案；你点接受后才开 Tide Steward。LLM 不改 due，语音 /
+                公网继续延后。
+              </CardDescription>
+            </div>
+            <div className="flex shrink-0 flex-col gap-2 sm:items-end">
+              <Link
+                href="/day"
+                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground hover:opacity-90"
+              >
+                继续今日：去日课
+              </Link>
+              <Link
+                href="/quests"
+                className="inline-flex h-9 items-center justify-center rounded-md border border-border bg-background px-3 text-sm text-foreground hover:bg-muted"
+              >
+                顺路去市集问价
+              </Link>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <ol className="grid gap-2 text-sm text-muted-foreground sm:grid-cols-3">
+              <li className="rounded-md bg-secondary/70 px-3 py-2">
+                <span className="font-medium text-foreground">1 · 日课</span>
+                <span className="mt-0.5 block">意图 → 2–3 提案 → 接受</span>
+              </li>
+              <li className="rounded-md bg-secondary/70 px-3 py-2">
+                <span className="font-medium text-foreground">2 · 潮汐</span>
+                <span className="mt-0.5 block">约 5 词 · 一轮一个 aspect</span>
+              </li>
+              <li className="rounded-md bg-secondary/70 px-3 py-2">
+                <span className="font-medium text-foreground">3 · 交易所</span>
+                <span className="mt-0.5 block">信息差 · must_elicit</span>
+              </li>
+            </ol>
+          </CardContent>
+        </Card>
       </section>
 
-      <section className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        {stats.map((stat) => (
-          <Card key={stat.label} size="sm">
-            <CardHeader>
-              <CardDescription>{stat.label}</CardDescription>
-              <CardTitle className="font-display text-3xl tabular-nums">{stat.value}</CardTitle>
-            </CardHeader>
-            <CardContent className="text-muted-foreground">{stat.note}</CardContent>
-          </Card>
-        ))}
-      </section>
-
-      <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {/* 三枢纽 */}
+      <section className="grid gap-4 md:grid-cols-3">
         <Link href="/day" className="group">
           <Card className="h-full transition-colors group-hover:bg-secondary/60">
             <CardHeader>
               <Badge variant="secondary">Director</Badge>
-              <CardTitle className="font-display text-2xl">日课提案</CardTitle>
+              <CardTitle className="font-display text-2xl">日课</CardTitle>
               <CardDescription>意图 → 2–3 提案 → 明确接受。含音界·文字变体。</CardDescription>
             </CardHeader>
             <CardContent>开始今天的闭环</CardContent>
           </Card>
         </Link>
         <Link href="/review" className="group">
-          <Card className="h-full transition-colors group-hover:bg-secondary/60">
+          <Card className="realm-form h-full transition-colors group-hover:bg-secondary/60">
             <CardHeader>
               <Badge variant="secondary">TOPRA · form</Badge>
-              <CardTitle className="font-display text-2xl">潮汐复习</CardTitle>
-              <CardDescription>约 5 词，一轮一个 aspect。看每张卡的下次 due。</CardDescription>
+              <CardTitle className="font-display text-2xl">潮汐</CardTitle>
+              <CardDescription>约 5 词，一轮一个 aspect。看每张卡的下次 due（只读）。</CardDescription>
             </CardHeader>
             <CardContent>进入复习</CardContent>
-          </Card>
-        </Link>
-        <Link href="/review?aspect=phonology_text" className="group">
-          <Card className="h-full transition-colors group-hover:bg-secondary/60">
-            <CardHeader>
-              <Badge variant="secondary">TOPRA · phonology_text</Badge>
-              <CardTitle className="font-display text-2xl">音界·文字</CardTitle>
-              <CardDescription>看英文词写 IPA。无 ASR / TTS；不评分音频。</CardDescription>
-            </CardHeader>
-            <CardContent>进入音界文字轮</CardContent>
-          </Card>
-        </Link>
-        <Link href="/lexemes" className="group">
-          <Card className="h-full transition-colors group-hover:bg-secondary/60">
-            <CardHeader>
-              <Badge variant="outline">{meta.pack.license}</Badge>
-              <CardTitle className="font-display text-2xl">词库地板</CardTitle>
-              <CardDescription>
-                {meta.pack.coverage_note ?? "NGSL-Spoken 口语覆盖"}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>浏览 {counts.lemmas} 个 lemma</CardContent>
           </Card>
         </Link>
         <Link href="/quests" className="group">
@@ -122,36 +111,21 @@ export default function HomePage() {
             <CardContent>打开信息差桩</CardContent>
           </Card>
         </Link>
-        <Link href="/eval" className="group">
-          <Card className="h-full transition-colors group-hover:bg-secondary/60">
-            <CardHeader>
-              <Badge variant="outline">Eval Sentinel</Badge>
-              <CardTitle className="font-display text-2xl">营地评估</CardTitle>
-              <CardDescription>金标守卫、deal rate、短 episode 记忆。</CardDescription>
-            </CardHeader>
-            <CardContent>查看摘要</CardContent>
-          </Card>
-        </Link>
-        <Link href="/review?aspect=meaning" className="group">
-          <Card className="h-full transition-colors group-hover:bg-secondary/60">
-            <CardHeader>
-              <Badge variant="secondary">TOPRA · meaning</Badge>
-              <CardTitle className="font-display text-2xl">义界潮汐</CardTitle>
-              <CardDescription>看英文词写中文义。待审校词不会被编造 gloss。</CardDescription>
-            </CardHeader>
-            <CardContent>进入义界</CardContent>
-          </Card>
-        </Link>
-        <Link href="/enrichment" className="group">
-          <Card className="h-full transition-colors group-hover:bg-secondary/60">
-            <CardHeader>
-              <Badge variant="outline">审校队列</Badge>
-              <CardTitle className="font-display text-2xl">Enrichment</CardTitle>
-              <CardDescription>只读队列 + 合并步骤。不发明 671 条假释义。</CardDescription>
-            </CardHeader>
-            <CardContent>打开管线说明</CardContent>
-          </Card>
-        </Link>
+      </section>
+
+      {/* 营地账本：本机事件推导（非 Workers 服务端账本） */}
+      <section>
+        <CampLedger
+          floor={{
+            ready: counts.ready,
+            lemmas: counts.lemmas,
+            partial: counts.partial,
+            pending: counts.pending,
+            forms: counts.forms,
+            license: meta.pack.license,
+            coverageNote: meta.pack.coverage_note ?? "NGSL-Spoken 口语覆盖",
+          }}
+        />
       </section>
 
       <section className="grid gap-3 rounded-xl bg-primary px-5 py-5 text-primary-foreground sm:grid-cols-3">

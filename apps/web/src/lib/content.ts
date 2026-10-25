@@ -1,6 +1,5 @@
 import {
   buildPublicPrompts,
-  emptyCampProgress,
   readyLexemes,
   type Aspect,
   type CatalogLexeme,
@@ -199,12 +198,11 @@ export function getEvalSnapshot() {
 }
 
 /**
- * Camp progress from .data/ is Node-local only. Workers have no writable
- * monorepo disk — return empty progress (same as a fresh camp).
+ * Camp progress is **not** available on the Workers server (no `.data/` ledger).
+ * The home page reads day-plan / review `AgentEventLog` snapshots from
+ * localStorage via `getCampProgressFromLocalStorage` in a client component.
+ * Do not reintroduce a silent `emptyCampProgress()` here as a fake ledger.
  */
-export function getCampProgress() {
-  return emptyCampProgress();
-}
 
 export function getEnrichmentQueue(): EnrichmentQueueFile {
   return bundledEnrichmentQueue();
