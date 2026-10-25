@@ -1,13 +1,31 @@
 import Link from "next/link";
 import { CampLedger } from "@/components/camp-ledger";
+import { FormShardWall } from "@/components/form-shard-wall";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { getFloorSummary, getQuest } from "@/lib/content";
+import {
+  getDayLexemeOptions,
+  getFloorSummary,
+  getLexemeRows,
+  getQuest,
+  listQuests,
+} from "@/lib/content";
 
 export default function HomePage() {
   const floor = getFloorSummary();
   const quest = getQuest();
   const { counts, meta } = floor;
+  const labels: Record<string, string> = {};
+  for (const row of getLexemeRows()) {
+    labels[row.id] = row.lemma;
+  }
+  for (const row of getDayLexemeOptions()) {
+    labels[row.id] = row.orthography;
+  }
+  const questTargetsById: Record<string, string[]> = {};
+  for (const q of listQuests()) {
+    questTargetsById[q.id] = [...q.target_lexemes];
+  }
 
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-4 py-10 sm:px-6">
@@ -75,6 +93,11 @@ export default function HomePage() {
             </ol>
           </CardContent>
         </Card>
+      </section>
+
+      {/* 形界残片墙：轨道下 · 枢纽上；非导航项 */}
+      <section aria-label="形界残片墙">
+        <FormShardWall labels={labels} questTargetsById={questTargetsById} />
       </section>
 
       {/* 三枢纽 */}

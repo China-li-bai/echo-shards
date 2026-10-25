@@ -114,6 +114,13 @@ const quiet = checkMustElicit(quest, "你好，这个多少钱");
 if (quiet.some((hit) => hit.hit)) failures.push("Chinese-only text must not satisfy must_elicit");
 const deal = broker.finalizeDeal(quest, hits, 3);
 if (!deal.success) failures.push(deal.reason);
+{
+  const successEvt = [...log.events].reverse().find((row) => row.event_type === "quest_success");
+  const targets = successEvt?.payload?.target_lexemes;
+  if (!Array.isArray(targets) || targets.length === 0) {
+    failures.push("quest_success must carry target_lexemes for shard-wall seals");
+  }
+}
 const early = broker.finalizeDeal(quest, quiet, 1);
 if (early.success) failures.push("finalizeDeal succeeded without must_elicit");
 

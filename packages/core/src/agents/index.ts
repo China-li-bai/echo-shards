@@ -50,3 +50,18 @@ export {
   upsertEpisode,
 } from "./learner-memory.js";
 export type { EpisodeKind, MemoryEpisode } from "./learner-memory.js";
+
+export {
+  SUCCESS_GRADES,
+  deriveShardWall,
+  emptyShardWall,
+  lexemeIdsFromQuestSuccess,
+} from "./shard-wall.js";
+export type {
+  DueSoonCardHint,
+  FarShoreView,
+  ShardLitView,
+  ShardSuccessDay,
+  ShardWallInput,
+  ShardWallView,
+} from "./shard-wall.js";

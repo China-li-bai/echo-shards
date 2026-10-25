@@ -27,11 +27,14 @@
     "enrichment:queue": "tsx scripts/enrichment-queue.ts",
     "enrichment:merge": "tsx scripts/enrichment-merge.ts",
     "build": "npm run build -w @echo-shards/web",
-    "check": "npm test && npm run typecheck && npm run build && npm run enrichment:validate",
+    "check": "npm test && npm run assert && npm run typecheck && npm run build && npm run enrichment:validate",
     "preview": "npm run preview -w @echo-shards/web",
     "deploy": "npm run deploy -w @echo-shards/web",
     "build:worker": "npm run build:worker -w @echo-shards/web",
-    "demo:restore": "npm run demo:restore -w @echo-shards/core"
+    "demo:restore": "npm run demo:restore -w @echo-shards/core",
+    "assert:camp": "node --import tsx scripts/assert-camp-progress-local.mjs",
+    "assert:shard-wall": "node --import tsx scripts/assert-shard-wall.mjs",
+    "assert": "npm run assert:camp && npm run assert:shard-wall"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",

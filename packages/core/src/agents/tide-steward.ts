@@ -124,6 +124,8 @@ export class TideSteward {
       card_id: cardId,
       payload: {
         grade,
+        lexeme_id: result.card.lexeme_id,
+        aspect: result.card.aspect,
         due: result.card.review.due.toISOString(),
         scheduled_days: result.card.review.scheduled_days,
         source: "TideScheduler.rate",

@@ -183,3 +183,198 @@
   background: color-mix(in oklch, var(--realm, var(--primary)) 18%, transparent);
   color: var(--realm, var(--primary));
 }
+
+/* —— 形界残片墙 (camp home) —— */
+.wall-stage {
+  min-height: 220px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 110%, oklch(0.7 0.04 220 / 0.18), transparent 70%),
+    linear-gradient(180deg, oklch(0.94 0.02 88), oklch(0.955 0.016 88));
+}
+
+.far-shore {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 56px;
+  pointer-events: none;
+}
+.far-shore-horizon {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 18px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, oklch(0.78 0.03 220), transparent);
+}
+.far-shore-glow {
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  bottom: 0;
+  height: 40px;
+  background: radial-gradient(ellipse at 50% 100%, oklch(0.7 0.05 220 / 0.25), transparent 70%);
+}
+.far-dot {
+  position: absolute;
+  bottom: 22px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: oklch(0.65 0.04 220 / 0.45);
+  box-shadow: 0 0 8px oklch(0.7 0.05 220 / 0.35);
+}
+.far-label {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: oklch(0.55 0.03 220 / 0.7);
+  white-space: nowrap;
+}
+
+.shard {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Fraunces, "Liberation Serif", "Noto Serif", serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: 1.5px solid transparent;
+  transition: transform 0.15s, box-shadow 0.2s, background 0.2s, opacity 0.25s;
+  user-select: none;
+  cursor: pointer;
+  background: transparent;
+  color: inherit;
+}
+.shard-word { line-height: 1.1; }
+.shard-aspect {
+  font-family: var(--font-sans), "Source Sans 3", sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+  opacity: 0.7;
+}
+.shard.lit {
+  background: oklch(0.97 0.02 190);
+  border-color: oklch(0.72 0.05 190);
+  color: oklch(0.32 0.05 190);
+  box-shadow:
+    0 0 0 1px oklch(0.72 0.05 190 / 0.2),
+    0 4px 14px oklch(0.45 0.07 190 / 0.12);
+}
+.shard.lit:hover { transform: translateY(-2px); }
+.shard.lit.new-today {
+  border-color: oklch(0.72 0.08 190);
+  box-shadow:
+    0 0 0 2px oklch(0.72 0.08 190 / 0.35),
+    0 0 20px oklch(0.65 0.08 190 / 0.35),
+    0 4px 14px oklch(0.45 0.07 190 / 0.15);
+  animation: shardSoftPulse 2.8s ease-in-out infinite;
+}
+.shard-new-tag {
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  font-family: var(--font-sans), "Source Sans 3", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: 2px 6px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+/* Rare：成交印但未跨日亮灯 */
+.shard.faint-seal {
+  background: oklch(0.94 0.012 88);
+  border-color: oklch(0.88 0.015 88);
+  color: oklch(0.62 0.02 80);
+  opacity: 0.85;
+}
+.shard.faint-seal:hover { background: oklch(0.93 0.014 88); }
+.shard-seal {
+  position: absolute;
+  bottom: 4px;
+  right: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: oklch(0.55 0.12 40);
+  color: white;
+  font-family: var(--font-sans), "Source Sans 3", sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  box-shadow: 0 1px 3px oklch(0.4 0.08 40 / 0.3);
+}
+@keyframes shardSoftPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 2px oklch(0.72 0.08 190 / 0.3),
+      0 0 16px oklch(0.65 0.08 190 / 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 0 3px oklch(0.72 0.08 190 / 0.45),
+      0 0 28px oklch(0.65 0.08 190 / 0.4);
+  }
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  vertical-align: -1px;
+}
+.legend-lit { background: oklch(0.72 0.05 190); }
+.legend-new {
+  background: oklch(0.72 0.08 190);
+  box-shadow: 0 0 6px oklch(0.72 0.08 190);
+}
+.legend-seal { background: oklch(0.55 0.12 40); }
+.legend-far {
+  background: oklch(0.78 0.03 220);
+  border-radius: 50%;
+}
+
+.shard-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: oklch(0.2 0.02 60 / 0.35);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 16px;
+}
+.shard-sheet {
+  background: var(--card);
+  border-radius: 16px 16px 12px 12px;
+  width: min(420px, 100%);
+  max-height: 85vh;
+  overflow: auto;
+  box-shadow: 0 20px 50px oklch(0.2 0.02 60 / 0.25);
+  padding: 20px 22px 24px;
+  animation: shardSheetIn 0.22s ease-out;
+}
+@keyframes shardSheetIn {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .shard { width: 64px; height: 64px; font-size: 13px; }
+}

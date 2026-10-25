@@ -183,7 +183,14 @@ export class EchoBroker {
     });
     this.log.recordEvent({
       event_type: result.success ? "quest_success" : "quest_fail",
-      payload: { quest_id: quest.id, turns, reason: result.reason },
+      payload: {
+        quest_id: quest.id,
+        turns,
+        reason: result.reason,
+        // Per-lexeme deal seals on the form shard wall (dual track vs tide「记得」).
+        target_lexemes: [...quest.target_lexemes],
+        lexeme_ids: [...quest.target_lexemes],
+      },
     });
     return result;
   }

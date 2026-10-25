@@ -1,6 +1,7 @@
 export * from "./models/index.js";
 export {
   cardIdFor,
+  parseCardId,
   DEFAULT_RETENTION,
   TideRestoreError,
   TideScheduler,

@@ -38,6 +38,26 @@ export function cardIdFor(userId: string, lexemeId: string, aspect: Aspect): str
   return `${userId}:${lexemeId}:${aspect}`;
 }
 
+/** Split `user:lexeme:aspect` card ids. Lexeme ids may contain `:` (joined middle). */
+export function parseCardId(
+  cardId: string,
+): { userId: string; lexemeId: string; aspect: Aspect } | null {
+  const parts = cardId.split(":");
+  if (parts.length < 3) return null;
+  const aspectRaw = parts[parts.length - 1]!;
+  if (
+    aspectRaw !== "form" &&
+    aspectRaw !== "meaning" &&
+    aspectRaw !== "phonology_text"
+  ) {
+    return null;
+  }
+  const userId = parts[0]!;
+  const lexemeId = parts.slice(1, -1).join(":");
+  if (!userId || !lexemeId) return null;
+  return { userId, lexemeId, aspect: aspectRaw };
+}
+
 export interface TideSchedulerOptions {
   /** 目标保留率；默认 0.9（合理起步，封闭测试后再调） */
   requestRetention?: number;
