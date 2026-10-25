@@ -2,9 +2,14 @@ export * from "./models/index.js";
 export {
   cardIdFor,
   DEFAULT_RETENTION,
+  TideRestoreError,
   TideScheduler,
 } from "./scheduler/TideScheduler.js";
-export type { RateResult, TideSchedulerOptions } from "./scheduler/TideScheduler.js";
+export type {
+  RateResult,
+  TideSchedulerOptions,
+  TideSnapshot,
+} from "./scheduler/TideScheduler.js";
 export * from "./providers/voice-placeholder.js";
 export * from "./agents/index.js";
 export { LOCAL_LEARNER_ID, openAspectRound, TOPRA_ASPECTS } from "./session/open-round.js";

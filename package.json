@@ -30,7 +30,8 @@
     "check": "npm test && npm run typecheck && npm run build && npm run enrichment:validate",
     "preview": "npm run preview -w @echo-shards/web",
     "deploy": "npm run deploy -w @echo-shards/web",
-    "build:worker": "npm run build:worker -w @echo-shards/web"
+    "build:worker": "npm run build:worker -w @echo-shards/web",
+    "demo:restore": "npm run demo:restore -w @echo-shards/core"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",

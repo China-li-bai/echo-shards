@@ -30,6 +30,8 @@ Models propose. `TideScheduler.rate` is the only writer of `due`, `stability`, a
 
 `assertNoScheduleFields` rejects an agent payload that carries schedule fields. `EvalSentinel` records that block. There is no `setDue`.
 
+Client `TideScheduler.snapshot()` / `restore()` (and the web review `localStorage` blob) are **not a trusted schedule authority**. `restore` re-derives card review fields by replaying `ReviewLog` grades through the same FSRS engine as `rate`; a hand-edited due/stability that disagrees with the log chain throws `TideRestoreError` and the UI starts a fresh enqueue. Server-authoritative cards remain a later milestone.
+
 ## Agents → modules → tables
 
 | Agent | Module | Tools in this slice | Writes | Tables | Forbidden |

@@ -14,7 +14,8 @@
     "demo:policy": "tsx src/demo/run-policy.ts",
     "typecheck": "tsc --noEmit",
     "demo:day": "tsx src/demo/run-day.ts",
-    "demo:eval": "tsx src/demo/run-eval.ts"
+    "demo:eval": "tsx src/demo/run-eval.ts",
+    "demo:restore": "tsx src/demo/run-restore.ts"
   },
   "dependencies": {
     "ts-fsrs": "^5.4.2",

@@ -13,6 +13,7 @@ import {
   LOCAL_LEARNER_ID,
   SchedulePolicyError,
   STATE_LABEL,
+  TideRestoreError,
   TideScheduler,
   TideSteward,
   TOPRA_ASPECTS,
@@ -66,7 +67,17 @@ function readSaved(pool: PoolId, aspect: Aspect): SavedRound | null {
   const raw = localStorage.getItem(storageKey(pool, aspect));
   if (!raw) return null;
   const parsed = JSON.parse(raw) as SavedRound;
-  if (parsed.version !== 2) return null;
+  if (parsed.version !== 2) {
+    console.warn(
+      "[echo-shards] ignoring review snapshot: unsupported version",
+      parsed?.version,
+    );
+    return null;
+  }
+  if (!parsed.tide || !Array.isArray(parsed.tide.cards) || !Array.isArray(parsed.tide.logs)) {
+    console.warn("[echo-shards] ignoring review snapshot: tide shape invalid");
+    return null;
+  }
   return parsed;
 }
 
@@ -152,15 +163,16 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
             );
           }
         }
-      } catch {
-        /* ignore bad day plan */
+      } catch (err) {
+        console.warn("[echo-shards] bad day-plan localStorage; ignoring", err);
       }
     }
 
     const saved = (() => {
       try {
         return readSaved(pool.id, aspect);
-      } catch {
+      } catch (err) {
+        console.warn("[echo-shards] bad review localStorage JSON; discarding", err);
         return null;
       }
     })();
@@ -174,6 +186,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
 
     if (savedOk && saved) {
       try {
+        // Client snapshot is untrusted; TideScheduler.restore replays logs.
         tide.restore(saved.tide);
         log.restore(saved.log);
         const complete = filteredPrompts.every((prompt) => tide.getCard(prompt.card_id));
@@ -186,7 +199,17 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
         why = saved.why;
         batchId = saved.batchId;
         questId = saved.questId ?? questId;
-      } catch {
+      } catch (err) {
+        const reason =
+          err instanceof TideRestoreError
+            ? err.message
+            : err instanceof Error
+              ? err.message
+              : String(err);
+        console.warn(
+          "[echo-shards] rejecting tainted tide snapshot; starting fresh enqueue",
+          reason,
+        );
         localStorage.removeItem(storageKey(pool.id, aspect));
         tide.restore({ cards: [], logs: [] });
         log.restore({ runs: [], proposals: [], events: [], eval_scores: [] });
