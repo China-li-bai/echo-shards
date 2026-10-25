@@ -1,38 +1,16 @@
 import type { Metadata } from "next";
-import { existsSync, readFileSync } from "node:fs";
-import { join } from "node:path";
 import Link from "next/link";
-import { findRepoRoot } from "@echo-shards/core/node";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { getFloorSummary } from "@/lib/content";
+import { getEnrichmentQueue, getFloorSummary } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Enrichment 审校",
 };
 
-interface QueueFile {
-  generated_at?: string;
-  pending_total?: number;
-  limit?: number;
-  policy?: string;
-  items?: Array<{
-    lemma: string;
-    lemma_id: string;
-    freq_rank: number | null;
-    gloss_en: string | null;
-    gloss_zh: string;
-    status: string;
-  }>;
-}
-
 export default function EnrichmentPage() {
   const floor = getFloorSummary();
-  const root = findRepoRoot();
-  const queuePath = join(root, "content/lexemes/enrichment-queue.json");
-  const queue: QueueFile | null = existsSync(queuePath)
-    ? (JSON.parse(readFileSync(queuePath, "utf8")) as QueueFile)
-    : null;
+  const queue = getEnrichmentQueue();
 
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-10 sm:px-6">

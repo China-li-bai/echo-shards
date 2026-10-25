@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
-  "description": "言灵残片 Echo Shards — text-first FSRS / TOPRA / info-gap quests",
+  "description": "\u8a00\u7075\u6b8b\u7247 Echo Shards \u2014 text-first FSRS / TOPRA / info-gap quests",
   "type": "module",
   "workspaces": [
     "packages/*",
     "apps/*"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "scripts": {
     "dev": "npm run dev -w @echo-shards/web",
@@ -27,7 +27,10 @@
     "enrichment:queue": "tsx scripts/enrichment-queue.ts",
     "enrichment:merge": "tsx scripts/enrichment-merge.ts",
     "build": "npm run build -w @echo-shards/web",
-    "check": "npm test && npm run typecheck && npm run build && npm run enrichment:validate"
+    "check": "npm test && npm run typecheck && npm run build && npm run enrichment:validate",
+    "preview": "npm run preview -w @echo-shards/web",
+    "deploy": "npm run deploy -w @echo-shards/web",
+    "build:worker": "npm run build:worker -w @echo-shards/web"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",

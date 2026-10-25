@@ -1,29 +1,24 @@
-import { readdirSync, readFileSync, existsSync } from "node:fs";
-import { join } from "node:path";
 import {
   buildPublicPrompts,
-  QuestSchema,
+  emptyCampProgress,
+  readyLexemes,
   type Aspect,
   type CatalogLexeme,
   type Lexeme,
   type PublicPrompt,
   type Quest,
-} from "@echo-shards/core";
-import {
-  emptyCampProgress,
-  type CampProgress,
-} from "@echo-shards/core";
-import {
-  findRepoRoot,
-  FileEventStore,
-  loadCatalog,
-  loadPackMeta,
-  loadQuestFromYaml,
-  loadSeedLexemes,
-  readyLexemes,
-  resolveDataDir,
   type PackMetaFile,
-} from "@echo-shards/core/node";
+} from "@echo-shards/core";
+import {
+  bundledCatalog,
+  bundledEnrichmentQueue,
+  bundledListQuests,
+  bundledPackMeta,
+  bundledQuestById,
+  bundledQuestSource,
+  bundledSeedLexemes,
+  type EnrichmentQueueFile,
+} from "./bundled-content";
 
 export type PoolId = "seed" | "ngsl";
 
@@ -74,21 +69,12 @@ export interface QuestListItem {
   target_lexemes: string[];
 }
 
-let repoRoot: string | null = null;
-let catalogCache: CatalogLexeme[] | null = null;
-
-function root(): string {
-  repoRoot ??= findRepoRoot();
-  return repoRoot;
-}
-
 function catalog(): CatalogLexeme[] {
-  catalogCache ??= loadCatalog(root());
-  return catalogCache;
+  return bundledCatalog();
 }
 
 export function getFloorSummary(): FloorSummary {
-  const meta = loadPackMeta(root());
+  const meta = bundledPackMeta();
   const rows = catalog();
   return {
     meta,
@@ -116,7 +102,7 @@ export function getLexemeRows(): LexemeRow[] {
 }
 
 export function getDayLexemeOptions(): DayLexemeOption[] {
-  const seed = loadSeedLexemes(root()).map((row) => ({
+  const seed = bundledSeedLexemes().map((row) => ({
     id: row.id,
     orthography: row.orthography,
     gloss_zh: row.gloss_zh,
@@ -143,7 +129,7 @@ export function getDayLexemeOptions(): DayLexemeOption[] {
 }
 
 export function getReviewPools(aspect: Aspect = "form"): ReviewPool[] {
-  const seed = loadSeedLexemes(root());
+  const seed = bundledSeedLexemes();
   const ngsl = readyLexemes(catalog()).slice(0, 5);
   const aspectLabel =
     aspect === "meaning" ? "义界" : aspect === "phonology_text" ? "音界·文字" : "形界";
@@ -168,52 +154,21 @@ export function getReviewPools(aspect: Aspect = "form"): ReviewPool[] {
 }
 
 export function getQuest(id = "echo-bazaar-info-gap-01"): Quest {
-  const staticPath = join(root(), "content", "quests", `${id}.yaml`);
-  if (existsSync(staticPath)) return loadQuestFromYaml(staticPath);
-  const generatedPath = join(root(), "content", "quests", "generated", `${id}.json`);
-  if (existsSync(generatedPath)) {
-    return QuestSchema.parse(JSON.parse(readFileSync(generatedPath, "utf8")));
-  }
-  return loadQuestFromYaml(
-    join(root(), "content", "quests", "echo-bazaar-info-gap-01.yaml"),
-  );
+  return bundledQuestById(id);
 }
 
 export function listQuests(): QuestListItem[] {
-  const items: QuestListItem[] = [];
-  const staticDir = join(root(), "content", "quests");
-  for (const name of readdirSync(staticDir)) {
-    if (!name.endsWith(".yaml")) continue;
-    const quest = loadQuestFromYaml(join(staticDir, name));
-    items.push({
-      id: quest.id,
-      title: quest.title,
-      goal: quest.goal,
-      source: "static",
-      target_lexemes: quest.target_lexemes,
-    });
-  }
-  const generatedDir = join(root(), "content", "quests", "generated");
-  if (existsSync(generatedDir)) {
-    for (const name of readdirSync(generatedDir)) {
-      if (!name.endsWith(".json")) continue;
-      const quest = QuestSchema.parse(
-        JSON.parse(readFileSync(join(generatedDir, name), "utf8")),
-      );
-      items.push({
-        id: quest.id,
-        title: quest.title,
-        goal: quest.goal,
-        source: "generated",
-        target_lexemes: quest.target_lexemes,
-      });
-    }
-  }
-  return items;
+  return bundledListQuests().map((quest) => ({
+    id: quest.id,
+    title: quest.title,
+    goal: quest.goal,
+    source: bundledQuestSource(quest.id) ?? "static",
+    target_lexemes: quest.target_lexemes,
+  }));
 }
 
 export function findReviewLexeme(lexemeId: string) {
-  const seed = loadSeedLexemes(root()).find((row) => row.id === lexemeId);
+  const seed = bundledSeedLexemes().find((row) => row.id === lexemeId);
   if (seed) return seed;
   return readyLexemes(catalog()).find((row) => row.id === lexemeId);
 }
@@ -243,17 +198,14 @@ export function getEvalSnapshot() {
   };
 }
 
-export function getCampProgress(): CampProgress {
-  try {
-    const store = new FileEventStore({ dataDir: resolveDataDir(root()) });
-    const fromFile = store.loadProgress();
-    if (fromFile) return fromFile;
-    const snap = store.loadSnapshot("demo-events");
-    if (snap) {
-      return store.syncProgressFrom("demo-events");
-    }
-  } catch {
-    /* no .data yet */
-  }
+/**
+ * Camp progress from .data/ is Node-local only. Workers have no writable
+ * monorepo disk — return empty progress (same as a fresh camp).
+ */
+export function getCampProgress() {
   return emptyCampProgress();
+}
+
+export function getEnrichmentQueue(): EnrichmentQueueFile {
+  return bundledEnrichmentQueue();
 }

@@ -13,3 +13,7 @@ coverage/
 uploads/
 tmp-scaffold/
 .data/
+.open-next
+.dev.vars
+apps/web/cloudflare-env.d.ts
+.wrangler

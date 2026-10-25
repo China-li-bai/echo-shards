@@ -9,8 +9,16 @@ const nextConfig: NextConfig = {
       ".js": [".ts", ".tsx", ".js", ".jsx"],
       ".mjs": [".mts", ".mjs"],
     };
+    // Bundle quest YAML as UTF-8 source strings for Workers.
+    config.module.rules.push({
+      test: /\.ya?ml$/,
+      type: "asset/source",
+    });
     return config;
   },
 };
 
 export default nextConfig;
+
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+initOpenNextCloudflareForDev();

@@ -1,18 +1,14 @@
 /**
- * 文字 Quest 加载与校验（YAML → Zod）
- * 强制信息差：must_elicit / student_knows / npc_knows 均不可空。
+ * 文字 Quest 加载与校验（YAML → Zod）via node:fs.
+ * For Workers, import YAML as a module string and use parseQuestYaml.
  */
 
 import { readFileSync } from "node:fs";
-import { parse as parseYaml } from "yaml";
-import { QuestSchema, type Quest } from "../models/types.js";
+import { parseQuestYaml, validateQuestObject } from "./parseQuest.js";
+import type { Quest } from "../models/types.js";
+
+export { parseQuestYaml, validateQuestObject };
 
 export function loadQuestFromYaml(filePath: string): Quest {
-  const raw = readFileSync(filePath, "utf8");
-  const data = parseYaml(raw);
-  return QuestSchema.parse(data);
-}
-
-export function validateQuestObject(data: unknown): Quest {
-  return QuestSchema.parse(data);
+  return parseQuestYaml(readFileSync(filePath, "utf8"));
 }

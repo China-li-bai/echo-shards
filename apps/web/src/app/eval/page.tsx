@@ -6,7 +6,7 @@ import {
 } from "@echo-shards/core";
 import { EvalPanel } from "@/components/eval-panel";
 import { getEvalSnapshot, getQuest } from "@/lib/content";
-import { findRepoRoot, loadCatalog, loadSeedLexemes } from "@echo-shards/core/node";
+import { bundledCatalog, bundledSeedLexemes } from "@/lib/bundled-content";
 
 export const metadata: Metadata = {
   title: "Eval Sentinel",
@@ -14,9 +14,8 @@ export const metadata: Metadata = {
 
 export default function EvalPage() {
   const snapshot = getEvalSnapshot();
-  const root = findRepoRoot();
-  const seed = loadSeedLexemes(root);
-  const catalog = loadCatalog(root);
+  const seed = bundledSeedLexemes();
+  const catalog = bundledCatalog();
   const quest = getQuest();
   const pending = catalog.filter((row) => row.enrichment_status === "pending");
   const pendingEmpty = pending.filter((row) => !row.gloss_zh.trim()).length;

@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "echo-shards",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-25",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  }
+  // Account id (for later deploy): d9db6dba0147bd09b161cd96735925e9
+  // Set account_id when deploying, or rely on CLOUDFLARE_ACCOUNT_ID / wrangler login.
+}
