@@ -409,35 +409,42 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
     ? `${formatDueShanghai(cardDue)}（只读 · Asia/Shanghai）`
     : "尚未排期";
 
+  const progressLabel = `${ASPECT_LABEL[aspect]} ${Math.min(index + 1, filteredPrompts.length)}/${filteredPrompts.length}`;
+
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-        <div className="flex flex-wrap gap-2">
-          {activePools.map((item) => (
-            <Button
-              key={item.id}
-              type="button"
-              variant={item.id === pool.id ? "default" : "outline"}
-              onClick={() => {
-                setError(null);
-                setEngine(null);
-                setPoolId(item.id);
-              }}
-            >
-              {item.title}
+    <div className="tide-beach flex flex-col gap-5">
+      <details className="group rounded-lg border border-border/70 bg-card/40 open:bg-card/70">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-2 px-3 py-2 text-sm text-muted-foreground [&::-webkit-details-marker]:hidden">
+          <span>本轮来源</span>
+          <span className="text-xs group-open:hidden">展开</span>
+          <span className="hidden text-xs group-open:inline">收起</span>
+        </summary>
+        <div className="space-y-3 border-t border-border/70 px-3 py-3">
+          <div className="flex flex-wrap gap-2">
+            {activePools.map((item) => (
+              <Button
+                key={item.id}
+                type="button"
+                size="sm"
+                variant={item.id === pool.id ? "default" : "outline"}
+                onClick={() => {
+                  setError(null);
+                  setEngine(null);
+                  setPoolId(item.id);
+                }}
+              >
+                {item.title}
+              </Button>
+            ))}
+            <Button type="button" size="sm" variant="outline" render={<Link href="/day" />}>
+              日课提案
             </Button>
-          ))}
-          <Button type="button" variant="outline" render={<Link href="/day" />}>
-            日课提案
-          </Button>
+          </div>
+          {dayNote ? <p className="text-sm text-primary">{dayNote}</p> : null}
+          <p className="text-sm text-muted-foreground">{pool.detail}</p>
+          <p className="text-sm text-muted-foreground">{engine.why}</p>
         </div>
-        <p className="text-sm text-muted-foreground">
-          {ASPECT_LABEL[aspect]} · 本潮 {filteredPrompts.length} 词
-        </p>
-      </div>
-      {dayNote ? <p className="text-sm text-primary">{dayNote}</p> : null}
-      <p className="max-w-2xl text-muted-foreground">{pool.detail}</p>
-      <p className="max-w-2xl text-sm">{engine.why}</p>
+      </details>
 
       {error ? (
         <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive" role="alert">
@@ -446,21 +453,18 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       ) : null}
 
       {phase !== "summary" ? (
-        <Card>
-          <CardHeader>
+        <Card className="tide-stage realm-form overflow-hidden border-primary/20">
+          <CardHeader className="gap-3 pb-3">
             <div className="flex items-center justify-between gap-3">
-              <Badge variant="secondary">
-                {ASPECT_LABEL[aspect]} · {Math.min(index + 1, filteredPrompts.length)}/
-                {filteredPrompts.length}
-              </Badge>
+              <Badge className="realm-badge">{progressLabel}</Badge>
               {prompt.cefr ? <Badge variant="outline">{prompt.cefr}</Badge> : null}
             </div>
-            <CardTitle className="font-display text-3xl">{titleText}</CardTitle>
-            <CardDescription>{prompt.prompt}</CardDescription>
+            <CardTitle className="tide-gloss text-balance">{titleText}</CardTitle>
+            <CardDescription className="text-base">{prompt.prompt}</CardDescription>
           </CardHeader>
-          <CardContent className="flex flex-col gap-4">
+          <CardContent className="flex flex-col gap-5">
             {aspect === "form" ? (
-              <p className="font-display text-xl leading-relaxed">{prompt.cloze}</p>
+              <p className="tide-cloze">{prompt.cloze}</p>
             ) : aspect === "meaning" ? (
               <p className="text-muted-foreground">写出中文义。不要编造；对照来自已审校 gloss。</p>
             ) : (
@@ -515,7 +519,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                 </div>
               </form>
             ) : (
-              <div className="flex flex-col gap-4">
+              <div className="tide-grade-dock flex flex-col gap-4">
                 <div className="rounded-lg bg-muted px-4 py-3">
                   <p className="text-sm text-muted-foreground">你写的</p>
                   <p className="text-lg">{typed.trim() || "（空）"}</p>
@@ -537,10 +541,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                   ) : null}
                 </div>
                 <div className="rounded-lg border border-border/80 bg-secondary/50 px-3 py-2 text-sm">
-                  <p className="font-medium text-foreground">
-                    {ASPECT_LABEL[aspect]} {Math.min(index + 1, filteredPrompts.length)}/
-                    {filteredPrompts.length}
-                  </p>
+                  <p className="font-medium text-foreground">{progressLabel}</p>
                   <p className="mt-1 text-muted-foreground">
                     本卡下次潮汐：{cardDueLabel}
                   </p>

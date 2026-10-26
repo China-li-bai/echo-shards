@@ -27,6 +27,18 @@ export default function HomePage() {
     questTargetsById[q.id] = [...q.target_lexemes];
   }
 
+  const steps = [
+    { n: "1", href: "/day", title: "日课", hint: "接受今日提案", icon: "日" },
+    { n: "2", href: "/review?aspect=form", title: "潮汐", hint: "约 5 词拼写", icon: "潮" },
+    {
+      n: "3",
+      href: "/quests",
+      title: "交易所",
+      hint: quest.title,
+      icon: "市",
+    },
+  ] as const;
+
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-4 py-10 sm:px-6">
       <section className="max-w-3xl">
@@ -42,7 +54,7 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* 今日轨道：唯一主路径 */}
+      {/* 今日轨道：唯一主路径；枢纽收成卡内小步骤 */}
       <section>
         <Card className="realm-form overflow-hidden border-primary/25 bg-card/90">
           <CardHeader className="gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -55,7 +67,7 @@ export default function HomePage() {
                 </span>
               </div>
               <CardTitle className="font-display text-3xl text-balance">
-                日课 → 接受 → 潮汐 → 交易所
+                日课 → 潮汐 → 交易所
               </CardTitle>
               <CardDescription className="max-w-xl text-base leading-relaxed">
                 先接今日提案，再练一轮拼写，最后去市集把价格和时间问出来。
@@ -77,65 +89,45 @@ export default function HomePage() {
             </div>
           </CardHeader>
           <CardContent>
-            <ol className="grid gap-2 text-sm text-muted-foreground sm:grid-cols-3">
-              <li className="rounded-md bg-secondary/70 px-3 py-2">
-                <span className="font-medium text-foreground">1 · 日课</span>
-                <span className="mt-0.5 block">一键接受今日提案</span>
-              </li>
-              <li className="rounded-md bg-secondary/70 px-3 py-2">
-                <span className="font-medium text-foreground">2 · 潮汐</span>
-                <span className="mt-0.5 block">约 5 词 · 拼写一轮</span>
-              </li>
-              <li className="rounded-md bg-secondary/70 px-3 py-2">
-                <span className="font-medium text-foreground">3 · 交易所</span>
-                <span className="mt-0.5 block">用英文把关键信息问出来</span>
-              </li>
+            <ol className="grid gap-2 sm:grid-cols-3">
+              {steps.map((step) => (
+                <li key={step.n}>
+                  <Link
+                    href={step.href}
+                    className="flex items-center gap-2.5 rounded-md bg-secondary/70 px-3 py-2.5 text-sm transition-colors hover:bg-secondary"
+                  >
+                    <span
+                      className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-primary/10 text-xs font-semibold text-primary"
+                      aria-hidden
+                    >
+                      {step.icon}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block font-medium text-foreground">
+                        {step.n} · {step.title}
+                      </span>
+                      <span className="mt-0.5 block truncate text-muted-foreground">
+                        {step.hint}
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
             </ol>
           </CardContent>
         </Card>
       </section>
 
-      {/* 形界残片墙：轨道下 · 枢纽上；非导航项 */}
+      {/* 形界残片墙：轨道下；非导航项 */}
       <section aria-label="形界残片墙">
         <FormShardWall labels={labels} questTargetsById={questTargetsById} />
       </section>
 
-      {/* 三枢纽 */}
-      <section className="grid gap-4 md:grid-cols-3">
-        <Link href="/day" className="group">
-          <Card className="h-full transition-colors group-hover:bg-secondary/60">
-            <CardHeader>
-              <Badge variant="secondary">今日</Badge>
-              <CardTitle className="font-display text-2xl">日课</CardTitle>
-              <CardDescription>接过今日提案，再进潮汐。进阶选项可改意图与词表。</CardDescription>
-            </CardHeader>
-            <CardContent>开始今天的闭环</CardContent>
-          </Card>
-        </Link>
-        <Link href="/review" className="group">
-          <Card className="realm-form h-full transition-colors group-hover:bg-secondary/60">
-            <CardHeader>
-              <Badge variant="secondary">形界</Badge>
-              <CardTitle className="font-display text-2xl">潮汐</CardTitle>
-              <CardDescription>约 5 词拼写。对照后看进度与下次潮汐时间。</CardDescription>
-            </CardHeader>
-            <CardContent>进入复习</CardContent>
-          </Card>
-        </Link>
-        <Link href="/quests" className="group">
-          <Card className="h-full transition-colors group-hover:bg-secondary/60">
-            <CardHeader>
-              <Badge variant="outline">市集</Badge>
-              <CardTitle className="font-display text-2xl">{quest.title}</CardTitle>
-              <CardDescription>{quest.goal}</CardDescription>
-            </CardHeader>
-            <CardContent>打开信息差摊位</CardContent>
-          </Card>
-        </Link>
-      </section>
-
-      {/* 营地账本：本机事件推导（非 Workers 服务端账本） */}
-      <section>
+      {/* 营地账本：一行折叠；旁注替代大横幅 */}
+      <section className="space-y-2">
+        <p className="px-1 text-sm text-muted-foreground">
+          先想得起来，再问得出来。工坊留给搭建者；你把今日轨道走完即可。
+        </p>
         <CampLedger
           floor={{
             ready: counts.ready,
@@ -147,12 +139,6 @@ export default function HomePage() {
             coverageNote: meta.pack.coverage_note ?? "NGSL-Spoken 口语覆盖",
           }}
         />
-      </section>
-
-      <section className="rounded-xl bg-primary px-5 py-5 text-primary-foreground">
-        <p className="max-w-2xl text-base leading-relaxed">
-          先想得起来，再问得出来。工坊里的词库与审校留给搭建者；你在营地把今日轨道走完即可。
-        </p>
       </section>
     </div>
   );

@@ -74,13 +74,53 @@ export function FormShardWall({ labels, questTargetsById }: FormShardWallProps) 
     [view.shards, selectedId],
   );
 
+  const nearShards = useMemo(
+    () => view.shards.filter((s) => s.newly_lit_today),
+    [view.shards],
+  );
+  const farShards = useMemo(
+    () => view.shards.filter((s) => !s.newly_lit_today),
+    [view.shards],
+  );
+
   function openShard(shard: ShardLitView) {
-    // Faint seal bricks and lit shards both open dual-track detail
     setSelectedId(shard.lexeme_id);
   }
 
   function closeSheet() {
     setSelectedId(null);
+  }
+
+  function renderShard(shard: ShardLitView) {
+    const label = resolveLexemeLabel(shard.lexeme_id, labels);
+    const classes = [
+      "shard",
+      shard.lit ? "lit" : "faint-seal",
+      shard.newly_lit_today ? "new-today" : shard.lit ? "older" : "",
+      shard.has_seal ? "has-seal" : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
+    return (
+      <button
+        key={shard.lexeme_id}
+        type="button"
+        className={classes}
+        aria-label={`${label}${shard.newly_lit_today ? " · 今日新亮" : ""}${shard.has_seal ? " · 成交印记" : ""}`}
+        onClick={() => openShard(shard)}
+      >
+        <span className="shard-word">{label}</span>
+        <span className="shard-aspect">形</span>
+        {shard.has_seal ? (
+          <span className="shard-seal" title="成交印记">
+            印
+          </span>
+        ) : null}
+        {shard.newly_lit_today ? (
+          <span className="shard-new-tag">今日新亮</span>
+        ) : null}
+      </button>
+    );
   }
 
   return (
@@ -101,68 +141,65 @@ export function FormShardWall({ labels, questTargetsById }: FormShardWallProps) 
           </p>
         </CardHeader>
         <CardContent className="space-y-3">
-          <div className="wall-stage relative overflow-hidden rounded-xl border border-dashed border-border/80">
+          <div
+            className={`wall-stage relative overflow-hidden rounded-xl ${
+              view.cold || !ready ? "wall-stage-cold" : ""
+            }`}
+          >
+            {/* Always-present faint far-shore label when cold; live far shore when due-soon */}
             {view.far_shore.visible ? (
               <div className="far-shore visible" aria-hidden="true">
                 <div className="far-shore-glow" />
                 <div className="far-shore-horizon" />
-                {[22, 38, 51, 64, 78].slice(0, Math.min(5, Math.max(2, view.far_shore.due_soon_count))).map((left) => (
-                  <span key={left} className="far-dot" style={{ left: `${left}%` }} />
-                ))}
+                {[22, 38, 51, 64, 78]
+                  .slice(0, Math.min(5, Math.max(2, view.far_shore.due_soon_count)))
+                  .map((left) => (
+                    <span key={left} className="far-dot" style={{ left: `${left}%` }} />
+                  ))}
                 <span className="far-label">远岸 · 将至潮汐</span>
+              </div>
+            ) : view.cold || !ready ? (
+              <div className="far-shore visible far-shore-faint" aria-hidden="true">
+                <div className="far-shore-horizon" />
+                <span className="far-label">远岸</span>
               </div>
             ) : null}
 
-            <div className="shard-grid relative z-[1] flex min-h-[140px] flex-wrap items-center justify-center gap-2.5 px-3.5 py-5 pb-8">
+            <div className="wall-tide-line" aria-hidden="true" />
+
+            <div className="shard-grid relative z-[1] flex min-h-[160px] flex-col items-center justify-center gap-3 px-3.5 py-6 pb-10">
               {!ready ? (
                 <p className="text-sm text-muted-foreground">读取本机潮汐痕迹…</p>
               ) : view.cold ? (
-                <div className="empty-invite mx-auto max-w-xs px-5 py-9 text-center text-muted-foreground">
-                  <div
-                    className="mx-auto mb-3.5 grid h-12 w-12 place-items-center rounded-xl border border-dashed border-border text-xl text-muted-foreground/60"
-                    aria-hidden
-                  >
-                    ◇
+                <div className="wall-cold-invite mx-auto flex max-w-sm flex-col items-center text-center">
+                  <div className="shard-silhouette" aria-hidden="true">
+                    <span className="shard-silhouette-facet" />
                   </div>
-                  <p className="text-sm leading-relaxed">
-                    走完潮汐后，这里会亮起几块残片。
-                  </p>
-                  <p className="mt-2 text-xs text-muted-foreground/80">
-                    一盏灯 = 跨日成功提取 ≥2（不同日历日的 Good / Easy）。一次 Good 不会亮。
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    练完潮汐，墙面会留下痕迹
                   </p>
                 </div>
               ) : (
-                view.shards.map((shard) => {
-                  const label = resolveLexemeLabel(shard.lexeme_id, labels);
-                  const classes = [
-                    "shard",
-                    shard.lit ? "lit" : "faint-seal",
-                    shard.newly_lit_today ? "new-today" : "",
-                    shard.has_seal ? "has-seal" : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ");
-                  return (
-                    <button
-                      key={shard.lexeme_id}
-                      type="button"
-                      className={classes}
-                      aria-label={`${label}${shard.newly_lit_today ? " · 今日新亮" : ""}${shard.has_seal ? " · 成交印记" : ""}`}
-                      onClick={() => openShard(shard)}
+                <>
+                  {nearShards.length > 0 ? (
+                    <div
+                      className="shard-row shard-row-near flex flex-wrap items-center justify-center gap-2.5"
+                      aria-label="今日新亮"
                     >
-                      <span className="shard-word">{label}</span>
-                      <span className="shard-aspect">形</span>
-                      {shard.has_seal ? (
-                        <span className="shard-seal" title="成交印记">
-                          印
-                        </span>
-                      ) : null}
-                      {shard.newly_lit_today ? (
-                        <span className="shard-new-tag">今日新亮</span>
-                      ) : null}
-                    </button>
-                  );
-                })
+                      {nearShards.map(renderShard)}
+                    </div>
+                  ) : null}
+                  {farShards.length > 0 ? (
+                    <div
+                      className={`shard-row shard-row-far flex flex-wrap items-center justify-center gap-2 ${
+                        nearShards.length > 0 ? "mt-1 opacity-90" : ""
+                      }`}
+                      aria-label="较早亮起"
+                    >
+                      {farShards.map(renderShard)}
+                    </div>
+                  ) : null}
+                </>
               )}
             </div>
           </div>

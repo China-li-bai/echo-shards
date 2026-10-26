@@ -14,10 +14,10 @@ function parseAspect(raw: string | string[] | undefined): Aspect {
   return "form";
 }
 
-const HEADLINE: Record<Aspect, string> = {
-  form: "拼出来，再看下次潮汐",
-  meaning: "写出中文义，再看下次潮汐",
-  phonology_text: "写出文字音标，再看下次潮汐",
+const RITUAL_LINE: Record<Aspect, string> = {
+  form: "这一轮只拼形 · 下次潮汐只读",
+  meaning: "这一轮只写义 · 下次潮汐只读",
+  phonology_text: "这一轮只标音 · 下次潮汐只读",
 };
 
 export default async function ReviewPage({
@@ -38,15 +38,14 @@ export default async function ReviewPage({
         : [...formPools, ...meaningPools, ...phonologyPools];
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-10 sm:px-6">
+    <div className="tide-beach mx-auto flex w-full max-w-3xl flex-col gap-5 px-4 py-10 sm:px-6">
       <div className="max-w-2xl">
         <p className="text-sm font-medium tracking-[0.16em] text-primary uppercase">
           潮汐 · {ASPECT_LABEL[aspect]}
         </p>
-        <h1 className="font-display mt-2 text-4xl sm:text-5xl">{HEADLINE[aspect]}</h1>
-        <p className="mt-3 text-muted-foreground">
-          一轮只练一个面向。对照后确认等级，进度与下次潮汐时间会显示出来（只读）。
-        </p>
+        <h1 className="font-display mt-2 text-2xl text-balance sm:text-3xl">
+          {RITUAL_LINE[aspect]}
+        </h1>
       </div>
       <Suspense fallback={<p className="text-muted-foreground">加载复习…</p>}>
         <ReviewSession pools={pools} />
