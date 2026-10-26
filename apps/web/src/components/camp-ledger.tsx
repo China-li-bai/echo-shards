@@ -56,15 +56,15 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
   const { progress, sourceLabel, eventCount } = state;
   const cold = isColdStart(progress, eventCount);
   const camp = [
-    { label: "连续天数", value: progress.streak_days, note: "Asia/Shanghai · 事件推导" },
-    { label: "会话", value: progress.session_count, note: "session_end 事件" },
-    { label: "XP", value: progress.xp, note: "retrieval + quest" },
-    { label: "残片 shards", value: progress.shards, note: "001 progress 字段" },
+    { label: "连续天数", value: progress.streak_days, note: "按上海日历" },
+    { label: "会话", value: progress.session_count, note: "学完一节算一次" },
+    { label: "XP", value: progress.xp, note: "潮汐与市集累计" },
+    { label: "残片 shards", value: progress.shards, note: "营地进度" },
   ];
   const stats = [
-    { label: "口语地板 lemmas", value: floor.lemmas, note: "NGSL-Spoken 1.2" },
+    { label: "口语地板", value: floor.lemmas, note: "NGSL-Spoken 1.2" },
     { label: "义项已就绪", value: floor.ready, note: "含音标、中文义、例句" },
-    { label: "待审校", value: floor.pending, note: "空 gloss 待人工" },
+    { label: "待审校", value: floor.pending, note: "待人手补中文义" },
     { label: "词形变体", value: floor.forms, note: "屈折 / 拼写" },
   ];
 
@@ -95,7 +95,7 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
                 {cold
                   ? "走完日课或潮汐后，这里会亮起来"
                   : eventCount === 0
-                    ? "无服务端账本 · 真实 0"
+                    ? "还没有进度"
                     : `${eventCount} 条本机事件`}
               </span>
             ) : null}

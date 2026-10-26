@@ -53,12 +53,12 @@ export function LexemeBrowser({ rows }: { rows: LexemeRow[] }) {
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <label className="sr-only" htmlFor="lemma-search">
-          搜索 lemma
+          搜索词
         </label>
         <Input
           id="lemma-search"
           value={query}
-          placeholder="搜 lemma、中文义或上游英义"
+          placeholder="搜词、中文义或英义"
           onChange={(event) => {
             setQuery(event.target.value);
             setPage(0);
@@ -90,7 +90,7 @@ export function LexemeBrowser({ rows }: { rows: LexemeRow[] }) {
 
       {visible.length === 0 ? (
         <p className="rounded-xl border border-dashed border-border px-4 py-10 text-center text-muted-foreground">
-          没有 lemma 对得上。
+          没有对上的词。
         </p>
       ) : (
         <ul className="flex flex-col gap-2">

@@ -390,7 +390,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       <Card>
         <CardHeader>
           <CardTitle>这一池还没有能上{ASPECT_LABEL[aspect]}的词</CardTitle>
-          <CardDescription>已审校义项为空。</CardDescription>
+          <CardDescription>这一界还没有可练的词。</CardDescription>
         </CardHeader>
       </Card>
     );
@@ -464,14 +464,14 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
             {aspect === "form" ? (
               <p className="tide-cloze">{prompt.cloze}</p>
             ) : aspect === "meaning" ? (
-              <p className="text-muted-foreground">写出中文义；对照来自已审校 gloss。</p>
+              <p className="text-muted-foreground">写出中文义，再对照。</p>
             ) : (
               <p className="text-muted-foreground">
-                写出文字音标（IPA）。本阶段不评分音频；对照来自已审校 phonetic_text。
+                写出文字音标；这一阶段不听录音。
               </p>
             )}
             {lastDue && phase === "answer" ? (
-              <p className="text-sm text-muted-foreground">上一张下次潮汐：{lastDue}（Asia/Shanghai）</p>
+              <p className="text-sm text-muted-foreground">下次潮汐：{lastDue}</p>
             ) : null}
             {freshGain ? (
               <p role="status" className="rounded-lg border border-primary/30 bg-secondary/70 px-3 py-2 text-sm">
@@ -627,7 +627,7 @@ function Summary({
           <CardTitle className="font-display text-3xl">这一潮过去了</CardTitle>
           <CardDescription>
             {lastDue ? `最后一张下次潮汐 ${lastDue}。` : ""}
-            {aspectLabel}这一潮走完了；可以去交易所把词用出来。
+            {aspectLabel}这一潮走完了；可以去市集把词用出来。
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-wrap gap-2">
@@ -647,7 +647,7 @@ function Summary({
               />
             }
           >
-            去交易所把词用出来
+            去市集把词用出来
           </Button>
           <Button type="button" variant="ghost" render={<Link href="/day" />}>
             回日课

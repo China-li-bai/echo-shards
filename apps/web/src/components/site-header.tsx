@@ -9,7 +9,7 @@ const PRIMARY = [
   { href: "/", label: "营地" },
   { href: "/day", label: "日课" },
   { href: "/review", label: "潮汐" },
-  { href: "/quests", label: "交易所" },
+  { href: "/quests", label: "市集" },
 ];
 
 /** Builder / ops shell — secondary */

@@ -106,7 +106,7 @@ export function QuestDesk({
                   {item.title}
                 </a>
                 <Badge variant={item.source === "generated" ? "secondary" : "outline"}>
-                  {item.source}
+                  {item.source === "generated" ? "生成" : "种子"}
                 </Badge>
               </li>
             ))}
@@ -132,7 +132,7 @@ export function QuestDesk({
         <Card size="sm">
           <CardHeader>
             <Badge variant="outline">debug</Badge>
-            <CardTitle>摊主知道（仅调试）</CardTitle>
+            <CardTitle>摊主底牌</CardTitle>
             <CardDescription>{quest.roles.npc}</CardDescription>
           </CardHeader>
           <CardContent>
@@ -152,7 +152,6 @@ export function QuestDesk({
             <Badge variant="outline">
               {turns.length}/{quest.max_turns} 回合
             </Badge>
-            <Badge variant="outline">{quest.id}</Badge>
           </div>
           <CardTitle className="font-display text-2xl">必须问出来</CardTitle>
           <CardDescription>
@@ -186,7 +185,7 @@ export function QuestDesk({
           </ul>
 
           <div className="rounded-lg bg-muted px-3 py-2 text-sm">
-            <p className="font-medium">经纪人提示</p>
+            <p className="font-medium">摊位提示</p>
             <p className="text-muted-foreground">{nudge}</p>
           </div>
 
@@ -257,6 +256,11 @@ export function QuestDesk({
               {freshGain}
             </p>
           ) : null}
+
+          <details className="text-sm text-muted-foreground">
+            <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">任务编号</summary>
+            <p className="mt-1 font-mono text-xs">{quest.id}</p>
+          </details>
         </CardContent>
       </Card>
 

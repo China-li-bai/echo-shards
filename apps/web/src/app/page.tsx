@@ -33,7 +33,7 @@ export default function HomePage() {
     {
       n: "3",
       href: "/quests",
-      title: "交易所",
+      title: "市集",
       hint: quest.title,
       icon: "市",
     },
@@ -43,7 +43,7 @@ export default function HomePage() {
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-4 py-10 sm:px-6">
       <section className="max-w-3xl">
         <p className="text-sm font-medium tracking-[0.18em] text-primary uppercase">
-          营地 · 学徒日课
+          营地
         </p>
         <h1 className="font-display mt-3 text-5xl leading-tight text-balance sm:text-6xl">
           言灵残片
@@ -64,7 +64,7 @@ export default function HomePage() {
                 </span>
               </div>
               <CardTitle className="font-display text-3xl text-balance">
-                日课 → 潮汐 → 交易所
+                日课 → 潮汐 → 市集
               </CardTitle>
               <CardDescription className="max-w-xl text-base leading-relaxed">
                 先接今日提案，再练一轮拼写，最后去市集把价格和时间问出来。
@@ -75,13 +75,13 @@ export default function HomePage() {
                 href="/day"
                 className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground hover:opacity-90"
               >
-                开始今日：去日课
+                去日课
               </Link>
               <Link
                 href="/quests"
                 className="inline-flex h-9 items-center justify-center rounded-md border border-border bg-background px-3 text-sm text-foreground hover:bg-muted"
               >
-                已练过？去市集问价
+                去市集问价
               </Link>
             </div>
           </CardHeader>

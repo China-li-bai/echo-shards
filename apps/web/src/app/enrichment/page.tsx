@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { getEnrichmentQueue, getFloorSummary } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Enrichment 审校",
+  title: "审校",
 };
 
 export default function EnrichmentPage() {
@@ -16,11 +16,11 @@ export default function EnrichmentPage() {
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-10 sm:px-6">
       <div className="max-w-2xl">
         <p className="text-sm font-medium tracking-[0.16em] text-primary uppercase">
-          Enrichment · human review
+          审校
         </p>
-        <h1 className="font-display mt-2 text-4xl sm:text-5xl">审校队列（只读）</h1>
+        <h1 className="font-display mt-2 text-4xl sm:text-5xl">审校队列</h1>
         <p className="mt-3 text-muted-foreground">
-          下一批评审 lemma 与上游英义；空 gloss_zh 留给人工。词库见{" "}
+          下一批评审；空着的中文义留给人手。词条在{" "}
           <Link className="underline" href="/lexemes">
             词库
           </Link>
@@ -31,7 +31,7 @@ export default function EnrichmentPage() {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Card size="sm">
           <CardHeader>
-            <CardDescription>pending</CardDescription>
+            <CardDescription>待审校</CardDescription>
             <CardTitle className="font-display text-3xl tabular-nums">
               {floor.counts.pending}
             </CardTitle>
@@ -39,7 +39,7 @@ export default function EnrichmentPage() {
         </Card>
         <Card size="sm">
           <CardHeader>
-            <CardDescription>ready</CardDescription>
+            <CardDescription>已就绪</CardDescription>
             <CardTitle className="font-display text-3xl tabular-nums">
               {floor.counts.ready}
             </CardTitle>
@@ -47,7 +47,7 @@ export default function EnrichmentPage() {
         </Card>
         <Card size="sm">
           <CardHeader>
-            <CardDescription>队列条数</CardDescription>
+            <CardDescription>本页条数</CardDescription>
             <CardTitle className="font-display text-3xl tabular-nums">
               {queue?.items?.length ?? 0}
             </CardTitle>
@@ -55,7 +55,7 @@ export default function EnrichmentPage() {
         </Card>
         <Card size="sm">
           <CardHeader>
-            <CardDescription>pending_total</CardDescription>
+            <CardDescription>待审合计</CardDescription>
             <CardTitle className="font-display text-3xl tabular-nums">
               {queue?.pending_total ?? "—"}
             </CardTitle>
@@ -79,19 +79,19 @@ export default function EnrichmentPage() {
       <Card>
         <CardHeader>
           <div className="flex flex-wrap gap-2">
-            <Badge variant="secondary">needs_review</Badge>
+            <Badge variant="secondary">待审</Badge>
             {queue?.generated_at ? (
               <Badge variant="outline">{queue.generated_at}</Badge>
             ) : (
-              <Badge variant="outline">尚未生成队列 · 先跑 enrichment:queue</Badge>
+              <Badge variant="outline">尚未生成队列</Badge>
             )}
           </div>
           <CardTitle>下一批评审</CardTitle>
-          <CardDescription>仅空 gloss_zh 入队，人工合并。</CardDescription>
+          <CardDescription>没有中文义的才进队。</CardDescription>
         </CardHeader>
         <CardContent>
           {!queue?.items?.length ? (
-            <p className="text-muted-foreground">队列为空。运行 npm run enrichment:queue。</p>
+            <p className="text-muted-foreground">队列还是空的。</p>
           ) : (
             <ul className="flex flex-col gap-2">
               {queue.items.map((item) => (
@@ -106,7 +106,7 @@ export default function EnrichmentPage() {
                     </span>
                   </span>
                   <span className="text-sm text-muted-foreground">
-                    上游英义：{item.gloss_en || "（无）"} · gloss_zh「{item.gloss_zh || "空"}」
+                    上游英义：{item.gloss_en || "（无）"} · 中文义：{item.gloss_zh || "空"}
                   </span>
                 </li>
               ))}

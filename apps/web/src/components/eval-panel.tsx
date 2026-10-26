@@ -55,7 +55,7 @@ export function EvalPanel({
             </ul>
           ) : (
             <p className="text-muted-foreground">
-              调度字段、TOPRA 单 aspect、must_elicit 与 pending 空 gloss 政策均已核对。
+              金标都过了。
             </p>
           )}
         </CardContent>
@@ -64,7 +64,8 @@ export function EvalPanel({
       <div className="grid gap-3 md:grid-cols-3">
         <Card size="sm">
           <CardHeader>
-            <CardTitle>agent_runs</CardTitle>
+            <CardTitle>运转记录</CardTitle>
+            <CardDescription>agent_runs</CardDescription>
           </CardHeader>
           <CardContent>
             <ul className="flex flex-col gap-1 font-mono text-xs">
@@ -78,7 +79,8 @@ export function EvalPanel({
         </Card>
         <Card size="sm">
           <CardHeader>
-            <CardTitle>eval_scores</CardTitle>
+            <CardTitle>评分</CardTitle>
+            <CardDescription>eval_scores</CardDescription>
           </CardHeader>
           <CardContent>
             <ul className="flex flex-col gap-1 font-mono text-xs">
@@ -92,7 +94,8 @@ export function EvalPanel({
         </Card>
         <Card size="sm">
           <CardHeader>
-            <CardTitle>learning_events</CardTitle>
+            <CardTitle>学习事件</CardTitle>
+            <CardDescription>learning_events</CardDescription>
           </CardHeader>
           <CardContent>
             <ul className="flex flex-col gap-1 font-mono text-xs">
