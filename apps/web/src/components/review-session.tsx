@@ -405,9 +405,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   const titleText =
     aspect === "form" ? prompt.gloss_zh : prompt.orthography_hint ?? prompt.cloze;
   const cardDue = engine.tide.getCard(prompt.card_id)?.review.due;
-  const cardDueLabel = cardDue
-    ? `${formatDueShanghai(cardDue)}（只读 · Asia/Shanghai）`
-    : "尚未排期";
+  const cardDueLabel = cardDue ? formatDueShanghai(cardDue) : "尚未排期";
 
   const progressLabel = `${ASPECT_LABEL[aspect]} ${Math.min(index + 1, filteredPrompts.length)}/${filteredPrompts.length}`;
 
@@ -543,14 +541,14 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                 <div className="rounded-lg border border-border/80 bg-secondary/50 px-3 py-2 text-sm">
                   <p className="font-medium text-foreground">{progressLabel}</p>
                   <p className="mt-1 text-muted-foreground">
-                    本卡下次潮汐：{cardDueLabel}
+                    下次：{cardDueLabel}
                   </p>
                   {lastDue ? (
                     <p className="mt-1 text-muted-foreground">上一张下次潮汐：{lastDue}</p>
                   ) : null}
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  对照仅供参考；你确认的等级才记入进度。下次潮汐只读。
+                  对照仅供参考；你确认的等级才记入进度。
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-4" role="group" aria-label="评分">
                   {GRADES.map((grade) => {

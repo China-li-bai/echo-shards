@@ -96,7 +96,7 @@ export function QuestDesk({
       <Card size="sm">
         <CardHeader>
           <CardTitle>任务目录</CardTitle>
-          <CardDescription>选一个摊位，用英文把该问的问出来。</CardDescription>
+          <CardDescription>选一个摊位。</CardDescription>
         </CardHeader>
         <CardContent>
           <ul className="flex flex-col gap-2">
@@ -125,9 +125,6 @@ export function QuestDesk({
               <li key={item}>{item}</li>
             ))}
           </ul>
-          <p className="mt-3 text-sm text-muted-foreground">
-            摊主手里还有你不知道的信息——用英文把它们问出来。
-          </p>
         </CardContent>
       </Card>
 
@@ -159,7 +156,7 @@ export function QuestDesk({
           </div>
           <CardTitle className="font-display text-2xl">必须问出来</CardTitle>
           <CardDescription>
-            用英文把下面这些信息问清。提示会指向下一句该问什么。
+            用英文把下面这些信息问清。
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">

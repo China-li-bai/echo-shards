@@ -18,7 +18,7 @@ export default function LexemesPage() {
         </p>
         <h1 className="font-display mt-2 text-4xl sm:text-5xl">口语地板，不是假词表</h1>
         <p className="mt-3 text-muted-foreground">
-          {counts.lemmas} 个 lemma 来自 NGSL-Spoken {meta.pack.version}（{meta.pack.citation ?? meta.pack.license}）。
+          {counts.lemmas} 个 lemma 来自 {meta.pack.citation ?? meta.pack.license}。
           已就绪 {counts.ready}，部分 {counts.partial}，待审校 {counts.pending}。中文义只显示审校过的行。
         </p>
       </div>

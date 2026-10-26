@@ -159,7 +159,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
             <Badge variant="secondary">今日 · Asia/Shanghai</Badge>
             <Badge variant="outline">{dayId}</Badge>
           </div>
-          <CardTitle className="font-display text-3xl">接过今日提案</CardTitle>
+          <CardTitle className="font-display text-3xl">默认提案</CardTitle>
           <CardDescription>
             默认形界拼写并带上市集。点一次进潮汐。
           </CardDescription>

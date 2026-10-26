@@ -87,7 +87,7 @@ export default function EnrichmentPage() {
             )}
           </div>
           <CardTitle>下一批评审</CardTitle>
-          <CardDescription>{queue?.policy ?? "empty gloss_zh only"}</CardDescription>
+          <CardDescription>仅空 gloss_zh 入队，人工合并。</CardDescription>
         </CardHeader>
         <CardContent>
           {!queue?.items?.length ? (

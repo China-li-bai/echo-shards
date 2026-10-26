@@ -15,9 +15,6 @@ export default function DayPage() {
           日课
         </p>
         <h1 className="font-display mt-2 text-4xl sm:text-5xl">今日提案</h1>
-        <p className="mt-3 text-muted-foreground">
-          一键接过，再进潮汐。需要时再改意图与词表。
-        </p>
       </div>
       <DayDesk options={options} />
     </div>
