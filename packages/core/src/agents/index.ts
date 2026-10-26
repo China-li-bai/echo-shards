@@ -65,3 +65,23 @@ export type {
   ShardWallInput,
   ShardWallView,
 } from "./shard-wall.js";
+
+export {
+  WORD_TIDE_CONFIG,
+  WORD_TIDE_COPY,
+  unlockChainAspects,
+  crossNightSuccessDays,
+  isUnlockedNext,
+  deriveAspectUnlockState,
+  filterDueByWordTideGate,
+  previousAspectInChain,
+  nextAspectInChain,
+  apprenticeNoteAfterGrade,
+  apprenticeLockNote,
+  defaultIncludePhonology,
+} from "./word-tide-gate.js";
+export type {
+  WordTideConfig,
+  AspectUnlockState,
+  DueGateResult,
+} from "./word-tide-gate.js";

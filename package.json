@@ -34,7 +34,8 @@
     "demo:restore": "npm run demo:restore -w @echo-shards/core",
     "assert:camp": "node --import tsx scripts/assert-camp-progress-local.mjs",
     "assert:shard-wall": "node --import tsx scripts/assert-shard-wall.mjs",
-    "assert": "npm run assert:camp && npm run assert:shard-wall"
+    "assert:word-tide": "node --import tsx scripts/assert-word-tide-gate.mjs",
+    "assert": "npm run assert:camp && npm run assert:shard-wall && npm run assert:word-tide"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",

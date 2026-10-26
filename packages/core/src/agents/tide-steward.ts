@@ -8,6 +8,11 @@ import { ASPECT_LABEL } from "../format.js";
 import { TideScheduler, type RateResult } from "../scheduler/TideScheduler.js";
 import { AgentEventLog } from "./event-log.js";
 import { assertNoScheduleFields, assertSingleAspect } from "./policy.js";
+import {
+  WORD_TIDE_COPY,
+  filterDueByWordTideGate,
+  type DueGateResult,
+} from "./word-tide-gate.js";
 
 const BATCH_CAP = 5;
 
@@ -21,7 +26,7 @@ export function composeLearnerBatchWhy(aspect: Aspect, cardCount: number): strin
 
 /** Implementation detail for ?debug=1 — never the default learner path. */
 export function composeBatchWhyDebug(aspect: Aspect, cardCount: number): string {
-  return `本轮只开 ${aspect}。到期队列按 due 升序取 ${cardCount} 张（上限 ${BATCH_CAP}）。其他 aspect 即使已入队，也不进入这一批。`;
+  return `本轮只开 ${aspect}。到期队列按 due 升序取 ${cardCount} 张（上限 ${BATCH_CAP}）。其他 aspect 即使已入队，也不进入这一批。编排闸门可顺延撞车界（不改 due）。`;
 }
 
 export class TideSteward {
@@ -49,10 +54,32 @@ export class TideSteward {
     return cards;
   }
 
-  getDue(now: Date = new Date(), aspect?: Aspect, userId?: string) {
-    const cards = this.tide
-      .getDue(now, aspect)
+  /**
+   * 到期卡（可选经单词潮汐闸门：同日单界 + 解锁态）。
+   * 闸门只过滤，不改 due。
+   */
+  getDue(
+    now: Date = new Date(),
+    aspect?: Aspect,
+    userId?: string,
+    options: { applyWordTideGate?: boolean } = {},
+  ) {
+    const applyGate = options.applyWordTideGate !== false;
+    const allDue = this.tide
+      .getDue(now)
       .filter((card) => (userId ? card.user_id === userId : true));
+    let cards = allDue;
+    if (applyGate) {
+      const gated = filterDueByWordTideGate({
+        dueCards: allDue,
+        logs: this.tide.getLogs(),
+        targetAspect: aspect,
+        cards: this.tide.allCards(),
+      });
+      cards = gated.kept;
+    } else if (aspect) {
+      cards = allDue.filter((c) => c.aspect === aspect);
+    }
     this.log.recordRun({
       agent: "tide_steward",
       tools: ["getDue"],
@@ -63,13 +90,57 @@ export class TideSteward {
     return cards;
   }
 
+  /** 闸门明细（演示 / assert / UI 旁注）。不改 due。 */
+  gateDue(
+    now: Date = new Date(),
+    aspect?: Aspect,
+    userId?: string,
+  ): DueGateResult {
+    const allDue = this.tide
+      .getDue(now)
+      .filter((card) => (userId ? card.user_id === userId : true));
+    return filterDueByWordTideGate({
+      dueCards: allDue,
+      logs: this.tide.getLogs(),
+      targetAspect: aspect,
+      cards: this.tide.allCards(),
+    });
+  }
+
   buildSessionBatch(
     userId: string,
     aspect: Aspect,
     now: Date = new Date(),
+    options: { applyWordTideGate?: boolean } = {},
   ): SessionBatch {
     assertSingleAspect([aspect]);
-    const batch = this.tide.buildSessionBatch(userId, aspect, BATCH_CAP, now);
+    const applyGate = options.applyWordTideGate !== false;
+    let batch: SessionBatch;
+    if (applyGate) {
+      const gated = this.gateDue(now, aspect, userId);
+      const picked = gated.kept.slice(0, BATCH_CAP);
+      batch = {
+        id: `batch_${userId}_${aspect}_${now.getTime()}`,
+        user_id: userId,
+        aspect,
+        lexeme_ids: picked.map((c) => c.lexeme_id),
+        card_ids: picked.map((c) => c.id),
+        created_at: now,
+      };
+      if (gated.sameDayCollision || gated.deferred.some((c) => c.aspect === aspect)) {
+        this.log.recordEvent({
+          event_type: "intent",
+          payload: {
+            note: WORD_TIDE_COPY.sameDayDefer,
+            deferred_card_ids: gated.deferred.map((c) => c.id),
+            // 明确：编排顺延，不写 due
+            due_unchanged: true,
+          },
+        });
+      }
+    } else {
+      batch = this.tide.buildSessionBatch(userId, aspect, BATCH_CAP, now);
+    }
     this.log.recordRun({
       agent: "tide_steward",
       tools: ["buildSessionBatch"],

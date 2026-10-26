@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import {
+  WORD_TIDE_COPY,
   emptyShardWall,
   GRADE_LABEL,
   type Grade,
@@ -269,7 +270,7 @@ export function FormShardWall({ labels, questTargetsById }: FormShardWallProps) 
                 </h4>
                 <p className="text-sm">{formatSuccessTrail(selected)}</p>
                 <p className="mt-1 text-[11px] text-muted-foreground">
-                  规则：不同日历日（Asia/Shanghai）各至少一次 Good/Easy，才算亮灯。一次 Good 不亮。
+                  {WORD_TIDE_COPY.shardLit} · 不同日历日（Asia/Shanghai）各至少一次主动提取成功才亮；当天连对不亮。
                 </p>
               </div>
               <div className="rounded-[10px] border border-border bg-secondary/40 px-3.5 py-3">
@@ -291,7 +292,7 @@ export function FormShardWall({ labels, questTargetsById }: FormShardWallProps) 
             </div>
 
             <div className="mt-3.5 rounded-lg border border-[oklch(0.88_0.04_60)] bg-[oklch(0.96_0.02_60)] px-3 py-2.5 text-xs text-[oklch(0.45_0.08_40)]">
-              亮灯是跨日还记得；潮汐还会再来。
+              {WORD_TIDE_COPY.shardLit}；潮汐还会再来。
             </div>
 
             <div className="mt-4 flex flex-wrap items-center gap-3">

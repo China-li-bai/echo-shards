@@ -6,7 +6,9 @@ import {
   AgentEventLog,
   ASPECT_LABEL,
   CurriculumDirector,
+  WORD_TIDE_COPY,
   dayIdShanghai,
+  defaultIncludePhonology,
   type PlanVariant,
   type ProposalRecord,
 } from "@echo-shards/core";
@@ -65,11 +67,12 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
     const phoneticReady = options
       .filter((row) => lexemeIds.includes(row.id))
       .every((row) => Boolean(row.phonetic_text?.trim()));
+    // 音界默认不进解锁链；仅当 WORD_TIDE_CONFIG.phonologyInUnlockChain 且音标就绪才提案。
     return director.proposeDayPlan({
       lexemeIds,
       intent: nextIntent,
       questId: DEFAULT_QUEST_ID,
-      includePhonology: phoneticReady,
+      includePhonology: defaultIncludePhonology() && phoneticReady,
     });
   }
 
@@ -133,7 +136,9 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
       }
       const next = buildProposal(ids, intent.trim() || DEFAULT_INTENT);
       setProposal(next);
+      // 解锁链默认义→形：新词先义界；形界+市集次之。
       const preferred =
+        next.variants.find((row) => row.id === "v-meaning") ??
         next.variants.find((row) => row.id === "v-form-quest") ??
         next.variants.find((row) => row.id === "v-form") ??
         next.variants[0];
@@ -161,7 +166,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
           </div>
           <CardTitle className="font-display text-3xl">今日提案</CardTitle>
           <CardDescription>
-            默认形界拼写并带上市集。点一次进潮汐。
+            默认先锻义界；同词今日只锻一界，另界潮汐顺延。点一次进潮汐。
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -240,6 +245,9 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
                 <CardDescription>
                   {variant.lexeme_ids.join(", ")}
                   {variant.include_quest ? ` · quest ${variant.quest_id}` : ""}
+                  {variant.aspect === "phonology_text" && !defaultIncludePhonology()
+                    ? ` · ${WORD_TIDE_COPY.phonologyRest}`
+                    : ""}
                 </CardDescription>
               </CardHeader>
               <CardContent className="mt-auto">

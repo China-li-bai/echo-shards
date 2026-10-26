@@ -8,6 +8,12 @@ import {
   ASPECT_LABEL,
   CurriculumDirector,
   EvalSentinel,
+  WORD_TIDE_COPY,
+  apprenticeLockNote,
+  apprenticeNoteAfterGrade,
+  composeBatchWhyDebug,
+  composeLearnerBatchWhy,
+  defaultIncludePhonology,
   formatDueShanghai,
   GRADE_LABEL,
   LOCAL_LEARNER_ID,
@@ -17,8 +23,6 @@ import {
   TideScheduler,
   TideSteward,
   TOPRA_ASPECTS,
-  composeLearnerBatchWhy,
-  composeBatchWhyDebug,
   type Aspect,
   type EventLogSnapshot,
   type Grade,
@@ -130,6 +134,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   const [dayNote, setDayNote] = useState<string | null>(null);
   const [showDebug, setShowDebug] = useState(false);
   const [freshGain, setFreshGain] = useState<string | null>(null);
+  const [gateNote, setGateNote] = useState<string | null>(null);
 
   useEffect(() => {
     setShowDebug(isLearnerDebug());
@@ -147,6 +152,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
 
   useEffect(() => {
     if (!pool) return;
+    setGateNote(null);
     const ids = filteredPrompts.map((prompt) => prompt.lexeme_id);
     const tide = new TideScheduler({ requestRetention: 0.9 });
     const log = new AgentEventLog();
@@ -251,14 +257,42 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       for (const track of TOPRA_ASPECTS) {
         steward.enqueueIds(LOCAL_LEARNER_ID, lexemeIds, track, now);
       }
-      const batch = steward.buildSessionBatch(LOCAL_LEARNER_ID, aspect, now);
+      const batch = steward.buildSessionBatch(LOCAL_LEARNER_ID, aspect, now, {
+        applyWordTideGate: true,
+      });
       why = steward.explainWhyTheseCards(batch);
       batchId = batch.id;
+      const gated = steward.gateDue(now, aspect, LOCAL_LEARNER_ID);
+      let note: string | null = null;
+      if (aspect === "phonology_text" && !defaultIncludePhonology()) {
+        note = WORD_TIDE_COPY.phonologyRest;
+      } else if (batch.card_ids.length === 0) {
+        const sample = lexemeIds[0];
+        note = sample
+          ? apprenticeLockNote(sample, aspect, tide.getLogs(), undefined, tide.allCards())
+          : WORD_TIDE_COPY.needCrossNightShape;
+      } else if (gated.sameDayCollision || gated.deferred.length > 0) {
+        note = WORD_TIDE_COPY.sameDayDefer;
+      }
+      setGateNote(note);
       log.recordEvent({
         event_type: "session_start",
-        payload: { batch_id: batch.id, aspect, from_day: fromDay },
+        payload: {
+          batch_id: batch.id,
+          aspect,
+          from_day: fromDay,
+          gate_note: note,
+          due_unchanged: true,
+        },
       });
-      if (batch.card_ids.join("|") !== filteredPrompts.map((prompt) => prompt.card_id).join("|")) {
+      // 闸门可能锁空 / 顺延：以 batch 为准，不对齐时不报硬错（旁注说明）。
+      if (
+        batch.card_ids.length > 0 &&
+        batch.card_ids.join("|") !== filteredPrompts.map((prompt) => prompt.card_id).join("|") &&
+        !gated.sameDayCollision &&
+        gated.lockedOut.length === 0 &&
+        gated.deferred.length === 0
+      ) {
         setError("这一批卡片和提示对不上。重置后再练。");
       }
     }
@@ -347,7 +381,15 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
         });
       }
       setLastDue(due);
-      setFreshGain(`形界进度已记 · +${grade * 10} XP · 下次潮汐 ${due}`);
+      const note = apprenticeNoteAfterGrade({
+        lexemeId: result.card.lexeme_id,
+        aspect: result.card.aspect,
+        grade,
+        logs: engine.tide.getLogs(),
+        now: new Date(),
+        cards: engine.tide.allCards(),
+      });
+      setFreshGain(`${note} · 下次潮汐 ${due}`);
       setTraceVersion((value) => value + 1);
       if (done) {
         setPhase("summary");
@@ -408,6 +450,12 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   const cardDueLabel = cardDue ? formatDueShanghai(cardDue) : "尚未排期";
 
   const progressLabel = `${ASPECT_LABEL[aspect]} ${Math.min(index + 1, filteredPrompts.length)}/${filteredPrompts.length}`;
+  const practiceBlocked = Boolean(
+    gateNote &&
+      (gateNote.includes("未开炉") ||
+        gateNote.includes("休整") ||
+        gateNote === WORD_TIDE_COPY.phonologyRest),
+  );
 
   return (
     <div className="tide-beach flex flex-col gap-5">
@@ -450,8 +498,45 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
         </p>
       ) : null}
 
-      {phase !== "summary" ? (
-        <Card className="tide-stage realm-form overflow-hidden border-primary/20">
+      {gateNote ? (
+        <p
+          role="status"
+          className="rounded-lg border border-border/80 bg-secondary/60 px-3 py-2 text-sm text-muted-foreground"
+        >
+          {gateNote}
+        </p>
+      ) : null}
+
+      {phase === "summary" ? (
+        <Summary engine={engine} lastDue={lastDue} onReset={reset} showDebug={showDebug} />
+      ) : practiceBlocked ? (
+        <Card className="tide-stage realm-locked overflow-hidden border-border/60">
+          <CardHeader className="gap-3 pb-3">
+            <Badge className="realm-badge">{ASPECT_LABEL[aspect]} · 未开炉</Badge>
+            <CardTitle className="tide-gloss text-balance">{gateNote}</CardTitle>
+            <CardDescription className="text-base">
+              点开只读，无解锁按钮。{WORD_TIDE_COPY.needCrossNightShape}
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-wrap gap-2">
+            <Button type="button" variant="outline" render={<Link href="/day" />}>
+              回日课
+            </Button>
+            <Button type="button" variant="ghost" render={<Link href="/review?aspect=meaning" />}>
+              去义界潮汐
+            </Button>
+          </CardContent>
+        </Card>
+      ) : (
+        <Card
+          className={`tide-stage overflow-hidden border-primary/20 ${
+            aspect === "meaning"
+              ? "realm-meaning"
+              : aspect === "phonology_text"
+                ? "realm-sound"
+                : "realm-form"
+          }${freshGain?.includes("开炉") ? " realm-forge-open" : ""}`}
+        >
           <CardHeader className="gap-3 pb-3">
             <div className="flex items-center justify-between gap-3">
               <Badge className="realm-badge">{progressLabel}</Badge>
@@ -574,8 +659,6 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
             )}
           </CardContent>
         </Card>
-      ) : (
-        <Summary engine={engine} lastDue={lastDue} onReset={reset} showDebug={showDebug} />
       )}
 
       {showDebug ? (

@@ -184,6 +184,31 @@
   color: var(--realm, var(--primary));
 }
 
+/* 单词潮汐 · 锁态灰青未开炉（非红叉）；开炉眉签轻闪 */
+.realm-locked {
+  --realm: oklch(0.55 0.03 200);
+  border-left: 3px solid oklch(0.62 0.035 200 / 0.55);
+  filter: saturate(0.55);
+  background: color-mix(in oklch, oklch(0.94 0.015 200) 55%, var(--card));
+}
+.realm-locked .realm-badge {
+  background: oklch(0.9 0.02 200 / 0.5);
+  color: oklch(0.42 0.04 200);
+}
+.realm-forge-open .realm-badge {
+  animation: realm-forge-flash 200ms ease-out;
+}
+@keyframes realm-forge-flash {
+  0% {
+    background: color-mix(in oklch, var(--realm, var(--primary)) 55%, transparent);
+    color: var(--realm-foreground, var(--primary-foreground));
+  }
+  100% {
+    background: color-mix(in oklch, var(--realm, var(--primary)) 18%, transparent);
+    color: var(--realm, var(--primary));
+  }
+}
+
 /* —— 形界残片墙 (camp home) —— */
 .wall-stage {
   min-height: 220px;
@@ -348,10 +373,12 @@
 .shard.lit.new-today {
   background: oklch(0.97 0.02 190);
   border-color: var(--realm-form);
+  opacity: 1;
+  /* 隐喻 C：今日新亮 · 近景 + 左缘 1–2px realm 光 */
   box-shadow:
+    inset 2px 0 0 0 var(--realm-form),
     0 0 0 1.5px color-mix(in oklch, var(--realm-form) 55%, transparent),
     0 0 10px color-mix(in oklch, var(--realm-form) 22%, transparent);
-  opacity: 1;
 }
 .shard-new-tag {
   position: absolute;

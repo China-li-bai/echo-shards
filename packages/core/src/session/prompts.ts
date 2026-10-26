@@ -73,6 +73,7 @@ export function buildPublicPrompts(
   aspect: Aspect = "form",
   now: Date = new Date("2026-10-25T01:00:00.000Z"),
 ): PublicPrompt[] {
+  // 造公开 prompt 不经学徒解锁闸门（否则形界在义界未跨夜时会被锁空）。
   const round = openAspectRound({
     tide: new TideScheduler({ requestRetention: 0.9 }),
     log: new AgentEventLog(),
@@ -80,6 +81,7 @@ export function buildPublicPrompts(
     userId: LOCAL_LEARNER_ID,
     aspect,
     now,
+    applyWordTideGate: false,
   });
   return round.items.map((item) => {
     const lexeme = lexemes.find((row) => row.id === item.lexeme_id);

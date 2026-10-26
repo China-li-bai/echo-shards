@@ -57,7 +57,7 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
   const cold = isColdStart(progress, eventCount);
   const camp = [
     { label: "连续天数", value: progress.streak_days, note: "按上海日历" },
-    { label: "会话", value: progress.session_count, note: "学完一节算一次" },
+    { label: "会话", value: progress.session_count, note: "走完一潮算一次" },
     { label: "XP", value: progress.xp, note: "潮汐与市集累计" },
     { label: "残片 shards", value: progress.shards, note: "营地进度" },
   ];
