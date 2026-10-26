@@ -84,7 +84,7 @@ export function LexemeBrowser({ rows }: { rows: LexemeRow[] }) {
 
       {filter === "pending" ? (
         <p className="text-sm text-muted-foreground">
-          这些 lemma 还没有中文义、音标或例句。列表留空，不补写。
+          这些 lemma 还没有中文义、音标或例句。
         </p>
       ) : null}
 

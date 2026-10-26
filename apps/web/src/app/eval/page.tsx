@@ -45,8 +45,7 @@ export default function EvalPage() {
         </p>
         <h1 className="font-display mt-2 text-4xl sm:text-5xl">营地评估摘要</h1>
         <p className="mt-3 text-muted-foreground">
-          调度字段拒绝、TOPRA 单 aspect、must_elicit 真/假、721/pending gloss 政策。短 episode
-          只写结构化摘要。
+          金标守卫与本机构造快照。结果见下方。
         </p>
       </div>
       <EvalPanel

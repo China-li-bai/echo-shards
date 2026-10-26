@@ -133,7 +133,7 @@ export function FormShardWall({ labels, questTargetsById }: FormShardWallProps) 
               <CardTitle className="font-display text-2xl">形界残片墙</CardTitle>
             </div>
             <CardDescription className="max-w-xl text-sm leading-relaxed">
-              本机潮汐痕迹 · 跨日提取 ≥2 才亮灯 · 这不是「已掌握」
+              本机潮汐痕迹
             </CardDescription>
           </div>
           <p className="text-xs text-muted-foreground sm:text-right" aria-live="polite">
@@ -208,7 +208,7 @@ export function FormShardWall({ labels, questTargetsById }: FormShardWallProps) 
             <div className="flex flex-wrap gap-3.5 text-[11px] text-muted-foreground">
               <span className="inline-flex items-center gap-1.5">
                 <i className="legend-swatch legend-lit" aria-hidden />
-                已亮（跨日痕迹）
+                已亮
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <i className="legend-swatch legend-new" aria-hidden />
@@ -285,13 +285,13 @@ export function FormShardWall({ labels, questTargetsById }: FormShardWallProps) 
                     : "尚未成交 · 记得不等于用出来过"}
                 </p>
                 <p className="mt-1 text-[11px] text-muted-foreground">
-                  与「记得」分轨；有印记也不等于已掌握。
+                  与「记得」分轨。
                 </p>
               </div>
             </div>
 
             <div className="mt-3.5 rounded-lg border border-[oklch(0.88_0.04_60)] bg-[oklch(0.96_0.02_60)] px-3 py-2.5 text-xs text-[oklch(0.45_0.08_40)]">
-              这不是「已掌握」。亮灯只说明本机留下了跨日提取痕迹；遗忘仍会发生，远岸仍会靠近。
+              这不是「已掌握」——亮灯只说明本机有跨日提取痕迹，遗忘仍会发生。
             </div>
 
             <div className="mt-4 flex flex-wrap items-center gap-3">

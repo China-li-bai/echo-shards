@@ -55,8 +55,7 @@ export function EvalPanel({
             </ul>
           ) : (
             <p className="text-muted-foreground">
-              schedule-field 拒绝、TOPRA 单 aspect、must_elicit 英文命中 / 中文失败、721 与
-              pending 空 gloss 政策均已核对。
+              调度字段、TOPRA 单 aspect、must_elicit 与 pending 空 gloss 政策均已核对。
             </p>
           )}
         </CardContent>

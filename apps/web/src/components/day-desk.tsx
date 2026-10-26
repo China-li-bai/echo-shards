@@ -18,7 +18,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Textarea } from "@/components/ui/textarea";
 
 const DAY_PLAN_KEY = "echo-shards.day-plan.v1";
-const DEFAULT_INTENT = "今天练拼写，顺带去市集把词问出来";
+const DEFAULT_INTENT = "今天练形界拼写";
 const DEFAULT_QUEST_ID = "echo-bazaar-info-gap-01";
 
 export interface AcceptedDayPlan {
@@ -161,7 +161,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
           </div>
           <CardTitle className="font-display text-3xl">接过今日提案</CardTitle>
           <CardDescription>
-            默认走形界拼写，并带上市集 Quest。点一次就能进潮汐。
+            默认形界拼写并带上市集。点一次进潮汐。
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -174,7 +174,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
             {busy ? "正在接过…" : "一键接受今日提案"}
           </Button>
           <p className="text-sm text-muted-foreground">
-            将带你进入潮汐拼写；练完可去交易所问价。需要改意图或词表时，展开下方进阶选项。
+            需要改意图或词表时，展开下方进阶选项。
           </p>
 
           <details className="rounded-lg border border-border bg-secondary/40 px-3 py-2">
@@ -190,7 +190,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
                 value={intent}
                 onChange={(event) => setIntent(event.target.value)}
                 rows={2}
-                placeholder="例如：今天练拼写，顺带去市集把词问出来"
+                placeholder="例如：今天练形界拼写"
               />
               <div>
                 <p className="mb-2 text-sm font-medium">词表（最多 5）</p>

@@ -390,7 +390,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       <Card>
         <CardHeader>
           <CardTitle>这一池还没有能上{ASPECT_LABEL[aspect]}的词</CardTitle>
-          <CardDescription>已审校义项为空。待审校词不会被填上假释义。</CardDescription>
+          <CardDescription>已审校义项为空。</CardDescription>
         </CardHeader>
       </Card>
     );
@@ -466,7 +466,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
             {aspect === "form" ? (
               <p className="tide-cloze">{prompt.cloze}</p>
             ) : aspect === "meaning" ? (
-              <p className="text-muted-foreground">写出中文义。不要编造；对照来自已审校 gloss。</p>
+              <p className="text-muted-foreground">写出中文义；对照来自已审校 gloss。</p>
             ) : (
               <p className="text-muted-foreground">
                 写出文字音标（IPA）。本阶段不评分音频；对照来自已审校 phonetic_text。
@@ -550,7 +550,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                   ) : null}
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  对照仅供参考；你确认的等级才会记入进度。下次潮汐时间只读显示，不会被改写。
+                  对照仅供参考；你确认的等级才记入进度。下次潮汐只读。
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-4" role="group" aria-label="评分">
                   {GRADES.map((grade) => {

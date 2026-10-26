@@ -49,9 +49,6 @@ export default function HomePage() {
           言灵残片
         </h1>
         <p className="mt-2 text-lg text-muted-foreground">Echo Shards</p>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed">
-          今天只练「想得起来」：先认词、拼词，再去市集把关键信息问出来。一步一步走完今日轨道就好。
-        </p>
       </section>
 
       {/* 今日轨道：唯一主路径；枢纽收成卡内小步骤 */}
@@ -124,10 +121,7 @@ export default function HomePage() {
       </section>
 
       {/* 营地账本：一行折叠；旁注替代大横幅 */}
-      <section className="space-y-2">
-        <p className="px-1 text-sm text-muted-foreground">
-          先想得起来，再问得出来。工坊留给搭建者；你把今日轨道走完即可。
-        </p>
+      <section>
         <CampLedger
           floor={{
             ready: counts.ready,

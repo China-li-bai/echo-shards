@@ -25,9 +25,6 @@ export default async function QuestPage({
         </p>
         <h1 className="font-display mt-2 text-4xl sm:text-5xl">{quest.title}</h1>
         <p className="mt-3 text-muted-foreground">{quest.goal}</p>
-        <p className="mt-2 text-sm text-muted-foreground">
-          摊主有你不知道的信息。用英文把该问的问出来，再请求成交。
-        </p>
       </div>
       <QuestDesk quest={quest} catalog={catalog} />
     </div>

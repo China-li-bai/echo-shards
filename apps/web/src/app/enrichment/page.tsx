@@ -20,11 +20,11 @@ export default function EnrichmentPage() {
         </p>
         <h1 className="font-display mt-2 text-4xl sm:text-5xl">审校队列（只读）</h1>
         <p className="mt-3 text-muted-foreground">
-          展示下一批评审 lemma 与上游英义。空 gloss_zh 留给人工；合并步骤见{" "}
+          下一批评审 lemma 与上游英义；空 gloss_zh 留给人工。词库见{" "}
           <Link className="underline" href="/lexemes">
             词库
-          </Link>{" "}
-          与 docs/enrichment-pipeline.md。禁止编造中文义。
+          </Link>
+          。
         </p>
       </div>
 
@@ -63,18 +63,18 @@ export default function EnrichmentPage() {
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>如何合并一批审校稿</CardTitle>
-          <CardDescription>不经过模型填义；缺字段的行会被 merge 拒绝。</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-2 font-mono text-sm">
+      <details className="rounded-xl border border-border bg-card/80 open:bg-card">
+        <summary className="cursor-pointer list-none px-4 py-3 text-sm font-medium [&::-webkit-details-marker]:hidden">
+          搭建者：如何合并一批审校稿
+        </summary>
+        <div className="space-y-2 border-t border-border px-4 py-3 font-mono text-sm text-muted-foreground">
+          <p>缺字段的行会被 merge 拒绝。详见 docs/enrichment-pipeline.md。</p>
           <p>1. npm run enrichment:queue</p>
           <p>2. 编辑 content/lexemes/enrichment-queue.json（填 gloss_zh / phonetic_text / example；status=reviewed）</p>
           <p>3. npm run enrichment:merge -- --from content/lexemes/enrichment-queue.json</p>
           <p>4. npm run enrichment:validate && npm run check</p>
-        </CardContent>
-      </Card>
+        </div>
+      </details>
 
       <Card>
         <CardHeader>

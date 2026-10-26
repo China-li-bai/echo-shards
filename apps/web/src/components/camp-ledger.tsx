@@ -64,7 +64,7 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
   const stats = [
     { label: "口语地板 lemmas", value: floor.lemmas, note: "NGSL-Spoken 1.2" },
     { label: "义项已就绪", value: floor.ready, note: "含音标、中文义、例句" },
-    { label: "待审校", value: floor.pending, note: "不编造 gloss" },
+    { label: "待审校", value: floor.pending, note: "空 gloss 待人工" },
     { label: "词形变体", value: floor.forms, note: "屈折 / 拼写" },
   ];
 
@@ -141,7 +141,7 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
           </div>
         </div>
         <p className="text-sm text-muted-foreground">
-          词库 / 审校 / 评估在顶栏「工坊」。进度来自本机日课、潮汐与交易所成交事件。地板说明：{floor.coverageNote}。
+          进度来自本机日课、潮汐与成交事件。{floor.coverageNote}。
         </p>
       </div>
     </details>
