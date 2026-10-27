@@ -14,6 +14,7 @@ import {
   composeBatchWhyDebug,
   composeLearnerBatchWhy,
   defaultIncludePhonology,
+  deriveAspectUnlockState,
   formatDueShanghai,
   GRADE_LABEL,
   LOCAL_LEARNER_ID,
@@ -94,7 +95,8 @@ function writeSaved(pool: PoolId, aspect: Aspect, saved: SavedRound): void {
 
 function parseAspect(raw: string | null): Aspect {
   if (raw === "meaning" || raw === "phonology_text" || raw === "form") return raw;
-  return "form";
+  // 解锁链默认义→形；裸链不接 form，避免闸门锁态永远碰不到。
+  return "meaning";
 }
 
 export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
@@ -263,25 +265,12 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       why = steward.explainWhyTheseCards(batch);
       batchId = batch.id;
       const gated = steward.gateDue(now, aspect, LOCAL_LEARNER_ID);
-      let note: string | null = null;
-      if (aspect === "phonology_text" && !defaultIncludePhonology()) {
-        note = WORD_TIDE_COPY.phonologyRest;
-      } else if (batch.card_ids.length === 0) {
-        const sample = lexemeIds[0];
-        note = sample
-          ? apprenticeLockNote(sample, aspect, tide.getLogs(), undefined, tide.allCards())
-          : WORD_TIDE_COPY.needCrossNightShape;
-      } else if (gated.sameDayCollision || gated.deferred.length > 0) {
-        note = WORD_TIDE_COPY.sameDayDefer;
-      }
-      setGateNote(note);
       log.recordEvent({
         event_type: "session_start",
         payload: {
           batch_id: batch.id,
           aspect,
           from_day: fromDay,
-          gate_note: note,
           due_unchanged: true,
         },
       });
@@ -295,6 +284,45 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       ) {
         setError("这一批卡片和提示对不上。重置后再练。");
       }
+    }
+
+    // 闸门旁注：存档恢复也要重算，否则形界锁态 / 音界休整永远露不出。
+    // 用解锁态判断「整潮是否可练」，勿把「已练过、due 在未来」误判成锁。
+    {
+      const gateSteward = new TideSteward(tide, log);
+      const gateNow = new Date();
+      const gated = gateSteward.gateDue(gateNow, aspect, LOCAL_LEARNER_ID);
+      const logs = tide.getLogs();
+      const cards = tide.allCards();
+      const fromPrompts = filteredPrompts.map((prompt) => prompt.lexeme_id).filter(Boolean);
+      const fromCards = cards
+        .filter((c) => c.aspect === aspect)
+        .map((c) => c.lexeme_id);
+      const idsForGate =
+        fromPrompts.length > 0
+          ? fromPrompts
+          : fromCards.length > 0
+            ? fromCards
+            : cards.map((c) => c.lexeme_id).filter(Boolean);
+      let note: string | null = null;
+      if (aspect === "phonology_text" && !defaultIncludePhonology()) {
+        note = WORD_TIDE_COPY.phonologyRest;
+      } else {
+        const anyOpen = idsForGate.some((lexemeId) => {
+          if (!lexemeId) return false;
+          return deriveAspectUnlockState(lexemeId, aspect, logs, undefined, cards) !== "locked";
+        });
+        if (!anyOpen) {
+          const sample = idsForGate[0];
+          note = sample
+            ? apprenticeLockNote(sample, aspect, logs, undefined, cards) ??
+              WORD_TIDE_COPY.needCrossNightShape
+            : WORD_TIDE_COPY.needCrossNightShape;
+        } else if (gated.sameDayCollision || gated.deferred.length > 0) {
+          note = WORD_TIDE_COPY.sameDayDefer;
+        }
+      }
+      setGateNote(note);
     }
 
     // Normalize learner why (migrates older localStorage copy that still had due/queue jargon).
@@ -508,23 +536,36 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       ) : null}
 
       {phase === "summary" ? (
-        <Summary engine={engine} lastDue={lastDue} onReset={reset} showDebug={showDebug} />
+        <Summary
+          engine={engine}
+          lastDue={lastDue}
+          onReset={reset}
+          showDebug={showDebug}
+          freshGain={freshGain}
+        />
       ) : practiceBlocked ? (
         <Card className="tide-stage realm-locked overflow-hidden border-border/60">
           <CardHeader className="gap-3 pb-3">
-            <Badge className="realm-badge">{ASPECT_LABEL[aspect]} · 未开炉</Badge>
+            <Badge className="realm-badge">
+              {ASPECT_LABEL[aspect]} ·{" "}
+              {gateNote?.includes("休整") ? "休整中" : "未开炉"}
+            </Badge>
             <CardTitle className="tide-gloss text-balance">{gateNote}</CardTitle>
             <CardDescription className="text-base">
-              点开只读，无解锁按钮。{WORD_TIDE_COPY.needCrossNightShape}
+              {gateNote?.includes("休整")
+                ? "这一界本阶段不开放试炼。"
+                : `点开只读，无解锁按钮。${WORD_TIDE_COPY.needCrossNightShape}`}
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-wrap gap-2">
             <Button type="button" variant="outline" render={<Link href="/day" />}>
               回日课
             </Button>
-            <Button type="button" variant="ghost" render={<Link href="/review?aspect=meaning" />}>
-              去义界潮汐
-            </Button>
+            {aspect !== "meaning" ? (
+              <Button type="button" variant="ghost" render={<Link href="/review?aspect=meaning" />}>
+                去义界潮汐
+              </Button>
+            ) : null}
           </CardContent>
         </Card>
       ) : (
@@ -633,7 +674,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                   ) : null}
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  对照仅供参考；你确认的等级才记入进度。
+                  你点的等级才算数。
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-4" role="group" aria-label="评分">
                   {GRADES.map((grade) => {
@@ -695,21 +736,27 @@ function Summary({
   lastDue,
   onReset,
   showDebug,
+  freshGain,
 }: {
   engine: Engine;
   lastDue: string | null;
   onReset: () => void;
   showDebug: boolean;
+  freshGain: string | null;
 }) {
   const cards = engine.tide.allCards();
   const aspectLabel = ASPECT_LABEL[engine.aspect];
+  const forgeOpen = Boolean(freshGain?.includes("开炉"));
   return (
     <div className="flex flex-col gap-4">
-      <Card>
+      <Card className={forgeOpen ? "realm-forge-open" : undefined}>
         <CardHeader>
+          {forgeOpen ? (
+            <Badge className="realm-badge w-fit">{freshGain?.split(" · ")[0]}</Badge>
+          ) : null}
           <CardTitle className="font-display text-3xl">这一潮过去了</CardTitle>
           <CardDescription>
-            {lastDue ? `最后一张下次潮汐 ${lastDue}。` : ""}
+            {freshGain ? `${freshGain}。` : lastDue ? `最后一张下次潮汐 ${lastDue}。` : ""}
             {aspectLabel}这一潮走完了；可以去市集把词用出来。
           </CardDescription>
         </CardHeader>

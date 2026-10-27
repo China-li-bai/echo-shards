@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s · 言灵残片",
   },
   description:
-    "文字先行的英语学习：FSRS 潮汐调度、一轮一个 aspect、信息差 Quest。NGSL-Spoken 1.2 作口语地板。",
+    "文字先行的英语学习：潮汐复习、一轮一界、市集把词用出来。",
 };
 
 export default function RootLayout({

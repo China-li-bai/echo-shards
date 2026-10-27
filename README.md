@@ -21,6 +21,8 @@ Text-first English study. Statement memory goes through **ts-fsrs**. One aspect 
 npm install
 npm run check     # test + typecheck + build + enrichment:validate
 npm run dev       # http://127.0.0.1:43123
+
+`apps/web` 的 `build` 写入 `.next-build`（见 `NEXT_DIST_DIR`），避免冲掉正在跑的 `next dev` 的 `.next` 导致静态资源 404 / 不 hydration。
 ```
 
 单独命令：

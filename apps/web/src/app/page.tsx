@@ -29,7 +29,7 @@ export default function HomePage() {
 
   const steps = [
     { n: "1", href: "/day", title: "日课", hint: "接受今日提案", icon: "日" },
-    { n: "2", href: "/review?aspect=form", title: "潮汐", hint: "约 5 词拼写", icon: "潮" },
+    { n: "2", href: "/review?aspect=meaning", title: "潮汐", hint: "约 5 词写义", icon: "潮" },
     {
       n: "3",
       href: "/quests",
@@ -60,14 +60,14 @@ export default function HomePage() {
                 <Badge className="realm-badge">今日轨道</Badge>
                 <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
                   <span className="realm-dot" aria-hidden />
-                  形界优先
+                  义界优先
                 </span>
               </div>
               <CardTitle className="font-display text-3xl text-balance">
                 日课 → 潮汐 → 市集
               </CardTitle>
               <CardDescription className="max-w-xl text-base leading-relaxed">
-                先接今日提案，再练一轮拼写，最后去市集把价格和时间问出来。
+                先接今日提案，再练一轮写义，最后去市集把价格和时间问出来。
               </CardDescription>
             </div>
             <div className="flex shrink-0 flex-col gap-2 sm:items-end">

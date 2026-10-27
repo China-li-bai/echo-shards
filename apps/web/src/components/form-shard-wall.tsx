@@ -304,7 +304,7 @@ export function FormShardWall({ labels, questTargetsById }: FormShardWallProps) 
                 就这样
               </button>
               <Link
-                href="/review?aspect=form"
+                href="/review?aspect=meaning"
                 className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
               >
                 去潮汐再碰一下

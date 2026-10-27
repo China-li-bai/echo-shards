@@ -20,7 +20,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Textarea } from "@/components/ui/textarea";
 
 const DAY_PLAN_KEY = "echo-shards.day-plan.v1";
-const DEFAULT_INTENT = "今天练形界拼写";
+const DEFAULT_INTENT = "今天先锻义界";
 const DEFAULT_QUEST_ID = "echo-bazaar-info-gap-01";
 
 export interface AcceptedDayPlan {
@@ -44,11 +44,25 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [showDebug, setShowDebug] = useState(false);
+  const [adopted, setAdopted] = useState<AcceptedDayPlan | null>(null);
   const dayId = useMemo(() => dayIdShanghai(), []);
 
   useEffect(() => {
     setShowDebug(isLearnerDebug());
   }, []);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(DAY_PLAN_KEY);
+      if (!raw) return;
+      const plan = JSON.parse(raw) as AcceptedDayPlan;
+      if (plan.version === 1 && plan.day_id === dayId) {
+        setAdopted(plan);
+      }
+    } catch (err) {
+      console.warn("[echo-shards] bad day-plan localStorage; ignoring", err);
+    }
+  }, [dayId]);
 
   function toggle(id: string) {
     setSelected((prev) => {
@@ -97,6 +111,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
       event_log: log.snapshot(),
     };
     localStorage.setItem(DAY_PLAN_KEY, JSON.stringify(saved));
+    setAdopted(saved);
     const params = new URLSearchParams({
       aspect: variant.aspect,
       from: "day",
@@ -161,7 +176,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
       <Card>
         <CardHeader>
           <div className="flex flex-wrap gap-2">
-            <Badge variant="secondary">今日 · Asia/Shanghai</Badge>
+            <Badge variant="secondary">今日</Badge>
             <Badge variant="outline">{dayId}</Badge>
           </div>
           <CardTitle className="font-display text-3xl">今日提案</CardTitle>
@@ -170,21 +185,58 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <Button
-            type="button"
-            className="h-11! w-full sm:w-auto sm:min-w-[14rem]"
-            disabled={busy || (selected.length === 0 && options.length === 0)}
-            onClick={acceptTodayOneClick}
-          >
-            {busy ? "正在接过…" : "接过今日提案"}
-          </Button>
+          {adopted ? (
+            <div className="flex flex-col gap-3">
+              <p className="rounded-lg border border-primary/30 bg-secondary/70 px-3 py-2 text-sm" role="status">
+                今日已接过 · {adopted.variant.label}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  type="button"
+                  className="h-11! px-4"
+                  onClick={() => {
+                    const params = new URLSearchParams({
+                      aspect: adopted.variant.aspect,
+                      from: "day",
+                      variant: adopted.variant.id,
+                      ids: adopted.variant.lexeme_ids.join(","),
+                    });
+                    if (adopted.variant.include_quest && adopted.variant.quest_id) {
+                      params.set("quest", adopted.variant.quest_id);
+                    }
+                    router.push(`/review?${params.toString()}`);
+                  }}
+                >
+                  继续今日潮汐
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="h-11! px-4"
+                  disabled={busy || (selected.length === 0 && options.length === 0)}
+                  onClick={acceptTodayOneClick}
+                >
+                  {busy ? "正在接过…" : "再接一条提案"}
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <Button
+              type="button"
+              className="h-11! w-full sm:w-auto sm:min-w-[14rem]"
+              disabled={busy || (selected.length === 0 && options.length === 0)}
+              onClick={acceptTodayOneClick}
+            >
+              {busy ? "正在接过…" : "接过今日提案"}
+            </Button>
+          )}
           <p className="text-sm text-muted-foreground">
-            需要改意图或词表时，展开下方进阶选项。
+            需要改意图或词表时，展开下方选项。
           </p>
 
           <details className="rounded-lg border border-border bg-secondary/40 px-3 py-2">
             <summary className="cursor-pointer list-none text-sm font-medium [&::-webkit-details-marker]:hidden">
-              进阶：改意图与词表 · 已选 {selected.length}
+              改意图与词表 · 已选 {selected.length}
             </summary>
             <div className="mt-3 flex flex-col gap-4">
               <label htmlFor="intent" className="text-sm font-medium">
@@ -195,7 +247,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
                 value={intent}
                 onChange={(event) => setIntent(event.target.value)}
                 rows={2}
-                placeholder="例如：今天练形界拼写"
+                placeholder="例如：今天先锻义界"
               />
               <div>
                 <p className="mb-2 text-sm font-medium">词表（最多 5）</p>

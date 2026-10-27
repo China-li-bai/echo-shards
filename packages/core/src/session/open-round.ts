@@ -52,7 +52,8 @@ export function openAspectRound(input: {
 }): OpenRound {
   const now = input.now ?? new Date();
   const userId = input.userId ?? LOCAL_LEARNER_ID;
-  const aspect = input.aspect ?? "form";
+  // 学徒默认义界（解锁链首）；显式传 form/phonology_text 仍可开。
+  const aspect = input.aspect ?? "meaning";
   const applyGate = input.applyWordTideGate !== false;
   const director = new CurriculumDirector(input.log);
   const includePhonology =

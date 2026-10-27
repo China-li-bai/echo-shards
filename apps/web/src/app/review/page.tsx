@@ -11,13 +11,14 @@ export const metadata: Metadata = {
 function parseAspect(raw: string | string[] | undefined): Aspect {
   const value = Array.isArray(raw) ? raw[0] : raw;
   if (value === "meaning" || value === "phonology_text" || value === "form") return value;
-  return "form";
+  // 解锁链默认义→形：裸 /review 先义界，避免绕过闸门直进形界。
+  return "meaning";
 }
 
 const RITUAL_LINE: Record<Aspect, string> = {
-  form: "这一轮只拼形 · 下次潮汐只读",
-  meaning: "这一轮只写义 · 下次潮汐只读",
-  phonology_text: "这一轮只标音 · 下次潮汐只读",
+  form: "这一潮 · 只拼形",
+  meaning: "这一潮 · 只写义",
+  phonology_text: "这一潮 · 只标音",
 };
 
 export default async function ReviewPage({

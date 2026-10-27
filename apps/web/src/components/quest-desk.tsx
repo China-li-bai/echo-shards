@@ -198,7 +198,7 @@ export function QuestDesk({
               value={draft}
               onChange={(event) => setDraft(event.target.value)}
               rows={3}
-              placeholder="What is the price? Can I bargain? When do you close?"
+              placeholder="想问的话写在这里，例如：What is the price?"
               disabled={deal?.success || abandoned}
             />
             <div className="flex flex-wrap gap-2">
