@@ -19,9 +19,7 @@ const BATCH_CAP = 5;
 /** Learner-facing batch blurb. No due / queue / aspect / enqueue jargon. */
 export function composeLearnerBatchWhy(aspect: Aspect, cardCount: number): string {
   const label = ASPECT_LABEL[aspect];
-  const focus =
-    aspect === "form" ? "拼词" : aspect === "meaning" ? "释义" : "文字音标";
-  return `本轮只练「${label}」（${focus}）· 约 ${cardCount} 词。对照并确认后，会显示下次潮汐；这一潮先不碰其他界别。`;
+  return `这一轮只练「${label}」，大约 ${cardCount} 个词。对完你点个等级后，会告诉你改天再练的时间。`;
 }
 
 /** Implementation detail for ?debug=1 — never the default learner path. */

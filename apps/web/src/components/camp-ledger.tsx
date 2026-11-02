@@ -39,7 +39,7 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
   const [state, setState] = useState<LoadState>(() => ({
     status: "loading",
     progress: emptyCampProgress(),
-    sourceLabel: "来自本机学习事件…",
+    sourceLabel: "读取练习记录…",
     eventCount: 0,
   }));
 
@@ -56,16 +56,16 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
   const { progress, sourceLabel, eventCount } = state;
   const cold = isColdStart(progress, eventCount);
   const camp = [
-    { label: "连续天数", value: progress.streak_days, note: "按上海日历" },
-    { label: "会话", value: progress.session_count, note: "走完一潮算一次" },
-    { label: "XP", value: progress.xp, note: "潮汐与市集累计" },
-    { label: "残片 shards", value: progress.shards, note: "营地进度" },
+    { label: "连续天数", value: progress.streak_days, note: "按练习日算" },
+    { label: "会话", value: progress.session_count, note: "走完一轮算一次" },
+    { label: "经验", value: progress.xp, note: "潮汐与市集累计" },
+    { label: "残片", value: progress.shards, note: "营地进度" },
   ];
   const stats = [
-    { label: "口语地板", value: floor.lemmas, note: "NGSL-Spoken 1.2" },
-    { label: "义项已就绪", value: floor.ready, note: "含音标、中文义、例句" },
-    { label: "待审校", value: floor.pending, note: "待人手补中文义" },
-    { label: "词形变体", value: floor.forms, note: "屈折 / 拼写" },
+    { label: "常用词总数", value: floor.lemmas, note: "见页脚" },
+    { label: "可以练的词", value: floor.ready, note: "有中文义可练" },
+    { label: "还在补", value: floor.pending, note: "还缺中文义" },
+    { label: "写法变化", value: floor.forms, note: "拼写变化" },
   ];
 
   return (
@@ -74,11 +74,13 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
         <span className="flex flex-wrap items-center gap-2">
           <Badge variant="secondary">营地账本</Badge>
           {cold ? (
-            <span className="text-muted-foreground">尚未开铸 · 地板 {floor.ready}/{floor.lemmas} 就绪</span>
+            <span className="text-muted-foreground">
+              还没开始 · 词表里 {floor.ready}/{floor.lemmas} 可练
+            </span>
           ) : (
             <span className="text-muted-foreground">
-              等级 {progress.camp_level} · 连续 {progress.streak_days} 天 · XP {progress.xp} · 残片{" "}
-              {progress.shards} · 地板 {floor.ready}/{floor.lemmas} 就绪
+              等级 {progress.camp_level} · 连续 {progress.streak_days} 天 · 经验 {progress.xp} · 残片{" "}
+              {progress.shards} · 可练 {floor.ready}/{floor.lemmas}
             </span>
           )}
         </span>
@@ -96,7 +98,7 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
                   ? "走完日课或潮汐后，这里会亮起来"
                   : eventCount === 0
                     ? "还没有进度"
-                    : `${eventCount} 条本机事件`}
+                    : `记了 ${eventCount} 次练习`}
               </span>
             ) : null}
           </div>
@@ -104,10 +106,10 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
             <Card size="sm">
               <CardHeader>
                 <CardDescription>学徒进度</CardDescription>
-                <CardTitle className="font-display text-2xl">尚未开铸</CardTitle>
+                <CardTitle className="font-display text-2xl">还没开始</CardTitle>
               </CardHeader>
               <CardContent className="text-muted-foreground">
-                完成第一次拼写对照或市集成交后，连续天数、XP 与残片会显示在这里。
+                练完一轮或市集成交后，这里会出现天数、经验和残片。
               </CardContent>
             </Card>
           ) : (
@@ -126,7 +128,7 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
         </div>
         <div>
           <p className="mb-2 text-xs tracking-wide text-muted-foreground uppercase">
-            口语地板 · {floor.license}
+            常用词表 · {floor.license}
           </p>
           <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
             {stats.map((stat) => (
@@ -141,7 +143,7 @@ export function CampLedger({ floor }: { floor: CampLedgerFloor }) {
           </div>
         </div>
         <p className="text-sm text-muted-foreground">
-          进度来自本机日课、潮汐与成交事件。{floor.coverageNote}。
+          进度来自你在日课、潮汐和市集里的练习。
         </p>
       </div>
     </details>

@@ -20,7 +20,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Textarea } from "@/components/ui/textarea";
 
 const DAY_PLAN_KEY = "echo-shards.day-plan.v1";
-const DEFAULT_INTENT = "今天先锻义界";
+const DEFAULT_INTENT = "今天先练意思";
 const DEFAULT_QUEST_ID = "echo-bazaar-info-gap-01";
 
 export interface AcceptedDayPlan {
@@ -181,7 +181,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
           </div>
           <CardTitle className="font-display text-3xl">今日提案</CardTitle>
           <CardDescription>
-            默认先锻义界；同词今日只锻一界，另界潮汐顺延。点一次进潮汐。
+            今天先练意思。同一个词今天只练一面，另一面改天再练。点一下就开始。
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -247,7 +247,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
                 value={intent}
                 onChange={(event) => setIntent(event.target.value)}
                 rows={2}
-                placeholder="例如：今天先锻义界"
+                placeholder="例如：今天先练意思"
               />
               <div>
                 <p className="mb-2 text-sm font-medium">词表（最多 5）</p>
@@ -291,12 +291,14 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
             <Card key={variant.id} className="flex flex-col">
               <CardHeader>
                 <Badge variant="secondary">
-                  {ASPECT_LABEL[variant.aspect]} · load {variant.load}
+                  {ASPECT_LABEL[variant.aspect]} · 约 {variant.load} 词
                 </Badge>
                 <CardTitle className="font-display text-xl">{variant.label}</CardTitle>
                 <CardDescription>
-                  {variant.lexeme_ids.join(", ")}
-                  {variant.include_quest ? ` · quest ${variant.quest_id}` : ""}
+                  {variant.lexeme_ids
+                    .map((id) => options.find((row) => row.id === id)?.orthography ?? id)
+                    .join("、")}
+                  {variant.include_quest ? " · 含市集问价" : ""}
                   {variant.aspect === "phonology_text" && !defaultIncludePhonology()
                     ? ` · ${WORD_TIDE_COPY.phonologyRest}`
                     : ""}

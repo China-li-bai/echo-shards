@@ -55,14 +55,14 @@ export class CurriculumDirector {
           id: "v-phonology",
           aspect: "phonology_text",
           lexeme_ids: lexemeIds,
-          label: "音界·文字潮汐 · IPA/音标提取（无音频）",
+          label: "潮汐 · 练读音（写音标）",
           load: lexemeIds.length,
         }
       : {
           id: "v-meaning",
           aspect: "meaning",
           lexeme_ids: lexemeIds,
-          label: "义界潮汐 · 中文义提取",
+          label: "潮汐 · 练意思",
           load: lexemeIds.length,
         };
     const variants: PlanVariant[] = [
@@ -70,7 +70,7 @@ export class CurriculumDirector {
         id: "v-form",
         aspect: "form",
         lexeme_ids: lexemeIds,
-        label: "形界潮汐 · 拼写提取",
+        label: "潮汐 · 练拼写",
         load: lexemeIds.length,
       },
       mid,
@@ -78,7 +78,7 @@ export class CurriculumDirector {
         id: "v-form-quest",
         aspect: "form",
         lexeme_ids: lexemeIds,
-        label: "形界潮汐 + 信息差 Quest（Quest 不改卡）",
+        label: "潮汐练拼写 · 再去市集问价",
         load: lexemeIds.length,
         include_quest: true,
         quest_id: input.questId ?? "echo-bazaar-info-gap-01",

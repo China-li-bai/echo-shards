@@ -16,7 +16,7 @@ const PRIMARY = [
 const WORKSHOP = [
   { href: "/lexemes", label: "词库" },
   { href: "/enrichment", label: "审校" },
-  { href: "/eval", label: "评估" },
+  // 评估移出学徒默认可达；直链 /eval 仍可用（搭建）
 ];
 
 function isActive(pathname: string, href: string) {

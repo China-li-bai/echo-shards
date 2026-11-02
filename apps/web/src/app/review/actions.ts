@@ -38,10 +38,10 @@ export async function suggestAspectGrade(
     throw new Error(`这张卡不在可复习的已审校词里：${lexemeId}`);
   }
   if (aspect === "meaning" && !lexeme.gloss_zh.trim()) {
-    throw new Error("待审校词没有中文义，不能开义界。");
+    throw new Error("这个词还没有中文义，暂时不能练意思。");
   }
   if (aspect === "phonology_text" && !lexeme.phonetic_text.trim()) {
-    throw new Error("没有文字音标，不能开音界·文字。");
+    throw new Error("这个词还没有音标，暂时不能练读音。");
   }
   const smith = new ForgeSmith(new AgentEventLog());
   smith.lockAspect(aspect);

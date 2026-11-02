@@ -16,9 +16,9 @@ export default function LexemesPage() {
         <p className="text-sm font-medium tracking-[0.16em] text-primary uppercase">
           词库
         </p>
-        <h1 className="font-display mt-2 text-4xl sm:text-5xl">口语地板</h1>
+        <h1 className="font-display mt-2 text-4xl sm:text-5xl">常用词表</h1>
         <p className="mt-3 text-muted-foreground">
-          {counts.lemmas} 词；已就绪 {counts.ready}，待审校 {counts.pending}。
+          {counts.lemmas} 个词；可以练 {counts.ready}，还在补 {counts.pending}。
         </p>
       </div>
       <LexemeBrowser rows={rows} />

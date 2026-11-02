@@ -31,25 +31,25 @@ export type AspectUnlockState = "locked" | "active" | "unlocked_next";
 export const WORD_TIDE_COPY = {
   /** 规则卡 1 */
   lockedNext: (next: Aspect, prev: Aspect) =>
-    `${ASPECT_LABEL[next]}未开炉 · 先把${ASPECT_LABEL[prev]}锻过今夜`,
+    `${ASPECT_LABEL[next]}还不能练 · 先把${ASPECT_LABEL[prev]}练过、隔夜再来`,
   /** 规则卡 2 */
-  forgedTodayNeedNight: "今日锻成一次 · 过今夜再来，才算开下一界",
+  forgedTodayNeedNight: "今天已经练成一次 · 过一夜再来，才开下一面",
   /** 规则卡 3 */
-  forgeOpen: (aspect: Aspect) => `${ASPECT_LABEL[aspect]}开炉`,
+  forgeOpen: (aspect: Aspect) => `${ASPECT_LABEL[aspect]}开练了`,
   /** 规则卡 4 */
-  sameDayDefer: "今日只锻一界 · 另界潮汐顺延",
+  sameDayDefer: "今天只练一面 · 另一面改天再练",
   /** 规则卡 5 */
-  phonologyRest: "音界工坊休整中",
+  phonologyRest: "读音暂时不练",
   /** 规则卡 7 */
-  needCrossNightShape: "要隔夜再对上才开下一界",
+  needCrossNightShape: "要隔夜再练对，才开下一面",
   /** 规则卡 8 */
-  phonologyTrial: "音界试炼开炉 · 写出音标串（不等于会开口）",
+  phonologyTrial: "试着练读音 · 写出音标（还不是开口说）",
   /** 规则卡 9 */
-  shardLit: "残片亮起=这一界锻过跨夜",
+  shardLit: "残片亮了＝这一面隔夜还记得",
   /** 规则卡 10 */
-  failKeepCount: "今日未锻成 · 计数不清空，改日再来",
+  failKeepCount: "今天没练成 · 进度还在，改天再来",
   /** 规则卡 11 */
-  incidental: "路上遇见过 · 潮汐仍要亲自锻",
+  incidental: "别处见过也不算 · 还得自己练一轮",
 } as const;
 
 /** Good / Easy — 主动提取成功（与 shard-wall SUCCESS_GRADES 对齐）。 */

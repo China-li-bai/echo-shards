@@ -29,7 +29,7 @@ export default function HomePage() {
 
   const steps = [
     { n: "1", href: "/day", title: "日课", hint: "接受今日提案", icon: "日" },
-    { n: "2", href: "/review?aspect=meaning", title: "潮汐", hint: "约 5 词写义", icon: "潮" },
+    { n: "2", href: "/review?aspect=meaning", title: "潮汐", hint: "大约五个词 · 练意思", icon: "潮" },
     {
       n: "3",
       href: "/quests",
@@ -60,14 +60,14 @@ export default function HomePage() {
                 <Badge className="realm-badge">今日轨道</Badge>
                 <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
                   <span className="realm-dot" aria-hidden />
-                  义界优先
+                  今天先练意思
                 </span>
               </div>
               <CardTitle className="font-display text-3xl text-balance">
                 日课 → 潮汐 → 市集
               </CardTitle>
               <CardDescription className="max-w-xl text-base leading-relaxed">
-                先接今日提案，再练一轮写义，最后去市集把价格和时间问出来。
+                先接今天的安排，再练几词意思，最后去市集问价。
               </CardDescription>
             </div>
             <div className="flex shrink-0 flex-col gap-2 sm:items-end">
@@ -115,8 +115,8 @@ export default function HomePage() {
         </Card>
       </section>
 
-      {/* 形界残片墙：轨道下；非导航项 */}
-      <section aria-label="形界残片墙">
+      {/* 拼写残片墙：轨道下；非导航项 */}
+      <section aria-label="拼写残片墙">
         <FormShardWall labels={labels} questTargetsById={questTargetsById} />
       </section>
 
@@ -130,7 +130,7 @@ export default function HomePage() {
             pending: counts.pending,
             forms: counts.forms,
             license: meta.pack.license,
-            coverageNote: meta.pack.coverage_note ?? "NGSL-Spoken 口语覆盖",
+            coverageNote: meta.pack.coverage_note ?? "",
           }}
         />
       </section>

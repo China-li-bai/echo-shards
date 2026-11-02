@@ -71,7 +71,7 @@ function rateAt(tide, aspect, grade, when) {
     cards: tide.allCards(),
   });
   assert(
-    note.includes("过今夜") || note.includes("隔夜"),
+    note.includes("过一夜") || note.includes("过今夜") || note.includes("隔夜"),
     `expect overnight copy, got: ${note}`,
   );
 }
@@ -100,7 +100,7 @@ function rateAt(tide, aspect, grade, when) {
     now: d2,
     cards: tide.allCards(),
   });
-  assert(note.includes("开炉"), `expect forge-open copy, got: ${note}`);
+  assert(note.includes("开练"), `expect forge-open copy, got: ${note}`);
 }
 
 // --- 失败不清零跨日计数 ---
@@ -220,7 +220,7 @@ function rateAt(tide, aspect, grade, when) {
     "phonology locked by default",
   );
   assert(
-    WORD_TIDE_COPY.phonologyRest.includes("休整"),
+    WORD_TIDE_COPY.phonologyRest.includes("暂时不练"),
     "phonology rest copy",
   );
 }

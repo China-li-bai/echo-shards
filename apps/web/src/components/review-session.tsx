@@ -417,7 +417,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
         now: new Date(),
         cards: engine.tide.allCards(),
       });
-      setFreshGain(`${note} · 下次潮汐 ${due}`);
+      setFreshGain(`${note} · 改天再练 ${due}`);
       setTraceVersion((value) => value + 1);
       if (done) {
         setPhase("summary");
@@ -459,8 +459,8 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>这一池还没有能上{ASPECT_LABEL[aspect]}的词</CardTitle>
-          <CardDescription>这一界还没有可练的词。</CardDescription>
+          <CardTitle>这一轮还没有能练{ASPECT_LABEL[aspect]}的词</CardTitle>
+          <CardDescription>换个词表，或先去日课接一条提案。</CardDescription>
         </CardHeader>
       </Card>
     );
@@ -475,13 +475,13 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   const titleText =
     aspect === "form" ? prompt.gloss_zh : prompt.orthography_hint ?? prompt.cloze;
   const cardDue = engine.tide.getCard(prompt.card_id)?.review.due;
-  const cardDueLabel = cardDue ? formatDueShanghai(cardDue) : "尚未排期";
+  const cardDueLabel = cardDue ? formatDueShanghai(cardDue) : "还没定下次练的时间";
 
   const progressLabel = `${ASPECT_LABEL[aspect]} ${Math.min(index + 1, filteredPrompts.length)}/${filteredPrompts.length}`;
   const practiceBlocked = Boolean(
     gateNote &&
-      (gateNote.includes("未开炉") ||
-        gateNote.includes("休整") ||
+      (gateNote.includes("还不能练") ||
+        gateNote.includes("暂时不练") ||
         gateNote === WORD_TIDE_COPY.phonologyRest),
   );
 
@@ -548,13 +548,13 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
           <CardHeader className="gap-3 pb-3">
             <Badge className="realm-badge">
               {ASPECT_LABEL[aspect]} ·{" "}
-              {gateNote?.includes("休整") ? "休整中" : "未开炉"}
+              {gateNote?.includes("暂时不练") ? "暂时不练" : "还不能练"}
             </Badge>
             <CardTitle className="tide-gloss text-balance">{gateNote}</CardTitle>
             <CardDescription className="text-base">
-              {gateNote?.includes("休整")
-                ? "这一界本阶段不开放试炼。"
-                : `点开只读，无解锁按钮。${WORD_TIDE_COPY.needCrossNightShape}`}
+              {gateNote?.includes("暂时不练")
+                ? "读音这面暂时不练。"
+                : `现在只能看看，还不能练。${WORD_TIDE_COPY.needCrossNightShape}`}
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-wrap gap-2">
@@ -563,7 +563,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
             </Button>
             {aspect !== "meaning" ? (
               <Button type="button" variant="ghost" render={<Link href="/review?aspect=meaning" />}>
-                去义界潮汐
+                去练意思
               </Button>
             ) : null}
           </CardContent>
@@ -576,7 +576,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
               : aspect === "phonology_text"
                 ? "realm-sound"
                 : "realm-form"
-          }${freshGain?.includes("开炉") ? " realm-forge-open" : ""}`}
+          }${freshGain?.includes("开练") ? " realm-forge-open" : ""}`}
         >
           <CardHeader className="gap-3 pb-3">
             <div className="flex items-center justify-between gap-3">
@@ -597,7 +597,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
               </p>
             )}
             {lastDue && phase === "answer" ? (
-              <p className="text-sm text-muted-foreground">下次潮汐：{lastDue}</p>
+              <p className="text-sm text-muted-foreground">改天再练：{lastDue}</p>
             ) : null}
             {freshGain ? (
               <p role="status" className="rounded-lg border border-primary/30 bg-secondary/70 px-3 py-2 text-sm">
@@ -667,10 +667,10 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                 <div className="rounded-lg border border-border/80 bg-secondary/50 px-3 py-2 text-sm">
                   <p className="font-medium text-foreground">{progressLabel}</p>
                   <p className="mt-1 text-muted-foreground">
-                    下次：{cardDueLabel}
+                    改天再练：{cardDueLabel}
                   </p>
                   {lastDue ? (
-                    <p className="mt-1 text-muted-foreground">上一张下次潮汐：{lastDue}</p>
+                    <p className="mt-1 text-muted-foreground">上一张 · 改天再练：{lastDue}</p>
                   ) : null}
                 </div>
                 <p className="text-sm text-muted-foreground">
@@ -746,7 +746,7 @@ function Summary({
 }) {
   const cards = engine.tide.allCards();
   const aspectLabel = ASPECT_LABEL[engine.aspect];
-  const forgeOpen = Boolean(freshGain?.includes("开炉"));
+  const forgeOpen = Boolean(freshGain?.includes("开练"));
   return (
     <div className="flex flex-col gap-4">
       <Card className={forgeOpen ? "realm-forge-open" : undefined}>
@@ -756,7 +756,7 @@ function Summary({
           ) : null}
           <CardTitle className="font-display text-3xl">这一潮过去了</CardTitle>
           <CardDescription>
-            {freshGain ? `${freshGain}。` : lastDue ? `最后一张下次潮汐 ${lastDue}。` : ""}
+            {freshGain ? `${freshGain}。` : lastDue ? `最后一张 · 改天再练 ${lastDue}。` : ""}
             {aspectLabel}这一潮走完了；可以去市集把词用出来。
           </CardDescription>
         </CardHeader>

@@ -77,13 +77,13 @@ export function campProgressFromSnapshots(
     return {
       progress: emptyCampProgress("local-learner", now),
       eventCount: 0,
-      sourceLabel: "来自本机学习事件（暂无）",
+      sourceLabel: "还没有练习记录",
     };
   }
   return {
     progress: progressFromEvents({ events, eval_scores, now, user_id: "local-learner" }),
     eventCount: events.length,
-    sourceLabel: "来自本机学习事件",
+    sourceLabel: "来自你的练习",
   };
 }
 
@@ -171,7 +171,7 @@ export function getCampProgressFromLocalStorage(now: Date = new Date()): CampPro
     return {
       progress: emptyCampProgress("local-learner", now),
       eventCount: 0,
-      sourceLabel: "来自本机学习事件（暂无）",
+      sourceLabel: "还没有练习记录",
     };
   }
   return campProgressFromSnapshots(readSnapshotsFromStorage(localStorage), now);

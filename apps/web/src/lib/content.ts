@@ -131,20 +131,20 @@ export function getReviewPools(aspect: Aspect = "form"): ReviewPool[] {
   const seed = bundledSeedLexemes();
   const ngsl = readyLexemes(catalog()).slice(0, 5);
   const aspectLabel =
-    aspect === "meaning" ? "义界" : aspect === "phonology_text" ? "音界·文字" : "形界";
+    aspect === "meaning" ? "意思" : aspect === "phonology_text" ? "读音" : "拼写";
   return [
     {
       id: "seed",
       title: "演示五词",
-      detail: `营地叙事词，和 CLI demo 同一批。本轮只开${aspectLabel}。`,
+      detail: `入门示范的五个词。这一轮只练${aspectLabel}。`,
       aspect,
       prompts: buildPublicPrompts(seed, aspect),
       lexemes: seed,
     },
     {
       id: "ngsl",
-      title: "NGSL-S 已就绪",
-      detail: `频级最高的 5 个已审校义项。其余待审校词不会被写成假释义。本轮只开${aspectLabel}。`,
+      title: "常用词 · 可以练",
+      detail: `挑了几个有中文义的常用词。这一轮只练${aspectLabel}。`,
       aspect,
       prompts: buildPublicPrompts(ngsl, aspect),
       lexemes: ngsl,

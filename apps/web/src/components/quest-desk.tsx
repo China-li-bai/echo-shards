@@ -21,6 +21,12 @@ function emptyHits(quest: Quest): ElicitHit[] {
   return quest.must_elicit.map((item) => ({ item, hit: false, tokens: [] }));
 }
 
+function modalityLabel(modality: string): string {
+  if (modality === "text") return "打字问价";
+  if (modality === "voice") return "开口问价";
+  return modality;
+}
+
 export function QuestDesk({
   quest,
   catalog,
@@ -66,7 +72,7 @@ export function QuestDesk({
     // Persist broker events so camp ledger can derive shards/XP after refresh.
     appendQuestEventLogSnapshot(log.snapshot());
     if (result.success) {
-      setFreshGain("成交亮起 · 残片 +1 · XP +50");
+      setFreshGain("成交了 · 残片 +1 · 经验 +50");
     }
     setTrace((value) => value + 1);
   }
@@ -106,7 +112,7 @@ export function QuestDesk({
                   {item.title}
                 </a>
                 <Badge variant={item.source === "generated" ? "secondary" : "outline"}>
-                  {item.source === "generated" ? "生成" : "种子"}
+                  {item.source === "generated" ? "生成" : "示范"}
                 </Badge>
               </li>
             ))}
@@ -148,7 +154,7 @@ export function QuestDesk({
       <Card>
         <CardHeader>
           <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="secondary">{quest.modality}</Badge>
+            <Badge variant="secondary">{modalityLabel(quest.modality)}</Badge>
             <Badge variant="outline">
               {turns.length}/{quest.max_turns} 回合
             </Badge>

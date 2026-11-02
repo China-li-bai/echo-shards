@@ -14,8 +14,8 @@ const empty = campProgressFromSnapshots([], now);
 if (empty.progress.xp !== 0 || empty.progress.streak_days !== 0 || empty.eventCount !== 0) {
   throw new Error(`empty should be real zero, got ${JSON.stringify(empty.progress)}`);
 }
-if (!empty.sourceLabel.includes("本机")) {
-  throw new Error(`expected local source label, got ${empty.sourceLabel}`);
+if (!empty.sourceLabel.includes("练习")) {
+  throw new Error(`expected learner practice source label, got ${empty.sourceLabel}`);
 }
 
 const snapA = {
@@ -82,7 +82,7 @@ if (view.progress.session_count !== 1) {
 if (view.progress.streak_days !== 2) {
   throw new Error(`expected streak 2, got ${view.progress.streak_days}`);
 }
-if (view.sourceLabel !== "来自本机学习事件") {
+if (view.sourceLabel !== "来自你的练习") {
   throw new Error(`bad sourceLabel: ${view.sourceLabel}`);
 }
 // shards = quest_success_count + floor(retrieval/5) = 1 + 0

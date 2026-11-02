@@ -24,9 +24,9 @@ export function dayIdShanghai(now: Date = new Date()): string {
 }
 
 export const ASPECT_LABEL: Record<Aspect, string> = {
-  form: "形界",
-  meaning: "义界",
-  phonology_text: "音界·文字",
+  form: "拼写",
+  meaning: "意思",
+  phonology_text: "读音",
 };
 
 export const GRADE_LABEL: Record<Grade, { en: string; zh: string }> = {

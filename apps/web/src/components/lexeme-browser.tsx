@@ -12,9 +12,9 @@ const PAGE_SIZE = 40;
 
 const FILTERS: { id: Filter; label: string }[] = [
   { id: "all", label: "全部" },
-  { id: "ready", label: "已就绪" },
-  { id: "partial", label: "部分" },
-  { id: "pending", label: "待审校" },
+  { id: "ready", label: "可以练" },
+  { id: "partial", label: "缺一点" },
+  { id: "pending", label: "还在补" },
 ];
 
 export function LexemeBrowser({ rows }: { rows: LexemeRow[] }) {
@@ -84,13 +84,13 @@ export function LexemeBrowser({ rows }: { rows: LexemeRow[] }) {
 
       {filter === "pending" ? (
         <p className="text-sm text-muted-foreground">
-          这些 lemma 还没有中文义、音标或例句。
+          这些词还没有中文义、音标或例句。
         </p>
       ) : null}
 
       {visible.length === 0 ? (
         <p className="rounded-xl border border-dashed border-border px-4 py-10 text-center text-muted-foreground">
-          没有对上的词。
+          没有找到合适的词。
         </p>
       ) : (
         <ul className="flex flex-col gap-2">
@@ -114,10 +114,10 @@ export function LexemeBrowser({ rows }: { rows: LexemeRow[] }) {
                 </div>
               </div>
               <p className="mt-1 pl-12 text-sm">
-                {row.gloss_zh.trim() ? row.gloss_zh : <span className="text-muted-foreground">待审校</span>}
+                {row.gloss_zh.trim() ? row.gloss_zh : <span className="text-muted-foreground">还在补</span>}
               </p>
               {row.gloss_en ? (
-                <p className="mt-1 pl-12 text-sm text-muted-foreground">上游英义 · {row.gloss_en}</p>
+                <p className="mt-1 pl-12 text-sm text-muted-foreground">英义参考 · {row.gloss_en}</p>
               ) : null}
             </li>
           ))}
@@ -147,8 +147,8 @@ export function LexemeBrowser({ rows }: { rows: LexemeRow[] }) {
 }
 
 function statusLabel(status: LexemeRow["enrichment_status"]): string {
-  if (status === "ready") return "已就绪";
-  if (status === "partial") return "部分";
-  if (status === "blocked") return "阻塞";
-  return "待审校";
+  if (status === "ready") return "可以练";
+  if (status === "partial") return "缺一点";
+  if (status === "blocked") return "暂不可用";
+  return "还在补";
 }

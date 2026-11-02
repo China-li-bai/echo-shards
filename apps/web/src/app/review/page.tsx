@@ -16,9 +16,9 @@ function parseAspect(raw: string | string[] | undefined): Aspect {
 }
 
 const RITUAL_LINE: Record<Aspect, string> = {
-  form: "这一潮 · 只拼形",
-  meaning: "这一潮 · 只写义",
-  phonology_text: "这一潮 · 只标音",
+  form: "这一轮 · 只练拼写",
+  meaning: "这一轮 · 只练意思",
+  phonology_text: "这一轮 · 只练读音",
 };
 
 export default async function ReviewPage({

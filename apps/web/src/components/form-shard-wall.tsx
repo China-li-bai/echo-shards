@@ -130,15 +130,15 @@ export function FormShardWall({ labels, questTargetsById }: FormShardWallProps) 
         <CardHeader className="gap-2 sm:flex-row sm:items-start sm:justify-between">
           <div className="space-y-1">
             <div className="flex flex-wrap items-center gap-2">
-              <Badge className="realm-badge">形界</Badge>
-              <CardTitle className="font-display text-2xl">形界残片墙</CardTitle>
+              <Badge className="realm-badge">拼写</Badge>
+              <CardTitle className="font-display text-2xl">拼写残片墙</CardTitle>
             </div>
             <CardDescription className="max-w-xl text-sm leading-relaxed">
-              潮汐留下的痕迹
+              练过之后，痕迹会留在这里
             </CardDescription>
           </div>
           <p className="text-xs text-muted-foreground sm:text-right" aria-live="polite">
-            {ready ? wallMeta(view) : "读取本机痕迹…"}
+            {ready ? wallMeta(view) : "读取练习痕迹…"}
           </p>
         </CardHeader>
         <CardContent className="space-y-3">
@@ -170,7 +170,7 @@ export function FormShardWall({ labels, questTargetsById }: FormShardWallProps) 
 
             <div className="shard-grid relative z-[1] flex min-h-[160px] flex-col items-center justify-center gap-3 px-3.5 py-6 pb-10">
               {!ready ? (
-                <p className="text-sm text-muted-foreground">读取潮汐留下的痕迹…</p>
+                <p className="text-sm text-muted-foreground">读取练过之后，痕迹会留在这里…</p>
               ) : view.cold ? (
                 <div className="wall-cold-invite mx-auto flex max-w-sm flex-col items-center text-center">
                   <div className="shard-silhouette" aria-hidden="true">
@@ -265,12 +265,12 @@ export function FormShardWall({ labels, questTargetsById }: FormShardWallProps) 
                 <h4 className="mb-1 flex items-center gap-1.5 text-xs font-semibold text-foreground">
                   记得
                   <span className="rounded border border-border bg-card px-1.5 py-px text-[10px] font-medium text-muted-foreground">
-                    潮汐 · 本机痕迹
+                    潮汐 · 练习痕迹
                   </span>
                 </h4>
                 <p className="text-sm">{formatSuccessTrail(selected)}</p>
                 <p className="mt-1 text-[11px] text-muted-foreground">
-                  {WORD_TIDE_COPY.shardLit} · 不同日历日（Asia/Shanghai）各至少一次主动提取成功才亮；当天连对不亮。
+                  {WORD_TIDE_COPY.shardLit} · 不同日子各记得一次，才亮灯；同一天连对不亮。
                 </p>
               </div>
               <div className="rounded-[10px] border border-border bg-secondary/40 px-3.5 py-3">
