@@ -196,7 +196,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
                   className="h-11! px-4"
                   onClick={() => {
                     const params = new URLSearchParams({
-                      aspect: adopted.variant.aspect,
+                      aspect: "meaning",
                       from: "day",
                       variant: adopted.variant.id,
                       ids: adopted.variant.lexeme_ids.join(","),
@@ -207,7 +207,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
                     router.push(`/review?${params.toString()}`);
                   }}
                 >
-                  继续今日潮汐
+                  继续练意思
                 </Button>
                 <Button
                   type="button"
@@ -216,7 +216,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
                   disabled={busy || (selected.length === 0 && options.length === 0)}
                   onClick={acceptTodayOneClick}
                 >
-                  {busy ? "正在接过…" : "再接一条提案"}
+                  {busy ? "正在开始…" : "换一组再练"}
                 </Button>
               </div>
             </div>
@@ -227,7 +227,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
               disabled={busy || (selected.length === 0 && options.length === 0)}
               onClick={acceptTodayOneClick}
             >
-              {busy ? "正在接过…" : "接过今日提案"}
+              {busy ? "正在开始…" : "开始练意思"}
             </Button>
           )}
           <p className="text-sm text-muted-foreground">

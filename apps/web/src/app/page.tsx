@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CampLedger } from "@/components/camp-ledger";
+import { CampPracticeCta } from "@/components/camp-practice-cta";
 import { FormShardWall } from "@/components/form-shard-wall";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -28,7 +29,7 @@ export default function HomePage() {
   }
 
   const steps = [
-    { n: "1", href: "/day", title: "日课", hint: "接受今日提案", icon: "日" },
+    { n: "1", href: "/day", title: "日课", hint: "开始练意思", icon: "日" },
     { n: "2", href: "/review?aspect=meaning", title: "潮汐", hint: "大约五个词 · 练意思", icon: "潮" },
     {
       n: "3",
@@ -67,23 +68,10 @@ export default function HomePage() {
                 日课 → 潮汐 → 市集
               </CardTitle>
               <CardDescription className="max-w-xl text-base leading-relaxed">
-                先接今天的安排，再练几词意思，最后去市集问价。
+                先练几词意思，再去市集问价。
               </CardDescription>
             </div>
-            <div className="flex shrink-0 flex-col gap-2 sm:items-end">
-              <Link
-                href="/day"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground hover:opacity-90"
-              >
-                去日课
-              </Link>
-              <Link
-                href="/quests"
-                className="inline-flex h-9 items-center justify-center rounded-md border border-border bg-background px-3 text-sm text-foreground hover:bg-muted"
-              >
-                去市集问价
-              </Link>
-            </div>
+            <CampPracticeCta />
           </CardHeader>
           <CardContent>
             <ol className="grid gap-2 sm:grid-cols-3">
