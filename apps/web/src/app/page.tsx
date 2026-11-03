@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CampLedger } from "@/components/camp-ledger";
+import { CampPracticeCta } from "@/components/camp-practice-cta";
 import { FormShardWall } from "@/components/form-shard-wall";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -28,7 +29,7 @@ export default function HomePage() {
   }
 
   const steps = [
-    { n: "1", href: "/day", title: "日课", hint: "接受今日提案", icon: "日" },
+    { n: "1", href: "/day", title: "日课", hint: "开始练意思", icon: "日" },
     { n: "2", href: "/review?aspect=meaning", title: "潮汐", hint: "大约五个词 · 练意思", icon: "潮" },
     {
       n: "3",
@@ -67,43 +68,34 @@ export default function HomePage() {
                 日课 → 潮汐 → 市集
               </CardTitle>
               <CardDescription className="max-w-xl text-base leading-relaxed">
-                先接今天的安排，再练几词意思，最后去市集问价。
+                先练几词意思，再去市集问价。
               </CardDescription>
             </div>
-            <div className="flex shrink-0 flex-col gap-2 sm:items-end">
-              <Link
-                href="/day"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground hover:opacity-90"
-              >
-                去日课
-              </Link>
-              <Link
-                href="/quests"
-                className="inline-flex h-9 items-center justify-center rounded-md border border-border bg-background px-3 text-sm text-foreground hover:bg-muted"
-              >
-                去市集问价
-              </Link>
-            </div>
+            <CampPracticeCta />
           </CardHeader>
-          <CardContent>
-            <ol className="grid gap-2 sm:grid-cols-3">
+          <CardContent className="pt-0">
+            {/* PR2: 步骤条降为次文，不与实心主 CTA 抢视觉权重 */}
+            <ol
+              className="grid gap-1.5 border-t border-border/60 pt-3 sm:grid-cols-3"
+              aria-label="今日步骤（次要）"
+            >
               {steps.map((step) => (
                 <li key={step.n}>
                   <Link
                     href={step.href}
-                    className="flex items-center gap-2.5 rounded-md bg-secondary/70 px-3 py-2.5 text-sm transition-colors hover:bg-secondary"
+                    className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-secondary/50 hover:text-foreground"
                   >
                     <span
-                      className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-primary/10 text-xs font-semibold text-primary"
+                      className="grid h-6 w-6 shrink-0 place-items-center rounded text-[10px] font-medium text-muted-foreground/80"
                       aria-hidden
                     >
                       {step.icon}
                     </span>
                     <span className="min-w-0">
-                      <span className="block font-medium text-foreground">
+                      <span className="block font-normal">
                         {step.n} · {step.title}
                       </span>
-                      <span className="mt-0.5 block truncate text-muted-foreground">
+                      <span className="mt-0.5 block truncate text-[11px] text-muted-foreground/80">
                         {step.hint}
                       </span>
                     </span>

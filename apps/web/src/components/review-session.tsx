@@ -460,7 +460,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       <Card>
         <CardHeader>
           <CardTitle>这一轮还没有能练{ASPECT_LABEL[aspect]}的词</CardTitle>
-          <CardDescription>换个词表，或先去日课接一条提案。</CardDescription>
+          <CardDescription>换个词表，或先去日课开始练意思。</CardDescription>
         </CardHeader>
       </Card>
     );
