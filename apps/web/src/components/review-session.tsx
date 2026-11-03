@@ -32,6 +32,7 @@ import { suggestAspectGrade, type AspectReveal } from "@/app/review/actions";
 import type { PoolId, ReviewPool } from "@/lib/content";
 import { DAY_PLAN_KEY, type AcceptedDayPlan } from "@/components/day-desk";
 import { isLearnerDebug } from "@/lib/learner-debug";
+import { readTodayPracticeHref } from "@/lib/today-practice-href";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -137,9 +138,11 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   const [showDebug, setShowDebug] = useState(false);
   const [freshGain, setFreshGain] = useState<string | null>(null);
   const [gateNote, setGateNote] = useState<string | null>(null);
+  const [meaningPracticeHref, setMeaningPracticeHref] = useState("/day");
 
   useEffect(() => {
     setShowDebug(isLearnerDebug());
+    setMeaningPracticeHref(readTodayPracticeHref());
   }, []);
 
   const filteredPrompts = useMemo(() => {
@@ -460,7 +463,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       <Card>
         <CardHeader>
           <CardTitle>这一轮还没有能练{ASPECT_LABEL[aspect]}的词</CardTitle>
-          <CardDescription>换个词表，或先去日课接一条提案。</CardDescription>
+          <CardDescription>换个词表，或先去日课开始练意思。</CardDescription>
         </CardHeader>
       </Card>
     );
@@ -526,7 +529,8 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
         </p>
       ) : null}
 
-      {gateNote ? (
+      {/* PR3: 锁/休整卡自己说一句原因；可练时旁注仍单独一行，避免与锁卡三叠 */}
+      {gateNote && !practiceBlocked ? (
         <p
           role="status"
           className="rounded-lg border border-border/80 bg-secondary/60 px-3 py-2 text-sm text-muted-foreground"
@@ -550,22 +554,23 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
               {ASPECT_LABEL[aspect]} ·{" "}
               {gateNote?.includes("暂时不练") ? "暂时不练" : "还不能练"}
             </Badge>
-            <CardTitle className="tide-gloss text-balance">{gateNote}</CardTitle>
-            <CardDescription className="text-base">
-              {gateNote?.includes("暂时不练")
-                ? "读音这面暂时不练。"
-                : `现在只能看看，还不能练。${WORD_TIDE_COPY.needCrossNightShape}`}
-            </CardDescription>
+            {/* 只留一句原因（闸门旁注已是白话单行）；不叠副文 happy talk */}
+            <CardTitle className="tide-gloss text-balance text-xl font-medium leading-snug">
+              {gateNote}
+            </CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-wrap gap-2">
-            <Button type="button" variant="outline" render={<Link href="/day" />}>
-              回日课
-            </Button>
+          <CardContent className="flex flex-col items-start gap-3">
             {aspect !== "meaning" ? (
-              <Button type="button" variant="ghost" render={<Link href="/review?aspect=meaning" />}>
+              <Button type="button" size="lg" render={<Link href={meaningPracticeHref} />}>
                 去练意思
               </Button>
             ) : null}
+            <Link
+              href="/day"
+              className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+            >
+              回日课
+            </Link>
           </CardContent>
         </Card>
       ) : (

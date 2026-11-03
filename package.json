@@ -35,7 +35,10 @@
     "assert:camp": "node --import tsx scripts/assert-camp-progress-local.mjs",
     "assert:shard-wall": "node --import tsx scripts/assert-shard-wall.mjs",
     "assert:word-tide": "node --import tsx scripts/assert-word-tide-gate.mjs",
-    "assert": "npm run assert:camp && npm run assert:shard-wall && npm run assert:word-tide"
+    "assert:pr1-cta": "node --import tsx scripts/assert-pr1-practice-cta.mjs",
+    "assert:pr2-empty-wall": "node --import tsx scripts/assert-pr2-empty-wall.mjs",
+    "assert:pr3-lock-rest": "node --import tsx scripts/assert-pr3-lock-rest.mjs",
+    "assert": "npm run assert:camp && npm run assert:shard-wall && npm run assert:word-tide && npm run assert:pr1-cta && npm run assert:pr2-empty-wall && npm run assert:pr3-lock-rest"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",
