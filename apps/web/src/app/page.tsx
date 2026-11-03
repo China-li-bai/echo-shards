@@ -73,25 +73,29 @@ export default function HomePage() {
             </div>
             <CampPracticeCta />
           </CardHeader>
-          <CardContent>
-            <ol className="grid gap-2 sm:grid-cols-3">
+          <CardContent className="pt-0">
+            {/* PR2: 步骤条降为次文，不与实心主 CTA 抢视觉权重 */}
+            <ol
+              className="grid gap-1.5 border-t border-border/60 pt-3 sm:grid-cols-3"
+              aria-label="今日步骤（次要）"
+            >
               {steps.map((step) => (
                 <li key={step.n}>
                   <Link
                     href={step.href}
-                    className="flex items-center gap-2.5 rounded-md bg-secondary/70 px-3 py-2.5 text-sm transition-colors hover:bg-secondary"
+                    className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-secondary/50 hover:text-foreground"
                   >
                     <span
-                      className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-primary/10 text-xs font-semibold text-primary"
+                      className="grid h-6 w-6 shrink-0 place-items-center rounded text-[10px] font-medium text-muted-foreground/80"
                       aria-hidden
                     >
                       {step.icon}
                     </span>
                     <span className="min-w-0">
-                      <span className="block font-medium text-foreground">
+                      <span className="block font-normal">
                         {step.n} · {step.title}
                       </span>
-                      <span className="mt-0.5 block truncate text-muted-foreground">
+                      <span className="mt-0.5 block truncate text-[11px] text-muted-foreground/80">
                         {step.hint}
                       </span>
                     </span>
