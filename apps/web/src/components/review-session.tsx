@@ -585,8 +585,8 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
         >
           <CardHeader className="gap-3 pb-3">
             <div className="flex items-center justify-between gap-3">
+              {/* PR4: 默认可达复习面不展示 CEFR；词条元数据仍可在工坊词库查看 */}
               <Badge className="realm-badge">{progressLabel}</Badge>
-              {prompt.cefr ? <Badge variant="outline">{prompt.cefr}</Badge> : null}
             </div>
             <CardTitle className="tide-gloss text-balance">{titleText}</CardTitle>
             <CardDescription className="text-base">{prompt.prompt}</CardDescription>
