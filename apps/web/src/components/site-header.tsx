@@ -1,16 +1,25 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "cn";
+import { hasFirstMeaningSuccess } from "@/lib/learner-practice-local";
 
-/** Learner shell — always visible */
-const PRIMARY = [
+/** Always reachable on the learner shell. */
+const ALWAYS = [
   { href: "/", label: "营地" },
   { href: "/day", label: "日课" },
+] as const;
+
+/**
+ * Unlocked only after「首成功」(hasFirstMeaningSuccess).
+ * Before that: gray + non-clickable + 合签旁注「练完一轮再来」.
+ */
+const AFTER_FIRST_SUCCESS = [
   { href: "/review", label: "潮汐" },
   { href: "/quests", label: "市集" },
-];
+] as const;
 
 /** Builder / ops shell — secondary */
 const WORKSHOP = [
@@ -26,6 +35,15 @@ function isActive(pathname: string, href: string) {
 export function SiteHeader() {
   const pathname = usePathname();
   const workshopActive = WORKSHOP.some((link) => isActive(pathname, link.href));
+  /** null = SSR/hydration pending; default locked to avoid flashing full nav on cold start */
+  const [unlocked, setUnlocked] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    setUnlocked(hasFirstMeaningSuccess());
+  }, []);
+
+  const navReady = unlocked !== null;
+  const showDeferred = unlocked === true;
 
   return (
     <header className="sticky top-0 z-20 border-b border-border/80 bg-background/85 backdrop-blur">
@@ -49,8 +67,8 @@ export function SiteHeader() {
           </span>
         </Link>
         <div className="flex items-center gap-2 sm:gap-3">
-          <nav className="flex items-center gap-1 text-sm" aria-label="主壳">
-            {PRIMARY.map((link) => {
+          <nav className="flex flex-wrap items-center gap-1 text-sm" aria-label="主壳">
+            {ALWAYS.map((link) => {
               const active = isActive(pathname, link.href);
               return (
                 <Link
@@ -67,6 +85,40 @@ export function SiteHeader() {
                 </Link>
               );
             })}
+            {AFTER_FIRST_SUCCESS.map((link) => {
+              const active = isActive(pathname, link.href);
+              if (!navReady || !showDeferred) {
+                return (
+                  <span
+                    key={link.href}
+                    className="cursor-not-allowed rounded-md px-2.5 py-1.5 text-muted-foreground/45"
+                    aria-disabled="true"
+                    title="练完一轮再来"
+                  >
+                    {link.label}
+                  </span>
+                );
+              }
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "rounded-md px-2.5 py-1.5 text-muted-foreground hover:bg-muted hover:text-foreground",
+                    active &&
+                      "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
+                  )}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+            {navReady && !showDeferred ? (
+              <span className="ml-0.5 hidden text-[11px] text-muted-foreground/70 sm:inline">
+                练完一轮再来
+              </span>
+            ) : null}
           </nav>
           <details className="relative">
             <summary

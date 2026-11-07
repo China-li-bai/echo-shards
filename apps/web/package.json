@@ -4,15 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev -H 0.0.0.0 -p 43123",
-    "build": "NEXT_DIST_DIR=.next-build next build",
+    "build": "NEXT_DIST_DIR=\"${NEXT_DIST_DIR:-.next-build}\" next build",
     "start": "next start -H 0.0.0.0 -p 43123",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "preview": "NEXT_DIST_DIR=.next opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "NEXT_DIST_DIR=.next opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "NEXT_DIST_DIR=.next opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
-    "build:worker": "opennextjs-cloudflare build"
+    "build:worker": "NEXT_DIST_DIR=.next opennextjs-cloudflare build"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

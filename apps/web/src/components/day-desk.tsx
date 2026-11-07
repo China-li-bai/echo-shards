@@ -121,7 +121,8 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
       params.set("quest", variant.quest_id);
     }
     params.set("ids", variant.lexeme_ids.join(","));
-    router.push(`/review?${params.toString()}`);
+    // PR6: enter recognition half-beat「先看一眼」before meaning recall.
+    router.push(`/look?${params.toString()}`);
   }
 
   function accept(variantId: string) {
@@ -181,7 +182,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
           </div>
           <CardTitle className="font-display text-3xl">今日提案</CardTitle>
           <CardDescription>
-            今天先练意思。同一个词今天只练一面，另一面改天再练。点一下就开始。
+            今天先认识几个词，再试着记起来。同一个词今天只练一面，另一面改天再练。
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -196,7 +197,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
                   className="h-11! px-4"
                   onClick={() => {
                     const params = new URLSearchParams({
-                      aspect: adopted.variant.aspect,
+                      aspect: "meaning",
                       from: "day",
                       variant: adopted.variant.id,
                       ids: adopted.variant.lexeme_ids.join(","),
@@ -204,10 +205,10 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
                     if (adopted.variant.include_quest && adopted.variant.quest_id) {
                       params.set("quest", adopted.variant.quest_id);
                     }
-                    router.push(`/review?${params.toString()}`);
+                    router.push(`/look?${params.toString()}`);
                   }}
                 >
-                  继续今日潮汐
+                  继续练意思
                 </Button>
                 <Button
                   type="button"
@@ -216,7 +217,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
                   disabled={busy || (selected.length === 0 && options.length === 0)}
                   onClick={acceptTodayOneClick}
                 >
-                  {busy ? "正在接过…" : "再接一条提案"}
+                  {busy ? "正在开始…" : "换一组再练"}
                 </Button>
               </div>
             </div>
@@ -227,7 +228,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
               disabled={busy || (selected.length === 0 && options.length === 0)}
               onClick={acceptTodayOneClick}
             >
-              {busy ? "正在接过…" : "接过今日提案"}
+              {busy ? "正在开始…" : "先看一眼"}
             </Button>
           )}
           <p className="text-sm text-muted-foreground">

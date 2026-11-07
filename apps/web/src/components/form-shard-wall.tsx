@@ -14,7 +14,9 @@ import {
   getShardWallFromLocalStorage,
   resolveLexemeLabel,
 } from "@/lib/shard-wall-local";
+import { readTodayPracticeHref } from "@/lib/today-practice-href";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export interface FormShardWallProps {
@@ -35,7 +37,7 @@ function formatSuccessTrail(shard: ShardLitView): string {
 }
 
 function wallMeta(view: ShardWallView): string {
-  if (view.cold) return "残片安静着";
+  if (view.cold) return "还没有痕迹";
   const parts: string[] = [];
   if (view.newly_lit_today_count > 0) {
     parts.push(`今日新亮 ${view.newly_lit_today_count}`);
@@ -54,11 +56,13 @@ export function FormShardWall({ labels, questTargetsById }: FormShardWallProps) 
   const [view, setView] = useState<ShardWallView>(() => emptyShardWall());
   const [ready, setReady] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [practiceHref, setPracticeHref] = useState("/day");
 
   useEffect(() => {
     const next = getShardWallFromLocalStorage({ questTargetsById });
     setView(next);
     setReady(true);
+    setPracticeHref(readTodayPracticeHref());
   }, [questTargetsById]);
 
   useEffect(() => {
@@ -176,9 +180,18 @@ export function FormShardWall({ labels, questTargetsById }: FormShardWallProps) 
                   <div className="shard-silhouette" aria-hidden="true">
                     <span className="shard-silhouette-facet" />
                   </div>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                    练完潮汐，墙面会留下痕迹
+                  <p className="mt-4 text-sm leading-relaxed text-foreground">
+                    练过意思并隔夜后，痕迹会出现在这里
                   </p>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="lg"
+                    className="mt-4"
+                    render={<Link href={practiceHref} />}
+                  >
+                    先去练意思
+                  </Button>
                 </div>
               ) : (
                 <>
