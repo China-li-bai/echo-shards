@@ -1,6 +1,7 @@
 /**
  * PR5: lesson-first shell & naming — no「潮汐复习」; cold-start / return titles;
  * day CTA「先看一眼」; camp subtitle; bare-/review gate; recall badges.
+ * /look half-beat body is asserted in PR6.
  * Run: node --import tsx scripts/assert-pr5-lesson-first-shell.mjs
  */
 import { readFileSync } from "node:fs";
@@ -53,16 +54,13 @@ if (dayDesk.includes('"开始练意思"')) {
   errors.push("day-desk still has cold-start「开始练意思」(should be「先看一眼」)");
 }
 if (!dayDesk.includes("`/look?") && !dayDesk.includes("/look?")) {
-  errors.push("day-desk one-click path should enter /look skeleton");
+  errors.push("day-desk one-click path should enter /look");
 }
-if (!lookPage.includes("先看一眼") || !lookGate.includes("进入意思练习")) {
-  errors.push("look skeleton must title「先看一眼」and CTA without claiming already looked");
+if (!lookPage.includes("先看一眼") || !lookGate.includes("先看一眼")) {
+  errors.push("look page/gate must title「先看一眼」");
 }
-if (/看过了，试着写意思/.test(lookGate) || /记住了，开始回忆/.test(lookGate)) {
-  errors.push("look-ahead-gate must not use half-beat close copy (PR6 only)");
-}
-if (!lookGate.includes("进入意思练习")) {
-  errors.push("look-ahead-gate CTA should be honest「进入意思练习」");
+if (lookGate.includes("进入意思练习") || lookGate.includes("完整「先看一眼」还在路上")) {
+  errors.push("look-ahead-gate still has PR5 honest skeleton CTA (PR6 should replace)");
 }
 
 if (errors.length) {
@@ -72,5 +70,5 @@ if (errors.length) {
 }
 
 console.log(
-  "assert-pr5-lesson-first-shell: ok (shell titles, bare gate, badges, camp/day copy, /look skeleton)",
+  "assert-pr5-lesson-first-shell: ok (shell titles, bare gate, badges, camp/day copy, /look entry)",
 );
