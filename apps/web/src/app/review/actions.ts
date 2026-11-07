@@ -35,7 +35,7 @@ export async function suggestAspectGrade(
 ): Promise<AspectReveal> {
   const lexeme = findReviewLexeme(lexemeId);
   if (!lexeme) {
-    throw new Error(`这张卡不在可复习的已审校词里：${lexemeId}`);
+    throw new Error(`这张卡不在可练的已审校词里：${lexemeId}`);
   }
   if (aspect === "meaning" && !lexeme.gloss_zh.trim()) {
     throw new Error("这个词还没有中文义，暂时不能练意思。");

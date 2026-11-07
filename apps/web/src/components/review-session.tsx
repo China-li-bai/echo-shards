@@ -32,6 +32,7 @@ import { suggestAspectGrade, type AspectReveal } from "@/app/review/actions";
 import type { PoolId, ReviewPool } from "@/lib/content";
 import { DAY_PLAN_KEY, type AcceptedDayPlan } from "@/components/day-desk";
 import { isLearnerDebug } from "@/lib/learner-debug";
+import { readTodayPracticeHref } from "@/lib/today-practice-href";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -137,9 +138,11 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   const [showDebug, setShowDebug] = useState(false);
   const [freshGain, setFreshGain] = useState<string | null>(null);
   const [gateNote, setGateNote] = useState<string | null>(null);
+  const [meaningPracticeHref, setMeaningPracticeHref] = useState("/day");
 
   useEffect(() => {
     setShowDebug(isLearnerDebug());
+    setMeaningPracticeHref(readTodayPracticeHref());
   }, []);
 
   const filteredPrompts = useMemo(() => {
@@ -452,7 +455,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   }
 
   if (!pool) {
-    return <p className="text-muted-foreground">没有可复习的词。</p>;
+    return <p className="text-muted-foreground">这一轮还没有能练的词。</p>;
   }
 
   if (filteredPrompts.length === 0) {
@@ -460,7 +463,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       <Card>
         <CardHeader>
           <CardTitle>这一轮还没有能练{ASPECT_LABEL[aspect]}的词</CardTitle>
-          <CardDescription>换个词表，或先去日课接一条提案。</CardDescription>
+          <CardDescription>换个词表，或先去日课安排今天的练习。</CardDescription>
         </CardHeader>
       </Card>
     );
@@ -477,6 +480,11 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   const cardDue = engine.tide.getCard(prompt.card_id)?.review.due;
   const cardDueLabel = cardDue ? formatDueShanghai(cardDue) : "还没定下次练的时间";
 
+  const cardLogs = engine.tide.getLogs().filter((log) => log.card_id === prompt.card_id);
+  const cardReps = engine.tide.getCard(prompt.card_id)?.review.reps ?? 0;
+  const isFirstPractice = cardLogs.length === 0 && cardReps === 0;
+  /** PR5 回忆徽章：无 logs「新词 · 第一次练」；有 logs「再练」 */
+  const recallBadge = isFirstPractice ? "新词 · 第一次练" : "再练";
   const progressLabel = `${ASPECT_LABEL[aspect]} ${Math.min(index + 1, filteredPrompts.length)}/${filteredPrompts.length}`;
   const practiceBlocked = Boolean(
     gateNote &&
@@ -526,7 +534,8 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
         </p>
       ) : null}
 
-      {gateNote ? (
+      {/* PR3: 锁/休整卡自己说一句原因；可练时旁注仍单独一行，避免与锁卡三叠 */}
+      {gateNote && !practiceBlocked ? (
         <p
           role="status"
           className="rounded-lg border border-border/80 bg-secondary/60 px-3 py-2 text-sm text-muted-foreground"
@@ -550,22 +559,23 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
               {ASPECT_LABEL[aspect]} ·{" "}
               {gateNote?.includes("暂时不练") ? "暂时不练" : "还不能练"}
             </Badge>
-            <CardTitle className="tide-gloss text-balance">{gateNote}</CardTitle>
-            <CardDescription className="text-base">
-              {gateNote?.includes("暂时不练")
-                ? "读音这面暂时不练。"
-                : `现在只能看看，还不能练。${WORD_TIDE_COPY.needCrossNightShape}`}
-            </CardDescription>
+            {/* 只留一句原因（闸门旁注已是白话单行）；不叠副文 happy talk */}
+            <CardTitle className="tide-gloss text-balance text-xl font-medium leading-snug">
+              {gateNote}
+            </CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-wrap gap-2">
-            <Button type="button" variant="outline" render={<Link href="/day" />}>
-              回日课
-            </Button>
+          <CardContent className="flex flex-col items-start gap-3">
             {aspect !== "meaning" ? (
-              <Button type="button" variant="ghost" render={<Link href="/review?aspect=meaning" />}>
+              <Button type="button" size="lg" render={<Link href={meaningPracticeHref} />}>
                 去练意思
               </Button>
             ) : null}
+            <Link
+              href="/day"
+              className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+            >
+              回日课
+            </Link>
           </CardContent>
         </Card>
       ) : (
@@ -580,8 +590,8 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
         >
           <CardHeader className="gap-3 pb-3">
             <div className="flex items-center justify-between gap-3">
-              <Badge className="realm-badge">{progressLabel}</Badge>
-              {prompt.cefr ? <Badge variant="outline">{prompt.cefr}</Badge> : null}
+              {/* PR4: 默认可达复习面不展示 CEFR；词条元数据仍可在工坊词库查看 */}
+              <Badge className="realm-badge">{recallBadge}</Badge>
             </div>
             <CardTitle className="tide-gloss text-balance">{titleText}</CardTitle>
             <CardDescription className="text-base">{prompt.prompt}</CardDescription>
@@ -665,7 +675,8 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                   ) : null}
                 </div>
                 <div className="rounded-lg border border-border/80 bg-secondary/50 px-3 py-2 text-sm">
-                  <p className="font-medium text-foreground">{progressLabel}</p>
+                  <p className="font-medium text-foreground">{recallBadge}</p>
+                  <p className="mt-1 text-muted-foreground">{progressLabel}</p>
                   <p className="mt-1 text-muted-foreground">
                     改天再练：{cardDueLabel}
                   </p>

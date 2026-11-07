@@ -10,7 +10,8 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "account_id": "d9db6dba0147bd09b161cd96735925e9"
   // Account id (for later deploy): d9db6dba0147bd09b161cd96735925e9
   // Set account_id when deploying, or rely on CLOUDFLARE_ACCOUNT_ID / wrangler login.
 }
