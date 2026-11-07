@@ -41,8 +41,9 @@
     "assert:pr4-learner-noise": "node --import tsx scripts/assert-pr4-learner-noise.mjs",
     "assert:pr5-lesson-first": "node --import tsx scripts/assert-pr5-lesson-first-shell.mjs",
     "assert:pr6-look-once": "node --import tsx scripts/assert-pr6-look-once.mjs",
-    "assert": "npm run assert:camp && npm run assert:shard-wall && npm run assert:word-tide && npm run assert:pr1-cta && npm run assert:pr2-empty-wall && npm run assert:pr3-lock-rest && npm run assert:pr4-learner-noise && npm run assert:pr5-lesson-first && npm run assert:pr6-look-once && npm run assert:pr7-first-day-nav",
-    "assert:pr7-first-day-nav": "node --import tsx scripts/assert-pr7-first-day-nav.mjs"
+    "assert": "npm run assert:camp && npm run assert:shard-wall && npm run assert:word-tide && npm run assert:pr1-cta && npm run assert:pr2-empty-wall && npm run assert:pr3-lock-rest && npm run assert:pr4-learner-noise && npm run assert:pr5-lesson-first && npm run assert:pr6-look-once && npm run assert:pr7-first-day-nav && npm run assert:pr8-clear-practice",
+    "assert:pr7-first-day-nav": "node --import tsx scripts/assert-pr7-first-day-nav.mjs",
+    "assert:pr8-clear-practice": "node --import tsx scripts/assert-pr8-clear-practice.mjs"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",
