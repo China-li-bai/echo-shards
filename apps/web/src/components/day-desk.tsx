@@ -121,7 +121,8 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
       params.set("quest", variant.quest_id);
     }
     params.set("ids", variant.lexeme_ids.join(","));
-    router.push(`/review?${params.toString()}`);
+    // PR5: enter「先看一眼」skeleton; full recognition half-beat is PR6.
+    router.push(`/look?${params.toString()}`);
   }
 
   function accept(variantId: string) {
@@ -181,7 +182,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
           </div>
           <CardTitle className="font-display text-3xl">今日提案</CardTitle>
           <CardDescription>
-            今天先练意思。同一个词今天只练一面，另一面改天再练。点一下就开始。
+            今天先认识几个词，再试着记起来。同一个词今天只练一面，另一面改天再练。
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -227,7 +228,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
               disabled={busy || (selected.length === 0 && options.length === 0)}
               onClick={acceptTodayOneClick}
             >
-              {busy ? "正在开始…" : "开始练意思"}
+              {busy ? "正在开始…" : "先看一眼"}
             </Button>
           )}
           <p className="text-sm text-muted-foreground">

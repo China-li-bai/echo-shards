@@ -20,6 +20,9 @@ export function CampPracticeCta() {
       >
         开始今天的练习
       </Link>
+      <p className="max-w-[16rem] text-sm text-muted-foreground sm:text-right">
+        先认识几个词，再试着记起来。
+      </p>
       <Link
         href="/quests"
         className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
