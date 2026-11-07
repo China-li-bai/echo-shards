@@ -11,8 +11,13 @@ const wallPath = join(
   "form-shard-wall.tsx",
 );
 const pagePath = join(new URL("../apps/web/src/app", import.meta.url).pathname, "page.tsx");
+const stepsPath = join(
+  new URL("../apps/web/src/components", import.meta.url).pathname,
+  "camp-today-steps.tsx",
+);
 const wall = readFileSync(wallPath, "utf8");
 const page = readFileSync(pagePath, "utf8");
+const stepsSrc = readFileSync(stepsPath, "utf8");
 
 const requiredWall = ["先去练意思", "练过意思并隔夜后，痕迹会出现在这里"];
 const forbiddenWallOnly = ["练完潮汐，墙面会留下痕迹"]; // poetic-only cold invite replaced
@@ -38,9 +43,9 @@ for (const s of requiredCampPrimary) {
 if (!page.includes("CampPracticeCta")) {
   errors.push("page.tsx must keep CampPracticeCta as the solid primary CTA host");
 }
-// Steps strip should be demoted (aria label from PR2)
-if (!page.includes("今日步骤（次要）")) {
-  errors.push("page.tsx steps strip should be labeled as secondary (PR2 hierarchy)");
+// Steps strip should be demoted (aria label from PR2; may live in CampTodaySteps after PR7)
+if (!page.includes("今日步骤（次要）") && !stepsSrc.includes("今日步骤（次要）")) {
+  errors.push("camp steps strip should be labeled as secondary (PR2 hierarchy)");
 }
 
 if (errors.length) {

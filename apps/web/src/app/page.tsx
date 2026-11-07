@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { CampLedger } from "@/components/camp-ledger";
 import { CampPracticeCta } from "@/components/camp-practice-cta";
+import { CampTodaySteps, type CampStep } from "@/components/camp-today-steps";
 import { FormShardWall } from "@/components/form-shard-wall";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -28,17 +28,25 @@ export default function HomePage() {
     questTargetsById[q.id] = [...q.target_lexemes];
   }
 
-  const steps = [
+  const steps: CampStep[] = [
     { n: "1", href: "/day", title: "日课", hint: "先看一眼", icon: "日" },
-    { n: "2", href: "/review?aspect=meaning", title: "潮汐", hint: "大约五个词 · 练意思", icon: "潮" },
+    {
+      n: "2",
+      href: "/review?aspect=meaning",
+      title: "潮汐",
+      hint: "大约五个词 · 练意思",
+      icon: "潮",
+      requiresFirstSuccess: true,
+    },
     {
       n: "3",
       href: "/quests",
       title: "市集",
       hint: quest.title,
       icon: "市",
+      requiresFirstSuccess: true,
     },
-  ] as const;
+  ];
 
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-4 py-10 sm:px-6">
@@ -68,41 +76,14 @@ export default function HomePage() {
                 日课 → 潮汐 → 市集
               </CardTitle>
               <CardDescription className="max-w-xl text-base leading-relaxed">
-                先认识几个词，再试着记起来；也可以去市集问价。
+                先认识几个词，再试着记起来。
               </CardDescription>
             </div>
             <CampPracticeCta />
           </CardHeader>
           <CardContent className="pt-0">
-            {/* PR2: 步骤条降为次文，不与实心主 CTA 抢视觉权重 */}
-            <ol
-              className="grid gap-1.5 border-t border-border/60 pt-3 sm:grid-cols-3"
-              aria-label="今日步骤（次要）"
-            >
-              {steps.map((step) => (
-                <li key={step.n}>
-                  <Link
-                    href={step.href}
-                    className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-secondary/50 hover:text-foreground"
-                  >
-                    <span
-                      className="grid h-6 w-6 shrink-0 place-items-center rounded text-[10px] font-medium text-muted-foreground/80"
-                      aria-hidden
-                    >
-                      {step.icon}
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block font-normal">
-                        {step.n} · {step.title}
-                      </span>
-                      <span className="mt-0.5 block truncate text-[11px] text-muted-foreground/80">
-                        {step.hint}
-                      </span>
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ol>
+            {/* PR2: 步骤条降为次文；PR7: 潮汐/市集首成功前灰态 */}
+            <CampTodaySteps steps={steps} />
           </CardContent>
         </Card>
       </section>
