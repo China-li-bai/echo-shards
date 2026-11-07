@@ -60,6 +60,15 @@ export interface DayLexemeOption {
   source: "seed" | "ngsl";
 }
 
+/** Recognition half-beat card (PR6「先看一眼」). Example is optional. */
+export interface LookCard {
+  id: string;
+  orthography: string;
+  gloss_zh: string;
+  example_sentence?: string;
+  example_sentence_zh?: string;
+}
+
 export interface QuestListItem {
   id: string;
   title: string;
@@ -183,6 +192,44 @@ export function resolveDayLexemes(ids: string[]): Lexeme[] {
     out.push(lexeme);
   }
   return out;
+}
+
+function lexemeToLookCard(lexeme: Lexeme): LookCard {
+  const example = lexeme.example_sentence?.trim();
+  const exampleZh = lexeme.example_sentence_zh?.trim();
+  return {
+    id: lexeme.id,
+    orthography: lexeme.orthography,
+    gloss_zh: lexeme.gloss_zh,
+    ...(example ? { example_sentence: example } : {}),
+    ...(exampleZh ? { example_sentence_zh: exampleZh } : {}),
+  };
+}
+
+function lookCardsForIds(ids: string[]): LookCard[] {
+  const out: LookCard[] = [];
+  const seen = new Set<string>();
+  for (const id of ids) {
+    if (seen.has(id)) continue;
+    const lexeme = findReviewLexeme(id);
+    if (!lexeme) continue;
+    seen.add(id);
+    out.push(lexemeToLookCard(lexeme));
+  }
+  return out;
+}
+
+/**
+ * Cards for「先看一眼」. Prefer day-plan / query ids; else day-option pool.
+ * Example omitted when empty (合签「可选」). Pool is uncapped so the client
+ * can filter by any accepted day-plan id.
+ */
+export function getLookCards(ids: string[] = []): LookCard[] {
+  if (ids.length > 0) {
+    const preferred = lookCardsForIds(ids.slice(0, 5));
+    if (preferred.length > 0) return preferred;
+  }
+  return lookCardsForIds(getDayLexemeOptions().map((row) => row.id));
 }
 
 export function getEvalSnapshot() {
