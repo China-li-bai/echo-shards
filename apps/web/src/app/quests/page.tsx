@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BazaarFirstSeenNote } from "@/components/bazaar-first-seen-note";
 import { QuestDesk } from "@/components/quest-desk";
 import { getQuest, listQuests } from "@/lib/content";
 
@@ -25,6 +26,7 @@ export default async function QuestPage({
         </p>
         <h1 className="font-display mt-2 text-4xl sm:text-5xl">{quest.title}</h1>
         <p className="mt-3 text-muted-foreground">{quest.goal}</p>
+        <BazaarFirstSeenNote />
       </div>
       <QuestDesk quest={quest} catalog={catalog} />
     </div>

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
-  "description": "\u8a00\u7075\u6b8b\u7247 Echo Shards \u2014 text-first FSRS / TOPRA / info-gap quests",
+  "description": "言灵残片 Echo Shards — text-first FSRS / TOPRA / info-gap quests",
   "type": "module",
   "workspaces": [
     "packages/*",
@@ -41,7 +41,8 @@
     "assert:pr4-learner-noise": "node --import tsx scripts/assert-pr4-learner-noise.mjs",
     "assert:pr5-lesson-first": "node --import tsx scripts/assert-pr5-lesson-first-shell.mjs",
     "assert:pr6-look-once": "node --import tsx scripts/assert-pr6-look-once.mjs",
-    "assert": "npm run assert:camp && npm run assert:shard-wall && npm run assert:word-tide && npm run assert:pr1-cta && npm run assert:pr2-empty-wall && npm run assert:pr3-lock-rest && npm run assert:pr4-learner-noise && npm run assert:pr5-lesson-first && npm run assert:pr6-look-once"
+    "assert": "npm run assert:camp && npm run assert:shard-wall && npm run assert:word-tide && npm run assert:pr1-cta && npm run assert:pr2-empty-wall && npm run assert:pr3-lock-rest && npm run assert:pr4-learner-noise && npm run assert:pr5-lesson-first && npm run assert:pr6-look-once && npm run assert:pr7-first-day-nav",
+    "assert:pr7-first-day-nav": "node --import tsx scripts/assert-pr7-first-day-nav.mjs"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",
