@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -29,6 +29,7 @@ import {
   type Grade,
 } from "@echo-shards/core";
 import { suggestAspectGrade, type AspectReveal } from "@/app/review/actions";
+import { createGradeSubmitter, gradeFromHotkey, type GradeSubmitter } from "@/lib/grade-submit";
 import type { PoolId, ReviewPool } from "@/lib/content";
 import { DAY_PLAN_KEY, type AcceptedDayPlan } from "@/components/day-desk";
 import { isLearnerDebug } from "@/lib/learner-debug";
@@ -139,6 +140,16 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   const [freshGain, setFreshGain] = useState<string | null>(null);
   const [gateNote, setGateNote] = useState<string | null>(null);
   const [meaningPracticeHref, setMeaningPracticeHref] = useState("/day");
+  const submitterRef = useRef<GradeSubmitter | null>(null);
+  if (!submitterRef.current) {
+    submitterRef.current = createGradeSubmitter({
+      now: () => new Date(),
+      newId: () => crypto.randomUUID(),
+    });
+  }
+  const gradingRef = useRef<{ cardId: string | null; enabled: boolean }>({ cardId: null, enabled: false });
+  gradingRef.current = { cardId: null, enabled: false };
+  const confirmGradeRef = useRef<(grade: Grade, cardId: string) => void>(() => {});
 
   useEffect(() => {
     setShowDebug(isLearnerDebug());
@@ -394,61 +405,102 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
     }
   }
 
-  function confirmGrade(grade: Grade) {
-    if (!engine || !pool) return;
-    const prompt = filteredPrompts[index];
-    if (!prompt) return;
-    setError(null);
-    try {
-      const result = engine.steward.rate(prompt.card_id, grade, new Date());
-      new EvalSentinel(engine.log).scoreRetrieval(grade);
-      const due = formatDueShanghai(result.card.review.due);
-      const nextIndex = index + 1;
-      const done = nextIndex >= filteredPrompts.length;
-      if (done) {
-        engine.log.recordEvent({
-          event_type: "session_end",
-          payload: { batch_id: engine.batchId, aspect },
+  function confirmGrade(grade: Grade, clickedCardId: string) {
+    if (!engine || !pool || !submitterRef.current) return;
+    const displayed = filteredPrompts[index]?.card_id ?? null;
+    submitterRef.current.show(displayed);
+    let replayed = false;
+    let dueLabel = "";
+    const result = submitterRef.current.submit({
+      cardId: clickedCardId,
+      grade,
+      rate: (attempt) => {
+        const rated = engine.steward.rate(attempt.cardId, attempt.grade, attempt.reviewedAt, {
+          client_event_id: attempt.clientEventId,
         });
-      }
-      setLastDue(due);
-      const note = apprenticeNoteAfterGrade({
-        lexemeId: result.card.lexeme_id,
-        aspect: result.card.aspect,
-        grade,
-        logs: engine.tide.getLogs(),
-        now: new Date(),
-        cards: engine.tide.allCards(),
-      });
-      setFreshGain(`${note} · 改天再练 ${due}`);
-      setTraceVersion((value) => value + 1);
-      if (done) {
-        setPhase("summary");
-        persist({ phase: "summary", index: nextIndex, lastDue: due, reveal: null, typed: "" });
-      } else {
-        setIndex(nextIndex);
-        setPhase("answer");
-        setTyped("");
-        setReveal(null);
+        replayed = rated.replayed;
+        dueLabel = formatDueShanghai(rated.card.review.due);
+        return { replayed: rated.replayed };
+      },
+      persist: () => {
+        const nextIndex = index + 1;
+        const done = nextIndex >= filteredPrompts.length;
+        if (!replayed) {
+          new EvalSentinel(engine.log).scoreRetrieval(grade);
+          if (done) {
+            engine.log.recordEvent({
+              event_type: "session_end",
+              payload: { batch_id: engine.batchId, aspect },
+            });
+          }
+        }
         persist({
-          phase: "answer",
+          phase: done ? "summary" : "answer",
           index: nextIndex,
-          typed: "",
+          lastDue: dueLabel,
           reveal: null,
-          lastDue: due,
+          typed: "",
         });
+      },
+    });
+    if (result.status === "rate-failed" || result.status === "save-failed") {
+      if (result.status === "rate-failed") {
+        const cause = new Error(result.error ?? "评分没有写进调度器");
+        if (result.error?.includes("schedule field")) {
+          new EvalSentinel(engine.log).flagPolicyBreach("tide_steward", new SchedulePolicyError(cause.message));
+        }
       }
-    } catch (cause) {
-      if (cause instanceof SchedulePolicyError) {
-        new EvalSentinel(engine.log).flagPolicyBreach("tide_steward", cause);
-      }
-      setError(cause instanceof Error ? cause.message : "评分没有写进调度器");
+      setError(result.error ?? "评分没有保存");
+      return;
+    }
+    if (result.status !== "saved") return;
+    setError(null);
+    const nextIndex = index + 1;
+    const done = nextIndex >= filteredPrompts.length;
+    setLastDue(dueLabel);
+    const ratedCard = engine.tide.getCard(clickedCardId);
+    const note = apprenticeNoteAfterGrade({
+      lexemeId: ratedCard?.lexeme_id ?? clickedCardId,
+      aspect: ratedCard?.aspect ?? aspect,
+      grade,
+      logs: engine.tide.getLogs(),
+      now: new Date(),
+      cards: engine.tide.allCards(),
+    });
+    setFreshGain(`${note} · 改天再练 ${dueLabel}`);
+    setTraceVersion((value) => value + 1);
+    if (done) {
+      setPhase("summary");
+    } else {
+      setIndex(nextIndex);
+      setPhase("answer");
+      setTyped("");
+      setReveal(null);
     }
   }
+  confirmGradeRef.current = confirmGrade;
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      const current = gradingRef.current;
+      if (!current.enabled || !current.cardId) return;
+      const target = event.target;
+      if (target instanceof HTMLElement && (target.tagName === "INPUT" || target.tagName === "TEXTAREA")) {
+        return;
+      }
+      const keyGrade = gradeFromHotkey(event.key);
+      if (!keyGrade) return;
+      event.preventDefault();
+      confirmGradeRef.current(keyGrade, current.cardId);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   function reset() {
     if (!pool) return;
     localStorage.removeItem(storageKey(pool.id, aspect));
+    submitterRef.current?.reset();
     setError(null);
     setEngine(null);
     setNonce((value) => value + 1);
@@ -492,6 +544,10 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
         gateNote.includes("暂时不练") ||
         gateNote === WORD_TIDE_COPY.phonologyRest),
   );
+  gradingRef.current = {
+    cardId: phase === "grade" && !practiceBlocked ? prompt.card_id : null,
+    enabled: phase === "grade" && !practiceBlocked,
+  };
 
   return (
     <div className="tide-beach flex flex-col gap-5">
@@ -513,6 +569,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                   setError(null);
                   setEngine(null);
                   setPoolId(item.id);
+                  submitterRef.current?.reset();
                 }}
               >
                 {item.title}
@@ -700,7 +757,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                         type="button"
                         variant={suggested ? "default" : "outline"}
                         className="h-14! flex-col gap-0"
-                        onClick={() => confirmGrade(grade)}
+                        onClick={() => confirmGrade(grade, prompt.card_id)}
                       >
                         <span>
                           {zh} · {label.en}
