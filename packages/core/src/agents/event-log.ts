@@ -61,7 +61,8 @@ export type LearningEventType =
   | "session_start"
   | "session_end"
   | "enrichment_request"
-  | "policy_breach";
+  | "policy_breach"
+  | "pronunciation_experiment";
 
 export interface LearningEventRecord {
   id: string;
