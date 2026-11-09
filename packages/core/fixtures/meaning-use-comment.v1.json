@@ -1,0 +1,19 @@
+{
+  "simulation": "recorded-json",
+  "schema_version": 1,
+  "prompt_version": "meaning-use-comment/v1",
+  "label": "test-fixture-not-learner-data",
+  "cases": {
+    "valid-comment": {
+      "schema_version": 1,
+      "prompt_version": "meaning-use-comment/v1",
+      "task": "meaning_use_comment",
+      "simulation": "recorded-json",
+      "fixture": true,
+      "fixture_label": "test-fixture-not-learner-data",
+      "lemma": "tide",
+      "sentence": "The tide is high.",
+      "comment": "测试夹具：只多一句说明，不判断意思。"
+    }
+  }
+}

@@ -206,10 +206,19 @@ E4 与 E2 可以在 E1 远程绿之后分叉，但不要进同一个 PR。本轮
 - **验收命令**：`npm run check`。ready 数 = 50 + 本批实际收录；pending 仍空 `gloss_zh`。
 - **完成定义**：校验绿，PR 说明写上新的 ready / pending 计数。
 - **回滚**：revert 内容 PR。历史 grade 保留。
-- **阻塞**：没有审校人交出的 `reviewed.json` 时，本项不开始。工程代理不编释义。
+- **阻塞**：没有审校人交出的 `reviewed.json` 时，本项不开始。工程代理不编释义。截至 E5a 仍阻塞，没有编造释义。
 - **人日**：工程 0.5–1。编辑时间另计。
 
 ## E5a 假模型适配器
+
+本项落地边界：
+
+- 只有一个任务：给已经 `basic_pass` 的会用检查附加一条夹具说明。夹具不能改判定，不能把 `meaning_judged` 变成 true，也不能写 due 或调用 `rate`。
+- 来源是仓库里的 `packages/core/fixtures/meaning-use-comment.v1.json`，标记为 `recorded-json` 和 `test-fixture-not-learner-data`。提示词版本是 `meaning-use-comment/v1`。
+- 非法 JSON、缺字段、类型或长度不对、越权字段、超时、拒绝、抛错、取消，都退回基础检查，并说明没有拿到模型判断。尝试次数最多 2 次。时钟由调用方注入，不睡眠、不联网。
+- 基础检查没通过，或词不是 ready，就不会去读夹具。复习页不调用这个适配器。
+- 没有供应商 SDK，也没有密钥。真模型是 E5b，现在不做。
+- 行为测试是 `scripts/assert-e5a-fixture-model.mjs`。
 
 - **用户价值**：关着模型时，练习和现在一样；打开夹具时，非法输出进不了调度。
 - **依赖**：E3a 的确定性退路。
