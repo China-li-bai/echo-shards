@@ -148,5 +148,15 @@ export const ReviewLogSchema = z.object({
   reviewed_at: z.coerce.date(),
   state_before: z.number().int(),
   scheduled_days: z.number().optional(),
+  /**
+   * Caller-supplied idempotency key for one successful grade.
+   * Absent on older logs. Uniqueness is per scheduler snapshot, not global.
+   */
+  client_event_id: z
+    .string()
+    .min(1)
+    .max(128)
+    .refine((value) => value === value.trim(), "client_event_id must be trimmed")
+    .optional(),
 });
 export type ReviewLog = z.infer<typeof ReviewLogSchema>;

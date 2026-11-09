@@ -119,11 +119,20 @@ export class AgentEventLog {
   }
 
   recordEvent(
-    input: Omit<LearningEventRecord, "id" | "created_at">,
+    input: Omit<LearningEventRecord, "id" | "created_at"> & { id?: string },
   ): LearningEventRecord {
+    const id = input.id ?? nid("evt");
+    if (input.id !== undefined) {
+      if (typeof input.id !== "string" || input.id.length === 0 || input.id !== input.id.trim()) {
+        throw new Error("learning event id must be a non-empty trimmed string");
+      }
+      if (this.events.some((row) => row.id === input.id)) {
+        throw new Error(`learning event id already recorded: ${input.id}`);
+      }
+    }
     const row: LearningEventRecord = {
       ...input,
-      id: nid("evt"),
+      id,
       created_at: new Date().toISOString(),
     };
     this.events.push(row);

@@ -77,6 +77,17 @@ E4 与 E2 可以在 E1 远程绿之后分叉，但不要进同一个 PR。本轮
 
 ## E2a 同一评分重放不二次 rate
 
+本项实现后的边界（不是 E2b / E2c）：
+
+- 幂等记录是 `ReviewLog.client_event_id`，随 `TideScheduler.snapshot` / `restore` 走。查找只扫描这份日志。
+- 调度器自己不写盘。调用方在 `rate` 返回前崩溃，这次内存修改不会进 localStorage。本项不改浏览器存储。
+- 两个 `TideScheduler` 实例的 id 互不可见。没有 restore 的新实例是新范围。
+- 学习事件 id 为 `retrieval:${client_event_id}`。相同载荷再送不追加事件，也不再调用 FSRS。
+- 快照里的 due 仍只靠日志重放核对。id 不能用来写 due。
+- 同 id 而卡、等级或 `reviewed_at` 不同：`TideEventConflictError`，状态不变。
+- 没有这张卡、空 id、或载荷含 due：不占用 id。
+- `TideScheduler` 和 `AgentEventLog` 不是同一个事务。本项不保证跨进程、跨设备或崩溃原子性。
+
 - **用户价值**：同一条「记得」被送两次时，下次练习时间不会被多推一次。
 - **依赖**：E1 的远程 CI 绿。
 - **范围**：在 core 给一次 `rate` 增加可选 `client_event_id`。同一 id 再送，返回已有日志，`reps` 与 `due` 不变。不同 id 仍各算一次。不带 id 时行为与现在一致。带 schedule 字段仍然抛错。
