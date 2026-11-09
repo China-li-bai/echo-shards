@@ -334,6 +334,20 @@ section("replay, conflict, order, and input stability", () => {
   check(once.delayed_retrieval.denominator === 1, "same client_event_id replay counts once");
   check(once.activity.retrieval_submissions === 1, "replay is one click");
 
+  const mixedVersion = summarizeLearningEvidence({
+    events: [
+      legacy({ id: "old-copy", client_event_id: "mixed", grade: 3, due: "2020-01-01T00:00:00.000Z" }),
+      retrieval({ id: "new-copy", client_event_id: "mixed", grade: 3 }),
+    ],
+  });
+  check(mixedVersion.delayed_retrieval.ratio === null, "legacy and v1 copies of one id are not both counted");
+  check(mixedVersion.activity.retrieval_submissions === 0, "a mixed-version id is not a click");
+  check(mixedVersion.conflicts.length === 1, "mixed-version payloads stay visible");
+  check(
+    JSON.stringify(mixedVersion.conflicts[0].event_ids) === JSON.stringify(["new-copy", "old-copy"]),
+    "mixed-version ids are listed",
+  );
+
   const conflict = summarizeLearningEvidence({
     events: [
       retrieval({ id: "c1", client_event_id: "clash", grade: 3 }),
