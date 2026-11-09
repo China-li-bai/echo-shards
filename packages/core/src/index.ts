@@ -13,6 +13,15 @@ export type {
   TideSnapshot,
 } from "./scheduler/TideScheduler.js";
 export * from "./providers/voice-placeholder.js";
+export {
+  PRONUNCIATION_EXPERIMENT_VERSION,
+  PRONUNCIATION_FIXTURE_LABEL,
+  PronunciationScheduleError,
+  assertMemoryRateExtra,
+  pronunciationScoreToGrade,
+  recordPronunciationExperiment,
+} from "./providers/pronunciation-boundary.js";
+export type { PronunciationExperimentRecord } from "./providers/pronunciation-boundary.js";
 export * from "./agents/index.js";
 export { LOCAL_LEARNER_ID, openAspectRound, TOPRA_ASPECTS } from "./session/open-round.js";
 export type { OpenRound } from "./session/open-round.js";

@@ -12,6 +12,7 @@ import {
 } from "../scheduler/TideScheduler.js";
 import { AgentEventLog } from "./event-log.js";
 import { assertNoScheduleFields, assertSingleAspect } from "./policy.js";
+import { assertMemoryRateExtra } from "../providers/pronunciation-boundary.js";
 import {
   WORD_TIDE_COPY,
   filterDueByWordTideGate,
@@ -199,6 +200,7 @@ export class TideSteward {
     extra: Record<string, unknown> = {},
   ): RateResult {
     assertNoScheduleFields({ grade, ...extra }, "tide_steward");
+    assertMemoryRateExtra(extra);
     const clientEventId = readClientEventId(extra.client_event_id);
     const prior = this.tide.getCard(cardId);
     const evidence = prior

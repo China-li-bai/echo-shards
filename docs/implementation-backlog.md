@@ -318,18 +318,29 @@ E4 与 E2 可以在 E1 远程绿之后分叉，但不要进同一个 PR。本轮
 
 ## E8a 发音分不能 rate
 
+本项落地边界：
+
+- 三条通道分开。意思、拼写，以及「写出音标」的 `phonology_text`，仍用原来的记忆等级调用 `TideSteward.rate`。发音实验分不能变成 `Grade`，也不能写成 `retrieval_grade`。
+- `TideSteward.rate` 的附加字段只允许 `client_event_id`。`score`、嵌套 metadata、额外的 `grade` 会在调用调度前抛 `PronunciationScheduleError`，due / reps / 解锁 / 事件日志都不变。载荷里的 `due` 仍先按原来的 `SchedulePolicyError` 拒绝。
+- 合法实验记录只接受 `schema_version: 1`、`source: "recorded-fixture"`、固定夹具标签、0 到 100 的有限数字。NaN、无穷、越界、缺字段、未知版本、`asr` / `live` 来源、`due` / `grade` / `reps` / 音频字节 / 未知字段都拒绝，并且不写事件。
+- 通过的样例写入 `pronunciation_experiment`。`mastery` 为 false，`acoustic_accuracy` 为 `not_measured`，`schedules` 为 false。同一 `client_event_id` 重放不追加；内容不同则拒绝且不改已存分数。它不加 XP，也不进 E7a 的到期后比例。
+- 音界默认仍不进解锁链。写出音标的合法评分会改那张文字卡自己的 due / reps，但不会因为实验分而解锁。
+- 没有麦克风、ASR、TTS、网络或密钥。复习页不调用这些函数。`voice-placeholder.ts` 仍标明本阶段不实现。SQL `002` 的事件检查还没有这个类型，也没有同步。
+- 样例是 `packages/core/fixtures/pronunciation-experiment.v1.json`。行为测试是 `scripts/assert-e8a-pronunciation-boundary.mjs`。
+
 - **用户价值**：以后接语音时，发音分不会打开下一面，也不会改 due。
-- **依赖**：E1。可与 E2 并行，但本队列在 E1 之后仍按一次一项；排在 E7a 之后，避免和幂等 PR 抢同一文件。
-- **范围**：一个纯函数：发音分结果不能变成 `Grade`，不能调用 `rate`。音界默认开关的测试保持失败关闭。ASR/TTS 仍不实现。
+- **依赖**：E1。排在 E7a 之后。
+- **范围**：调度边界真实拒绝发音分和未知附加字段。夹具样例可以单独记下。音标文字练习仍可评分。
 - **非目标**：不接供应商，不录音，不把 4-3-2 写进产品。仓库没有 4-3-2 的可追溯文献。
-- **模块**：`packages/core/src/providers/voice-placeholder.ts` 旁的新函数，新 assert。
-- **先写的测试**：任意分数对象进入调度边界时抛错；`phonologyInUnlockChain` 仍为 false。
+- **模块**：`packages/core/src/providers/pronunciation-boundary.ts`，`TideSteward.rate` 的入口校验，新 assert。
+- **先写的测试**：有效分、0 和 100、重放、冲突、非法输入、越权字段、错误通道、意思/拼写/音标文字评分不回退、快照不变。
 - **验收命令**：`npm run check`。
-- **完成定义**：测试绿，占位接口仍不能被误当成已实现的 ASR。
-- **回滚**：revert。
+- **完成定义**：测试绿。占位接口仍不能被当成已实现的 ASR。页面未接麦克风。
+- **回滚**：revert。已有的意思、拼写、音标文字评分路径回到不检查附加字段；实验事件类型不再被写入。
 - **阻塞**：无。真实 ASR 另需供应商与隐私授权，不在此项。
 - **人日**：1。
+- **未验证**：没有真实音频，所以没有声学准确率。浏览器没有录音入口。SQL 约束未包含新事件类型。
 
 ## 现在做哪一项
 
-E7a 是这一项。E4 仍等审校 JSON。E5b 仍等非生产密钥和月上限。E6 仍等本地 Postgres 或明确的云授权。下一项最小可执行是 E8a：发音分不能 `rate`。本项不合并、不部署。
+E8a 是这一项。原计划里不再有不靠外部条件就能做的下一项。E4 仍等审校 JSON。E5b 仍等非生产密钥和月上限。E6 仍等本地 Postgres 或明确的云授权。本项不合并、不部署。真实语音不在此项。
