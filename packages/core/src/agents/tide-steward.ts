@@ -186,6 +186,11 @@ export class TideSteward {
    * due/stability is rejected before ts-fsrs runs.
    * client_event_id is an idempotency key, not a schedule field. A replay
    * returns the stored result and does not append another learning event.
+   *
+   * evidence_version 1 copies the card from before this rate: due_before,
+   * reps_before, state_before, last_review_before, and the injected reviewed_at.
+   * payload.due is still the due written by this rate. Old events without
+   * evidence_version stay unlabeled; nothing here rewrites them.
    */
   rate(
     cardId: string,
@@ -195,6 +200,19 @@ export class TideSteward {
   ): RateResult {
     assertNoScheduleFields({ grade, ...extra }, "tide_steward");
     const clientEventId = readClientEventId(extra.client_event_id);
+    const prior = this.tide.getCard(cardId);
+    const evidence = prior
+      ? {
+          evidence_version: 1 as const,
+          due_before: prior.review.due.toISOString(),
+          reps_before: prior.review.reps,
+          state_before: prior.review.state,
+          reviewed_at: now.toISOString(),
+          last_review_before: prior.review.last_review
+            ? prior.review.last_review.toISOString()
+            : null,
+        }
+      : null;
     const result = this.tide.rate(cardId, grade, now, { clientEventId });
     if (result.replayed) return result;
     this.log.recordRun({
@@ -215,6 +233,7 @@ export class TideSteward {
         due: result.card.review.due.toISOString(),
         scheduled_days: result.card.review.scheduled_days,
         source: "TideScheduler.rate",
+        ...(evidence ?? {}),
         ...(clientEventId ? { client_event_id: clientEventId } : {}),
       },
     });
