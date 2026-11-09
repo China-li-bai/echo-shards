@@ -29,7 +29,7 @@ export default function HomePage() {
   }
 
   const steps = [
-    { n: "1", href: "/day", title: "日课", hint: "开始练意思", icon: "日" },
+    { n: "1", href: "/day", title: "日课", hint: "先看一眼", icon: "日" },
     { n: "2", href: "/review?aspect=meaning", title: "潮汐", hint: "大约五个词 · 练意思", icon: "潮" },
     {
       n: "3",
@@ -68,7 +68,7 @@ export default function HomePage() {
                 日课 → 潮汐 → 市集
               </CardTitle>
               <CardDescription className="max-w-xl text-base leading-relaxed">
-                先练几词意思，再去市集问价。
+                先认识几个词，再试着记起来；也可以去市集问价。
               </CardDescription>
             </div>
             <CampPracticeCta />

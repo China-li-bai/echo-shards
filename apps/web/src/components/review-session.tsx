@@ -455,7 +455,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   }
 
   if (!pool) {
-    return <p className="text-muted-foreground">没有可复习的词。</p>;
+    return <p className="text-muted-foreground">这一轮还没有能练的词。</p>;
   }
 
   if (filteredPrompts.length === 0) {
@@ -463,7 +463,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       <Card>
         <CardHeader>
           <CardTitle>这一轮还没有能练{ASPECT_LABEL[aspect]}的词</CardTitle>
-          <CardDescription>换个词表，或先去日课开始练意思。</CardDescription>
+          <CardDescription>换个词表，或先去日课安排今天的练习。</CardDescription>
         </CardHeader>
       </Card>
     );
@@ -480,6 +480,11 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   const cardDue = engine.tide.getCard(prompt.card_id)?.review.due;
   const cardDueLabel = cardDue ? formatDueShanghai(cardDue) : "还没定下次练的时间";
 
+  const cardLogs = engine.tide.getLogs().filter((log) => log.card_id === prompt.card_id);
+  const cardReps = engine.tide.getCard(prompt.card_id)?.review.reps ?? 0;
+  const isFirstPractice = cardLogs.length === 0 && cardReps === 0;
+  /** PR5 回忆徽章：无 logs「新词 · 第一次练」；有 logs「再练」 */
+  const recallBadge = isFirstPractice ? "新词 · 第一次练" : "再练";
   const progressLabel = `${ASPECT_LABEL[aspect]} ${Math.min(index + 1, filteredPrompts.length)}/${filteredPrompts.length}`;
   const practiceBlocked = Boolean(
     gateNote &&
@@ -586,7 +591,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
           <CardHeader className="gap-3 pb-3">
             <div className="flex items-center justify-between gap-3">
               {/* PR4: 默认可达复习面不展示 CEFR；词条元数据仍可在工坊词库查看 */}
-              <Badge className="realm-badge">{progressLabel}</Badge>
+              <Badge className="realm-badge">{recallBadge}</Badge>
             </div>
             <CardTitle className="tide-gloss text-balance">{titleText}</CardTitle>
             <CardDescription className="text-base">{prompt.prompt}</CardDescription>
@@ -670,7 +675,8 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                   ) : null}
                 </div>
                 <div className="rounded-lg border border-border/80 bg-secondary/50 px-3 py-2 text-sm">
-                  <p className="font-medium text-foreground">{progressLabel}</p>
+                  <p className="font-medium text-foreground">{recallBadge}</p>
+                  <p className="mt-1 text-muted-foreground">{progressLabel}</p>
                   <p className="mt-1 text-muted-foreground">
                     改天再练：{cardDueLabel}
                   </p>
