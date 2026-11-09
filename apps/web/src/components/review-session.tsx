@@ -30,6 +30,13 @@ import {
 import { suggestAspectGrade, type AspectReveal } from "@/app/review/actions";
 import { createGradeSubmitter, gradeFromHotkey, type GradeSubmitter } from "@/lib/grade-submit";
 import { ROUND_SAVE_FAILED_MESSAGE, openStoredRound, type StoredRound } from "@/lib/round-compat";
+import {
+  buildMeaningUseOffer,
+  createMeaningUseStep,
+  meaningUseKeyAction,
+  normalizeRoundPhase,
+  type MeaningUseStep,
+} from "@/lib/meaning-use-step";
 import type { PoolId, ReviewPool } from "@/lib/content";
 import { DAY_PLAN_KEY, type AcceptedDayPlan } from "@/components/day-desk";
 import { isLearnerDebug } from "@/lib/learner-debug";
@@ -38,8 +45,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
-type Phase = "answer" | "grade" | "summary";
+type Phase = "answer" | "grade" | "summary" | "use";
 
 interface SavedRound {
   version: 2;
@@ -133,6 +141,24 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   const gradingRef = useRef<{ cardId: string | null; enabled: boolean }>({ cardId: null, enabled: false });
   gradingRef.current = { cardId: null, enabled: false };
   const confirmGradeRef = useRef<(grade: Grade, cardId: string) => void>(() => {});
+  const meaningUseRef = useRef<MeaningUseStep | null>(null);
+  if (!meaningUseRef.current && typeof localStorage !== "undefined") {
+    meaningUseRef.current = createMeaningUseStep({
+      storage: localStorage,
+      now: () => new Date(),
+      newId: () => crypto.randomUUID(),
+    });
+  }
+  const phaseRef = useRef<Phase>("answer");
+  phaseRef.current = phase;
+  const useSubmitRef = useRef<() => void>(() => {});
+  const [useView, setUseView] = useState({
+    mode: "hidden" as "hidden" | "draft" | "done",
+    lemma: "",
+    text: "",
+    note: null as string | null,
+    canContinue: false,
+  });
 
   useEffect(() => {
     setShowDebug(isLearnerDebug());
@@ -211,7 +237,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
 
     if (savedOk && saved && opened.status === "ready") {
       nextIndex = typeof saved.index === "number" ? saved.index : 0;
-      nextPhase = saved.phase === "grade" || saved.phase === "summary" || saved.phase === "answer" ? saved.phase : "answer";
+      nextPhase = normalizeRoundPhase(saved.phase);
       nextTyped = typeof saved.typed === "string" ? saved.typed : "";
       nextReveal = (saved.reveal ?? null) as AspectReveal | null;
       nextDue = typeof saved.lastDue === "string" || saved.lastDue === null ? saved.lastDue : null;
@@ -404,8 +430,16 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
         return { replayed: rated.replayed };
       },
       persist: () => {
-        const nextIndex = index + 1;
-        const done = nextIndex >= filteredPrompts.length;
+        const lexeme = pool.lexemes.find((row) => row.id === filteredPrompts[index]?.lexeme_id);
+        const offerInput = buildMeaningUseOffer({
+          aspect,
+          cardId: clickedCardId,
+          orthography: lexeme?.orthography ?? filteredPrompts[index]?.orthography_hint,
+          inReadyPool: Boolean(lexeme),
+        });
+        const deferToUse = Boolean(offerInput);
+        const nextIndex = deferToUse ? index : index + 1;
+        const done = !deferToUse && nextIndex >= filteredPrompts.length;
         if (!replayed) {
           new EvalSentinel(engine.log).scoreRetrieval(grade);
           if (done) {
@@ -416,7 +450,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
           }
         }
         persist({
-          phase: done ? "summary" : "answer",
+          phase: deferToUse ? "use" : done ? "summary" : "answer",
           index: nextIndex,
           lastDue: dueLabel,
           reveal: null,
@@ -435,7 +469,27 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       return;
     }
     if (result.status !== "saved") return;
+    if (phaseRef.current === "use") return;
     setError(null);
+    setLastDue(dueLabel);
+    const lexeme = pool.lexemes.find((row) => row.id === filteredPrompts[index]?.lexeme_id);
+    const offerInput = buildMeaningUseOffer({
+      aspect,
+      cardId: clickedCardId,
+      orthography: lexeme?.orthography ?? filteredPrompts[index]?.orthography_hint,
+      inReadyPool: Boolean(lexeme),
+    });
+    if (offerInput && meaningUseRef.current) {
+      const decision = meaningUseRef.current.offer(offerInput);
+      setUseView(meaningUseRef.current.view());
+      if (decision.offered || decision.already) {
+        setPhase("use");
+        phaseRef.current = "use";
+        if (decision.message) setError(decision.message);
+        return;
+      }
+      if (decision.message) setError(decision.message);
+    }
     const nextIndex = index + 1;
     const done = nextIndex >= filteredPrompts.length;
     setLastDue(dueLabel);
@@ -461,8 +515,52 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   }
   confirmGradeRef.current = confirmGrade;
 
+  function refreshUse() {
+    if (!meaningUseRef.current) return;
+    setUseView(meaningUseRef.current.view());
+  }
+
+  function submitUse() {
+    meaningUseRef.current?.submit();
+    refreshUse();
+  }
+
+  function skipUse() {
+    meaningUseRef.current?.skip();
+    refreshUse();
+  }
+
+  function finishUse() {
+    const result = meaningUseRef.current?.finish();
+    if (!result?.advance || !engine || !pool) return;
+    const nextIndex = index + 1;
+    const done = nextIndex >= filteredPrompts.length;
+    if (done) {
+      engine.log.recordEvent({
+        event_type: "session_end",
+        payload: { batch_id: engine.batchId, aspect },
+      });
+      setPhase("summary");
+      persist({ phase: "summary", index: nextIndex, lastDue, reveal: null, typed: "" });
+      return;
+    }
+    setIndex(nextIndex);
+    setPhase("answer");
+    setTyped("");
+    setReveal(null);
+    persist({ phase: "answer", index: nextIndex, lastDue, reveal: null, typed: "" });
+  }
+  useSubmitRef.current = submitUse;
+
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
+      if (phaseRef.current === "use") {
+        if (meaningUseKeyAction(event.key) === "submit") {
+          event.preventDefault();
+          useSubmitRef.current();
+        }
+        return;
+      }
       const current = gradingRef.current;
       if (!current.enabled || !current.cardId) return;
       const target = event.target;
@@ -477,6 +575,23 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  useEffect(() => {
+    if (phase !== "use" || !meaningUseRef.current || !pool) return;
+    if (meaningUseRef.current.view().mode !== "hidden") return;
+    const current = filteredPrompts[index];
+    if (!current) return;
+    const lexeme = pool.lexemes.find((row) => row.id === current.lexeme_id);
+    const offerInput = buildMeaningUseOffer({
+      aspect,
+      cardId: current.card_id,
+      orthography: lexeme?.orthography ?? current.orthography_hint,
+      inReadyPool: Boolean(lexeme),
+    });
+    if (!offerInput) return;
+    meaningUseRef.current.offer(offerInput);
+    setUseView(meaningUseRef.current.view());
+  }, [phase, index, pool, aspect, filteredPrompts]);
 
   function reset() {
     if (!pool) return;
@@ -598,7 +713,39 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
         </p>
       ) : null}
 
-      {phase === "summary" ? (
+      {phase === "use" ? (
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-display text-2xl">用这个词写一句</CardTitle>
+            <CardDescription>写短一点就行。我们只看这句话里有没有这个词。</CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-3">
+            <p className="font-display text-3xl">{useView.lemma}</p>
+            <Textarea
+              value={useView.text}
+              onChange={(event) => {
+                meaningUseRef.current?.setText(event.target.value);
+                refreshUse();
+              }}
+              placeholder="写一句短的"
+            />
+            {useView.note ? <p className="text-sm text-muted-foreground">{useView.note}</p> : null}
+            <div className="flex flex-wrap gap-2">
+              <Button type="button" onClick={submitUse}>
+                看一看
+              </Button>
+              <Button type="button" variant="outline" onClick={skipUse}>
+                先跳过
+              </Button>
+              {useView.canContinue ? (
+                <Button type="button" onClick={finishUse}>
+                  继续
+                </Button>
+              ) : null}
+            </div>
+          </CardContent>
+        </Card>
+      ) : phase === "summary" ? (
         <Summary
           engine={engine}
           lastDue={lastDue}

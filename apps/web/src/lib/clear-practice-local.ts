@@ -6,6 +6,7 @@
  * - `echo-shards.day-plan.v1` — 当日 AcceptedDayPlan + 嵌入 event_log
  * - `echo-shards.round.v2:*` — 潮汐 SavedRound（tide logs / 评分）
  * - `echo-shards.quest-log.v1` — 市集 / quest-desk AgentEventLog
+ * - `echo-shards.meaning-use.v1` — 意思回忆之后的造句记录
  *
  * 原型页同域污染（artifacts HTML 原型，非主路径）：
  * - `echo-shards.proto.*` — day-tide-loop 等原型存档
@@ -34,6 +35,7 @@ export const LEARNER_STORAGE_PREFIX = "echo-shards.";
 export const PRACTICE_STORAGE_EXACT_KEYS = [
   DAY_PLAN_STORAGE_KEY,
   QUEST_LOG_STORAGE_KEY,
+  "echo-shards.meaning-use.v1",
 ] as const;
 
 /** Documented prefixes under LEARNER_STORAGE_PREFIX. */
