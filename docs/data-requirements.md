@@ -41,7 +41,7 @@
 | **B. 教学层** |||||
 | B1 | aspect 分轨卡状态 | TOPRA：形/义/音文字独立 FSRS | 运行时 cards | 001 已有；沿用 |
 | B2 | SessionBatch | 一轮 ~5 词 × 单 aspect | 调度器生成 | 002 建表 |
-| B3 | Quest 模板 | 信息差强制产出 | YAML / DB quests | 已有 1 个 demo |
+| B3 | Quest 模板 | 信息差强制产出 | YAML / DB quests | 2 个静态 YAML + 1 个 generated JSON（2026-11-09 核对） |
 | B4 | Quest 动态生成稿 | Echo Broker 共创 | generated quests + parent | 002 字段 |
 | B5 | must_elicit 目标 | 成功判据（程序勾选） | Quest 定义 | 001/002 |
 | **C. 学习事件层** |||||

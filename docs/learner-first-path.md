@@ -1,5 +1,7 @@
 # 言灵残片 · 学徒从零开端（lesson-first）产品说明
 
+**地位（2026-11-09）**：PR5–8 已合入 `bcc2b4a`。下面第 3 节是 2026-11-05 的实现前快照，不要当成当前代码。当前主路径与缺口见 [evolution-architecture.md](evolution-architecture.md) 第 1 节。调度硬规则仍以 [word-schedule-contract.md](word-schedule-contract.md) 为准。
+
 **日期**：2026-11-05（Asia/Shanghai）  
 **触发**：产品方反馈——第一次进来没有从零学习的开端，突然就像进入「复习」。  
 **地位**：本文件是**学习记忆主路径**的产品契约补全；实现前以本文为准。调度硬规则仍以 `docs/word-schedule-contract.md` 为准（本文不改 due / 同日单方面 / 跨夜解锁）。  

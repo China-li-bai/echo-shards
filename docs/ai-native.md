@@ -1,5 +1,7 @@
 # Echo Shards · AI-native engineering notes
 
+**地位（2026-11-09）**：下表的 Agent 类已经在 `packages/core/src/agents/`，但是确定性 TypeScript，没有模型 API。模型何时可以进入主循环、以及它不能写 due，见 [evolution-architecture.md](evolution-architecture.md) 第 2 与第 5 节。本文的 P0 顺序已被该方案的 E 序列取代。
+
 代码落点：仓库根目录 [ARCHITECTURE.md](../ARCHITECTURE.md)。模块在 `packages/core/src/agents/`。
 
 文字阶段 Agent 工具边界（对齐产品页「言灵残片·AI Native 产品设计」）。

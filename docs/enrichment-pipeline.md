@@ -2,6 +2,8 @@
 
 目标：给 NGSL-S pending lemmas 补 `gloss_zh` / `phonetic_text` / 例句，**禁止编造**。
 
+批次、发布版本与「模型不得 merge」见 [evolution-architecture.md](evolution-architecture.md) 第 4 节。命令本身没有变。
+
 ## 命令
 
 ```bash

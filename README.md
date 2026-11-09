@@ -15,15 +15,15 @@ Text-first English study. Statement memory goes through **ts-fsrs**. One aspect 
 
 ## 本地运行 / Run locally
 
-需要 Node ≥ 18。
+需要 Node ≥ 22（与根目录 `package.json` 的 `engines` 一致）。
 
 ```bash
 npm install
-npm run check     # test + typecheck + build + enrichment:validate
+npm run check     # test + assert + typecheck + build + enrichment:validate
 npm run dev       # http://127.0.0.1:43123
+```
 
 `apps/web` 的 `build` 写入 `.next-build`（见 `NEXT_DIST_DIR`），避免冲掉正在跑的 `next dev` 的 `.next` 导致静态资源 404 / 不 hydration。
-```
 
 单独命令：
 
@@ -40,7 +40,7 @@ npm run dev       # http://127.0.0.1:43123
 | `npm run enrichment:validate` | 校验 enrichment / catalog：pending 必须空 gloss_zh |
 | `npm run enrichment:queue` | 写出下一批评审队列（仅上游英义） |
 | `npm run enrichment:merge` | 合并已审校 JSON → enrichment + re-import |
-| `npm run check` | test + typecheck + build + enrichment:validate |
+| `npm run check` | test + assert + typecheck + build + enrichment:validate |
 
 开发服务器绑定 `0.0.0.0:43123`。页面：
 
@@ -68,7 +68,7 @@ docs/                     数据需求、字段字典、AI-native 笔记
 ARCHITECTURE.md           模块 ↔ agent ↔ 表
 ```
 
-模块和表的对照见 [ARCHITECTURE.md](ARCHITECTURE.md)。字段字典见 [docs/schema.md](docs/schema.md)。
+模块和表的对照见 [ARCHITECTURE.md](ARCHITECTURE.md)。字段字典见 [docs/schema.md](docs/schema.md)。文档索引见 [docs/README.md](docs/README.md)。下一阶段的架构与实施顺序见 [docs/evolution-architecture.md](docs/evolution-architecture.md)（基线 `bcc2b4a`）。该方案不表示线上 Workers 已经等于这个提交。
 
 ## 迁移 / Migrations
 

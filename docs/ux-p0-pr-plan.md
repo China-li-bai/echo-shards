@@ -1,5 +1,7 @@
 # 言灵残片 · 小白可懂交互 P0 · PR 序列（2026-11-02）
 
+**地位（2026-11-09）**：PR1–4 已合入 `bcc2b4a`。本文保留当时的范围说明。后续顺序见 [evolution-architecture.md](evolution-architecture.md)，不要从本文再开一遍 PR1。
+
 原则来源：Jobs（聚焦/自明/产品自己会说话）+ Musk 算法（先质疑需求 → 删除 → 简化 → 加速 → 自动化）+ `docs/ux-beginner-learn-notes.md`。  
 约束：本地 Grok 编程；**一个 PR 合入并测通后再开下一个**；不改单词调度契约硬规则（同日单方面、隔夜开下一面、FSRS due 只读）。
 
