@@ -65,6 +65,8 @@ schemas/quest.schema.json
 supabase/migrations/      001 文字基础，002 内容与事件
 scripts/import-ngsl-s.ts
 docs/                     数据需求、字段字典、AI-native 笔记
+docs/implementation-backlog.md
+                          实施队列。当前只推进队列里的第一项
 ARCHITECTURE.md           模块 ↔ agent ↔ 表
 ```
 
