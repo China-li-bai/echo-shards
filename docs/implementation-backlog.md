@@ -102,6 +102,15 @@ E4 与 E2 可以在 E1 远程绿之后分叉，但不要进同一个 PR。本轮
 
 ## E2b 评分点击只提交一次
 
+本项落地边界：
+
+- 锁在 `createGradeSubmitter` 里，点击和快捷键都走 `submit`。不靠按钮 disabled，也不靠时间窗。
+- 第一次点击固定 `client_event_id` 和 `reviewed_at`，再交给 E2a 的 `TideScheduler.rate`。
+- 评分已经进内存但 `localStorage` 写入失败时，`saved` 为 false，界面不往下翻。同一次重试沿用同一个 id 和时间，E2a 不会再记一笔。错误原文返回给界面。
+- 这次写入若失败后页面被卸掉，内存里的成功记录会丢。磁盘上仍是旧快照。新开的提交器会得到新的 id。本项不把这种情况说成已经保存，也不做跨设备恢复。
+- 不迁移没有 `client_event_id` 的旧回合。那是 E2c。
+- 浏览器里没有手点评分按钮。行为由 `scripts/assert-e2b-grade-once.mjs` 对真实 `TideScheduler` 调用覆盖，复习页接到同一函数。
+
 - **用户价值**：连点「记得 / 没想起来」不会打出两笔分。
 - **依赖**：E2a。
 - **范围**：抽出「这一笔是否已经提交」的纯函数，`confirmGrade` 使用 `client_event_id` 和进行中的锁。学徒仍自己点 1–4，建议分不能自动 `rate`。
