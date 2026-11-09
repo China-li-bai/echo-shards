@@ -38,3 +38,5 @@ export {
 } from "./content/catalog.js";
 export type { PackMetaFile } from "./content/catalog.js";
 export { parseQuestYaml, validateQuestObject } from "./quest/parseQuest.js";
+export { checkMeaningUse } from "./meaning-use.js";
+export type { MeaningUseInput, MeaningUseResult, MeaningUseReason, MeaningUseVerdict } from "./meaning-use.js";
