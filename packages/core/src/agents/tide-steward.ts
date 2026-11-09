@@ -5,7 +5,11 @@
 
 import type { Aspect, Grade, SessionBatch } from "../models/types.js";
 import { ASPECT_LABEL } from "../format.js";
-import { TideScheduler, type RateResult } from "../scheduler/TideScheduler.js";
+import {
+  TideEventConflictError,
+  TideScheduler,
+  type RateResult,
+} from "../scheduler/TideScheduler.js";
 import { AgentEventLog } from "./event-log.js";
 import { assertNoScheduleFields, assertSingleAspect } from "./policy.js";
 import {
@@ -15,6 +19,14 @@ import {
 } from "./word-tide-gate.js";
 
 const BATCH_CAP = 5;
+
+function readClientEventId(value: unknown): string | undefined {
+  if (value === undefined) return undefined;
+  if (typeof value !== "string") {
+    throw new TideEventConflictError("client_event_id must be a string when provided.");
+  }
+  return value;
+}
 
 /** Learner-facing batch blurb. No due / queue / aspect / enqueue jargon. */
 export function composeLearnerBatchWhy(aspect: Aspect, cardCount: number): string {
@@ -172,6 +184,8 @@ export class TideSteward {
   /**
    * The only schedule write. `grade` is 1–4. A payload that also carries
    * due/stability is rejected before ts-fsrs runs.
+   * client_event_id is an idempotency key, not a schedule field. A replay
+   * returns the stored result and does not append another learning event.
    */
   rate(
     cardId: string,
@@ -180,7 +194,9 @@ export class TideSteward {
     extra: Record<string, unknown> = {},
   ): RateResult {
     assertNoScheduleFields({ grade, ...extra }, "tide_steward");
-    const result = this.tide.rate(cardId, grade, now);
+    const clientEventId = readClientEventId(extra.client_event_id);
+    const result = this.tide.rate(cardId, grade, now, { clientEventId });
+    if (result.replayed) return result;
     this.log.recordRun({
       agent: "tide_steward",
       tools: ["rate"],
@@ -189,6 +205,7 @@ export class TideSteward {
       output_ref: `grade=${grade}`,
     });
     this.log.recordEvent({
+      ...(clientEventId ? { id: `retrieval:${clientEventId}` } : {}),
       event_type: "retrieval_grade",
       card_id: cardId,
       payload: {
@@ -198,6 +215,7 @@ export class TideSteward {
         due: result.card.review.due.toISOString(),
         scheduled_days: result.card.review.scheduled_days,
         source: "TideScheduler.rate",
+        ...(clientEventId ? { client_event_id: clientEventId } : {}),
       },
     });
     return result;

@@ -3,6 +3,7 @@ export {
   cardIdFor,
   parseCardId,
   DEFAULT_RETENTION,
+  TideEventConflictError,
   TideRestoreError,
   TideScheduler,
 } from "./scheduler/TideScheduler.js";

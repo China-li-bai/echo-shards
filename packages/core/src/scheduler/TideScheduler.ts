@@ -12,6 +12,13 @@
  * instance's FSRS engine (same params as rate). Tampered due / stability /
  * reps that disagree with the log chain are rejected. True schedule writes
  * still only happen via rate().
+ *
+ * client_event_id, when provided, is stored on the ReviewLog. A second rate
+ * with the same id and the same card, grade, and reviewed_at returns that log
+ * and does not call FSRS. The log list is the idempotency record; snapshot and
+ * restore carry it. This object does not write disk, so a crash before the
+ * caller saves the snapshot drops the key. Another TideScheduler instance does
+ * not see it. The id is not a license to copy due onto the card.
  */
 
 import {
@@ -71,6 +78,35 @@ export interface RateResult {
   card: Card;
   log: ReviewLog;
   fsrsCard: FSRSCard;
+  /** True when client_event_id matched a stored log and FSRS was not called. */
+  replayed: boolean;
+}
+
+export class TideEventConflictError extends Error {
+  readonly breach = "client_event_conflict" as const;
+
+  constructor(message: string) {
+    super(message);
+    this.name = "TideEventConflictError";
+  }
+}
+
+const CLIENT_EVENT_ID_MAX = 128;
+
+function clientEventIdFrom(options: { clientEventId?: string } | undefined): string | undefined {
+  if (!options || options.clientEventId === undefined) return undefined;
+  const id = options.clientEventId;
+  if (
+    typeof id !== "string" ||
+    id.length === 0 ||
+    id.length > CLIENT_EVENT_ID_MAX ||
+    id !== id.trim()
+  ) {
+    throw new TideEventConflictError(
+      "client_event_id must be a non-empty trimmed string of at most 128 characters when provided.",
+    );
+  }
+  return id;
 }
 
 /** JSON-shaped session blob; dates revive through Zod on restore. */
@@ -202,8 +238,35 @@ export class TideScheduler {
       .sort((a, b) => a.review.due.getTime() - b.review.due.getTime());
   }
 
-  /** 评分并推进调度 */
-  rate(cardId: string, grade: Grade, now: Date = new Date()): RateResult {
+  /**
+   * 评分并推进调度。带 clientEventId 时，相同载荷再送一次不调用 FSRS。
+   * 相同 id、不同卡 / 等级 / reviewed_at 抛 TideEventConflictError，不改状态。
+   */
+  rate(
+    cardId: string,
+    grade: Grade,
+    now: Date = new Date(),
+    options?: { clientEventId?: string },
+  ): RateResult {
+    const clientEventId = clientEventIdFrom(options);
+    if (clientEventId) {
+      const existing = this.logs.find((log) => log.client_event_id === clientEventId);
+      if (existing) {
+        const same =
+          existing.card_id === cardId &&
+          existing.grade === grade &&
+          existing.reviewed_at.getTime() === now.getTime();
+        if (!same) {
+          throw new TideEventConflictError(
+            `client_event_id ${clientEventId} was already stored for a different card, grade, or reviewed_at.`,
+          );
+        }
+        const current = this.cards.get(cardId);
+        if (!current) throw new Error(`Card not found: ${cardId}`);
+        return { card: current, log: existing, fsrsCard: toFsrsCard(current), replayed: true };
+      }
+    }
+
     const card = this.cards.get(cardId);
     if (!card) throw new Error(`Card not found: ${cardId}`);
 
@@ -224,9 +287,10 @@ export class TideScheduler {
       reviewed_at: now,
       state_before: before.state as number,
       scheduled_days: record.card.scheduled_days,
+      ...(clientEventId ? { client_event_id: clientEventId } : {}),
     };
     this.logs.push(log);
-    return { card: updated, log, fsrsCard: record.card };
+    return { card: updated, log, fsrsCard: record.card, replayed: false };
   }
 
   getLogs(): ReviewLog[] {
@@ -314,11 +378,18 @@ export class TideScheduler {
     }
 
     const logIds = new Set<string>();
+    const clientEventIds = new Set<string>();
     for (const log of logs) {
       if (logIds.has(log.id)) {
         throw new TideRestoreError(`duplicate log id ${log.id}`);
       }
       logIds.add(log.id);
+      if (log.client_event_id) {
+        if (clientEventIds.has(log.client_event_id)) {
+          throw new TideRestoreError(`duplicate client_event_id ${log.client_event_id}`);
+        }
+        clientEventIds.add(log.client_event_id);
+      }
       if (!cardIds.has(log.card_id)) {
         throw new TideRestoreError(`orphan log ${log.id} card_id ${log.card_id}`);
       }
