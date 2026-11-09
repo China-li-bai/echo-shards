@@ -149,6 +149,16 @@ E4 与 E2 可以在 E1 远程绿之后分叉，但不要进同一个 PR。本轮
 
 ## E3a 会用评分纯函数
 
+本项落地边界：
+
+- `checkMeaningUse` 只做基础形式检查：词边界上有没有目标词或调用方给出的词形，句子是不是只有这个词，以及是不是太长、空白、纯中文。
+- `basic_pass` 的意思是「这句话里有这个词」。`meaning_judged` 恒为 false，`semantic_status` 是 `not_evaluated`。不判断意思是否用对、语法或水平。反馈不说学会。
+- 屈折只认 `forms` 列表。没有列表时，`tides` 不算 `tide`。不把 `catch` 当成 `cat`。功能词用同一条词边界规则，不另做一套语法。
+- `enrichment_status` 不是 `ready` 时不检查句子，避免未审校词进入会用。不编释义。
+- 无 I/O、无时钟、无随机、不调用 `rate`。事件名是 `meaning_use`，不是 `retrieval_grade`。
+- 复习页还没接这个函数。那是 E3b。市集的 `checkMustElicit` 仍是另一条轨道，本项不改它。
+- 行为测试是 `scripts/assert-e3a-meaning-use.mjs`。
+
 - **用户价值**：一句里有没有用上这个词，可以单独判断，而且不会被记成「记得」。
 - **依赖**：E2a，这样结果事件不会复用 `retrieval_grade`。
 - **范围**：纯函数。输入 lemma 与句子。纯中文失败；没有目标词失败；含目标英文词且不只是孤零零一个词则通过。返回值没有 grade、没有 due。通过与否不调用 `rate`。
