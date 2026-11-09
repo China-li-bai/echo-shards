@@ -20,7 +20,6 @@ import {
   LOCAL_LEARNER_ID,
   SchedulePolicyError,
   STATE_LABEL,
-  TideRestoreError,
   TideScheduler,
   TideSteward,
   TOPRA_ASPECTS,
@@ -30,6 +29,7 @@ import {
 } from "@echo-shards/core";
 import { suggestAspectGrade, type AspectReveal } from "@/app/review/actions";
 import { createGradeSubmitter, gradeFromHotkey, type GradeSubmitter } from "@/lib/grade-submit";
+import { ROUND_SAVE_FAILED_MESSAGE, openStoredRound, type StoredRound } from "@/lib/round-compat";
 import type { PoolId, ReviewPool } from "@/lib/content";
 import { DAY_PLAN_KEY, type AcceptedDayPlan } from "@/components/day-desk";
 import { isLearnerDebug } from "@/lib/learner-debug";
@@ -71,24 +71,6 @@ const GRADES: Grade[] = [1, 2, 3, 4];
 
 function storageKey(pool: PoolId, aspect: Aspect): string {
   return `echo-shards.round.v2:${pool}:${aspect}`;
-}
-
-function readSaved(pool: PoolId, aspect: Aspect): SavedRound | null {
-  const raw = localStorage.getItem(storageKey(pool, aspect));
-  if (!raw) return null;
-  const parsed = JSON.parse(raw) as SavedRound;
-  if (parsed.version !== 2) {
-    console.warn(
-      "[echo-shards] ignoring review snapshot: unsupported version",
-      parsed?.version,
-    );
-    return null;
-  }
-  if (!parsed.tide || !Array.isArray(parsed.tide.cards) || !Array.isArray(parsed.tide.logs)) {
-    console.warn("[echo-shards] ignoring review snapshot: tide shape invalid");
-    return null;
-  }
-  return parsed;
 }
 
 function writeSaved(pool: PoolId, aspect: Aspect, saved: SavedRound): void {
@@ -139,6 +121,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
   const [showDebug, setShowDebug] = useState(false);
   const [freshGain, setFreshGain] = useState<string | null>(null);
   const [gateNote, setGateNote] = useState<string | null>(null);
+  const [recordHold, setRecordHold] = useState<string | null>(null);
   const [meaningPracticeHref, setMeaningPracticeHref] = useState("/day");
   const submitterRef = useRef<GradeSubmitter | null>(null);
   if (!submitterRef.current) {
@@ -199,52 +182,46 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       }
     }
 
-    const saved = (() => {
-      try {
-        return readSaved(pool.id, aspect);
-      } catch (err) {
-        console.warn("[echo-shards] bad review localStorage JSON; discarding", err);
-        return null;
+    const opened = openStoredRound(localStorage, storageKey(pool.id, aspect), (round) => {
+      // Replay checks the snapshot. openStoredRound writes only after this returns.
+      tide.restore(round.tide);
+      if (round.log && typeof round.log === "object") {
+        log.restore(round.log as EventLogSnapshot);
       }
-    })();
+      const complete = filteredPrompts.every((prompt) => tide.getCard(prompt.card_id));
+      if (!complete) throw new Error("snapshot missing cards");
+    });
+    if (opened.status === "held") {
+      setRecordHold(opened.message);
+      setGateNote(null);
+      setEngine(null);
+      return;
+    }
+    setRecordHold(null);
 
+    const saved: StoredRound | null = opened.status === "ready" ? opened.round : null;
     const savedOk =
       !fromDay &&
-      saved &&
+      opened.status === "ready" &&
+      saved !== null &&
       saved.aspect === aspect &&
+      Array.isArray(saved.lexemeIds) &&
       saved.lexemeIds.join("|") === ids.join("|") &&
       saved.tide.cards.length > 0;
 
-    if (savedOk && saved) {
-      try {
-        // Client snapshot is untrusted; TideScheduler.restore replays logs.
-        tide.restore(saved.tide);
-        log.restore(saved.log);
-        const complete = filteredPrompts.every((prompt) => tide.getCard(prompt.card_id));
-        if (!complete) throw new Error("snapshot missing cards");
-        nextIndex = saved.index;
-        nextPhase = saved.phase;
-        nextTyped = saved.typed;
-        nextReveal = saved.reveal;
-        nextDue = saved.lastDue;
-        why = saved.why;
-        batchId = saved.batchId;
-        questId = saved.questId ?? questId;
-      } catch (err) {
-        const reason =
-          err instanceof TideRestoreError
-            ? err.message
-            : err instanceof Error
-              ? err.message
-              : String(err);
-        console.warn(
-          "[echo-shards] rejecting tainted tide snapshot; starting fresh enqueue",
-          reason,
-        );
-        localStorage.removeItem(storageKey(pool.id, aspect));
-        tide.restore({ cards: [], logs: [] });
-        log.restore({ runs: [], proposals: [], events: [], eval_scores: [] });
-      }
+    if (savedOk && saved && opened.status === "ready") {
+      nextIndex = typeof saved.index === "number" ? saved.index : 0;
+      nextPhase = saved.phase === "grade" || saved.phase === "summary" || saved.phase === "answer" ? saved.phase : "answer";
+      nextTyped = typeof saved.typed === "string" ? saved.typed : "";
+      nextReveal = (saved.reveal ?? null) as AspectReveal | null;
+      nextDue = typeof saved.lastDue === "string" || saved.lastDue === null ? saved.lastDue : null;
+      why = typeof saved.why === "string" ? saved.why : "";
+      batchId = typeof saved.batchId === "string" ? saved.batchId : "";
+      questId = typeof saved.questId === "string" ? saved.questId : questId;
+      if (opened.saved === false && opened.message) setError(opened.message);
+    } else {
+      tide.restore({ cards: [], logs: [] });
+      log.restore({ runs: [], proposals: [], events: [], eval_scores: [] });
     }
 
     if (!why) {
@@ -358,7 +335,11 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
       lastDue: nextDue,
       questId,
     };
-    writeSaved(pool.id, aspect, snapshot);
+    try {
+      writeSaved(pool.id, aspect, snapshot);
+    } catch {
+      setError(ROUND_SAVE_FAILED_MESSAGE);
+    }
     setEngine({ tide, log, steward, why, batchId, aspect, questId });
     setIndex(nextIndex);
     setPhase(nextPhase);
@@ -508,6 +489,22 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
 
   if (!pool) {
     return <p className="text-muted-foreground">这一轮还没有能练的词。</p>;
+  }
+
+  if (recordHold) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="font-display text-2xl">练习记录还在</CardTitle>
+          <CardDescription>{recordHold}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Button type="button" render={<Link href="/" />}>
+            回营地
+          </Button>
+        </CardContent>
+      </Card>
+    );
   }
 
   if (filteredPrompts.length === 0) {
