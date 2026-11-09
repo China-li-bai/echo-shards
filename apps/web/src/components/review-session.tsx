@@ -691,6 +691,9 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                   {GRADES.map((grade) => {
                     const label = GRADE_LABEL[grade];
                     const suggested = reveal?.suggested === grade;
+                    // PR6 合签：首日评分「忘了」→「没想起来」；回访仍「忘了」
+                    const zh =
+                      grade === 1 && isFirstPractice ? "没想起来" : label.zh;
                     return (
                       <Button
                         key={grade}
@@ -700,7 +703,7 @@ export function ReviewSession({ pools }: { pools: ReviewPool[] }) {
                         onClick={() => confirmGrade(grade)}
                       >
                         <span>
-                          {label.zh} · {label.en}
+                          {zh} · {label.en}
                         </span>
                         <span className="text-xs opacity-80">{suggested ? "建议" : ` ${grade}`}</span>
                       </Button>

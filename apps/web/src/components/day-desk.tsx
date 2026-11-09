@@ -121,7 +121,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
       params.set("quest", variant.quest_id);
     }
     params.set("ids", variant.lexeme_ids.join(","));
-    // PR5: enter「先看一眼」skeleton; full recognition half-beat is PR6.
+    // PR6: enter recognition half-beat「先看一眼」before meaning recall.
     router.push(`/look?${params.toString()}`);
   }
 
@@ -205,7 +205,7 @@ export function DayDesk({ options }: { options: DayLexemeOption[] }) {
                     if (adopted.variant.include_quest && adopted.variant.quest_id) {
                       params.set("quest", adopted.variant.quest_id);
                     }
-                    router.push(`/review?${params.toString()}`);
+                    router.push(`/look?${params.toString()}`);
                   }}
                 >
                   继续练意思
