@@ -2,7 +2,8 @@
 
 > 迁移：`supabase/migrations/001_text_foundation.sql` + `002_content_and_events.sql`  
 > 顺序：先见 `docs/data-requirements.md`，再读本字段字典。  
-> 日期：2026-10-25（Asia/Shanghai）
+> 日期：2026-10-25（Asia/Shanghai）  
+> **地位（2026-11-09）**：这两份 SQL 仍是草案。仓库没有 Supabase 客户端，SQL 里没有 RLS。增量列、幂等键和 API 是设计，写在 [evolution-architecture.md](evolution-architecture.md) 第 3 节，不要把它们算进本字典的已有字段。
 
 ## ER（分层）
 

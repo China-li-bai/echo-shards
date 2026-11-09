@@ -5,7 +5,7 @@
 冲突裁决：**小白立刻明白下一动作** > 文学性  
 **文学侧合签**：「温度服从动作自明；收束与日课按钮以可读裁决为准。」  
 底座：`docs/learner-copy-v3.md`  
-语感源：`docs/learner-copy-literary-pass-lesson-first.md`；七处批注 `agent-tools/…-literary.md`（与合签冲突处以合签为准）
+语感源：`docs/learner-copy-literary-pass-lesson-first.md`。先前提到的 `agent-tools/…-literary.md` 不在本仓库；与合签冲突时以本文件为准。
 
 列：场景 | 现稿/草案 | 定稿建议 | 备注
 

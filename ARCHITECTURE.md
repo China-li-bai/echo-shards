@@ -4,6 +4,8 @@
 using it in an info-gap are different stores. An agent may propose; it does not
 schedule.
 
+当前代码对照以本文件为准（基线 `bcc2b4a`）。下一阶段的数据同步、模型主循环、评测与 PR 顺序见 [docs/evolution-architecture.md](docs/evolution-architecture.md)。那份文档里的表增量和 API 是设计，不是这里已经接上的运行路径。线上 Workers 是否等于本提交，仓库不能证明。
+
 ## Layout
 
 | Path | Role |
