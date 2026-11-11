@@ -343,4 +343,4 @@ E4 与 E2 可以在 E1 远程绿之后分叉，但不要进同一个 PR。本轮
 
 ## 现在做哪一项
 
-E8a 是这一项。原计划里不再有不靠外部条件就能做的下一项。E4 仍等审校 JSON。E5b 仍等非生产密钥和月上限。E6 仍等本地 Postgres 或明确的云授权。本项不合并、不部署。真实语音不在此项。
+E6a 是本 PR：只做 RLS 迁移与进程内 PostgreSQL 本地策略测试（`npm run assert:e6a`，也纳入 `npm run check`），不应用到云端。E1–E3b、E5a、E7a、E8a 已在 GitHub `main` @ `7389a8a32096de9db05caea6fe9e29df5ef77b35`。E4 仍等审校 JSON；E5b 仍等非生产密钥和月上限；E6b/E6c 仍等获准项目与授权。本 PR 不合并、不部署，不开始其他项。测试方式与局限见 [E6a 本地 RLS 测试](e6a-local-rls.md)。

@@ -41,7 +41,7 @@
     "assert:pr4-learner-noise": "node --import tsx scripts/assert-pr4-learner-noise.mjs",
     "assert:pr5-lesson-first": "node --import tsx scripts/assert-pr5-lesson-first-shell.mjs",
     "assert:pr6-look-once": "node --import tsx scripts/assert-pr6-look-once.mjs",
-    "assert": "npm run assert:camp && npm run assert:shard-wall && npm run assert:word-tide && npm run assert:pr1-cta && npm run assert:pr2-empty-wall && npm run assert:pr3-lock-rest && npm run assert:pr4-learner-noise && npm run assert:pr5-lesson-first && npm run assert:pr6-look-once && npm run assert:pr7-first-day-nav && npm run assert:pr8-clear-practice && npm run assert:e1-ci && npm run assert:e2a && npm run assert:e2b && npm run assert:e2c && npm run assert:e3a && npm run assert:e3b && npm run assert:e5a && npm run assert:e7a && npm run assert:e8a",
+    "assert": "npm run assert:camp && npm run assert:shard-wall && npm run assert:word-tide && npm run assert:pr1-cta && npm run assert:pr2-empty-wall && npm run assert:pr3-lock-rest && npm run assert:pr4-learner-noise && npm run assert:pr5-lesson-first && npm run assert:pr6-look-once && npm run assert:pr7-first-day-nav && npm run assert:pr8-clear-practice && npm run assert:e1-ci && npm run assert:e2a && npm run assert:e2b && npm run assert:e2c && npm run assert:e3a && npm run assert:e3b && npm run assert:e5a && npm run assert:e7a && npm run assert:e8a && npm run assert:e6a",
     "assert:pr7-first-day-nav": "node --import tsx scripts/assert-pr7-first-day-nav.mjs",
     "assert:pr8-clear-practice": "node --import tsx scripts/assert-pr8-clear-practice.mjs",
     "assert:e1-ci": "node scripts/assert-e1-ci-workflow.mjs",
@@ -52,9 +52,11 @@
     "assert:e3b": "node --import tsx scripts/assert-e3b-meaning-use-step.mjs",
     "assert:e5a": "node --import tsx scripts/assert-e5a-fixture-model.mjs",
     "assert:e7a": "node --import tsx scripts/assert-e7a-learning-evidence.mjs",
-    "assert:e8a": "node --import tsx scripts/assert-e8a-pronunciation-boundary.mjs"
+    "assert:e8a": "node --import tsx scripts/assert-e8a-pronunciation-boundary.mjs",
+    "assert:e6a": "node scripts/assert-e6a-rls.mjs"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "0.5.16",
     "@types/node": "^24.19.2",
     "tsx": "^4.23.15",
     "typescript": "^5.9.3"
