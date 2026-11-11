@@ -413,7 +413,7 @@ E4、E5b、E6 仍按原阻塞等待审校稿、密钥或数据库授权。上面
 - 第 2 节的页面和 `from=day` 分支
 - 复习页引用 `createGradeSubmitter`、`checkMeaningUse` 的封装；不引用 `summarizeLearningEvidence`、`runFixtureMeaningComment`、`recordPronunciationExperiment`
 
-2026-11-11 解析了本次改动的五份文档里的相对文件链接，共 52 条，缺失 0。这次不检查标题锚点，也不访问外链。工作区没有 `node_modules`，没有跑 `npm run check`。远程 CI 若按已合入的 E1 工作流执行 `npm run check`，那次结果才是完整门禁。
+2026-11-11 解析了本次改动的五份文档里的相对文件链接，共 52 条，缺失 0。这次不检查标题锚点，也不访问外链。工作区没有 `node_modules`，本地没有跑 `npm run check`。同一天 PR #19 的远程工作流 `check / check` 成功（run `42977604187`）。该工作流就是已合入的 E1 门禁，执行 `npm ci` 与 `npm run check`。这是远程结果，不是本机复跑。
 
 未做：
 
