@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
   transpilePackages: ["@echo-shards/core"],
   webpack: (config) => {
     // packages/core is NodeNext and imports "./file.js" which is the .ts source.
+    config.resolve.alias = {
+      ...(config.resolve.alias ?? {}),
+      "onnxruntime-node$": false,
+      "sharp$": false,
+    };
     config.resolve.extensionAlias = {
       ...(config.resolve.extensionAlias ?? {}),
       ".js": [".ts", ".tsx", ".js", ".jsx"],

@@ -7,6 +7,7 @@
  * - `echo-shards.round.v2:*` — 潮汐 SavedRound（tide logs / 评分）
  * - `echo-shards.quest-log.v1` — 市集 / quest-desk AgentEventLog
  * - `echo-shards.meaning-use.v1` — 意思回忆之后的造句记录
+ * - `echo-shards.speak.v1` — 自我介绍稿。录音在 IndexedDB `echo-shards-speak`，由清空按钮另删
  *
  * 原型页同域污染（artifacts HTML 原型，非主路径）：
  * - `echo-shards.proto.*` — day-tide-loop 等原型存档
