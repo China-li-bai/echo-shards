@@ -1,6 +1,8 @@
 # 文档索引
 
-基线与下一阶段路线以 [evolution-architecture.md](evolution-architecture.md) 为准（核实 SHA `bcc2b4a`，2026-11-09）。调度硬规则与学徒可见句不由那份实施文档改写。
+当前代码的层次和数据放在哪，以 [architecture-data-review-2026-11-15.md](architecture-data-review-2026-11-15.md) 为准。调度硬规则与学徒可见句不由那份重审改写。
+
+[evolution-architecture.md](evolution-architecture.md) 仍是后续同步、模型和评测的技术方案，但它的现状盘点停在 `bcc2b4a`（2026-11-09）。
 
 ## 先读
 
@@ -9,6 +11,7 @@
 | [evolution-architecture.md](evolution-architecture.md) | 现状盘点、目标架构、数据与 AI 设计、评测、口语后续、PR 序列 |
 | [../ARCHITECTURE.md](../ARCHITECTURE.md) | 当前代码的模块、Agent、表对照 |
 | [../README.md](../README.md) | 怎么在本地跑 |
+| [architecture-data-review-2026-11-15.md](architecture-data-review-2026-11-15.md) | 当前代码的四层架构和数据放在哪。调度契约仍以上级文档为准 |
 | [interview-speech-plan-2026-11-15.md](interview-speech-plan-2026-11-15.md) | 面试自我介绍的断句、听自己、技术选型与后续任务。T1 已接到 `/speak` |
 
 ## 契约（仍有效）
