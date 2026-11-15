@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { chunkSelfIntro, type SpeechChunk } from "@echo-shards/core";
+import { chunkSelfIntro, matchSpokenWords, type SpeechChunk, type SpokenWordMatch } from "@echo-shards/core";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -37,6 +37,7 @@ export function SpeakDesk() {
   const [recording, setRecording] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
   const [takes, setTakes] = useState<Record<number, string>>({});
+  const [checks, setChecks] = useState<Record<number, { status: "loading" | "ready" | "failed"; match?: SpokenWordMatch }>>({});
   const recorder = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const urls = useRef<string[]>([]);
@@ -186,13 +187,38 @@ export function SpeakDesk() {
     setMarks((prev) => ({ ...prev, [String(chunk.index)]: value }));
   }
 
+  async function checkWords(chunk: SpeechChunk) {
+    const url = takes[chunk.index];
+    if (!url) {
+      setStatus("这一小段还没有你的录音。");
+      return;
+    }
+    setChecks((prev) => ({ ...prev, [chunk.index]: { status: "loading" } }));
+    setStatus("正在这台设备上听写。第一次会下载一个小模型，录音不会上传。");
+    try {
+      const blob = await fetch(url).then((response) => response.blob());
+      const { transcribeSpeakBlob } = await import("@/lib/transcribe-speak");
+      const transcript = await transcribeSpeakBlob(blob);
+      const match = matchSpokenWords(chunk.text, transcript);
+      setChecks((prev) => ({ ...prev, [chunk.index]: { status: "ready", match } }));
+      setStatus(
+        match.missing.length === 0
+          ? "这一小段的词都出现在听写里。不是发音对了。"
+          : "有的词还没听到。可以再听自己，再录一次。",
+      );
+    } catch {
+      setChecks((prev) => ({ ...prev, [chunk.index]: { status: "failed" } }));
+      setStatus("这次没能在这台设备上听写。录音还在，可以再听自己。没有把任何分数记下来。");
+    }
+  }
+
   return (
     <div className="flex flex-col gap-5">
       <Card>
         <CardHeader>
           <CardTitle className="font-display text-3xl">练一段自我介绍</CardTitle>
           <CardDescription>
-            先把长句分成小段。听这一小段，再听你自己。这一页不会判断你的发音对不对，也不会改下次该练哪个词。
+            先把长句分成小段。听这一小段，再听你自己。录完可以看看词有没有说到。词对上了，也不会判断你的发音对不对，也不会改下次该练哪个词。
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-3">
@@ -265,7 +291,22 @@ export function SpeakDesk() {
                     <Button type="button" variant="outline" disabled={!mine} onClick={() => playMine(piece.index)}>
                       听我自己
                     </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      disabled={!mine || checks[piece.index]?.status === "loading"}
+                      onClick={() => void checkWords(piece)}
+                    >
+                      看看词说全了没有
+                    </Button>
                   </div>
+                  {checks[piece.index]?.status === "ready" && checks[piece.index]?.match ? (
+                    <div className="text-sm leading-relaxed">
+                      <p>听到了：{checks[piece.index]?.match?.heard.join("、") || "没有"}</p>
+                      <p>还没听到：{checks[piece.index]?.match?.missing.join("、") || "没有"}</p>
+                      <p className="text-muted-foreground">这只说明听写里有这些词。不是发音对了，也不会改下次该练哪个词。</p>
+                    </div>
+                  ) : null}
                   <div className="flex flex-wrap gap-2">
                     <Button type="button" variant={note === "smooth" ? "default" : "outline"} onClick={() => mark(piece, "smooth")}>
                       这小段顺了

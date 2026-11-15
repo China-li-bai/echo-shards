@@ -59,3 +59,5 @@ export type { FixtureCompletionSource, FixtureMeaningCommentResult } from "./fix
 export type { MeaningUseInput, MeaningUseResult, MeaningUseReason, MeaningUseVerdict } from "./meaning-use.js";
 export { SPEECH_CHUNK_WORD_CAP, chunkSelfIntro } from "./speech/chunk-self-intro.js";
 export type { SpeechChunk } from "./speech/chunk-self-intro.js";
+export { matchSpokenWords } from "./speech/match-spoken-words.js";
+export type { SpokenWordMatch } from "./speech/match-spoken-words.js";

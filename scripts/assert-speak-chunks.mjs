@@ -4,6 +4,7 @@
  */
 import { readFileSync } from "node:fs";
 import { chunkSelfIntro } from "../packages/core/src/speech/chunk-self-intro.ts";
+import { matchSpokenWords } from "../packages/core/src/speech/match-spoken-words.ts";
 
 const errors = [];
 const root = new URL("..", import.meta.url);
@@ -50,11 +51,35 @@ const source = read("packages/core/src/speech/chunk-self-intro.ts");
 check(!source.includes("TideScheduler"), "chunker does not touch the scheduler");
 check(!source.includes("rate("), "chunker does not rate");
 
+const matcher = read("packages/core/src/speech/match-spoken-words.ts");
+check(!matcher.includes("TideScheduler"), "word match does not touch the scheduler");
+check(!matcher.includes("fetch("), "word match does not download a model");
+
+const heardAll = matchSpokenWords("I am a software engineer.", "I am a software engineer");
+check(heardAll.missing.length === 0 && heardAll.heard.length === 5, "same words count as heard");
+
+const missingArticle = matchSpokenWords("I am a software engineer.", "I am software engineer");
+check(missingArticle.missing.join(",") === "a", "a skipped word stays missing");
+
+const contraction = matchSpokenWords("I'm a software engineer.", "I am a software engineer");
+check(contraction.missing.length === 0, "I'm matches I am");
+
+const notSubstring = matchSpokenWords("I saw a cat.", "I saw a catch");
+check(notSubstring.missing.join(",") === "cat", "catch does not count as cat");
+check(notSubstring.extra.join(",") === "catch", "the different word stays extra");
+
+const transcribe = read("apps/web/src/lib/transcribe-speak.ts");
+check(transcribe.includes("Xenova/whisper-tiny.en"), "browser model id is whisper tiny english");
+check(!transcribe.includes("TideScheduler"), "transcription does not schedule");
+check(!transcribe.includes("process.env"), "transcription does not read environment secrets");
+
 const page = read("apps/web/src/components/speak-desk.tsx");
 check(page.includes("分成小段"), "learner can split the script");
 check(page.includes("听这一小段"), "learner can hear the reference line");
 check(page.includes("听我自己"), "learner can replay their own voice");
 check(page.includes("不会判断你的发音对不对"), "the page does not claim a pronunciation verdict");
+check(page.includes("看看词说全了没有"), "learner can ask whether the words were heard");
+check(page.includes("不是发音对了"), "a word match is not called correct pronunciation");
 check(!page.includes("TideScheduler"), "speak page does not construct a scheduler");
 check(!page.includes(".rate("), "speak page does not rate");
 
