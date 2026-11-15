@@ -96,17 +96,26 @@ export function SpeakDesk() {
     };
   }, [scriptHash]);
 
-  function speakReference(chunk: SpeechChunk) {
+  async function speakReference(chunk: SpeechChunk) {
+    if (typeof window !== "undefined") window.speechSynthesis?.cancel();
+    setStatus("正在准备示范声音。第一次会下载模型，文字不会上传。");
+    try {
+      const { playKokoroReference } = await import("@/lib/speak-reference");
+      await playKokoroReference(chunk.text);
+      setStatus("正在放这一小段的示范。这不是你的声音，也不算分。");
+      return;
+    } catch {
+      /* The model download can fail. The system voice still reads the line. */
+    }
     if (typeof window === "undefined" || !window.speechSynthesis) {
       setStatus("这台设备现在放不出示范声音。你可以先录音，再听自己。");
       return;
     }
-    window.speechSynthesis.cancel();
     const utter = new SpeechSynthesisUtterance(chunk.text);
     utter.lang = "en-US";
     utter.rate = 0.9;
     window.speechSynthesis.speak(utter);
-    setStatus("正在放这一小段。听完可以录你自己。");
+    setStatus("示范模型这次没装上，先放系统声音。这不是你的声音，也不算分。");
   }
 
   async function startRecording(chunk: SpeechChunk) {

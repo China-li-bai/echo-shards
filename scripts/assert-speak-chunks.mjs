@@ -68,6 +68,12 @@ const notSubstring = matchSpokenWords("I saw a cat.", "I saw a catch");
 check(notSubstring.missing.join(",") === "cat", "catch does not count as cat");
 check(notSubstring.extra.join(",") === "catch", "the different word stays extra");
 
+const reference = read("apps/web/src/lib/speak-reference.ts");
+check(reference.includes("onnx-community/Kokoro-82M-v1.0-ONNX"), "reference voice names the Kokoro ONNX model");
+check(reference.includes('dtype: "q8"'), "reference voice uses the smaller q8 build");
+check(!reference.includes("TideScheduler"), "reference voice does not schedule");
+check(!reference.includes("process.env"), "reference voice does not read environment secrets");
+
 const transcribe = read("apps/web/src/lib/transcribe-speak.ts");
 check(transcribe.includes("Xenova/whisper-tiny.en"), "browser model id is whisper tiny english");
 check(!transcribe.includes("TideScheduler"), "transcription does not schedule");
@@ -80,6 +86,7 @@ check(page.includes("听我自己"), "learner can replay their own voice");
 check(page.includes("不会判断你的发音对不对"), "the page does not claim a pronunciation verdict");
 check(page.includes("看看词说全了没有"), "learner can ask whether the words were heard");
 check(page.includes("不是发音对了"), "a word match is not called correct pronunciation");
+check(page.includes("示范模型这次没装上，先放系统声音"), "a failed model voice falls back to the system voice");
 check(!page.includes("TideScheduler"), "speak page does not construct a scheduler");
 check(!page.includes(".rate("), "speak page does not rate");
 
