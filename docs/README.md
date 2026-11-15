@@ -9,6 +9,7 @@
 | [evolution-architecture.md](evolution-architecture.md) | 现状盘点、目标架构、数据与 AI 设计、评测、口语后续、PR 序列 |
 | [../ARCHITECTURE.md](../ARCHITECTURE.md) | 当前代码的模块、Agent、表对照 |
 | [../README.md](../README.md) | 怎么在本地跑 |
+| [interview-speech-plan-2026-11-15.md](interview-speech-plan-2026-11-15.md) | 面试自我介绍的断句、听自己、技术选型与后续任务。T1 已接到 `/speak` |
 
 ## 契约（仍有效）
 
@@ -28,6 +29,7 @@
 | [ux-beginner-learn-notes.md](ux-beginner-learn-notes.md) | 小白可懂的判据 |
 | [learner-copy-literary-pass-lesson-first.md](learner-copy-literary-pass-lesson-first.md) | 语感草稿。与合签冲突时以合签为准 |
 | [word-tide-visual-metaphors.md](word-tide-visual-metaphors.md) | 视觉隐喻。不作为调度或文案的上级 |
+| [interview-speech-plan-2026-11-15.md](interview-speech-plan-2026-11-15.md) | 开口练习计划。不改调度契约 |
 
 ## 数据与内容
 

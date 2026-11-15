@@ -57,3 +57,5 @@ export {
 export type { LearningEvidenceInput, LearningEvidenceReport } from "./learning-evidence.js";
 export type { FixtureCompletionSource, FixtureMeaningCommentResult } from "./fixture-model.js";
 export type { MeaningUseInput, MeaningUseResult, MeaningUseReason, MeaningUseVerdict } from "./meaning-use.js";
+export { SPEECH_CHUNK_WORD_CAP, chunkSelfIntro } from "./speech/chunk-self-intro.js";
+export type { SpeechChunk } from "./speech/chunk-self-intro.js";
