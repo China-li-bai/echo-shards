@@ -254,6 +254,9 @@ export function SpeakDesk() {
             onChange={(event) => {
               setText(event.target.value);
               setActive(0);
+              setChecks({});
+              setDictionary({});
+              setMarks({});
             }}
             rows={6}
           />

@@ -69,6 +69,39 @@ function packParts(parts: string[]): string[] {
   return bins;
 }
 
+const BREAK_BEFORE = new Set([
+  "a",
+  "an",
+  "the",
+  "to",
+  "of",
+  "for",
+  "in",
+  "on",
+  "with",
+  "into",
+  "that",
+  "where",
+  "what",
+]);
+
+function wordToken(word: string): string {
+  return word.replace(/[^a-z]/gi, "").toLowerCase();
+}
+
+function splitLongWords(words: string[]): string[] {
+  if (words.length <= SPEECH_CHUNK_WORD_CAP) return [words.join(" ")];
+  let cut = -1;
+  const latest = Math.min(SPEECH_CHUNK_WORD_CAP, words.length - 4);
+  for (let index = latest; index >= 4; index -= 1) {
+    if (BREAK_BEFORE.has(wordToken(words[index] ?? ""))) {
+      cut = index;
+      break;
+    }
+  }
+  if (cut < 4) cut = Math.min(SPEECH_CHUNK_WORD_CAP, words.length - 4);
+  return [words.slice(0, cut).join(" "), ...splitLongWords(words.slice(cut))];
+}
 function splitAtJoiner(sentence: string): string[] {
   const words = sentence.split(/\s+/).filter(Boolean);
   if (words.length <= SPEECH_CHUNK_WORD_CAP) return [sentence];
@@ -84,13 +117,7 @@ function splitAtJoiner(sentence: string): string[] {
       bestDistance = distance;
     }
   }
-  if (best < 0) {
-    const out: string[] = [];
-    for (let i = 0; i < words.length; i += SPEECH_CHUNK_WORD_CAP) {
-      out.push(words.slice(i, i + SPEECH_CHUNK_WORD_CAP).join(" "));
-    }
-    return out;
-  }
+  if (best < 0) return splitLongWords(words);
   const left = words.slice(0, best).join(" ");
   const right = words.slice(best).join(" ");
   return [...splitAtJoiner(left), ...splitAtJoiner(right)];

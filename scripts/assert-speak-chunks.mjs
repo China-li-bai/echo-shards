@@ -42,6 +42,12 @@ check(parts.length >= 2, "a long sentence splits");
 check(parts.every((part) => part.words <= 14), `every chunk stays within 14 words: ${parts.map((p) => p.words).join(",")}`);
 check(parts.map((part) => part.text).join(" ").includes("and I like"), "the joiner stays with the following words");
 
+const edited =
+  "I have worked on products where the first screen must tell a beginner what to do next, and I like breaking a large goal into one small step.";
+const editedParts = chunkSelfIntro(edited);
+check(editedParts.every((part) => part.words >= 4 && part.words <= 14), `edited chunks stay speakable: ${editedParts.map((part) => part.words + " " + part.text).join(" | ")}`);
+check(!editedParts.some((part) => part.text === "today."), "today is not left as its own chunk");
+
 const comma =
   "I studied design, I shipped a small practice app, and I want a role where clear writing matters.";
 const commaParts = chunkSelfIntro(comma);
@@ -106,6 +112,11 @@ check(page.includes("不是考官评分"), "the dictionary line is not an examin
 check(!page.includes("recordPronunciationExperiment"), "live speech is not stored as a fixture experiment");
 check(!page.includes("TideScheduler"), "speak page does not construct a scheduler");
 check(!page.includes(".rate("), "speak page does not rate");
+check(page.includes("setChecks({})"), "editing the script drops the previous word check");
+
+const { phonemize } = await import("phonemizer");
+const phones = await phonemize("I am a software engineer.", "en-us");
+check(Array.isArray(phones) && phones.join(" ").includes("aɪ"), "dictionary phonemizer returns English phones");
 
 const header = read("apps/web/src/components/site-header.tsx");
 check(header.includes('href: "/speak"'), "self-intro link exists");
