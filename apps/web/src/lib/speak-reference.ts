@@ -50,5 +50,10 @@ export async function playKokoroReference(text: string): Promise<void> {
     URL.revokeObjectURL(url);
     if (playing === player) playing = null;
   };
-  await player.play();
+  try {
+    await player.play();
+  } catch (error) {
+    const blocked = error instanceof DOMException && error.name === "NotAllowedError";
+    throw new Error(blocked ? "playback-blocked" : "playback-failed");
+  }
 }

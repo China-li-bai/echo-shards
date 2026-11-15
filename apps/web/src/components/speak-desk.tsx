@@ -105,7 +105,11 @@ export function SpeakDesk() {
       await playKokoroReference(chunk.text);
       setStatus("正在放这一小段的示范。这不是你的声音，也不算分。");
       return;
-    } catch {
+    } catch (error) {
+      if (error instanceof Error && error.message === "playback-blocked") {
+        setStatus("示范已经做好，这台浏览器没有自动播放。这不是你的声音，也不算分。");
+        return;
+      }
       /* The model download can fail. The system voice still reads the line. */
     }
     if (typeof window === "undefined" || !window.speechSynthesis) {
