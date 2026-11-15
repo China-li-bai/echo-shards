@@ -5,6 +5,7 @@
 import { readFileSync } from "node:fs";
 import { chunkSelfIntro } from "../packages/core/src/speech/chunk-self-intro.ts";
 import { matchSpokenWords } from "../packages/core/src/speech/match-spoken-words.ts";
+import { practiceSoundHints } from "../packages/core/src/speech/practice-sounds.ts";
 
 const errors = [];
 const root = new URL("..", import.meta.url);
@@ -74,6 +75,19 @@ check(reference.includes('dtype: "q8"'), "reference voice uses the smaller q8 bu
 check(!reference.includes("TideScheduler"), "reference voice does not schedule");
 check(!reference.includes("process.env"), "reference voice does not read environment secrets");
 
+const sounds = read("packages/core/src/speech/practice-sounds.ts");
+check(!sounds.includes("TideScheduler"), "sound hints do not schedule");
+const same = practiceSoundHints("həloʊ", "həloʊ");
+check(same.compared && same.slips.length === 0, "matching phones have no slips");
+const changed = practiceSoundHints("həloʊ", "hɑloʊ");
+check(changed.compared && changed.slips.some((slip) => slip.expected === "ə" && slip.heard === "ɑ"), "a different phone is a slip");
+const skipped = practiceSoundHints("həloʊ", "");
+check(skipped.compared === false, "no recording phones means no comparison");
+
+const dictionary = read("apps/web/src/lib/dictionary-pronunciation.ts");
+check(dictionary.includes("phonemizer"), "dictionary hint uses the phonemizer");
+check(!dictionary.includes("TideScheduler"), "dictionary hint does not schedule");
+
 const transcribe = read("apps/web/src/lib/transcribe-speak.ts");
 check(transcribe.includes("Xenova/whisper-tiny.en"), "browser model id is whisper tiny english");
 check(!transcribe.includes("TideScheduler"), "transcription does not schedule");
@@ -87,6 +101,9 @@ check(page.includes("不会判断你的发音对不对"), "the page does not cla
 check(page.includes("看看词说全了没有"), "learner can ask whether the words were heard");
 check(page.includes("不是发音对了"), "a word match is not called correct pronunciation");
 check(page.includes("示范模型这次没装上，先放系统声音"), "a failed model voice falls back to the system voice");
+check(page.includes("看看词典怎么读"), "learner can see a dictionary pronunciation");
+check(page.includes("不是考官评分"), "the dictionary line is not an examiner score");
+check(!page.includes("recordPronunciationExperiment"), "live speech is not stored as a fixture experiment");
 check(!page.includes("TideScheduler"), "speak page does not construct a scheduler");
 check(!page.includes(".rate("), "speak page does not rate");
 

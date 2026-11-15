@@ -38,6 +38,7 @@ export function SpeakDesk() {
   const [status, setStatus] = useState<string | null>(null);
   const [takes, setTakes] = useState<Record<number, string>>({});
   const [checks, setChecks] = useState<Record<number, { status: "loading" | "ready" | "failed"; match?: SpokenWordMatch }>>({});
+  const [dictionary, setDictionary] = useState<Record<number, string>>({});
   const recorder = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const urls = useRef<string[]>([]);
@@ -221,6 +222,19 @@ export function SpeakDesk() {
     }
   }
 
+  async function showDictionary(chunk: SpeechChunk) {
+    setStatus("正在查这一小段的词典读音。");
+    try {
+      const { dictionaryPronunciation } = await import("@/lib/dictionary-pronunciation");
+      const phones = await dictionaryPronunciation(chunk.text);
+      if (!phones) throw new Error("empty pronunciation");
+      setDictionary((prev) => ({ ...prev, [chunk.index]: phones }));
+      setStatus("这是词典读音，是练习提示，不是你刚才读得对不对。");
+    } catch {
+      setStatus("这次没有拿到词典读音。可以继续听示范和听自己。没有记分。");
+    }
+  }
+
   return (
     <div className="flex flex-col gap-5">
       <Card>
@@ -308,6 +322,9 @@ export function SpeakDesk() {
                     >
                       看看词说全了没有
                     </Button>
+                    <Button type="button" variant="outline" onClick={() => void showDictionary(piece)}>
+                      看看词典怎么读
+                    </Button>
                   </div>
                   {checks[piece.index]?.status === "ready" && checks[piece.index]?.match ? (
                     <div className="text-sm leading-relaxed">
@@ -315,6 +332,14 @@ export function SpeakDesk() {
                       <p>还没听到：{checks[piece.index]?.match?.missing.join("、") || "没有"}</p>
                       <p className="text-muted-foreground">这只说明听写里有这些词。不是发音对了，也不会改下次该练哪个词。</p>
                     </div>
+                  ) : null}
+                  {dictionary[piece.index] ? (
+                    <p className="text-sm leading-relaxed">
+                      词典里大概读成：{dictionary[piece.index]}
+                      <span className="mt-1 block text-muted-foreground">
+                        这是练习提示，不是考官评分，也不会改下次该练哪个词。
+                      </span>
+                    </p>
                   ) : null}
                   <div className="flex flex-wrap gap-2">
                     <Button type="button" variant={note === "smooth" ? "default" : "outline"} onClick={() => mark(piece, "smooth")}>

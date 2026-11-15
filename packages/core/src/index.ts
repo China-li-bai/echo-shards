@@ -61,3 +61,5 @@ export { SPEECH_CHUNK_WORD_CAP, chunkSelfIntro } from "./speech/chunk-self-intro
 export type { SpeechChunk } from "./speech/chunk-self-intro.js";
 export { matchSpokenWords } from "./speech/match-spoken-words.js";
 export type { SpokenWordMatch } from "./speech/match-spoken-words.js";
+export { practiceSoundHints } from "./speech/practice-sounds.js";
+export type { PracticeSoundHint, PracticeSoundSlip } from "./speech/practice-sounds.js";
