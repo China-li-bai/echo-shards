@@ -2,7 +2,9 @@
 
 **日期**：2026-11-09（Asia/Shanghai）  
 **基线**：`bcc2b4a59557e23139fc4ac1434eeeb1391b8fc4`（短 SHA `bcc2b4a`），分支 `main`，与 `origin/main` 一致。该提交是 PR #8 的合并提交。  
-**地位**：自本文件起，**下一阶段怎么做**以本文为准。已定稿的调度硬规则仍以 [word-schedule-contract.md](word-schedule-contract.md) 为准；学徒可见句仍以 [learner-copy-lesson-first-final.md](learner-copy-lesson-first-final.md) 为准。本文不改这两份契约。  
+**地位**：技术路线、数据与 AI 边界、以及当时的 PR 序列以本文为准。已定稿的调度硬规则仍以 [word-schedule-contract.md](word-schedule-contract.md) 为准；学徒可见句仍以 [learner-copy-lesson-first-final.md](learner-copy-lesson-first-final.md) 为准。本文不改这两份契约。
+
+**2026-11-11 状态**：第 1 节和第 9 节是 `bcc2b4a` 当天的盘点。「下一 PR 做 E1」「没有 CI」「回忆后还没有会用一步」「评分双击未修」都停在那个时点。PR10–18 已合入 `7389a8a`。学徒可见形态、页面未接入项，以及建议的下一个设计项，见 [product-design-audit-2026-11-11.md](product-design-audit-2026-11-11.md)。那份审核不解除 E4、E5b、E6 的外部阻塞，也不改本文的调度不变量。  
 **范围**：只描述可执行、可迭代的技术路线。本文件不实现功能、不部署、不改云资源。  
 **线上**：仓库与 [learner-first-path.md](learner-first-path.md) 提到 Workers 地址 `https://echo-shards.1272679088.workers.dev`。本仓库不能证明该地址上的包等于 `bcc2b4a`。下文不把线上当成 main。
 
