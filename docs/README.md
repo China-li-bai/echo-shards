@@ -1,17 +1,22 @@
 # 文档索引
 
+学徒现在看见什么、下一步设计改什么，以 [product-design-audit-2026-11-11.md](product-design-audit-2026-11-11.md) 为准（仓库 `7389a8a`，2026-11-11）。那份审核不改调度硬规则，也不实现功能。
+
 当前代码的层次和数据放在哪，以 [architecture-data-review-2026-11-15.md](architecture-data-review-2026-11-15.md) 为准。调度硬规则与学徒可见句不由那份重审改写。
 
-[evolution-architecture.md](evolution-architecture.md) 仍是后续同步、模型和评测的技术方案，但它的现状盘点停在 `bcc2b4a`（2026-11-09）。
+调度硬规则仍以 [word-schedule-contract.md](word-schedule-contract.md) 为准。学徒可见句仍以 [learner-copy-lesson-first-final.md](learner-copy-lesson-first-final.md) 为准。
+
+技术路线仍以 [evolution-architecture.md](evolution-architecture.md) 为准，但它的现状盘点和「下一 PR = E1」是 `bcc2b4a`（2026-11-09）的快照。实施队列各项的合并事实见 [implementation-backlog.md](implementation-backlog.md) 文首。
 
 ## 先读
 
 | 文档 | 地位 |
 | --- | --- |
-| [evolution-architecture.md](evolution-architecture.md) | 现状盘点、目标架构、数据与 AI 设计、评测、口语后续、PR 序列 |
+| [product-design-audit-2026-11-11.md](product-design-audit-2026-11-11.md) | `7389a8a` 的学徒面审核、对自定每日量和多种练法的结论、分阶段设计 |
+| [architecture-data-review-2026-11-15.md](architecture-data-review-2026-11-15.md) | 当前代码的四层架构和数据放在哪。调度契约仍以上级文档为准 |
+| [evolution-architecture.md](evolution-architecture.md) | 技术路线、数据与 AI 设计、评测、口语后续。现状节是 `bcc2b4a` 快照 |
 | [../ARCHITECTURE.md](../ARCHITECTURE.md) | 当前代码的模块、Agent、表对照 |
 | [../README.md](../README.md) | 怎么在本地跑 |
-| [architecture-data-review-2026-11-15.md](architecture-data-review-2026-11-15.md) | 当前代码的四层架构和数据放在哪。调度契约仍以上级文档为准 |
 | [interview-speech-plan-2026-11-15.md](interview-speech-plan-2026-11-15.md) | 面试自我介绍的断句、听自己、技术选型与后续任务。T1 已接到 `/speak` |
 
 ## 契约（仍有效）
@@ -27,6 +32,7 @@
 
 | 文档 | 地位 |
 | --- | --- |
+| [product-design-audit-2026-11-11.md](product-design-audit-2026-11-11.md) | 学徒面审核与改进方案。只描述设计，实现仍看代码 |
 | [ux-p0-pr-plan.md](ux-p0-pr-plan.md) | PR1–4 范围。已合入 `bcc2b4a` |
 | [learner-first-path.md](learner-first-path.md) | lesson-first。第 3 节是实现前快照；PR5–8 已合入 |
 | [ux-beginner-learn-notes.md](ux-beginner-learn-notes.md) | 小白可懂的判据 |

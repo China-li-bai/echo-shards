@@ -1,6 +1,6 @@
 # 言灵残片 · 学徒从零开端（lesson-first）产品说明
 
-**地位（2026-11-09）**：PR5–8 已合入 `bcc2b4a`。下面第 3 节是 2026-11-05 的实现前快照，不要当成当前代码。当前主路径与缺口见 [evolution-architecture.md](evolution-architecture.md) 第 1 节。调度硬规则仍以 [word-schedule-contract.md](word-schedule-contract.md) 为准。
+**地位（2026-11-11）**：PR5–8 已合入 `bcc2b4a`，其后到 PR18 的仓库 tip 是 `7389a8a`。下面第 3 节仍是 2026-11-05 的实现前快照。学徒现在看见的路径、以及还没接到页面的能力，见 [product-design-audit-2026-11-11.md](product-design-audit-2026-11-11.md)。[evolution-architecture.md](evolution-architecture.md) 第 1 节是 `bcc2b4a` 的技术盘点。调度硬规则仍以 [word-schedule-contract.md](word-schedule-contract.md) 为准。
 
 **日期**：2026-11-05（Asia/Shanghai）  
 **触发**：产品方反馈——第一次进来没有从零学习的开端，突然就像进入「复习」。  
