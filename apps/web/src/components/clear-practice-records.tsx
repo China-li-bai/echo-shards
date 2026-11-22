@@ -13,17 +13,19 @@ import {
   CLEAR_PRACTICE_HELP,
   clearPracticeRecords,
 } from "@/lib/clear-practice-local";
+import { deleteSpeakTakes } from "@/lib/speak-audio";
 
 export function ClearPracticeRecords() {
   const [busy, setBusy] = useState(false);
 
-  function onClear() {
+  async function onClear() {
     if (typeof window === "undefined" || typeof localStorage === "undefined") return;
     // 合签确认：必须点「确定」才清，防误触
     if (!window.confirm(CLEAR_PRACTICE_CONFIRM)) return;
     setBusy(true);
     try {
       clearPracticeRecords(localStorage);
+      await deleteSpeakTakes();
     } finally {
       // 整页刷新，使顶栏灰态 / 营地账本 / 潮汐壳回到首日冷启动态
       window.location.assign("/");

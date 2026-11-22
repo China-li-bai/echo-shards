@@ -19,6 +19,7 @@ const ALWAYS = [
 const AFTER_FIRST_SUCCESS = [
   { href: "/review", label: "潮汐" },
   { href: "/quests", label: "市集" },
+  { href: "/speak", label: "自我介绍" },
 ] as const;
 
 /** Builder / ops shell — secondary */
